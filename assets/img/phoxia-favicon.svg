@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Phoxia">
+  <rect width="512" height="512" rx="96" fill="#1C6BA8"/>
+  <g transform="translate(90 148) scale(2.39)">
+    <path fill="#FFFFFF" d="M0 102.15h34.05L53.91 68.1H19.86z" opacity=".55"/>
+    <path fill="#FFFFFF" d="M42.56 68.1h34.05l19.86-34.05H62.42z" opacity=".8"/>
+    <path fill="#FFFFFF" d="M85.12 34.05h34.05L139.03 0h-34.05z"/>
+  </g>
+</svg>
