@@ -1,41 +1,38 @@
-# Phoxy Music — site de démonstration
+# Phoxy Music — site du label
 
 Site statique, sans dépendance ni build, sur le même modèle que le site Phoxia
 (consulting) situé à la racine de ce dépôt. Ce dossier `/phoxy/` est
-totalement indépendant : il ne modifie aucun fichier du site Phoxia existant.
+indépendant : il ne modifie aucun fichier du site Phoxia existant, mais une
+page de présentation (`/phoxy-music.html`, à la racine) y renvoie et fait
+partie du même dépôt.
 
 **Direction artistique** : nuit encre (`#060c14`) + néon cyan (`#5be8ff`),
 logotype manuscrit (police Caveat), photo de couverture fournie par vous.
 
+**Identité réelle** : Mathieu Barthélémy, également fondateur de Phoxia, sous
+la même entreprise individuelle (SIREN 937 810 067 / SIRET 937 810 067 00010).
+Réseaux confirmés : Instagram et TikTok `@phoxy.music`.
+
 ---
 
-## 1. Ce site est un brouillon complet, pas un site prêt à publier
+## 1. Ce qui est réel, ce qui reste à faire
 
-Toutes les pages sont fonctionnelles et navigables, mais **le contenu est en
-grande partie fictif ou placeholder**. Vous avez choisi de démarrer sur cette
-base pour avoir un site entier à modifier plutôt que d'attendre. Voici tout ce
-qui doit être vérifié ou remplacé avant une mise en ligne publique.
+Le site n'a plus de fausses personnes ni de faux catalogue : le fondateur, le
+SIRET, l'email (`mathieu@phoxia.fr`) et les réseaux sociaux affichés sont
+réels. Le catalogue est honnêtement présenté comme vide (le label démarre),
+et la page équipe ne montre que vous — pas de collaborateurs inventés.
 
-### À remplacer avant toute mise en ligne
+### Ce qui reste à faire avant une mise en ligne à part entière
 
-| Élément | Où | Valeur actuelle (placeholder) |
+| Élément | Où | État actuel |
 |---|---|---|
-| Nom de domaine | balises `<link rel="canonical">`, Open Graph, `sitemap.xml`, `robots.txt` | `phoxy-music.example` (domaine réservé, ne résout jamais) |
-| Email de contact | partout | `contact@phoxy-music.example` |
-| Formulaire de contact | `contact.html`, attribut `action` | `https://formspree.io/f/REMPLACER_ID` — créez un formulaire sur [formspree.io](https://formspree.io) et remplacez l'ID |
-| Prise de rendez-vous | `index.html`, `contact.html` | `https://calendly.com/phoxy-music/30min` — à créer sur Calendly |
-| Fondatrice / équipe | `equipe.html`, `index.html` | Noms, rôles et bios entièrement inventés (Camille Reynier, Théo Salembier, Nina Askari, Malo Ferreira) |
-| Localisation | partout | « Paris » posé par défaut, à confirmer |
-| Réseaux sociaux | pied de page, `contact.html` | Liens Instagram/TikTok/Spotify placeholder, comptes non vérifiés |
-| Catalogue / artistes | `catalogue.html` | 5 sorties entièrement fictives (Noé Veldt, Sasha Kirin, Lunar Hymns, Iris & Loup, Kobalt Room) |
-| Studios partenaires | `equipe.html` | 3 noms de studios inventés |
-| Mentions légales | `mentions-legales.html` | Aucune forme juridique ni SIREN/SIRET réels : le label n'est pas immatriculé dans cette version |
-| Politique de confidentialité | `politique-de-confidentialite.html` | Structure RGPD standard, à valider avec vos vrais prestataires |
-| Image de couverture | `assets/img/hero-phoxy.png` | La photo que vous avez fournie, déjà intégrée |
-
-Chaque page placeholder porte un bandeau **⚠** ou une mention *(placeholder)*
-visible directement dans le texte pour qu'aucune fausse information ne passe
-inaperçue.
+| Nom de domaine | `<link rel="canonical">`, Open Graph, `sitemap.xml`, `robots.txt` | `phoxy-music.example` (domaine réservé, ne résout jamais) — à remplacer si le site est un jour déployé ailleurs qu'en `/phoxy/` sous `phoxia.fr` |
+| Activité déclarée | Guichet unique (hors site) | Le SIRET existe (celui de Phoxia) mais l'activité déclarée est encore « conseil ». Une déclaration de modification d'activité (code APE/NAF musique) est probablement nécessaire avant facturation — voir `mentions-legales.html` |
+| Formulaire de contact | `contact.html`, attribut `action` | `https://formspree.io/f/REMPLACER_ID` — en attendant, le bouton « Envoyer » ouvre directement `mathieu@phoxia.fr` en `mailto:`, donc le formulaire fonctionne déjà en pratique |
+| Prise de rendez-vous | `index.html`, `contact.html` | Réutilise le Calendly réel de Phoxia (`calendly.com/mathieu-phoxia/30min`) — créez un Calendly dédié si vous voulez séparer les agendas |
+| Catalogue | `catalogue.html` | Vide, honnêtement affiché « à venir ». À remplir dès la première sortie réelle |
+| Studios partenaires | `equipe.html` | Retiré (aucun partenaire réel à annoncer pour l'instant) |
+| Spotify / YouTube | — | Retirés partout : seuls Instagram et TikTok `@phoxy.music` sont confirmés. Ajoutez les autres liens dès que les comptes existent |
 
 ---
 
@@ -51,18 +48,13 @@ puis ouvrez `http://localhost:8000/`. Les chemins sont relatifs à `/phoxy/`.
 
 ---
 
-## 3. Mettre en ligne
+## 3. Mise en ligne
 
-Ce dossier est autonome et peut être déployé tel quel comme site indépendant
-(son propre dépôt ou sous-domaine), ou publié en sous-dossier d'un site
-existant. Dans ce second cas :
-
-- si le site parent a déjà un `robots.txt` / `sitemap.xml` à la racine,
-  ceux de `/phoxy/` deviennent redondants — gardez celui du parent et
-  supprimez ceux d'ici, ou fusionnez-les ;
-- `404.html` utilise ici des chemins relatifs (adapté à un déploiement en
-  sous-dossier) ; si vous déployez `/phoxy/` comme site racine à part entière,
-  ça fonctionne aussi tel quel.
+Ce dossier est pensé pour être servi sous `phoxia.fr/phoxy/`, avec la page de
+présentation `/phoxy-music.html` à la racine qui y renvoie. `robots.txt` et
+`sitemap.xml` de `/phoxy/` sont redondants avec ceux de la racine si les deux
+sont publiés ensemble — vous pouvez les supprimer ou les laisser, ils ne
+gênent pas.
 
 ---
 
@@ -73,11 +65,11 @@ index.html                          Accueil : hero, repères, sommaire des 5 pag
 activites.html                      Les trois activités : production, développement d'artiste, distribution
 approche.html                       Origine du nom, quatre engagements
 methode.html                        Déroulé en 4 étapes : écoute, diagnostic, production, sortie
-catalogue.html                      Sorties et artistes (placeholder) + bandeau plateformes
-equipe.html                         Fondatrice, équipe, studios partenaires
+catalogue.html                      Catalogue (vide, honnête) + bandeau plateformes prévues
+equipe.html                         Fondateur (Mathieu Barthélémy)
 contact.html                        Formulaire + prise de rendez-vous
-mentions-legales.html               Placeholder LCEN — à compléter
-politique-de-confidentialite.html   Placeholder RGPD — à valider
+mentions-legales.html               Réel : même SIRET que Phoxia, renvoie vers les mentions légales complètes
+politique-de-confidentialite.html   RGPD, responsable de traitement réel
 404.html                            Page d'erreur
 sitemap.xml  robots.txt  site.webmanifest
 assets/
@@ -94,8 +86,9 @@ assets/
 
 - **Formulaire** : tant que l'ID Formspree n'est pas configuré, le bouton
   « Envoyer » ouvre directement la messagerie du visiteur avec le message
-  pré-rempli (repli `mailto:`). Dès que vous renseignez un vrai endpoint
-  Formspree, l'envoi se fait en AJAX sans rechargement de page.
+  pré-rempli vers `mathieu@phoxia.fr` (repli `mailto:`). Dès que vous
+  renseignez un vrai endpoint Formspree, l'envoi se fait en AJAX sans
+  rechargement de page.
 - **Polices** chargées depuis Google Fonts (Caveat, Space Grotesk, Inter).
 - **Accessibilité** : lien d'évitement, `aria-expanded` sur le menu,
   `aria-current` sur la navigation, focus visible, respect de
