@@ -268,7 +268,7 @@ input, textarea{ font: inherit; color: inherit; }
 .videos-live{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.6rem; max-width: 640px; margin: 0 auto; }
 @media (max-width: 620px){ .videos-live{ grid-template-columns: 1fr; } }
 .video-carte{ border: 1px solid var(--trait); border-radius: var(--rayon); overflow: hidden; background: var(--panneau); }
-.video-carte video{ display: block; width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #000; }
+.video-carte video, .video-carte img{ display: block; width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #000; }
 .video-carte__legende{ padding: 1rem 1.1rem 1.2rem; }
 .video-carte__lieu{ font-family: var(--police-titre); font-weight: 600; color: #fff; font-size: .98rem; }
 .video-carte__detail{ margin-top: .3rem; color: var(--encre-sourd); font-size: .85rem; }
