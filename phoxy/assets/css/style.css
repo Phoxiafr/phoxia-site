@@ -116,10 +116,7 @@ input, textarea{ font: inherit; color: inherit; }
 .entete__interieur{ display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 84px; }
 
 .marque{ display: flex; align-items: center; gap: .55rem; }
-.marque__mot{
-  font-family: var(--police-signe); font-weight: 700; font-size: 2.1rem; color: var(--neon-clair);
-  text-shadow: 0 0 16px rgba(91,232,255,.65), 0 0 3px rgba(164,244,255,.8);
-}
+.marque__logo{ height: 27px; width: auto; display: block; }
 .marque__symbole{ width: 30px; height: auto; filter: drop-shadow(0 0 6px rgba(91,232,255,.6)); }
 
 .nav{ display: flex; gap: 2rem; }
@@ -304,7 +301,7 @@ input, textarea{ font: inherit; color: inherit; }
 
 /* ---------- Appel (calendly) ---------- */
 .appel{ position: relative; padding: 5.5rem 0; text-align: center; overflow: hidden; background: var(--panneau); border-top: 1px solid var(--trait); }
-.appel__filigrane{ position: absolute; width: 460px; height: auto; opacity: .12; top: 50%; left: 50%; transform: translate(-50%,-50%); filter: blur(1px); }
+.appel__filigrane{ position: absolute; width: auto; height: 420px; opacity: .14; top: 50%; left: 50%; transform: translate(-50%,-50%); filter: blur(1px); }
 .appel__interieur{ position: relative; display: flex; flex-direction: column; align-items: center; }
 .appel__titre{ font-family: var(--police-titre); font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 600; color: #fff; margin-top: 1rem; max-width: 26ch; }
 .appel__titre em{ font-style: normal; color: var(--neon-clair); text-shadow: 0 0 22px rgba(91,232,255,.55); }
@@ -319,6 +316,7 @@ input, textarea{ font: inherit; color: inherit; }
 @media (max-width: 860px){ .pied__haut{ grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .pied__haut{ grid-template-columns: 1fr; } }
 .pied__marque{ font-family: var(--police-signe); font-size: 2rem; color: var(--neon-clair); text-shadow: 0 0 14px rgba(91,232,255,.5); }
+.pied__marque-logo{ height: 34px; width: auto; display: block; }
 .pied__slogan{ margin-top: .5rem; color: var(--encre-sourd); max-width: 32ch; }
 .reseaux{ display: flex; gap: .8rem; margin-top: 1.4rem; }
 .reseau{
