@@ -1,0 +1,14 @@
+{
+  "name": "Phoxy Music",
+  "short_name": "Phoxy",
+  "description": "Label de musique indépendant — production, développement d'artistes, distribution.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060c14",
+  "theme_color": "#060c14",
+  "lang": "fr",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
