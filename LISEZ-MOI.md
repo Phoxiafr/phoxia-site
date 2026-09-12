@@ -73,6 +73,24 @@ Mettez à jour les dates `<lastmod>` dans `sitemap.xml` à chaque modification d
 
 ---
 
+## 3 bis. Le blog `actualites/`
+
+Trois premiers articles sont en ligne, pensés pour capter du trafic sur des recherches
+que fait votre clientèle avant de vous contacter (stratégie commerciale PME, pilotage
+financier, développement international). Pour en ajouter un :
+
+1. Dupliquez un des fichiers de `actualites/` et modifiez son contenu.
+2. Ajoutez une entrée dans `actualites/index.html` (bloc `.sommaire`) et dans son
+   script `application/ld+json` (`blogPost`).
+3. Ajoutez l'URL dans `sitemap.xml`.
+
+Un article par mois environ est un bon rythme pour construire une audience organique
+sans que ce soit une charge. Le sujet compte plus que la fréquence : mieux vaut un
+article par trimestre qui répond à une vraie question de client, que dix articles
+génériques qui ne se distinguent pas de la concurrence.
+
+---
+
 ## 4. Ce que le site contient déjà côté SEO
 
 - Titres uniques et descriptions rédigées sur chaque page
@@ -101,6 +119,7 @@ contact.html                        Formulaire détaillé + prise de rendez-vous
 mentions-legales.html               Obligations LCEN
 politique-de-confidentialite.html   RGPD
 404.html                            Page d'erreur
+actualites/                         Blog : page d'index + un fichier .html par article
 sitemap.xml  robots.txt  CNAME  .nojekyll  site.webmanifest
 assets/
   css/style.css                     Feuille unique, commentée
