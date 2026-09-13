@@ -1,4 +1,4 @@
-/* Phoxy Music — menu mobile, apparitions au scroll, formulaire de contact. Sans dépendance. */
+/* Phoxy — menu mobile, apparitions au scroll, formulaire de contact. Sans dépendance. */
 (function () {
   "use strict";
 

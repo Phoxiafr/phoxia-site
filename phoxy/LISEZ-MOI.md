@@ -1,4 +1,4 @@
-# Phoxy Music — site du label
+# Phoxy — site du label
 
 Site statique, sans dépendance ni build, sur le même modèle que le site Phoxia
 (consulting) situé à la racine de ce dépôt. Ce dossier `/phoxy/` est
