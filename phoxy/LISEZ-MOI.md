@@ -76,8 +76,8 @@ assets/
   css/style.css                     Feuille unique
   js/main.js                        Menu, apparitions au scroll, formulaire
   img/hero-phoxy.png                Photo de couverture fournie
-  img/phoxy-symbole.svg             Mark du logo (icône d'en-tête)
-  img/favicon.svg                   Favicon
+  img/favicon-32.png, favicon-180.png, favicon-512.png   Favicon (recadré depuis le vrai mark)
+  img/marque/                       Logo réel (texte + mark, versions néon et noir) et badges de lieux
 ```
 
 ---
