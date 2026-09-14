@@ -1469,11 +1469,46 @@ a.phoxy-plateforme:hover {
 }
 
 /* --------------------------------------------------------------------------
-   16. Impression
+   16. Agenda
+   -------------------------------------------------------------------------- */
+
+.calendly-embed {
+  border: 1px solid var(--filet);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--sable-pale);
+}
+
+.compat-liste {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 1.25rem;
+}
+
+.compat {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+
+.compat__icone {
+  flex: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+}
+
+.compat__texte { font-size: .92rem; color: var(--encre-doux); }
+.compat__texte strong { color: var(--encre); font-weight: 600; }
+
+/* --------------------------------------------------------------------------
+   17. Impression
    -------------------------------------------------------------------------- */
 
 @media print {
   .entete, .menu-mobile, .bascule-menu, .pied__haut, .groupe-boutons { display: none !important; }
   body { color: #000; background: #fff; }
   .section { padding-block: 1.5rem; }
+  .calendly-embed { display: none; }
 }
