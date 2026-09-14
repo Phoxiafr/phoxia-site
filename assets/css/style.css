@@ -1497,9 +1497,6 @@ a.phoxy-plateforme:hover {
   height: 2.35rem;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: var(--sable-pale);
-  color: var(--azur);
 }
 
 .compat__texte { font-size: .92rem; color: var(--encre-doux); }
