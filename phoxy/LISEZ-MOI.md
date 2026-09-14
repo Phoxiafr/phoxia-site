@@ -26,9 +26,8 @@ et la page équipe ne montre que vous — pas de collaborateurs inventés.
 
 | Élément | Où | État actuel |
 |---|---|---|
-| Nom de domaine | `<link rel="canonical">`, Open Graph, `sitemap.xml`, `robots.txt` | `phoxy-music.example` (domaine réservé, ne résout jamais) — à remplacer si le site est un jour déployé ailleurs qu'en `/phoxy/` sous `phoxia.fr` |
 | Activité déclarée | Guichet unique (hors site) | Le SIRET existe (celui de Phoxia) mais l'activité déclarée est encore « conseil ». Une déclaration de modification d'activité (code APE/NAF musique) est probablement nécessaire avant facturation — voir `mentions-legales.html` |
-| Formulaire de contact | `contact.html`, attribut `action` | `https://formspree.io/f/REMPLACER_ID` — en attendant, le bouton « Envoyer » ouvre directement `mathieu@phoxia.fr` en `mailto:`, donc le formulaire fonctionne déjà en pratique |
+| Formulaire de contact | `contact.html`, attribut `action` | `https://formspree.io/f/REMPLACER_ID` — en attendant, le bouton « Envoyer » ouvre directement `phoxy.music13@gmail.com` en `mailto:`, donc le formulaire fonctionne déjà en pratique |
 | Prise de rendez-vous | `index.html`, `contact.html` | Réutilise le Calendly réel de Phoxia (`calendly.com/mathieu-phoxia/30min`) — créez un Calendly dédié si vous voulez séparer les agendas |
 | Catalogue | `catalogue.html` | Vide, honnêtement affiché « à venir ». À remplir dès la première sortie réelle |
 | Studios partenaires | `equipe.html` | Retiré (aucun partenaire réel à annoncer pour l'instant) |
