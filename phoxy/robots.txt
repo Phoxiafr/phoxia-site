@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://phoxy-music.example/sitemap.xml
+Sitemap: https://phoxia.fr/phoxy/sitemap.xml

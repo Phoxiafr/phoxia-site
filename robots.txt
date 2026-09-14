@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://phoxia.fr/sitemap.xml
+Sitemap: https://phoxia.fr/phoxy/sitemap.xml
