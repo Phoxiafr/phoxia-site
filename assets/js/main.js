@@ -109,6 +109,101 @@
   }
 
   /* ----------------------------------------------------------
+     Carrousel projets et voyages
+     ---------------------------------------------------------- */
+  var carrousel = document.querySelector('[data-carrousel]');
+
+  if (carrousel) {
+    var piste = carrousel.querySelector('[data-carrousel-piste]');
+    var diapos = Array.prototype.slice.call(carrousel.querySelectorAll('[data-carrousel-diapo]'));
+    var boutonPrecedent = carrousel.querySelector('[data-carrousel-precedent]');
+    var boutonSuivant = carrousel.querySelector('[data-carrousel-suivant]');
+    var compteur = carrousel.querySelector('[data-carrousel-compteur]');
+    var mouvementReduitCarrousel = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var indexActif = 0;
+    var minuteurCarrousel = null;
+    var blocageScroll = false;
+    var minuteurBlocage;
+
+    function majCompteur() {
+      if (compteur) { compteur.textContent = (indexActif + 1) + ' / ' + diapos.length; }
+    }
+
+    // Distance entre deux diapositives (largeur + espacement), mesurée en direct
+    // pour rester juste quelle que soit la largeur d'écran.
+    function pasDefilement() {
+      if (diapos.length < 2) { return diapos[0] ? diapos[0].getBoundingClientRect().width : 0; }
+      return diapos[1].getBoundingClientRect().left - diapos[0].getBoundingClientRect().left;
+    }
+
+    function allerA(index) {
+      indexActif = (index + diapos.length) % diapos.length;
+      // Sur les diapositives de bord, le navigateur peut tronquer le défilement
+      // (pas assez de piste à droite pour un alignement complet) : le blocage
+      // évite que ce recalage-là écrase l'index qu'on vient de choisir.
+      // "scrollend" lève le blocage dès que l'animation est vraiment finie ;
+      // le minuteur n'est qu'un filet de sécurité pour les navigateurs sans ça.
+      blocageScroll = true;
+      window.clearTimeout(minuteurBlocage);
+      minuteurBlocage = window.setTimeout(function () { blocageScroll = false; }, 1200);
+      piste.scrollTo({
+        left: indexActif * pasDefilement(),
+        behavior: mouvementReduitCarrousel ? 'auto' : 'smooth'
+      });
+      majCompteur();
+    }
+
+    if ('onscrollend' in window) {
+      piste.addEventListener('scrollend', function () {
+        window.clearTimeout(minuteurBlocage);
+        blocageScroll = false;
+      });
+    }
+
+    function demarrerDefilement() {
+      if (mouvementReduitCarrousel) return;
+      arreterDefilement();
+      minuteurCarrousel = window.setInterval(function () {
+        allerA(indexActif + 1);
+      }, 4500);
+    }
+
+    function arreterDefilement() {
+      if (minuteurCarrousel) { window.clearInterval(minuteurCarrousel); minuteurCarrousel = null; }
+    }
+
+    if (boutonPrecedent) {
+      boutonPrecedent.addEventListener('click', function () { arreterDefilement(); allerA(indexActif - 1); });
+    }
+    if (boutonSuivant) {
+      boutonSuivant.addEventListener('click', function () { arreterDefilement(); allerA(indexActif + 1); });
+    }
+
+    // Tient le compteur à jour pendant un défilement tactile libre (glisser)
+    var minuteurScroll;
+    piste.addEventListener('scroll', function () {
+      if (blocageScroll) return;
+      window.clearTimeout(minuteurScroll);
+      minuteurScroll = window.setTimeout(function () {
+        var pas = pasDefilement();
+        if (pas) {
+          indexActif = Math.round(piste.scrollLeft / pas);
+          majCompteur();
+        }
+      }, 120);
+    }, { passive: true });
+
+    carrousel.addEventListener('mouseenter', arreterDefilement);
+    carrousel.addEventListener('mouseleave', demarrerDefilement);
+    carrousel.addEventListener('focusin', arreterDefilement);
+    carrousel.addEventListener('focusout', demarrerDefilement);
+    carrousel.addEventListener('touchstart', arreterDefilement, { passive: true });
+
+    majCompteur();
+    demarrerDefilement();
+  }
+
+  /* ----------------------------------------------------------
      Année courante dans le pied de page
      ---------------------------------------------------------- */
   Array.prototype.forEach.call(

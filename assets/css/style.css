@@ -1397,6 +1397,133 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 }
 
 /* --------------------------------------------------------------------------
+   14 bis. Carrousel univers (projets et voyages)
+   -------------------------------------------------------------------------- */
+
+.carrousel { margin-top: clamp(1.5rem, 3.5vw, 2.5rem); }
+
+.carrousel__piste {
+  display: flex;
+  gap: clamp(1rem, 2.2vw, 1.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gouttiere);
+  margin-inline: calc(var(--gouttiere) * -1);
+  padding: .25rem var(--gouttiere) .75rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carrousel__piste::-webkit-scrollbar { display: none; }
+.carrousel__piste:focus-visible { outline-offset: 6px; }
+
+.diapo {
+  flex: none;
+  scroll-snap-align: start;
+  width: clamp(13rem, 32vw, 16.5rem);
+}
+
+.diapo__visuel {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--encre);
+}
+
+.diapo__visuel--projet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: var(--sable);
+  background: linear-gradient(160deg, var(--encre) 0%, #1E3260 100%);
+}
+
+.diapo__visuel--phoxy-music {
+  background: linear-gradient(160deg, var(--encre) 0%, #263A6B 100%);
+  /* Reprend l'accent orangé de la page Phoxy (voir body.phoxy), sans en
+     dépendre : cette teinte ne s'applique qu'à l'intérieur de cette carte. */
+  --azur-clair: #E8946B;
+}
+.diapo__visuel--phothes { background: linear-gradient(160deg, var(--encre) 0%, #16264A 100%); }
+.diapo__visuel--phavels { background: linear-gradient(160deg, var(--azur) 0%, var(--encre) 100%); }
+
+.diapo__lien {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.diapo__icone {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--azur-clair);
+}
+
+.diapo__icone--logo {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.diapo__nom-projet {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.7rem;
+  line-height: 1.08;
+  margin-top: 1.75rem;
+}
+
+.diapo__phrase-projet {
+  margin-top: .5rem;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: rgba(237, 234, 225, .72);
+}
+
+.diapo__legende {
+  margin-top: .85rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.diapo__titre { font-weight: 600; font-size: .92rem; }
+.diapo__sous-titre { font-size: .76rem; color: var(--encre-tenu); }
+
+.carrousel__commandes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.carrousel__fleche {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--filet-fort);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--encre);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.carrousel__fleche:hover { background: var(--encre); color: var(--sable); border-color: var(--encre); }
+
+.carrousel__compteur {
+  font-size: .8rem;
+  letter-spacing: .06em;
+  color: var(--encre-tenu);
+  min-width: 3.75rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
    15 bis. Phoxy — label musical, sous-marque de Phoxia
    Même structure de page, jeu d'accent propre pour marquer la différence
    avec le conseil : les usages de --azur / --azur-clair héritent de cette
