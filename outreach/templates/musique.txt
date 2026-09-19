@@ -1,0 +1,34 @@
+OBJET: {{prenom}}, libérer du temps pour {{entreprise}}
+
+Bonjour {{prenom}},
+
+Je m'appelle Mathieu Barthélémy, je dirige Phoxia, une agence IA basée à Marseille. Je suis
+moi-même impliqué dans la musique via le label Phoxy, donc c'est un secteur que je connais
+aussi de l'intérieur.
+
+Label, salle de concert, école de musique ou structure de management d'artistes : une bonne
+partie du temps administratif part dans la billetterie, les réponses aux mêmes questions du
+public, le suivi des demandes de booking ou les relances de newsletter. Ce sont des tâches
+que l'IA sait aujourd'hui prendre en charge sans dénaturer la relation avec votre public.
+
+Chez Phoxia, j'aide des structures du secteur à mettre en place des agents IA sur ces flux :
+réponses automatiques de premier niveau, qualification des demandes, relances programmées,
+reporting d'activité.
+
+Si {{entreprise}} a ce type de point de friction, je peux vous proposer un échange de
+30 minutes, sans engagement, pour voir ce qui est faisable rapidement.
+
+Vous pouvez réserver un créneau directement ici : https://calendly.com/mathieu-phoxia/30min
+ou simplement répondre à cet email.
+
+Bonne journée,
+Mathieu Barthélémy
+Phoxia — Agence IA, Marseille
+https://phoxia.fr
++33 7 82 59 09 91
+
+--
+Phoxia, Mathieu Barthélémy, entrepreneur individuel — 1 rue de Belle-Beille, 49000 Angers.
+Vous recevez cet email dans le cadre d'une prospection professionnelle B2B concernant votre
+activité. Pour ne plus recevoir de message de Phoxia, répondez "STOP" à cet email : votre
+demande sera prise en compte immédiatement et sans justification.

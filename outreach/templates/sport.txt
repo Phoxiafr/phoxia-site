@@ -1,0 +1,33 @@
+OBJET: {{prenom}}, un gain de temps concret pour {{entreprise}}
+
+Bonjour {{prenom}},
+
+Je m'appelle Mathieu Barthélémy, je dirige Phoxia, une agence IA basée à Marseille.
+
+Dans le sport, une grande partie du temps des équipes part dans des tâches répétitives :
+inscriptions et renouvellements d'adhérents, relances de licences, réponses aux mêmes
+questions de pratiquants, planning des créneaux ou des coachs. Ce sont des tâches que
+l'IA sait aujourd'hui automatiser sans perte de qualité de service.
+
+Chez Phoxia, j'aide des clubs, salles et marques du secteur à mettre en place des agents IA
+qui prennent en charge ces flux : qualification des demandes entrantes, réponses automatiques
+de premier niveau, relances programmées, reporting d'activité. L'objectif n'est pas de
+remplacer le contact humain, mais de libérer du temps dessus.
+
+Si {{entreprise}} a un point de friction de ce type, je peux vous proposer un échange de
+30 minutes, sans engagement, pour voir si un cas d'usage rapide à mettre en place existe.
+
+Vous pouvez réserver un créneau directement ici : https://calendly.com/mathieu-phoxia/30min
+ou simplement répondre à cet email.
+
+Bonne journée,
+Mathieu Barthélémy
+Phoxia — Agence IA, Marseille
+https://phoxia.fr
++33 7 82 59 09 91
+
+--
+Phoxia, Mathieu Barthélémy, entrepreneur individuel — 1 rue de Belle-Beille, 49000 Angers.
+Vous recevez cet email dans le cadre d'une prospection professionnelle B2B concernant votre
+activité. Pour ne plus recevoir de message de Phoxia, répondez "STOP" à cet email : votre
+demande sera prise en compte immédiatement et sans justification.

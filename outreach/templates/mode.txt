@@ -1,0 +1,33 @@
+OBJET: {{prenom}}, un service client plus rapide pour {{entreprise}}
+
+Bonjour {{prenom}},
+
+Je m'appelle Mathieu Barthélémy, je dirige Phoxia, une agence IA basée à Marseille.
+
+Dans la mode, qu'il s'agisse d'une marque, d'une boutique ou d'un site e-commerce, le service
+client, le suivi de commande et les relances de stock absorbent souvent un temps disproportionné
+par rapport à leur complexité réelle. Ce sont des flux que l'IA sait aujourd'hui automatiser
+tout en gardant un ton et une qualité de réponse cohérents avec votre marque.
+
+Chez Phoxia, j'aide des marques et boutiques à déployer des agents IA sur ces flux :
+réponses automatiques de premier niveau, qualification des demandes, relances programmées,
+reporting d'activité. L'objectif est de récupérer du temps sur ce qui fait vraiment la
+différence pour vos clients.
+
+Si {{entreprise}} a ce type de point de friction, je peux vous proposer un échange de
+30 minutes, sans engagement, pour voir ce qui est faisable rapidement.
+
+Vous pouvez réserver un créneau directement ici : https://calendly.com/mathieu-phoxia/30min
+ou simplement répondre à cet email.
+
+Bonne journée,
+Mathieu Barthélémy
+Phoxia — Agence IA, Marseille
+https://phoxia.fr
++33 7 82 59 09 91
+
+--
+Phoxia, Mathieu Barthélémy, entrepreneur individuel — 1 rue de Belle-Beille, 49000 Angers.
+Vous recevez cet email dans le cadre d'une prospection professionnelle B2B concernant votre
+activité. Pour ne plus recevoir de message de Phoxia, répondez "STOP" à cet email : votre
+demande sera prise en compte immédiatement et sans justification.

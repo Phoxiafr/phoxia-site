@@ -1,0 +1,33 @@
+OBJET: {{prenom}}, réduire le temps administratif chez {{entreprise}}
+
+Bonjour {{prenom}},
+
+Je m'appelle Mathieu Barthélémy, je dirige Phoxia, une agence IA basée à Marseille.
+
+Dans l'automobile, que ce soit en concession, en garage ou chez un équipementier, une
+partie importante du temps s'en va dans la prise de rendez-vous, les relances d'entretien,
+le suivi SAV et la préparation des devis. Ce sont des tâches bien identifiées, répétitives,
+et qui se prêtent aujourd'hui très bien à l'automatisation par l'IA.
+
+Chez Phoxia, j'aide des acteurs du secteur à déployer des agents IA qui prennent en charge
+ces flux : qualification des demandes entrantes, prise de rendez-vous automatisée, relances
+programmées, reporting d'activité. L'idée n'est pas de remplacer votre équipe, mais de lui
+libérer du temps sur les dossiers qui comptent vraiment.
+
+Si {{entreprise}} a ce type de point de friction, je peux vous proposer un échange de
+30 minutes, sans engagement, pour identifier un cas d'usage rapide à mettre en place.
+
+Vous pouvez réserver un créneau directement ici : https://calendly.com/mathieu-phoxia/30min
+ou simplement répondre à cet email.
+
+Bonne journée,
+Mathieu Barthélémy
+Phoxia — Agence IA, Marseille
+https://phoxia.fr
++33 7 82 59 09 91
+
+--
+Phoxia, Mathieu Barthélémy, entrepreneur individuel — 1 rue de Belle-Beille, 49000 Angers.
+Vous recevez cet email dans le cadre d'une prospection professionnelle B2B concernant votre
+activité. Pour ne plus recevoir de message de Phoxia, répondez "STOP" à cet email : votre
+demande sera prise en compte immédiatement et sans justification.

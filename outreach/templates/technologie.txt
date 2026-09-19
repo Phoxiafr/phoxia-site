@@ -1,0 +1,32 @@
+OBJET: {{prenom}}, automatiser ce qui ralentit {{entreprise}}
+
+Bonjour {{prenom}},
+
+Je m'appelle Mathieu Barthélémy, je dirige Phoxia, une agence IA basée à Marseille.
+
+Dans la tech, même les équipes les plus outillées perdent du temps sur des tâches qui
+pourraient être automatisées : qualification des leads entrants, support de premier niveau,
+reporting interne, synchronisation entre outils. Ce sont des chantiers rapides à cadrer et à
+mettre en place quand on sait ce qu'on automatise et pourquoi.
+
+Chez Phoxia, j'accompagne des startups et ESN sur trois volets : automatisation et agents IA
+connectés à vos outils existants, conseil pour prioriser les cas d'usage à fort impact, et
+développement sur mesure quand aucune solution du marché ne correspond au besoin réel.
+
+Si {{entreprise}} a un flux répétitif qui mériterait d'être automatisé, je peux vous proposer
+un échange de 30 minutes, sans engagement, pour voir ce qui est faisable rapidement.
+
+Vous pouvez réserver un créneau directement ici : https://calendly.com/mathieu-phoxia/30min
+ou simplement répondre à cet email.
+
+Bonne journée,
+Mathieu Barthélémy
+Phoxia — Agence IA, Marseille
+https://phoxia.fr
++33 7 82 59 09 91
+
+--
+Phoxia, Mathieu Barthélémy, entrepreneur individuel — 1 rue de Belle-Beille, 49000 Angers.
+Vous recevez cet email dans le cadre d'une prospection professionnelle B2B concernant votre
+activité. Pour ne plus recevoir de message de Phoxia, répondez "STOP" à cet email : votre
+demande sera prise en compte immédiatement et sans justification.
