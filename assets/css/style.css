@@ -497,6 +497,16 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
   .repere:nth-last-child(-n+2) { border-bottom: 0; }
 }
 
+/* Variante à cinq repères : dernier élément seul sur sa ligne en mobile */
+@media (min-width: 48em) {
+  .reperes--cinq { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 47.999em) {
+  .reperes--cinq .repere:nth-last-child(-n+2) { border-bottom: 1px solid var(--filet); }
+  .reperes--cinq .repere:last-child { border-bottom: 0; border-right: 0; }
+}
+
 .repere__valeur {
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
