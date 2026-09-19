@@ -442,6 +442,22 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 .hero__chapeau { margin-top: 1.75rem; }
 .hero__actions { margin-top: 2.25rem; }
 
+.hero__stat { margin-top: clamp(2rem, 4vw, 2.75rem); }
+
+.hero__stat-valeur {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1;
+  color: var(--azur);
+}
+
+.hero__stat-legende {
+  margin-top: .5rem;
+  max-width: 32ch;
+  font-size: .85rem;
+  color: var(--encre-tenu);
+}
+
 /* Fiche latérale : remplace l'illustration décorative par de l'information utile */
 .fiche {
   border-top: 1px solid var(--encre);
@@ -495,16 +511,6 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 @media (max-width: 47.999em) {
   .repere:nth-child(2n) { border-right: 0; }
   .repere:nth-last-child(-n+2) { border-bottom: 0; }
-}
-
-/* Variante à cinq repères : dernier élément seul sur sa ligne en mobile */
-@media (min-width: 48em) {
-  .reperes--cinq { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-}
-
-@media (max-width: 47.999em) {
-  .reperes--cinq .repere:nth-last-child(-n+2) { border-bottom: 1px solid var(--filet); }
-  .reperes--cinq .repere:last-child { border-bottom: 0; border-right: 0; }
 }
 
 .repere__valeur {
