@@ -202,6 +202,57 @@ p, li, h1, h2, h3, h4, dd, dt, a, address {
    5. En-tête et navigation
    -------------------------------------------------------------------------- */
 
+.banniere-evenement {
+  background: var(--encre);
+  color: var(--sable);
+}
+
+.banniere-evenement__interieur {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem 1.5rem;
+  padding-block: .7rem;
+  text-align: center;
+}
+
+.banniere-evenement__texte {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.4;
+  color: rgba(237, 234, 225, .88);
+}
+
+.banniere-evenement__etiquette {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--azur-clair);
+  margin-right: .4rem;
+}
+
+.banniere-evenement__bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  flex-shrink: 0;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  background: var(--azur-clair);
+  color: var(--encre);
+  font-size: .85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s ease;
+}
+
+.banniere-evenement__bouton:hover,
+.banniere-evenement__bouton:focus-visible {
+  background: var(--blanc);
+}
+
 .entete {
   position: sticky;
   top: 0;
