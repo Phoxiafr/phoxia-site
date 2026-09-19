@@ -442,6 +442,22 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 .hero__chapeau { margin-top: 1.75rem; }
 .hero__actions { margin-top: 2.25rem; }
 
+.hero__stat { margin-top: clamp(2rem, 4vw, 2.75rem); }
+
+.hero__stat-valeur {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1;
+  color: var(--azur);
+}
+
+.hero__stat-legende {
+  margin-top: .5rem;
+  max-width: 32ch;
+  font-size: .85rem;
+  color: var(--encre-tenu);
+}
+
 /* Fiche latérale : remplace l'illustration décorative par de l'information utile */
 .fiche {
   border-top: 1px solid var(--encre);
