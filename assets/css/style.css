@@ -963,6 +963,15 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 
 .orga__carte--tete .orga__avatar { width: clamp(8rem, 16vw, 10rem); }
 
+.orga__avatar--vide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--azur);
+}
+
 .orga__nom {
   font-family: var(--font-serif);
   font-size: 1.3rem;
