@@ -204,6 +204,123 @@
   }
 
   /* ----------------------------------------------------------
+     Mot rotatif dans le titre du hero (champs d'action de l'IA)
+     ---------------------------------------------------------- */
+  var motsRotatifs = document.querySelectorAll('[data-mot-rotatif]');
+
+  Array.prototype.forEach.call(motsRotatifs, function (el) {
+    var mots = (el.getAttribute('data-mots') || '').split(',').map(function (m) { return m.trim(); }).filter(Boolean);
+    if (mots.length < 2 || mouvementReduit) return;
+    var index = 0;
+    window.setInterval(function () {
+      el.setAttribute('data-transition', 'true');
+      window.setTimeout(function () {
+        index = (index + 1) % mots.length;
+        el.textContent = mots[index];
+        el.removeAttribute('data-transition');
+      }, 350);
+    }, 2600);
+  });
+
+  /* ----------------------------------------------------------
+     Réseau de particules IA — fond animé du hero et du grand appel
+     Léger, sans dépendance : quelques dizaines de points reliés par
+     des traits quand ils sont assez proches. Inactif si l'utilisateur
+     préfère un mouvement réduit.
+     ---------------------------------------------------------- */
+  function initReseauNeuronal(canvas) {
+    if (!canvas || mouvementReduit || !canvas.getContext) return;
+
+    var ctx = canvas.getContext('2d');
+    var conteneur = canvas.parentElement;
+    var points = [];
+    var largeur = 0, hauteur = 0;
+    var idAnimation = null;
+    var ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+    function dimensionner() {
+      var rect = conteneur.getBoundingClientRect();
+      largeur = rect.width;
+      hauteur = rect.height;
+      canvas.width = Math.max(1, largeur * ratio);
+      canvas.height = Math.max(1, hauteur * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      var nombrePoints = Math.round((largeur * hauteur) / 24000);
+      nombrePoints = Math.max(12, Math.min(nombrePoints, 70));
+      points = [];
+      for (var i = 0; i < nombrePoints; i++) {
+        points.push({
+          x: Math.random() * largeur,
+          y: Math.random() * hauteur,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+
+    function dessiner() {
+      ctx.clearRect(0, 0, largeur, hauteur);
+      var portee = Math.min(largeur * 0.28, 220);
+
+      for (var i = 0; i < points.length; i++) {
+        var p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x <= 0 || p.x >= largeur) p.vx *= -1;
+        if (p.y <= 0 || p.y >= hauteur) p.vy *= -1;
+      }
+
+      for (var a = 0; a < points.length; a++) {
+        for (var b = a + 1; b < points.length; b++) {
+          var dx = points[a].x - points[b].x;
+          var dy = points[a].y - points[b].y;
+          var distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < portee) {
+            ctx.strokeStyle = 'rgba(91, 163, 221, ' + ((1 - distance / portee) * 0.35).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(points[a].x, points[a].y);
+            ctx.lineTo(points[b].x, points[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (var c = 0; c < points.length; c++) {
+        ctx.fillStyle = 'rgba(28, 107, 168, .55)';
+        ctx.beginPath();
+        ctx.arc(points[c].x, points[c].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      idAnimation = window.requestAnimationFrame(dessiner);
+    }
+
+    function arreter() {
+      if (idAnimation) { window.cancelAnimationFrame(idAnimation); idAnimation = null; }
+    }
+
+    function redemarrer() {
+      if (idAnimation) return;
+      dessiner();
+    }
+
+    dimensionner();
+    dessiner();
+
+    window.addEventListener('resize', dimensionner, { passive: true });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { arreter(); } else { redemarrer(); }
+    });
+  }
+
+  Array.prototype.forEach.call(
+    document.querySelectorAll('[data-reseau-neuronal]'),
+    initReseauNeuronal
+  );
+
+  /* ----------------------------------------------------------
      Année courante dans le pied de page
      ---------------------------------------------------------- */
   Array.prototype.forEach.call(
