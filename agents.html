@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phoxia | Agents en mission</title>
+<meta name="description" content="Visuel d'équipe Phoxia façon espion britannique des années 60 : coupé argent, smokings et lunettes noires.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" href="assets/img/phoxia-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --nuit: #0B0B0D;
+    --nuit-2: #16151A;
+    --or: #C9A45C;
+    --or-clair: #E7CE93;
+    --ivoire: #F2ECE0;
+    --gris: #9A958C;
+    --serif: "EB Garamond", Georgia, serif;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+  }
+  * , *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--ivoire);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+  img, svg { display: block; max-width: 100%; height: auto; }
+  a { color: var(--or-clair); }
+
+  .enveloppe { width: min(1200px, 100% - 32px); margin-inline: auto; }
+
+  /* Bandeau */
+  .bandeau {
+    padding: 56px 0 28px;
+    text-align: center;
+  }
+  .surtitre {
+    font-size: .78rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    line-height: 1.05;
+    margin: 0;
+  }
+  h1 em { color: var(--or-clair); }
+  .chapeau {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--gris);
+  }
+
+  /* Scène */
+  .scene {
+    margin: 24px auto 0;
+    border: 1px solid rgba(201,164,92,.35);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  }
+  .scene svg { width: 100%; }
+
+  /* Équipe */
+  .equipe { padding: 80px 0 40px; }
+  .equipe h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  .equipe .chapeau { text-align: center; margin-bottom: 44px; }
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .agent {
+    background: var(--nuit-2);
+    border: 1px solid rgba(201,164,92,.25);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .agent__cadre {
+    position: relative;
+    aspect-ratio: 1;
+    background: #000;
+  }
+  .agent__cadre img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.25) brightness(.92);
+  }
+  .agent__cadre svg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  /* Vignette canon de revolver, discrète */
+  .agent__cadre::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 45%, transparent 55%, rgba(0,0,0,.75) 100%);
+    pointer-events: none;
+  }
+  .agent__legende { padding: 16px 18px 20px; }
+  .agent__code {
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin: 0;
+  }
+  .agent__nom {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    margin: 4px 0 0;
+  }
+  .agent__role { color: var(--gris); font-size: .9rem; margin: 2px 0 0; }
+
+  .pied {
+    padding: 48px 0 64px;
+    text-align: center;
+    color: var(--gris);
+    font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="bandeau enveloppe">
+  <p class="surtitre">Phoxia · Dossier confidentiel</p>
+  <h1>Licence to <em>automate</em></h1>
+  <p class="chapeau">Un coupé argent des années 60, un salon feutré, des smokings et des lunettes noires. L'équipe Phoxia en tenue de mission.</p>
+</header>
+
+<main>
+  <div class="enveloppe">
+    <figure class="scene">
+      <svg viewBox="0 0 1600 900" role="img" aria-labelledby="scene-titre">
+        <title id="scene-titre">Coupé grand tourisme argent des années 60 garé dans un salon de gentleman espion : boiseries, cheminée, lustre, bar à martini et vue sur la ville de nuit.</title>
+        <defs>
+          <linearGradient id="mur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B120C"/>
+            <stop offset=".6" stop-color="#2A1B11"/>
+            <stop offset="1" stop-color="#150E09"/>
+          </linearGradient>
+          <linearGradient id="panneau" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3A2517"/>
+            <stop offset="1" stop-color="#24170E"/>
+          </linearGradient>
+          <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1A1714"/>
+            <stop offset="1" stop-color="#050505"/>
+          </linearGradient>
+          <linearGradient id="ciel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#050A1A"/>
+            <stop offset="1" stop-color="#1B2A4A"/>
+          </linearGradient>
+          <linearGradient id="carrosserie" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F4F5F6"/>
+            <stop offset=".35" stop-color="#BFC4C9"/>
+            <stop offset=".55" stop-color="#8C939A"/>
+            <stop offset=".62" stop-color="#D9DDE0"/>
+            <stop offset="1" stop-color="#5E656C"/>
+          </linearGradient>
+          <linearGradient id="vitre" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2B3440"/>
+            <stop offset=".5" stop-color="#11161C"/>
+            <stop offset="1" stop-color="#3C4755"/>
+          </linearGradient>
+          <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset=".5" stop-color="#9AA1A8"/>
+            <stop offset="1" stop-color="#E9ECEE"/>
+          </linearGradient>
+          <radialGradient id="feu" cx=".5" cy="1" r=".9">
+            <stop offset="0" stop-color="#FFD27A"/>
+            <stop offset=".4" stop-color="#E8702A"/>
+            <stop offset="1" stop-color="#E8702A" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="halo" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFE3A6" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#FFE3A6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="ombre" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#000" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="fondu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+            <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="masque-reflet">
+            <rect x="0" y="780" width="1600" height="120" fill="url(#fondu)"/>
+          </mask>
+
+          <!-- Roue à rayons -->
+          <g id="roue">
+            <circle r="64" fill="#0C0C0C"/>
+            <circle r="58" fill="none" stroke="#1E1E1E" stroke-width="4"/>
+            <circle r="44" fill="url(#chrome)"/>
+            <g stroke="#6E757C" stroke-width="1.6">
+              <line x1="-42" y1="0" x2="42" y2="0"/>
+              <line x1="0" y1="-42" x2="0" y2="42"/>
+              <line x1="-30" y1="-30" x2="30" y2="30"/>
+              <line x1="-30" y1="30" x2="30" y2="-30"/>
+              <line x1="-39" y1="-16" x2="39" y2="16"/>
+              <line x1="-39" y1="16" x2="39" y2="-16"/>
+              <line x1="-16" y1="-39" x2="16" y2="39"/>
+              <line x1="-16" y1="39" x2="16" y2="-39"/>
+            </g>
+            <circle r="44" fill="none" stroke="#D5D9DC" stroke-width="3"/>
+            <circle r="13" fill="url(#chrome)" stroke="#555" stroke-width="1.5"/>
+            <path d="M-20 -3 L20 -3 L20 3 L-20 3 Z" fill="#C9CED2" stroke="#555" stroke-width="1"/>
+          </g>
+
+          <!-- Coupé -->
+          <g id="coupe">
+            <ellipse cx="800" cy="788" rx="480" ry="26" fill="url(#ombre)"/>
+            <!-- Caisse -->
+            <path d="M362 740
+                     C352 715 352 690 366 668
+                     C380 652 420 646 470 640
+                     C520 610 570 572 640 560
+                     C700 550 770 548 812 560
+                     C845 572 868 596 890 616
+                     L1150 634
+                     C1205 640 1240 652 1252 676
+                     C1260 695 1258 722 1244 744
+                     L1150 744
+                     A72 72 0 0 0 1010 744
+                     L592 744
+                     A72 72 0 0 0 448 744
+                     Z"
+                  fill="url(#carrosserie)" stroke="#3E444A" stroke-width="2"/>
+            <!-- Vitres -->
+            <path d="M548 642 C585 606 625 582 668 574 L730 570 L730 640 Z" fill="url(#vitre)"/>
+            <path d="M742 570 L806 572 C830 580 852 600 870 622 L742 636 Z" fill="url(#vitre)"/>
+            <path d="M546 643 C585 606 625 580 668 572 L806 570 C832 579 856 600 876 624" fill="none" stroke="url(#chrome)" stroke-width="4"/>
+            <line x1="736" y1="570" x2="736" y2="640" stroke="#C9CED2" stroke-width="5"/>
+            <!-- Ligne de caisse et portière -->
+            <path d="M380 684 C520 672 900 662 1240 690" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="2"/>
+            <path d="M740 646 L744 736 M905 642 C912 680 912 710 906 736" fill="none" stroke="#50575E" stroke-width="2"/>
+            <rect x="760" y="662" width="30" height="5" rx="2.5" fill="url(#chrome)"/>
+            <!-- Ouïe latérale -->
+            <g fill="#2A2F35">
+              <rect x="950" y="668" width="46" height="4" rx="2"/>
+              <rect x="950" y="676" width="46" height="4" rx="2"/>
+              <rect x="950" y="684" width="46" height="4" rx="2"/>
+            </g>
+            <rect x="946" y="664" width="54" height="28" rx="4" fill="none" stroke="url(#chrome)" stroke-width="2"/>
+            <!-- Phares et feux -->
+            <path d="M1226 652 C1244 660 1254 674 1254 690 L1232 686 C1232 674 1230 662 1226 652 Z" fill="#E9F1F7" stroke="#8C939A" stroke-width="2"/>
+            <circle cx="1244" cy="676" r="6" fill="#FFF8DA"/>
+            <path d="M362 690 L378 688 L378 708 L360 710 Z" fill="#B3261E"/>
+            <!-- Pare-chocs -->
+            <path d="M1194 728 C1226 728 1250 724 1262 716" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M350 718 C360 724 380 728 410 728" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
+            <!-- Bas de caisse chromé -->
+            <line x1="600" y1="738" x2="1002" y2="738" stroke="url(#chrome)" stroke-width="4"/>
+            <!-- Reflet -->
+            <path d="M480 648 C640 632 900 632 1180 646" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="3"/>
+            <!-- Roues -->
+            <use href="#roue" x="520" y="744"/>
+            <use href="#roue" x="1080" y="744"/>
+          </g>
+        </defs>
+
+        <!-- Mur -->
+        <rect width="1600" height="900" fill="url(#mur)"/>
+        <g fill="url(#panneau)" stroke="#120B06" stroke-width="3">
+          <rect x="30" y="80" width="170" height="300"/>
+          <rect x="30" y="410" width="170" height="220"/>
+          <rect x="1400" y="80" width="170" height="300"/>
+          <rect x="1400" y="410" width="170" height="220"/>
+          <rect x="560" y="80" width="200" height="220"/>
+          <rect x="840" y="80" width="200" height="220"/>
+        </g>
+        <rect x="0" y="640" width="1600" height="12" fill="#0E0906"/>
+        <rect x="0" y="60" width="1600" height="10" fill="#0E0906"/>
+
+        <!-- Fenêtre sur la ville -->
+        <g>
+          <path d="M240 640 L240 220 A120 120 0 0 1 480 220 L480 640 Z" fill="url(#ciel)"/>
+          <circle cx="410" cy="200" r="26" fill="#F3EBD2"/>
+          <circle cx="400" cy="194" r="24" fill="#16223D"/>
+          <g fill="#0A0F1C">
+            <rect x="240" y="480" width="40" height="160"/>
+            <rect x="285" y="430" width="34" height="210"/>
+            <rect x="325" y="510" width="44" height="130"/>
+            <rect x="372" y="400" width="30" height="240"/>
+            <rect x="405" y="470" width="40" height="170"/>
+            <rect x="448" y="520" width="32" height="120"/>
+          </g>
+          <g fill="#F5C96A">
+            <rect x="292" y="450" width="5" height="7"/><rect x="306" y="470" width="5" height="7"/>
+            <rect x="380" y="420" width="5" height="7"/><rect x="380" y="460" width="5" height="7"/>
+            <rect x="390" y="500" width="5" height="7"/><rect x="415" y="490" width="5" height="7"/>
+            <rect x="335" y="530" width="5" height="7"/><rect x="250" y="500" width="5" height="7"/>
+            <rect x="455" y="545" width="5" height="7"/><rect x="428" y="520" width="5" height="7"/>
+          </g>
+          <path d="M240 640 L240 220 A120 120 0 0 1 480 220 L480 640" fill="none" stroke="#4A3120" stroke-width="12"/>
+          <line x1="360" y1="100" x2="360" y2="640" stroke="#4A3120" stroke-width="6"/>
+          <line x1="240" y1="380" x2="480" y2="380" stroke="#4A3120" stroke-width="6"/>
+          <!-- Rideaux -->
+          <path d="M210 70 C230 250 200 450 222 650 L262 650 C250 440 270 240 250 70 Z" fill="#5B1A1A"/>
+          <path d="M510 70 C490 250 520 450 498 650 L458 650 C470 440 450 240 470 70 Z" fill="#5B1A1A"/>
+        </g>
+
+        <!-- Cheminée -->
+        <g>
+          <rect x="1080" y="360" width="280" height="280" fill="#2D2621"/>
+          <rect x="1060" y="340" width="320" height="26" fill="#3B332C"/>
+          <path d="M1140 640 L1140 470 A80 80 0 0 1 1300 470 L1300 640 Z" fill="#0A0706"/>
+          <ellipse cx="1220" cy="610" rx="80" ry="60" fill="url(#feu)"/>
+          <path d="M1190 628 C1180 600 1205 590 1200 560 C1225 585 1240 600 1232 628 Z" fill="#FFB347" opacity=".9"/>
+          <path d="M1210 630 C1205 612 1222 604 1220 586 C1236 604 1244 616 1238 630 Z" fill="#FFE08A"/>
+          <rect x="1165" y="626" width="110" height="10" rx="5" fill="#3A2412"/>
+          <!-- Tableau au-dessus -->
+          <rect x="1130" y="150" width="180" height="150" fill="#1A1A1A" stroke="#B08A45" stroke-width="8"/>
+          <path d="M1140 290 L1190 220 L1225 260 L1260 200 L1300 290 Z" fill="#2E3B35"/>
+          <circle cx="1270" cy="185" r="12" fill="#C9A45C" opacity=".7"/>
+        </g>
+
+        <!-- Lustre -->
+        <g>
+          <line x1="800" y1="0" x2="800" y2="110" stroke="#8C6A2E" stroke-width="3"/>
+          <circle cx="800" cy="170" r="150" fill="url(#halo)"/>
+          <path d="M700 150 C730 190 870 190 900 150" fill="none" stroke="#C9A45C" stroke-width="4"/>
+          <path d="M730 130 C760 160 840 160 870 130" fill="none" stroke="#C9A45C" stroke-width="3"/>
+          <g fill="#FFF1C8">
+            <circle cx="700" cy="140" r="7"/><circle cx="750" cy="160" r="7"/>
+            <circle cx="800" cy="168" r="7"/><circle cx="850" cy="160" r="7"/>
+            <circle cx="900" cy="140" r="7"/><circle cx="730" cy="122" r="6"/>
+            <circle cx="870" cy="122" r="6"/><circle cx="800" cy="120" r="8"/>
+          </g>
+          <g stroke="#E7CE93" stroke-width="1" opacity=".7">
+            <line x1="720" y1="170" x2="720" y2="200"/><line x1="770" y1="178" x2="770" y2="212"/>
+            <line x1="830" y1="178" x2="830" y2="212"/><line x1="880" y1="170" x2="880" y2="200"/>
+          </g>
+        </g>
+
+        <!-- Bar à martini -->
+        <g>
+          <rect x="1420" y="660" width="150" height="10" fill="#B08A45"/>
+          <rect x="1420" y="740" width="150" height="8" fill="#B08A45"/>
+          <line x1="1426" y1="660" x2="1426" y2="790" stroke="#B08A45" stroke-width="5"/>
+          <line x1="1564" y1="660" x2="1564" y2="790" stroke="#B08A45" stroke-width="5"/>
+          <circle cx="1432" cy="796" r="8" fill="#222" stroke="#B08A45" stroke-width="3"/>
+          <circle cx="1558" cy="796" r="8" fill="#222" stroke="#B08A45" stroke-width="3"/>
+          <!-- Carafe -->
+          <path d="M1440 660 L1440 620 C1440 600 1470 600 1470 620 L1470 660 Z" fill="#C98A3A" opacity=".75"/>
+          <rect x="1449" y="590" width="12" height="14" fill="#DCDCDC"/>
+          <!-- Verre à martini -->
+          <path d="M1500 600 L1550 600 L1525 628 Z" fill="#DDE7EE" fill-opacity=".45" stroke="#F2F5F7" stroke-width="2"/>
+          <line x1="1525" y1="628" x2="1525" y2="654" stroke="#F2F5F7" stroke-width="2"/>
+          <line x1="1512" y1="656" x2="1538" y2="656" stroke="#F2F5F7" stroke-width="3"/>
+          <circle cx="1522" cy="610" r="4.5" fill="#6B8E23"/>
+          <line x1="1516" y1="598" x2="1530" y2="616" stroke="#B08A45" stroke-width="1.5"/>
+          <!-- Shaker -->
+          <path d="M1490 740 L1492 690 L1512 690 L1514 740 Z" fill="url(#chrome)"/>
+          <rect x="1494" y="680" width="16" height="10" rx="3" fill="url(#chrome)"/>
+        </g>
+
+        <!-- Fauteuil club -->
+        <g>
+          <path d="M40 790 L40 700 C40 680 60 670 80 670 L180 670 C200 670 215 680 215 700 L215 790 Z" fill="#4A2413"/>
+          <path d="M60 720 L195 720 L195 780 L60 780 Z" fill="#5E2F19"/>
+          <path d="M30 700 C30 690 50 690 55 700 L55 790 L30 790 Z" fill="#3C1C0E"/>
+          <path d="M200 700 C205 690 225 690 225 700 L225 790 L200 790 Z" fill="#3C1C0E"/>
+          <g fill="#8C5A35">
+            <circle cx="90" cy="690" r="2.5"/><circle cx="120" cy="690" r="2.5"/>
+            <circle cx="150" cy="690" r="2.5"/><circle cx="180" cy="690" r="2.5"/>
+          </g>
+        </g>
+
+        <!-- Sol -->
+        <rect x="0" y="652" width="1600" height="248" fill="url(#sol)"/>
+        <g stroke="#2A2520" stroke-width="1" opacity=".6">
+          <line x1="0" y1="700" x2="1600" y2="700"/>
+          <line x1="0" y1="760" x2="1600" y2="760"/>
+          <line x1="0" y1="840" x2="1600" y2="840"/>
+          <line x1="800" y1="652" x2="800" y2="900"/>
+          <line x1="560" y1="652" x2="340" y2="900"/>
+          <line x1="1040" y1="652" x2="1260" y2="900"/>
+          <line x1="320" y1="652" x2="-120" y2="900"/>
+          <line x1="1280" y1="652" x2="1720" y2="900"/>
+        </g>
+        <!-- Tapis -->
+        <path d="M300 820 L1300 820 L1380 880 L220 880 Z" fill="#5B1A1A" opacity=".55"/>
+        <path d="M312 826 L1290 826 L1360 874 L240 874 Z" fill="none" stroke="#C9A45C" stroke-opacity=".5" stroke-width="2"/>
+
+        <!-- Voiture et reflet -->
+        <g mask="url(#masque-reflet)">
+          <use href="#coupe" transform="matrix(1 0 0 -1 0 1592)" opacity=".5"/>
+        </g>
+        <use href="#coupe"/>
+
+        <!-- Signature -->
+        <text x="1560" y="40" text-anchor="end" fill="#C9A45C" font-family="Instrument Sans, sans-serif" font-size="16" letter-spacing="6">PHOXIA · 00X</text>
+      </svg>
+    </figure>
+  </div>
+
+  <section class="equipe enveloppe" aria-labelledby="titre-equipe">
+    <h2 id="titre-equipe">Les agents</h2>
+    <p class="chapeau">Smoking, nœud papillon et lunettes noires. Mission : faire travailler l'IA pour vous.</p>
+    <ul class="grille" data-agents>
+      <li class="agent" data-yeux="295,280,412,280" data-noeud="372,524">
+        <div class="agent__cadre"><img src="assets/img/equipe/mathieu-rond.jpg" alt="Mathieu Barthélémy en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 007</p><p class="agent__nom">Mathieu</p><p class="agent__role">Fondateur</p></div>
+      </li>
+      <li class="agent" data-yeux="285,238,426,238" data-echelle="1.2" data-noeud="362,598">
+        <div class="agent__cadre"><img src="assets/img/equipe/pragun-rond.jpg" alt="Pragun Bilgaiyan en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 001</p><p class="agent__nom">Pragun</p><p class="agent__role">En mission</p></div>
+      </li>
+      <li class="agent" data-yeux="326,230,432,238" data-noeud="346,478">
+        <div class="agent__cadre"><img src="assets/img/equipe/valentin-rond.jpg" alt="Valentin Limouzy en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 002</p><p class="agent__nom">Valentin</p><p class="agent__role">En mission</p></div>
+      </li>
+      <li class="agent" data-yeux="405,270,520,270" data-noeud="460,520">
+        <div class="agent__cadre"><img src="assets/img/equipe/jules-rond.jpg" alt="Jules Boyer en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 003</p><p class="agent__nom">Jules</p><p class="agent__role">En mission</p></div>
+      </li>
+      <li class="agent" data-yeux="305,308,422,300" data-noeud="382,588">
+        <div class="agent__cadre"><img src="assets/img/equipe/come-rond.jpg" alt="Côme en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 004</p><p class="agent__nom">Côme</p><p class="agent__role">En mission</p></div>
+      </li>
+      <li class="agent" data-yeux="290,172,376,170" data-noeud="322,378">
+        <div class="agent__cadre"><img src="assets/img/equipe/pierre-alexandre-rond.jpg" alt="Pierre Alexandre Guittet en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 005</p><p class="agent__nom">Pierre Alexandre</p><p class="agent__role">En mission</p></div>
+      </li>
+      <li class="agent" data-yeux="296,258,372,252" data-noeud="338,482">
+        <div class="agent__cadre"><img src="assets/img/equipe/alix-rond.jpg" alt="Alix Blanco en smoking et lunettes noires" width="700" height="700"></div>
+        <div class="agent__legende"><p class="agent__code">Agent 006</p><p class="agent__nom">Alix</p><p class="agent__role">En mission</p></div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="pied enveloppe">
+  <p>Visuel d'hommage, sans lien avec les ayants droit de la saga. <a href="index.html">Retour à Phoxia</a></p>
+</footer>
+
+<script>
+  // Pose lunettes noires et nœud papillon sur chaque portrait (repère 700 x 700).
+  (function () {
+    var NS = "http://www.w3.org/2000/svg";
+
+    function el(nom, attrs, parent) {
+      var n = document.createElementNS(NS, nom);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(n);
+      return n;
+    }
+
+    function verre(cx, d, cote) {
+      // Verre trapézoïdal façon années 60, dessiné pour le côté droit puis miroir.
+      var w = d * .92, h = d * .56, s = cote;
+      var x0 = cx - s * w * .46, x1 = cx + s * w * .5;
+      return "M" + x0 + " " + (-h * .42) +
+        " L" + x1 + " " + (-h * .5) +
+        " Q" + (x1 + s * d * .03) + " " + (h * .15) + " " + (cx + s * w * .28) + " " + (h * .5) +
+        " L" + (cx - s * w * .25) + " " + (h * .5) +
+        " Q" + (x0 - s * d * .02) + " " + (h * .3) + " " + x0 + " " + (-h * .42) + " Z";
+    }
+
+    document.querySelectorAll("[data-agents] .agent").forEach(function (li, i) {
+      var y = li.dataset.yeux.split(",").map(Number);
+      var n = li.dataset.noeud.split(",").map(Number);
+      var k = Number(li.dataset.echelle || 1);
+      var mx = (y[0] + y[2]) / 2, my = (y[1] + y[3]) / 2;
+      var d = Math.hypot(y[2] - y[0], y[3] - y[1]) * k;
+      var angle = Math.atan2(y[3] - y[1], y[2] - y[0]) * 180 / Math.PI;
+
+      var svg = el("svg", { viewBox: "0 0 700 700", "aria-hidden": "true" });
+      var defs = el("defs", {}, svg);
+      var g = el("linearGradient", { id: "reflet" + i, x1: "0", y1: "0", x2: "1", y2: "1" }, defs);
+      el("stop", { offset: "0", "stop-color": "#3A3A3A" }, g);
+      el("stop", { offset: ".45", "stop-color": "#050505" }, g);
+      el("stop", { offset: "1", "stop-color": "#1C1C1C" }, g);
+
+      // Lunettes
+      var lu = el("g", { transform: "translate(" + mx + " " + (my + d * .04) + ") rotate(" + angle + ")" }, svg);
+      var b = Math.max(3, d * .05);
+      el("path", { d: "M" + (-d * .6) + " " + (-d * .22) + " L" + (-d * .82) + " " + (-d * .2), stroke: "#0A0A0A", "stroke-width": b, "stroke-linecap": "round" }, lu);
+      el("path", { d: "M" + (d * .6) + " " + (-d * .22) + " L" + (d * .82) + " " + (-d * .2), stroke: "#0A0A0A", "stroke-width": b, "stroke-linecap": "round" }, lu);
+      el("path", { d: "M" + (-d * .12) + " " + (-d * .2) + " Q0 " + (-d * .3) + " " + (d * .12) + " " + (-d * .2), fill: "none", stroke: "#0A0A0A", "stroke-width": b * 1.2 }, lu);
+      [-1, 1].forEach(function (s) {
+        var p = verre(s * d * .5, d, s);
+        el("path", { d: p, fill: "url(#reflet" + i + ")", stroke: "#000", "stroke-width": b }, lu);
+        el("path", { d: "M" + (s * d * .5 - d * .25) + " " + (-d * .16) + " L" + (s * d * .5 - d * .05) + " " + (-d * .19), stroke: "#FFFFFF", "stroke-opacity": ".35", "stroke-width": b * .8, "stroke-linecap": "round" }, lu);
+      });
+
+      // Nœud papillon
+      var bw = d / k * 1.05;
+      var no = el("g", { transform: "translate(" + n[0] + " " + n[1] + ")" }, svg);
+      el("path", {
+        d: "M0 0 C" + (-bw * .2) + " " + (-bw * .18) + " " + (-bw * .5) + " " + (-bw * .32) + " " + (-bw * .55) + " " + (-bw * .22) +
+           " C" + (-bw * .62) + " " + (-bw * .08) + " " + (-bw * .62) + " " + (bw * .08) + " " + (-bw * .55) + " " + (bw * .22) +
+           " C" + (-bw * .5) + " " + (bw * .32) + " " + (-bw * .2) + " " + (bw * .18) + " 0 0" +
+           " C" + (bw * .2) + " " + (-bw * .18) + " " + (bw * .5) + " " + (-bw * .32) + " " + (bw * .55) + " " + (-bw * .22) +
+           " C" + (bw * .62) + " " + (-bw * .08) + " " + (bw * .62) + " " + (bw * .08) + " " + (bw * .55) + " " + (bw * .22) +
+           " C" + (bw * .5) + " " + (bw * .32) + " " + (bw * .2) + " " + (bw * .18) + " 0 0 Z",
+        fill: "#0B0B0B", stroke: "#000", "stroke-width": "2"
+      }, no);
+      el("rect", { x: -bw * .09, y: -bw * .12, width: bw * .18, height: bw * .24, rx: bw * .04, fill: "#1A1A1A", stroke: "#000", "stroke-width": "2" }, no);
+
+      li.querySelector(".agent__cadre").appendChild(svg);
+    });
+  })();
+</script>
+</body>
+</html>
