@@ -1,0 +1,18 @@
+{
+  "name": "superette-paradis-automatisations",
+  "private": true,
+  "type": "module",
+  "description": "Publications hebdo, réponses aux avis Google et assistant WhatsApp de la Supérette Paradis",
+  "scripts": {
+    "publier": "node --env-file-if-exists=.env publications/publier.js",
+    "avis": "node --env-file-if-exists=.env avis/repondre.js",
+    "whatsapp": "node --env-file-if-exists=.env whatsapp/serveur.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.128.0"
+  }
+}

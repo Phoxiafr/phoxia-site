@@ -1,0 +1,26 @@
+# Publication automatique chaque mardi à 18h (heure de Paris), gratuite avec GitHub Actions.
+# À copier dans .github/workflows/ du dépôt qui héberge les automatisations,
+# et à renseigner dans Settings > Secrets and variables > Actions.
+name: Publication hebdo Supérette Paradis
+on:
+  schedule:
+    - cron: "0 16 * * 2"   # 16h UTC = 18h à Paris l'été (17h l'hiver)
+  workflow_dispatch:
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: superette-paradis/automatisations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: node publications/publier.js --envoyer
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}

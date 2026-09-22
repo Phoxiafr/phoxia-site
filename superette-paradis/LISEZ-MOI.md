@@ -17,6 +17,11 @@ horaires avec badge « Ouvert maintenant », plan Google Maps. Dossier autonome
 4. Retirer la ligne `<meta name="robots" content="noindex">`.
 5. Ajouter l'adresse du site dans la fiche Google Maps de la supérette.
 
+## Les automatisations (`automatisations/`)
+
+Publication hebdo Instagram et Facebook, réponses aux avis Google, assistant WhatsApp.
+Mode d'emploi détaillé dans `automatisations/LISEZ-MOI.md`.
+
 ## Les visuels
 
 ## Les fichiers prêts à poster (`export/`)

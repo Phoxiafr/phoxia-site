@@ -1,0 +1,19 @@
+[
+  {
+    "reviewId": "exemple-1",
+    "reviewer": { "displayName": "Client Exemple" },
+    "starRating": "FIVE",
+    "comment": "AVIS FICTIF POUR TEST. Super pratique, ouvert tard et le vendeur est très sympa. Les boissons sont toujours bien fraîches."
+  },
+  {
+    "reviewId": "exemple-2",
+    "reviewer": { "displayName": "Test Démo" },
+    "starRating": "TWO",
+    "comment": "AVIS FICTIF POUR TEST. Je suis passé vers 2h et il manquait pas mal de choses en rayon, un peu déçu."
+  },
+  {
+    "reviewId": "exemple-3",
+    "reviewer": { "displayName": "Essai" },
+    "starRating": "FIVE"
+  }
+]
