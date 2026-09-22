@@ -5,7 +5,7 @@
 <title>Supérette Paradis visuels</title>
 <link href="polices/polices.css" rel="stylesheet">
 <style>
-  /* Modifiez les textes dans CONFIG plus bas : adresse, horaires, promo... */
+  /* Modifiez les textes dans CONFIG et VISUELS plus bas */
   :root {
     --vert: #0f4d3a;
     --vert-clair: #1f7a57;
@@ -69,6 +69,7 @@
     font-size: 30px; font-weight: 700; padding: 16px 28px; border-radius: 999px;
     background: var(--creme); color: var(--vert);
   }
+  .fond-nuit h1 em { color: var(--soleil); }
   .fond-creme .puce { background: var(--vert); color: var(--creme); }
 
   .pied {
@@ -77,20 +78,21 @@
     font-size: 30px; font-weight: 700;
   }
   .pied__cta { background: var(--encre); color: var(--creme); padding: 20px 34px; border-radius: 999px; }
-  .fond-vert .pied__cta { background: var(--soleil); color: var(--encre); }
+  .fond-vert .pied__cta, .fond-nuit .pied__cta { background: var(--soleil); color: var(--encre); }
 
   .fruits { position: absolute; z-index: 1; font-family: "Noto Color Emoji", sans-serif; line-height: 1; }
   .fruits span { position: absolute; filter: drop-shadow(0 18px 24px rgba(0,0,0,.25)); }
 
-  .etiquette {
-    position: relative; z-index: 2; align-self: flex-start;
-    background: var(--creme); color: var(--corail);
-    font-family: "Fraunces", serif; font-weight: 800;
-    padding: 30px 46px; border-radius: 32px; transform: rotate(-4deg);
-    margin-top: 70px;
-  }
-  .etiquette__remise { font-size: 190px; line-height: .9; }
-  .etiquette__sur { font-family: "DM Sans", sans-serif; font-size: 34px; color: var(--encre); margin-top: 10px; }
+  .fond-nuit { background: #0b1b2e; color: var(--creme); }
+  .lune { position: absolute; right: 120px; top: 150px; width: 170px; height: 170px; border-radius: 50%;
+    box-shadow: -34px 22px 0 0 var(--soleil); transform: rotate(-20deg); z-index: 1; }
+  .story .lune { top: 260px; right: 160px; width: 220px; height: 220px; }
+  .note { font-family: "Fraunces", serif; font-weight: 800; font-size: 190px; line-height: .9; color: var(--vert); }
+  .note span { font-size: 90px; color: var(--vert-clair); }
+  .etoiles { font-size: 56px; color: var(--soleil); letter-spacing: .08em; margin: 10px 0 30px; -webkit-text-stroke: 2px #e0a800; }
+  .story .note { font-size: 360px; }
+  .story .etoiles { font-size: 72px; }
+
 </style>
 </head>
 <body>
@@ -99,9 +101,11 @@
 <script>
 const CONFIG = {
   nom: "Paradis",
-  signature: "Supérette de quartier",
+  signature: "396 rue Paradis, Marseille 8e",
   cta: "Passez nous voir !",
-  promo: { remise: "-20%", produit: "sur une sélection de boissons fraîches", periode: "Cette semaine seulement" },
+  fermeture: "4h",   // à vérifier pour chaque jour de la semaine
+  note: "4,9",       // note Google au 22/09/2026
+  avis: 152,
 };
 
 const feuille = (x, y, r, s) => `
@@ -132,52 +136,65 @@ const VISUELS = {
     classe: "fond-vert",
     html: bouquet("right:-230px;top:-230px", "#1f7a57", 1) + bouquet("left:-300px;bottom:-280px", "#1f7a57", .8) +
       fruits(story
-        ? [["🍊",560,360,230,-12],["🍋",140,520,160,14],["🥑",780,640,170,-20],["🍓",330,560,140,8]]
-        : [["🍊",720,250,150,-12],["🍋",860,420,110,14],["🍓",640,430,100,8]]) +
+        ? [["🥤",560,360,230,-12],["🍫",140,520,160,14],["🍪",780,640,170,-20],["🧃",330,560,140,8]]
+        : [["🥤",720,250,150,-12],["🍫",860,420,110,14],["🍪",640,430,100,8]]) +
       logo() +
       `<div class="corps">
         <p class="surtitre">Bienvenue chez nous</p>
         <h1>Votre petit <em>paradis</em> du quotidien</h1>
-        <div class="puces"><span class="puce">Fruits et légumes</span><span class="puce">Produits frais</span><span class="puce">Boissons fraîches</span><span class="puce">Épicerie</span></div>
+        <div class="puces"><span class="puce">Boissons fraîches</span><span class="puce">Snacks</span><span class="puce">Épicerie</span><span class="puce">Ouvert tard</span></div>
       </div>` + pied(),
   }),
   2: (story) => ({
     classe: "fond-creme",
     html: bouquet("right:-260px;bottom:-240px", "#0f4d3a", .12) +
       fruits(story
-        ? [["🍎",540,360,220,-10],["🥕",120,480,170,30],["🍌",780,620,170,-25],["🥬",300,660,170,6],["🍅",620,800,130,0]]
-        : [["🍎",700,230,130,-10],["🥕",880,300,110,30],["🍌",760,420,120,-25]]) +
+        ? [["🥤",540,360,220,-10],["🧃",120,480,170,14],["🧊",780,620,170,-12],["🍹",300,660,170,6],["🥤",620,800,130,8]]
+        : [["🥤",700,230,130,-10],["🧃",880,300,110,14],["🧊",760,420,120,-12]]) +
       logo() +
       `<div class="corps">
         <p class="surtitre" style="color:var(--vert-clair)">Le plein de fraîcheur</p>
-        <h1>Fruits et légumes <em>frais</em></h1>
-        <p class="texte">Des produits choisis avec soin, à deux pas de chez vous.</p>
+        <h1>Boissons bien <em>fraîches</em></h1>
+        <p class="texte">Sodas, jus, thés glacés, eaux : un grand frigo rempli, rue Paradis.</p>
       </div>` + pied(),
   }),
   3: (story) => ({
     classe: "fond-soleil",
     html: bouquet("left:-280px;top:-260px", "#ffffff", .35) + bouquet("right:-250px;bottom:-300px", "#ffffff", .35) +
       fruits(story
-        ? [["🥖",520,360,220,-18],["🧀",140,560,170,10],["🥤",780,640,170,-6],["🍫",400,800,140,12]]
-        : [["🥖",700,240,140,-18],["🥤",880,360,110,-6],["🧀",720,420,110,10]]) +
+        ? [["🍪",520,360,220,-18],["🥫",140,560,170,10],["🥤",780,640,170,-6],["🍫",400,800,140,12]]
+        : [["🍪",700,240,140,-18],["🥤",880,360,110,-6],["🥫",720,420,110,10]]) +
       logo() +
       `<div class="corps">
         <p class="surtitre">Un oubli ? Une envie ?</p>
         <h1>C'est juste <em>à côté</em>.</h1>
-        <p class="texte">Du pain, un dessert, une boisson bien fraîche : on a ce qu'il vous faut.</p>
+        <p class="texte">Une boisson, un snack, un dépannage : on a ce qu'il vous faut.</p>
       </div>` + pied(),
   }),
   4: (story) => ({
-    classe: "fond-corail",
-    html: bouquet("right:-240px;top:-220px", "#ffffff", .18) +
+    classe: "fond-nuit",
+    html: bouquet("right:-240px;top:-220px", "#1c3350", 1) + bouquet("left:-300px;bottom:-280px", "#1c3350", .8) +
+      `<div class="lune"></div>` +
       fruits(story
-        ? [["🥤",640,1060,170,-8],["🧃",840,1200,140,10]]
-        : [["🥤",760,560,150,-8],["🧃",900,660,110,10]]) +
+        ? [["🥤",160,560,170,-8],["🍫",620,680,150,12],["🍿",340,800,140,-6]]
+        : []) +
       logo() +
-      `<div class="etiquette"><div class="etiquette__remise">${CONFIG.promo.remise}</div><div class="etiquette__sur">${CONFIG.promo.produit}</div></div>
-      <div class="corps">
-        <p class="surtitre">Bon plan</p>
-        <h1 style="font-size:110px">${CONFIG.promo.periode.replace("seulement", "<em>seulement</em>")}</h1>
+      `<div class="corps">
+        <p class="surtitre">Une envie en pleine nuit ?</p>
+        <h1>Ouvert jusqu'à <em>${CONFIG.fermeture}</em></h1>
+        <p class="texte">Boissons fraîches, snacks, dépannage : on est encore là quand tout est fermé.</p>
+      </div>` + pied(),
+  }),
+  5: (story) => ({
+    classe: "fond-creme",
+    html: bouquet("right:-260px;top:-240px", "#0f4d3a", .12) +
+      logo() +
+      `<div class="corps">
+        <p class="surtitre" style="color:var(--vert-clair)">Merci à nos clients</p>
+        <div class="note">${CONFIG.note}<span>/5</span></div>
+        <div class="etoiles">★★★★★</div>
+        <h1 style="font-size:${story ? 120 : 80}px">Noté par <em>${CONFIG.avis} clients</em> sur Google</h1>
+        <p class="texte">Pas le temps de passer ? Commandez sur Uber Eats, on vous livre.</p>
       </div>` + pied(),
   }),
 };

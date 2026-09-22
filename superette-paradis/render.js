@@ -16,7 +16,7 @@ const FPS = 30;
 
   for (const f of ["post", "story"]) {
     const page = await nav.newPage({ viewport: { width: 1080, height: f === "story" ? 1920 : 1080 } });
-    for (const v of [1, 2, 3, 4]) {
+    for (const v of [1, 2, 3, 4, 5]) {
       await page.goto(`file://${ici}/visuels.html?v=${v}&f=${f}`);
       await page.evaluate(() => document.fonts.ready);
       await page.locator(".toile").screenshot({ path: path.join(sortie, `paradis-${f}-${v}.png`) });
