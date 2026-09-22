@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Supérette Paradis vidéo</title>
+<link href="polices/polices.css" rel="stylesheet">
+<style>
+  :root { --vert: #0f4d3a; --vert-clair: #1f7a57; --creme: #fff6e5; --soleil: #ffc93c; --corail: #ff6b4a; --encre: #10241d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; overflow: hidden; background: var(--vert); font-family: "DM Sans", sans-serif; color: var(--creme); }
+  .abs { position: absolute; }
+  #fond { inset: 0; background: var(--vert); }
+  #soleil { width: 520px; height: 520px; border-radius: 50%; background: var(--soleil); left: 280px; top: 520px;
+    box-shadow: 0 0 0 40px rgba(255,201,60,.25), 0 0 0 90px rgba(255,201,60,.1); }
+  .feuilles path { fill: var(--vert-clair); }
+  .centre { left: 90px; right: 90px; text-align: center; }
+  .petit { font-size: 40px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
+  .grand { font-family: "Fraunces", serif; font-style: italic; font-weight: 800; font-size: 230px; line-height: 1; }
+  h1 { font-family: "Fraunces", serif; font-weight: 800; font-size: 140px; line-height: .95; letter-spacing: -.02em; }
+  h1 em { color: var(--soleil); }
+  .ligne { display: flex; align-items: center; gap: 36px; font-size: 64px; font-weight: 700;
+    background: var(--creme); color: var(--vert); border-radius: 999px; padding: 26px 56px 26px 34px; left: 120px; right: 120px; }
+  .ligne span { font-family: "Noto Color Emoji", sans-serif; font-size: 90px; line-height: 1; }
+  #cta { left: 190px; right: 190px; text-align: center; background: var(--soleil); color: var(--encre);
+    font-size: 58px; font-weight: 700; padding: 34px; border-radius: 999px; }
+</style>
+</head>
+<body>
+<div id="fond" class="abs"></div>
+<svg id="f1" class="abs feuilles" width="700" height="700" viewBox="-350 -350 700 700" style="right:-300px;top:-300px"></svg>
+<svg id="f2" class="abs feuilles" width="700" height="700" viewBox="-350 -350 700 700" style="left:-320px;bottom:-300px"></svg>
+<div id="soleil" class="abs"></div>
+
+<div id="s1" class="abs centre" style="top:1140px">
+  <p class="petit">Bienvenue à la supérette</p>
+  <p class="grand">Paradis</p>
+</div>
+
+<div id="s2" class="abs centre" style="top:640px">
+  <h1>Votre petit <em>paradis</em> du quotidien</h1>
+</div>
+
+<div id="s3">
+  <div class="abs ligne" style="top:520px"><span>🍊</span>Fruits et légumes</div>
+  <div class="abs ligne" style="top:760px"><span>🧀</span>Produits frais</div>
+  <div class="abs ligne" style="top:1000px"><span>🥤</span>Boissons fraîches</div>
+  <div class="abs ligne" style="top:1240px"><span>🥖</span>Épicerie</div>
+</div>
+
+<div id="s4" class="abs centre" style="top:1120px">
+  <p class="petit">Supérette</p>
+  <p class="grand">Paradis</p>
+  <p style="font-size:44px;margin-top:30px;opacity:.9">Juste à côté de chez vous</p>
+</div>
+<div id="cta" class="abs" style="top:1560px">Passez nous voir !</div>
+
+<script>
+const DUREE = 10;
+const feuille = (r, s) => `<g transform="rotate(${r}) scale(${s})"><path d="M0 0 C60 -40 160 -40 240 0 C160 40 60 40 0 0 Z"/></g>`;
+for (const id of ["f1", "f2"]) document.getElementById(id).innerHTML = [-120, -80, -40, -5, 30].map((r, i) => feuille(r, 1.3 - i * .05)).join("");
+
+const $ = (id) => document.getElementById(id);
+const borne = (x) => Math.max(0, Math.min(1, x));
+const doux = (x) => { x = borne(x); return 1 - Math.pow(1 - x, 3); };
+// progression d'entrée entre a et b, de sortie entre c et d
+const fenetre = (t, a, b, c, d) => Math.min(doux((t - a) / (b - a)), 1 - doux((t - c) / (d - c)));
+
+function rendre(t) {
+  // Soleil : se lève, puis monte derrière le titre final
+  const lever = doux(t / 1.2);
+  const fin = doux((t - 7.6) / 0.8);
+  $("soleil").style.transform = `translateY(${(1 - lever) * 900 - fin * 180}px) scale(${0.6 + 0.4 * lever})`;
+  $("soleil").style.opacity = 1 - fenetre(t, 2.3, 2.7, 7.4, 7.8) * 0.85;
+
+  const balance = Math.sin(t * 1.6) * 4;
+  $("f1").style.transform = `rotate(${balance}deg) scale(${doux(t / 0.8)})`;
+  $("f2").style.transform = `rotate(${-balance}deg) scale(${doux((t - 0.2) / 0.8)})`;
+
+  const s1 = fenetre(t, 0.6, 1.3, 2.3, 2.7);
+  $("s1").style.opacity = s1;
+  $("s1").style.transform = `translateY(${(1 - s1) * 60}px)`;
+
+  const s2 = fenetre(t, 2.6, 3.3, 4.6, 5.0);
+  $("s2").style.opacity = s2;
+  $("s2").style.transform = `scale(${0.9 + 0.1 * s2})`;
+
+  document.querySelectorAll("#s3 .ligne").forEach((el, i) => {
+    const e = fenetre(t, 5.0 + i * 0.35, 5.5 + i * 0.35, 7.3, 7.7);
+    el.style.opacity = e;
+    el.style.transform = `translateX(${(1 - e) * (i % 2 ? 900 : -900)}px)`;
+  });
+
+  const s4 = doux((t - 7.8) / 0.7);
+  $("s4").style.opacity = s4;
+  $("s4").style.transform = `translateY(${(1 - s4) * 60}px)`;
+  const cta = doux((t - 8.4) / 0.5);
+  $("cta").style.opacity = cta;
+  $("cta").style.transform = `scale(${0.7 + 0.3 * cta + Math.sin(Math.max(0, t - 8.9) * 6) * 0.02})`;
+}
+rendre(0);
+</script>
+</body>
+</html>

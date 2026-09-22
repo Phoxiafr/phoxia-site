@@ -1,0 +1,4 @@
+/* Polices libres (SIL Open Font License), servies en local */
+@font-face { font-family: "DM Sans"; font-weight: 100 1000; src: url(dmsans.woff2) format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 100 900; src: url(fraunces.woff2) format("woff2"); }
+@font-face { font-family: "Fraunces"; font-style: italic; font-weight: 100 900; src: url(fraunces-italique.woff2) format("woff2"); }

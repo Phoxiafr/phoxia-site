@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Supérette Paradis visuels</title>
+<link href="polices/polices.css" rel="stylesheet">
+<style>
+  /* Modifiez les textes dans CONFIG plus bas : adresse, horaires, promo... */
+  :root {
+    --vert: #0f4d3a;
+    --vert-clair: #1f7a57;
+    --creme: #fff6e5;
+    --soleil: #ffc93c;
+    --corail: #ff6b4a;
+    --encre: #10241d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #222; }
+  body { font-family: "DM Sans", sans-serif; }
+
+  .toile {
+    position: relative; overflow: hidden;
+    width: 1080px; height: 1080px;
+    display: flex; flex-direction: column;
+    padding: 90px;
+  }
+  .toile.story { height: 1920px; padding: 160px 90px; }
+  .story h1 { font-size: 160px; }
+  .story .texte { font-size: 46px; }
+  .story .puce { font-size: 36px; padding: 20px 34px; }
+
+  .fond-vert { background: var(--vert); color: var(--creme); }
+  .fond-creme { background: var(--creme); color: var(--encre); }
+  .fond-soleil { background: var(--soleil); color: var(--encre); }
+  .fond-corail { background: var(--corail); color: var(--creme); }
+
+  .feuilles { position: absolute; pointer-events: none; }
+  .feuilles path { fill: currentColor; }
+
+  .logo { display: flex; align-items: center; gap: 22px; position: relative; z-index: 2; }
+  .logo__soleil {
+    width: 84px; height: 84px; border-radius: 50%;
+    background: var(--soleil); position: relative; flex: none;
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--soleil) 30%, transparent);
+  }
+  .logo__soleil::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 22px; height: 6px;
+    border-radius: 3px; background: var(--vert);
+    box-shadow: 0 14px 0 var(--vert);
+  }
+  .fond-soleil .logo__soleil { background: var(--creme); }
+  .logo__mots { line-height: 1; }
+  .logo__petit { font-size: 26px; letter-spacing: .28em; text-transform: uppercase; font-weight: 700; }
+  .logo__grand { font-family: "Fraunces", serif; font-style: italic; font-weight: 800; font-size: 64px; }
+
+  .corps { position: relative; z-index: 2; margin-top: auto; }
+  .surtitre { font-size: 30px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .85; margin-bottom: 26px; }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 800; line-height: .95;
+    font-size: 132px; letter-spacing: -.02em;
+  }
+  h1 em { font-style: italic; color: var(--soleil); }
+  .fond-creme h1 em, .fond-soleil h1 em { color: var(--corail); }
+  .fond-corail h1 em { color: var(--soleil); }
+  .texte { font-size: 38px; line-height: 1.35; margin-top: 34px; max-width: 820px; }
+
+  .puces { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 44px; }
+  .puce {
+    font-size: 30px; font-weight: 700; padding: 16px 28px; border-radius: 999px;
+    background: var(--creme); color: var(--vert);
+  }
+  .fond-creme .puce { background: var(--vert); color: var(--creme); }
+
+  .pied {
+    position: relative; z-index: 2; margin-top: 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 30px; font-weight: 700;
+  }
+  .pied__cta { background: var(--encre); color: var(--creme); padding: 20px 34px; border-radius: 999px; }
+  .fond-vert .pied__cta { background: var(--soleil); color: var(--encre); }
+
+  .fruits { position: absolute; z-index: 1; font-family: "Noto Color Emoji", sans-serif; line-height: 1; }
+  .fruits span { position: absolute; filter: drop-shadow(0 18px 24px rgba(0,0,0,.25)); }
+
+  .etiquette {
+    position: relative; z-index: 2; align-self: flex-start;
+    background: var(--creme); color: var(--corail);
+    font-family: "Fraunces", serif; font-weight: 800;
+    padding: 30px 46px; border-radius: 32px; transform: rotate(-4deg);
+    margin-top: 70px;
+  }
+  .etiquette__remise { font-size: 190px; line-height: .9; }
+  .etiquette__sur { font-family: "DM Sans", sans-serif; font-size: 34px; color: var(--encre); margin-top: 10px; }
+</style>
+</head>
+<body>
+<div id="scene"></div>
+
+<script>
+const CONFIG = {
+  nom: "Paradis",
+  signature: "Supérette de quartier",
+  cta: "Passez nous voir !",
+  promo: { remise: "-20%", produit: "sur une sélection de boissons fraîches", periode: "Cette semaine seulement" },
+};
+
+const feuille = (x, y, r, s) => `
+  <g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">
+    <path d="M0 0 C60 -40 160 -40 240 0 C160 40 60 40 0 0 Z"/>
+    <path d="M40 0 C60 -30 90 -40 110 -44 L100 -6 Z M120 0 C140 -28 170 -36 190 -38 L178 -4 Z M40 0 C60 30 90 40 110 44 L100 6 Z M120 0 C140 28 170 36 190 38 L178 4 Z" opacity=".35"/>
+  </g>`;
+const bouquet = (style, couleur, opacite) => `
+  <svg class="feuilles" style="${style};color:${couleur};opacity:${opacite}" width="620" height="620" viewBox="-310 -310 620 620">
+    ${feuille(0,0,-80,1.2)}${feuille(0,0,-40,1.3)}${feuille(0,0,-5,1.2)}${feuille(0,0,-120,1.1)}${feuille(0,0,30,1)}
+  </svg>`;
+
+const logo = () => `
+  <div class="logo">
+    <div class="logo__soleil"></div>
+    <div class="logo__mots"><div class="logo__petit">Supérette</div><div class="logo__grand">${CONFIG.nom}</div></div>
+  </div>`;
+
+const pied = () => `
+  <div class="pied"><span>${CONFIG.signature}</span><span class="pied__cta">${CONFIG.cta}</span></div>`;
+
+const fruits = (liste) => `<div class="fruits">${liste.map(([e, x, y, t, r]) =>
+  `<span style="left:${x}px;top:${y}px;font-size:${t}px;transform:rotate(${r}deg)">${e}</span>`).join("")}</div>`;
+
+// Chaque visuel : fonction (story) => { classe, html }
+const VISUELS = {
+  1: (story) => ({
+    classe: "fond-vert",
+    html: bouquet("right:-230px;top:-230px", "#1f7a57", 1) + bouquet("left:-300px;bottom:-280px", "#1f7a57", .8) +
+      fruits(story
+        ? [["🍊",560,360,230,-12],["🍋",140,520,160,14],["🥑",780,640,170,-20],["🍓",330,560,140,8]]
+        : [["🍊",720,250,150,-12],["🍋",860,420,110,14],["🍓",640,430,100,8]]) +
+      logo() +
+      `<div class="corps">
+        <p class="surtitre">Bienvenue chez nous</p>
+        <h1>Votre petit <em>paradis</em> du quotidien</h1>
+        <div class="puces"><span class="puce">Fruits et légumes</span><span class="puce">Produits frais</span><span class="puce">Boissons fraîches</span><span class="puce">Épicerie</span></div>
+      </div>` + pied(),
+  }),
+  2: (story) => ({
+    classe: "fond-creme",
+    html: bouquet("right:-260px;bottom:-240px", "#0f4d3a", .12) +
+      fruits(story
+        ? [["🍎",540,360,220,-10],["🥕",120,480,170,30],["🍌",780,620,170,-25],["🥬",300,660,170,6],["🍅",620,800,130,0]]
+        : [["🍎",700,230,130,-10],["🥕",880,300,110,30],["🍌",760,420,120,-25]]) +
+      logo() +
+      `<div class="corps">
+        <p class="surtitre" style="color:var(--vert-clair)">Le plein de fraîcheur</p>
+        <h1>Fruits et légumes <em>frais</em></h1>
+        <p class="texte">Des produits choisis avec soin, à deux pas de chez vous.</p>
+      </div>` + pied(),
+  }),
+  3: (story) => ({
+    classe: "fond-soleil",
+    html: bouquet("left:-280px;top:-260px", "#ffffff", .35) + bouquet("right:-250px;bottom:-300px", "#ffffff", .35) +
+      fruits(story
+        ? [["🥖",520,360,220,-18],["🧀",140,560,170,10],["🥤",780,640,170,-6],["🍫",400,800,140,12]]
+        : [["🥖",700,240,140,-18],["🥤",880,360,110,-6],["🧀",720,420,110,10]]) +
+      logo() +
+      `<div class="corps">
+        <p class="surtitre">Un oubli ? Une envie ?</p>
+        <h1>C'est juste <em>à côté</em>.</h1>
+        <p class="texte">Du pain, un dessert, une boisson bien fraîche : on a ce qu'il vous faut.</p>
+      </div>` + pied(),
+  }),
+  4: (story) => ({
+    classe: "fond-corail",
+    html: bouquet("right:-240px;top:-220px", "#ffffff", .18) +
+      fruits(story
+        ? [["🥤",640,1060,170,-8],["🧃",840,1200,140,10]]
+        : [["🥤",760,560,150,-8],["🧃",900,660,110,10]]) +
+      logo() +
+      `<div class="etiquette"><div class="etiquette__remise">${CONFIG.promo.remise}</div><div class="etiquette__sur">${CONFIG.promo.produit}</div></div>
+      <div class="corps">
+        <p class="surtitre">Bon plan</p>
+        <h1 style="font-size:110px">${CONFIG.promo.periode.replace("seulement", "<em>seulement</em>")}</h1>
+      </div>` + pied(),
+  }),
+};
+
+const p = new URLSearchParams(location.search);
+const story = p.get("f") === "story";
+const v = VISUELS[p.get("v") || 1](story);
+document.getElementById("scene").innerHTML =
+  `<div class="toile ${story ? "story" : ""} ${v.classe}">${v.html}</div>`;
+</script>
+</body>
+</html>
