@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phoxia | Licence to automate</title>
+<meta name="description" content="Mathieu Barthélémy, fondateur de Phoxia, en smoking et lunettes noires : coupé argent des années 60 et intérieurs d'espion britannique.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" href="assets/img/phoxia-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --nuit: #0B0B0D;
+    --nuit-2: #16151A;
+    --or: #C9A45C;
+    --or-clair: #E7CE93;
+    --ivoire: #F2ECE0;
+    --gris: #9A958C;
+    --serif: "EB Garamond", Georgia, serif;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+  }
+  * , *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--ivoire);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+  img, svg { display: block; max-width: 100%; height: auto; }
+  a { color: var(--or-clair); }
+
+  .enveloppe { width: min(1200px, 100% - 32px); margin-inline: auto; }
+
+  /* Bandeau */
+  .bandeau {
+    padding: 56px 0 28px;
+    text-align: center;
+  }
+  .surtitre {
+    font-size: .78rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    line-height: 1.05;
+    margin: 0;
+  }
+  h1 em { color: var(--or-clair); }
+  .chapeau {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--gris);
+  }
+
+  .logo-phoxia { width: 200px; margin: 0 auto 14px; }
+
+  /* Scène */
+  .scene {
+    margin: 24px auto 0;
+    border: 1px solid rgba(201,164,92,.35);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  }
+  .scene svg, .scene img { width: 100%; }
+  .scene.portrait { max-width: 520px; }
+
+  .scene + .scene { margin-top: 48px; }
+  .scene figcaption {
+    padding: 14px 18px;
+    background: var(--nuit-2);
+    color: var(--gris);
+    font-size: .9rem;
+    border-top: 1px solid rgba(201,164,92,.25);
+  }
+  .scene figcaption strong { color: var(--ivoire); font-weight: 500; }
+  .pied {
+    padding: 48px 0 64px;
+    text-align: center;
+    color: var(--gris);
+    font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="phoxia-symbole" viewBox="0 0 139.03 102.15">
+      <path fill="#5BA3DD" d="M0 102.15h34.05L53.91 68.1H19.86z"/>
+      <path fill="#2F86CC" d="M42.56 68.1h34.05l19.86-34.05H62.42z"/>
+      <path fill="#F2ECE0" d="M85.12 34.05h34.05L139.03 0h-34.05z"/>
+    </symbol>
+    <symbol id="phoxia-logo" viewBox="0 0 520 150">
+      <text x="4" y="112" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="130" fill="#F2ECE0">Phoxia</text>
+      <use href="#phoxia-symbole" x="362" y="22" width="150" height="110"/>
+    </symbol>
+    <filter id="halo-phoxia" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="flou"/>
+      <feFlood flood-color="#5BA3DD" flood-opacity=".55"/>
+      <feComposite in2="flou" operator="in" result="halo"/>
+      <feMerge><feMergeNode in="halo"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<header class="bandeau enveloppe">
+  <svg class="logo-phoxia" viewBox="0 0 520 150" role="img" aria-label="Phoxia"><use href="#phoxia-logo"/></svg>
+  <p class="surtitre">Phoxia · Dossier confidentiel</p>
+  <h1>Licence to <em>automate</em></h1>
+  <p class="chapeau">Mathieu Barthélémy, fondateur de Phoxia. Smoking, nœud papillon, lunettes noires, coupé argent des années 60 et logo Phoxia.</p>
+</header>
+
+<main class="enveloppe">
+  <figure class="scene">
+    <img src="assets/img/bond/mathieu-db5-photo.jpg" alt="Mathieu Barthélémy en smoking noir, nœud papillon et lunettes de soleil, debout devant deux coupés argent des années 60 immatriculés PHOXIA" width="2048" height="1152">
+    <figcaption><strong>La photo.</strong> Smoking noir, nœud papillon, lunettes teintées et les coupés argent immatriculés Phoxia. <a href="assets/img/bond/mathieu-db5-photo.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
+  <figure class="scene portrait">
+    <img src="assets/img/bond/mathieu-bond-portrait.jpg" alt="Portrait de Mathieu Barthélémy en smoking noir et lunettes de soleil" width="800" height="1000">
+    <figcaption><strong>Le portrait.</strong> <a href="assets/img/bond/mathieu-bond-portrait.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
+  <figure class="scene">
+    <svg viewBox="0 0 1600 900" role="img" aria-labelledby="scene0-titre">
+      <title id="scene0-titre">Mathieu Barthélémy, fondateur de Phoxia, en smoking et lunettes noires, debout devant un coupé grand tourisme argent des années 60 dans un studio éclairé, logo Phoxia.</title>
+      <defs>
+        <linearGradient id="s-fond" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#07080A"/>
+          <stop offset=".75" stop-color="#15171B"/>
+          <stop offset="1" stop-color="#0B0C0E"/>
+        </linearGradient>
+        <radialGradient id="s-spot" cx=".5" cy=".55" r=".5">
+          <stop offset="0" stop-color="#3A4250" stop-opacity=".9"/>
+          <stop offset="1" stop-color="#3A4250" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="s-sol" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#16181C"/>
+          <stop offset="1" stop-color="#030304"/>
+        </linearGradient>
+        <linearGradient id="s-cone" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="s-neon" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#5BA3DD" stop-opacity=".22"/>
+          <stop offset="1" stop-color="#5BA3DD" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="s-vignette" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#000" stop-opacity=".6"/>
+          <stop offset=".2" stop-color="#000" stop-opacity="0"/>
+          <stop offset=".8" stop-color="#000" stop-opacity="0"/>
+          <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+        </linearGradient>
+        <linearGradient id="s-bas" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#000" stop-opacity="0"/>
+          <stop offset="1" stop-color="#000" stop-opacity=".85"/>
+        </linearGradient>
+        <filter id="s-ombre" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".75"/>
+        </filter>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#s-fond)"/>
+      <ellipse cx="800" cy="470" rx="820" ry="420" fill="url(#s-spot)"/>
+      <!-- Faisceaux -->
+      <path d="M380 0 L460 0 L720 820 L180 820 Z" fill="url(#s-cone)"/>
+      <path d="M1140 0 L1220 0 L1420 820 L880 820 Z" fill="url(#s-cone)"/>
+      <!-- Enseigne néon -->
+      <ellipse cx="800" cy="95" rx="260" ry="90" fill="url(#s-neon)"/>
+      <use href="#phoxia-logo" x="610" y="40" width="380" height="110" filter="url(#halo-phoxia)"/>
+      <!-- Sol -->
+      <rect x="0" y="760" width="1600" height="140" fill="url(#s-sol)"/>
+      <line x1="0" y1="760" x2="1600" y2="760" stroke="#2A2E35" stroke-width="2"/>
+
+      <!-- Voiture -->
+      <g transform="translate(-407.5 -365) scale(1.5)">
+        <g mask="url(#masque-reflet)">
+          <use href="#coupe" transform="matrix(1 0 0 -1 0 1592)" opacity=".45"/>
+        </g>
+        <use href="#coupe"/>
+      </g>
+
+      <!-- Mathieu -->
+      <image href="assets/img/bond/mathieu-bond.webp" x="539" y="175" width="482" height="720" filter="url(#s-ombre)"/>
+
+      <rect width="1600" height="900" fill="url(#s-vignette)"/>
+      <rect x="0" y="720" width="1600" height="180" fill="url(#s-bas)"/>
+      <!-- Signature -->
+      <text x="60" y="90" fill="#F2ECE0" font-family="EB Garamond, Georgia, serif" font-size="42">Mathieu Barthélémy</text>
+      <text x="62" y="124" fill="#C9A45C" font-family="Instrument Sans, sans-serif" font-size="15" letter-spacing="5">FONDATEUR DE PHOXIA</text>
+      <use href="#phoxia-symbole" x="1466" y="806" width="80" height="59"/>
+    </svg>
+    <figcaption><strong>L'illustration.</strong> Devant le coupé argent, sous l'enseigne Phoxia. <a href="assets/img/bond/mathieu-db5-studio.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
+  <figure class="scene">
+    <svg viewBox="0 0 1600 900" role="img" aria-labelledby="scene1-titre">
+      <title id="scene1-titre">Mathieu Barthélémy en smoking et lunettes noires, devant un coupé grand tourisme argent des années 60 garé dans un salon de gentleman : boiseries, cheminée, lustre, bar à martini et vue sur la ville de nuit.</title>
+      <defs>
+          <linearGradient id="mur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1B120C"/>
+            <stop offset=".6" stop-color="#2A1B11"/>
+            <stop offset="1" stop-color="#150E09"/>
+          </linearGradient>
+          <linearGradient id="panneau" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3A2517"/>
+            <stop offset="1" stop-color="#24170E"/>
+          </linearGradient>
+          <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1A1714"/>
+            <stop offset="1" stop-color="#050505"/>
+          </linearGradient>
+          <linearGradient id="ciel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#050A1A"/>
+            <stop offset="1" stop-color="#1B2A4A"/>
+          </linearGradient>
+          <linearGradient id="carrosserie" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F4F5F6"/>
+            <stop offset=".35" stop-color="#BFC4C9"/>
+            <stop offset=".55" stop-color="#8C939A"/>
+            <stop offset=".62" stop-color="#D9DDE0"/>
+            <stop offset="1" stop-color="#5E656C"/>
+          </linearGradient>
+          <linearGradient id="vitre" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2B3440"/>
+            <stop offset=".5" stop-color="#11161C"/>
+            <stop offset="1" stop-color="#3C4755"/>
+          </linearGradient>
+          <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset=".5" stop-color="#9AA1A8"/>
+            <stop offset="1" stop-color="#E9ECEE"/>
+          </linearGradient>
+          <radialGradient id="feu" cx=".5" cy="1" r=".9">
+            <stop offset="0" stop-color="#FFD27A"/>
+            <stop offset=".4" stop-color="#E8702A"/>
+            <stop offset="1" stop-color="#E8702A" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="halo" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFE3A6" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#FFE3A6" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="ombre" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#000" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="fondu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+            <stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="masque-reflet">
+            <rect x="0" y="780" width="1600" height="120" fill="url(#fondu)"/>
+          </mask>
+
+          <!-- Roue à rayons -->
+          <radialGradient id="pneu" cx=".5" cy=".5" r=".5">
+            <stop offset=".68" stop-color="#050505"/>
+            <stop offset=".85" stop-color="#262626"/>
+            <stop offset="1" stop-color="#0A0A0A"/>
+          </radialGradient>
+          <radialGradient id="jante" cx=".4" cy=".35" r=".7">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset=".5" stop-color="#B8BEC4"/>
+            <stop offset="1" stop-color="#6A7178"/>
+          </radialGradient>
+          <g id="roue">
+            <circle r="64" fill="url(#pneu)"/>
+            <circle r="46" fill="#1A1C1F"/>
+            <circle r="45" fill="none" stroke="url(#jante)" stroke-width="5"/>
+            <g stroke="#DDE1E4" stroke-width="1.1" stroke-opacity=".9">
+              <line x1="11.0" y1="0.0" x2="40.9" y2="-13.3"/>
+              <line x1="10.8" y1="2.1" x2="37.5" y2="21.0"/>
+              <line x1="10.6" y1="2.8" x2="42.9" y2="-2.3"/>
+              <line x1="9.9" y1="4.9" x2="30.8" y2="30.0"/>
+              <line x1="9.5" y1="5.5" x2="42.1" y2="8.9"/>
+              <line x1="8.3" y1="7.3" x2="22.0" y2="37.0"/>
+              <line x1="7.8" y1="7.8" x2="38.3" y2="19.5"/>
+              <line x1="6.1" y1="9.1" x2="11.7" y2="41.4"/>
+              <line x1="5.5" y1="9.5" x2="32.0" y2="28.8"/>
+              <line x1="3.5" y1="10.4" x2="0.6" y2="43.0"/>
+              <line x1="2.8" y1="10.6" x2="23.4" y2="36.1"/>
+              <line x1="0.7" y1="11.0" x2="-10.6" y2="41.7"/>
+              <line x1="0.0" y1="11.0" x2="13.3" y2="40.9"/>
+              <line x1="-2.1" y1="10.8" x2="-21.0" y2="37.5"/>
+              <line x1="-2.8" y1="10.6" x2="2.3" y2="42.9"/>
+              <line x1="-4.9" y1="9.9" x2="-30.0" y2="30.8"/>
+              <line x1="-5.5" y1="9.5" x2="-8.9" y2="42.1"/>
+              <line x1="-7.3" y1="8.3" x2="-37.0" y2="22.0"/>
+              <line x1="-7.8" y1="7.8" x2="-19.5" y2="38.3"/>
+              <line x1="-9.1" y1="6.1" x2="-41.4" y2="11.7"/>
+              <line x1="-9.5" y1="5.5" x2="-28.8" y2="32.0"/>
+              <line x1="-10.4" y1="3.5" x2="-43.0" y2="0.6"/>
+              <line x1="-10.6" y1="2.8" x2="-36.1" y2="23.4"/>
+              <line x1="-11.0" y1="0.7" x2="-41.7" y2="-10.6"/>
+              <line x1="-11.0" y1="0.0" x2="-40.9" y2="13.3"/>
+              <line x1="-10.8" y1="-2.1" x2="-37.5" y2="-21.0"/>
+              <line x1="-10.6" y1="-2.8" x2="-42.9" y2="2.3"/>
+              <line x1="-9.9" y1="-4.9" x2="-30.8" y2="-30.0"/>
+              <line x1="-9.5" y1="-5.5" x2="-42.1" y2="-8.9"/>
+              <line x1="-8.3" y1="-7.3" x2="-22.0" y2="-37.0"/>
+              <line x1="-7.8" y1="-7.8" x2="-38.3" y2="-19.5"/>
+              <line x1="-6.1" y1="-9.1" x2="-11.7" y2="-41.4"/>
+              <line x1="-5.5" y1="-9.5" x2="-32.0" y2="-28.8"/>
+              <line x1="-3.5" y1="-10.4" x2="-0.6" y2="-43.0"/>
+              <line x1="-2.8" y1="-10.6" x2="-23.4" y2="-36.1"/>
+              <line x1="-0.7" y1="-11.0" x2="10.6" y2="-41.7"/>
+              <line x1="-0.0" y1="-11.0" x2="-13.3" y2="-40.9"/>
+              <line x1="2.1" y1="-10.8" x2="21.0" y2="-37.5"/>
+              <line x1="2.8" y1="-10.6" x2="-2.3" y2="-42.9"/>
+              <line x1="4.9" y1="-9.9" x2="30.0" y2="-30.8"/>
+              <line x1="5.5" y1="-9.5" x2="8.9" y2="-42.1"/>
+              <line x1="7.3" y1="-8.3" x2="37.0" y2="-22.0"/>
+              <line x1="7.8" y1="-7.8" x2="19.5" y2="-38.3"/>
+              <line x1="9.1" y1="-6.1" x2="41.4" y2="-11.7"/>
+              <line x1="9.5" y1="-5.5" x2="28.8" y2="-32.0"/>
+              <line x1="10.4" y1="-3.5" x2="43.0" y2="-0.6"/>
+              <line x1="10.6" y1="-2.8" x2="36.1" y2="-23.4"/>
+              <line x1="11.0" y1="-0.7" x2="41.7" y2="10.6"/>
+            </g>
+            <circle r="14" fill="url(#jante)" stroke="#4A4F55" stroke-width="1.5"/>
+            <path d="M-24 -4 L-8 -3 L-8 3 L-24 4 Z M24 -4 L8 -3 L8 3 L24 4 Z" fill="url(#jante)" stroke="#4A4F55" stroke-width="1"/>
+            <circle r="5" fill="#8C939A"/>
+          </g>
+
+          <linearGradient id="caisse-ombre" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#000" stop-opacity="0"/>
+            <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+            <stop offset="1" stop-color="#000" stop-opacity=".45"/>
+          </linearGradient>
+          <linearGradient id="phare" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset=".6" stop-color="#CFE3F2"/>
+            <stop offset="1" stop-color="#7F95A8"/>
+          </linearGradient>
+          <path id="caisse" d="M360 742
+                   C350 718 350 694 362 676
+                   C370 664 395 656 440 650
+                   C500 640 540 612 590 588
+                   C640 566 700 556 760 555
+                   C810 555 840 566 862 584
+                   C880 600 895 612 912 620
+                   L1120 632
+                   C1180 638 1225 648 1246 668
+                   C1262 684 1262 716 1250 742
+                   L1154 742 A74 74 0 0 0 1006 742
+                   L594 742 A74 74 0 0 0 446 742 Z"/>
+          <clipPath id="caisse-clip"><use href="#caisse"/></clipPath>
+
+          <!-- Coupé -->
+          <g id="coupe">
+            <ellipse cx="800" cy="790" rx="500" ry="24" fill="url(#ombre)"/>
+            <ellipse cx="520" cy="806" rx="80" ry="8" fill="#000" opacity=".7"/>
+            <ellipse cx="1080" cy="806" rx="80" ry="8" fill="#000" opacity=".7"/>
+            <use href="#caisse" fill="url(#carrosserie)" stroke="#3E444A" stroke-width="1.5"/>
+            <g clip-path="url(#caisse-clip)">
+              <rect x="340" y="540" width="940" height="210" fill="url(#caisse-ombre)"/>
+              <!-- Reflets de carrosserie -->
+              <path d="M430 652 C560 630 760 620 1000 626 C1100 629 1180 636 1240 660" fill="none" stroke="#FFFFFF" stroke-opacity=".85" stroke-width="5"/>
+              <path d="M600 590 C660 566 720 560 800 561" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="4"/>
+              <path d="M920 628 L1120 638" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="10"/>
+              <rect x="340" y="700" width="940" height="4" fill="#FFFFFF" opacity=".25"/>
+            </g>
+            <!-- Arches de roues -->
+            <path d="M446 742 A74 74 0 0 1 594 742" fill="none" stroke="#2A2F35" stroke-width="3"/>
+            <path d="M1006 742 A74 74 0 0 1 1154 742" fill="none" stroke="#2A2F35" stroke-width="3"/>
+            <!-- Vitres -->
+            <path d="M604 618 C630 596 680 572 738 566 L738 622 Z" fill="url(#vitre)"/>
+            <path d="M750 566 L806 566 C834 572 858 592 884 620 L750 624 Z" fill="url(#vitre)"/>
+            <path d="M770 572 L800 572 L760 616 L742 616 Z" fill="#FFFFFF" opacity=".12"/>
+            <path d="M600 620 C630 594 680 568 740 562 L808 562 C838 569 862 590 890 622" fill="none" stroke="url(#chrome)" stroke-width="4"/>
+            <line x1="744" y1="562" x2="744" y2="624" stroke="url(#chrome)" stroke-width="6"/>
+            <line x1="600" y1="622" x2="892" y2="624" stroke="url(#chrome)" stroke-width="3"/>
+            <!-- Ligne d'épaule -->
+            <path d="M378 676 C560 664 900 656 1244 680" fill="none" stroke="#FFFFFF" stroke-opacity=".75" stroke-width="2"/>
+            <path d="M378 680 C560 668 900 660 1244 684" fill="none" stroke="#4A5057" stroke-opacity=".6" stroke-width="1.5"/>
+            <!-- Portière, poignée, trappe -->
+            <path d="M746 628 L750 736 M914 626 C920 670 920 712 914 736" fill="none" stroke="#454B52" stroke-width="2"/>
+            <rect x="764" y="648" width="34" height="6" rx="3" fill="url(#chrome)" stroke="#6A7178" stroke-width=".8"/>
+            <circle cx="566" cy="610" r="7" fill="url(#chrome)" stroke="#6A7178" stroke-width="1"/>
+            <!-- Rétroviseur d'aile -->
+            <line x1="1000" y1="632" x2="1000" y2="616" stroke="url(#chrome)" stroke-width="3"/>
+            <ellipse cx="1000" cy="612" rx="11" ry="7" fill="url(#chrome)" stroke="#6A7178" stroke-width="1"/>
+            <!-- Ouïe d'aile -->
+            <path d="M944 664 L1004 660 L1004 694 L944 698 Z" fill="#1E2227" stroke="url(#chrome)" stroke-width="2.5"/>
+            <g stroke="url(#chrome)" stroke-width="2">
+              <line x1="948" y1="672" x2="1000" y2="669"/>
+              <line x1="948" y1="680" x2="1000" y2="677"/>
+              <line x1="948" y1="688" x2="1000" y2="685"/>
+            </g>
+            <!-- Phare caréné et clignotant -->
+            <path d="M1204 646 C1236 652 1258 670 1259 694 L1236 692 C1234 672 1224 656 1204 646 Z" fill="url(#phare)" stroke="#8C939A" stroke-width="1.5"/>
+            <circle cx="1244" cy="676" r="9" fill="#FFFBE6" stroke="#B8BEC4" stroke-width="1.5"/>
+            <circle cx="1244" cy="676" r="4" fill="#FFFFFF"/>
+            <rect x="1240" y="700" width="14" height="8" rx="3" fill="#F2A33A"/>
+            <!-- Feux arrière -->
+            <rect x="356" y="672" width="14" height="14" rx="4" fill="#C0271F" stroke="#6A7178" stroke-width="1"/>
+            <rect x="356" y="688" width="14" height="10" rx="3" fill="#F2A33A" stroke="#6A7178" stroke-width="1"/>
+            <!-- Pare-chocs et butoirs -->
+            <path d="M1170 728 C1210 730 1244 726 1266 712" fill="none" stroke="url(#chrome)" stroke-width="8" stroke-linecap="round"/>
+            <rect x="1244" y="700" width="9" height="36" rx="4" fill="url(#chrome)" transform="rotate(-10 1248 718)"/>
+            <path d="M344 710 C356 722 390 728 440 728" fill="none" stroke="url(#chrome)" stroke-width="8" stroke-linecap="round"/>
+            <rect x="358" y="700" width="9" height="36" rx="4" fill="url(#chrome)" transform="rotate(8 362 718)"/>
+            <!-- Bas de caisse -->
+            <line x1="600" y1="736" x2="1000" y2="736" stroke="url(#chrome)" stroke-width="4"/>
+            <!-- Roues -->
+            <use href="#roue" x="520" y="744"/>
+            <use href="#roue" x="1080" y="744"/>
+          </g>
+          <filter id="lumiere" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="10" dy="12" stdDeviation="14" flood-color="#000" flood-opacity=".6"/>
+          </filter>
+          <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#000" stop-opacity=".55"/>
+            <stop offset=".25" stop-color="#000" stop-opacity="0"/>
+            <stop offset=".75" stop-color="#000" stop-opacity="0"/>
+            <stop offset="1" stop-color="#000" stop-opacity=".55"/>
+          </linearGradient>
+      </defs>
+
+        <!-- Mur -->
+        <rect width="1600" height="900" fill="url(#mur)"/>
+        <g fill="url(#panneau)" stroke="#120B06" stroke-width="3">
+          <rect x="30" y="80" width="170" height="300"/>
+          <rect x="30" y="410" width="170" height="220"/>
+          <rect x="1400" y="80" width="170" height="300"/>
+          <rect x="1400" y="410" width="170" height="220"/>
+        </g>
+        <rect x="0" y="640" width="1600" height="12" fill="#0E0906"/>
+        <rect x="0" y="60" width="1600" height="10" fill="#0E0906"/>
+
+      <g transform="translate(380 0)">
+        <!-- Fenêtre sur la ville -->
+        <g>
+          <path d="M240 640 L240 220 A120 120 0 0 1 480 220 L480 640 Z" fill="url(#ciel)"/>
+          <circle cx="410" cy="200" r="26" fill="#F3EBD2"/>
+          <circle cx="400" cy="194" r="24" fill="#16223D"/>
+          <g fill="#0A0F1C">
+            <rect x="240" y="480" width="40" height="160"/>
+            <rect x="285" y="430" width="34" height="210"/>
+            <rect x="325" y="510" width="44" height="130"/>
+            <rect x="372" y="400" width="30" height="240"/>
+            <rect x="405" y="470" width="40" height="170"/>
+            <rect x="448" y="520" width="32" height="120"/>
+          </g>
+          <g fill="#F5C96A">
+            <rect x="292" y="450" width="5" height="7"/><rect x="306" y="470" width="5" height="7"/>
+            <rect x="380" y="420" width="5" height="7"/><rect x="380" y="460" width="5" height="7"/>
+            <rect x="390" y="500" width="5" height="7"/><rect x="415" y="490" width="5" height="7"/>
+            <rect x="335" y="530" width="5" height="7"/><rect x="250" y="500" width="5" height="7"/>
+            <rect x="455" y="545" width="5" height="7"/><rect x="428" y="520" width="5" height="7"/>
+          </g>
+          <path d="M240 640 L240 220 A120 120 0 0 1 480 220 L480 640" fill="none" stroke="#4A3120" stroke-width="12"/>
+          <line x1="360" y1="100" x2="360" y2="640" stroke="#4A3120" stroke-width="6"/>
+          <line x1="240" y1="380" x2="480" y2="380" stroke="#4A3120" stroke-width="6"/>
+          <!-- Rideaux -->
+          <path d="M210 70 C230 250 200 450 222 650 L262 650 C250 440 270 240 250 70 Z" fill="#5B1A1A"/>
+          <path d="M510 70 C490 250 520 450 498 650 L458 650 C470 440 450 240 470 70 Z" fill="#5B1A1A"/>
+        </g>
+
+      </g>
+        <!-- Cheminée -->
+        <g>
+          <rect x="1080" y="360" width="280" height="280" fill="#2D2621"/>
+          <rect x="1060" y="340" width="320" height="26" fill="#3B332C"/>
+          <path d="M1140 640 L1140 470 A80 80 0 0 1 1300 470 L1300 640 Z" fill="#0A0706"/>
+          <ellipse cx="1220" cy="610" rx="80" ry="60" fill="url(#feu)"/>
+          <path d="M1190 628 C1180 600 1205 590 1200 560 C1225 585 1240 600 1232 628 Z" fill="#FFB347" opacity=".9"/>
+          <path d="M1210 630 C1205 612 1222 604 1220 586 C1236 604 1244 616 1238 630 Z" fill="#FFE08A"/>
+          <rect x="1165" y="626" width="110" height="10" rx="5" fill="#3A2412"/>
+          <!-- Enseigne Phoxia au-dessus de la cheminée -->
+          <use href="#phoxia-logo" x="1090" y="168" width="260" height="75" filter="url(#halo-phoxia)"/>
+        </g>
+
+      <g transform="translate(160 0)">
+        <!-- Lustre -->
+        <g>
+          <line x1="800" y1="0" x2="800" y2="110" stroke="#8C6A2E" stroke-width="3"/>
+          <circle cx="800" cy="170" r="150" fill="url(#halo)"/>
+          <path d="M700 150 C730 190 870 190 900 150" fill="none" stroke="#C9A45C" stroke-width="4"/>
+          <path d="M730 130 C760 160 840 160 870 130" fill="none" stroke="#C9A45C" stroke-width="3"/>
+          <g fill="#FFF1C8">
+            <circle cx="700" cy="140" r="7"/><circle cx="750" cy="160" r="7"/>
+            <circle cx="800" cy="168" r="7"/><circle cx="850" cy="160" r="7"/>
+            <circle cx="900" cy="140" r="7"/><circle cx="730" cy="122" r="6"/>
+            <circle cx="870" cy="122" r="6"/><circle cx="800" cy="120" r="8"/>
+          </g>
+          <g stroke="#E7CE93" stroke-width="1" opacity=".7">
+            <line x1="720" y1="170" x2="720" y2="200"/><line x1="770" y1="178" x2="770" y2="212"/>
+            <line x1="830" y1="178" x2="830" y2="212"/><line x1="880" y1="170" x2="880" y2="200"/>
+          </g>
+        </g>
+
+      </g>
+        <!-- Bar à martini -->
+        <g>
+          <rect x="1420" y="660" width="150" height="10" fill="#B08A45"/>
+          <rect x="1420" y="740" width="150" height="8" fill="#B08A45"/>
+          <line x1="1426" y1="660" x2="1426" y2="790" stroke="#B08A45" stroke-width="5"/>
+          <line x1="1564" y1="660" x2="1564" y2="790" stroke="#B08A45" stroke-width="5"/>
+          <circle cx="1432" cy="796" r="8" fill="#222" stroke="#B08A45" stroke-width="3"/>
+          <circle cx="1558" cy="796" r="8" fill="#222" stroke="#B08A45" stroke-width="3"/>
+          <!-- Carafe -->
+          <path d="M1440 660 L1440 620 C1440 600 1470 600 1470 620 L1470 660 Z" fill="#C98A3A" opacity=".75"/>
+          <rect x="1449" y="590" width="12" height="14" fill="#DCDCDC"/>
+          <!-- Verre à martini -->
+          <path d="M1500 600 L1550 600 L1525 628 Z" fill="#DDE7EE" fill-opacity=".45" stroke="#F2F5F7" stroke-width="2"/>
+          <line x1="1525" y1="628" x2="1525" y2="654" stroke="#F2F5F7" stroke-width="2"/>
+          <line x1="1512" y1="656" x2="1538" y2="656" stroke="#F2F5F7" stroke-width="3"/>
+          <circle cx="1522" cy="610" r="4.5" fill="#6B8E23"/>
+          <line x1="1516" y1="598" x2="1530" y2="616" stroke="#B08A45" stroke-width="1.5"/>
+          <!-- Shaker -->
+          <path d="M1490 740 L1492 690 L1512 690 L1514 740 Z" fill="url(#chrome)"/>
+          <rect x="1494" y="680" width="16" height="10" rx="3" fill="url(#chrome)"/>
+        </g>
+        <!-- Sol -->
+        <rect x="0" y="652" width="1600" height="248" fill="url(#sol)"/>
+        <g stroke="#2A2520" stroke-width="1" opacity=".6">
+          <line x1="0" y1="700" x2="1600" y2="700"/>
+          <line x1="0" y1="760" x2="1600" y2="760"/>
+          <line x1="0" y1="840" x2="1600" y2="840"/>
+          <line x1="800" y1="652" x2="800" y2="900"/>
+          <line x1="560" y1="652" x2="340" y2="900"/>
+          <line x1="1040" y1="652" x2="1260" y2="900"/>
+          <line x1="320" y1="652" x2="-120" y2="900"/>
+          <line x1="1280" y1="652" x2="1720" y2="900"/>
+        </g>
+        <!-- Tapis -->
+        <path d="M300 820 L1300 820 L1380 880 L220 880 Z" fill="#5B1A1A" opacity=".55"/>
+        <path d="M312 826 L1290 826 L1360 874 L240 874 Z" fill="none" stroke="#C9A45C" stroke-opacity=".5" stroke-width="2"/>
+
+      <!-- Voiture et reflet -->
+      <g transform="translate(302.5 118.5) scale(.85)">
+        <g mask="url(#masque-reflet)">
+          <use href="#coupe" transform="matrix(1 0 0 -1 0 1592)" opacity=".5"/>
+        </g>
+        <use href="#coupe"/>
+      </g>
+
+      <!-- Mathieu -->
+      <image href="assets/img/bond/mathieu-bond.webp" x="40" y="120" width="522" height="780" filter="url(#lumiere)"/>
+      <rect width="1600" height="900" fill="url(#vignette)"/>
+
+      <use href="#phoxia-symbole" x="1500" y="26" width="62" height="46"/>
+    </svg>
+    <figcaption><strong>Le salon.</strong> Boiseries, feu de cheminée, martini au bar et le coupé argent garé à l'intérieur. <a href="assets/img/bond/mathieu-salon-db5.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
+  <figure class="scene">
+    <svg viewBox="0 0 1600 900" role="img" aria-labelledby="scene2-titre">
+      <title id="scene2-titre">Mathieu Barthélémy en smoking et lunettes noires au comptoir d'un bar de casino : bouteilles rétroéclairées, suspensions dorées, martini, cartes et jetons.</title>
+      <defs>
+        <linearGradient id="c-mur" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1A0708"/>
+          <stop offset="1" stop-color="#3A0F12"/>
+        </linearGradient>
+        <linearGradient id="c-miroir" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3B2A14"/>
+          <stop offset="1" stop-color="#1A1208"/>
+        </linearGradient>
+        <linearGradient id="c-comptoir" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4A2A16"/>
+          <stop offset="1" stop-color="#120A05"/>
+        </linearGradient>
+        <radialGradient id="c-halo" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#FFD58A" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#FFD58A" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="c-chrome" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset=".5" stop-color="#9AA1A8"/>
+          <stop offset="1" stop-color="#E9ECEE"/>
+        </linearGradient>
+        <filter id="c-lumiere" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity=".6"/>
+        </filter>
+        <linearGradient id="c-vignette" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#000" stop-opacity=".6"/>
+          <stop offset=".25" stop-color="#000" stop-opacity="0"/>
+          <stop offset=".75" stop-color="#000" stop-opacity="0"/>
+          <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+        </linearGradient>
+        <g id="bouteille">
+          <rect x="-11" y="-70" width="22" height="70" rx="4"/>
+          <rect x="-4" y="-92" width="8" height="24"/>
+        </g>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#c-mur)"/>
+      <!-- Motif art déco -->
+      <g stroke="#C9A45C" stroke-opacity=".25" stroke-width="2" fill="none">
+        <path d="M0 120 L1600 120"/>
+        <path d="M80 120 L80 700 M160 120 L160 700 M1440 120 L1440 700 M1520 120 L1520 700"/>
+        <path d="M60 700 L120 620 L180 700 M1420 700 L1480 620 L1540 700"/>
+      </g>
+
+      <!-- Arrière-bar -->
+      <rect x="240" y="170" width="1120" height="520" fill="url(#c-miroir)" stroke="#B08A45" stroke-width="6"/>
+      <g fill="#B08A45">
+        <rect x="240" y="330" width="1120" height="8"/>
+        <rect x="240" y="500" width="1120" height="8"/>
+      </g>
+      <g>
+        <g fill="#C98A3A" opacity=".85">
+          <use href="#bouteille" x="290" y="330"/><use href="#bouteille" x="340" y="330"/><use href="#bouteille" x="1260" y="330"/>
+          <use href="#bouteille" x="1310" y="330"/><use href="#bouteille" x="300" y="500"/><use href="#bouteille" x="1300" y="500"/>
+          <use href="#bouteille" x="1080" y="330"/><use href="#bouteille" x="1130" y="500"/>
+        </g>
+        <g fill="#2F6B4A" opacity=".85">
+          <use href="#bouteille" x="390" y="330"/><use href="#bouteille" x="1210" y="500"/><use href="#bouteille" x="350" y="500"/>
+          <use href="#bouteille" x="1170" y="330"/>
+        </g>
+        <g fill="#D9E3EA" opacity=".6">
+          <use href="#bouteille" x="440" y="330"/><use href="#bouteille" x="1250" y="500"/><use href="#bouteille" x="400" y="500"/>
+          <use href="#bouteille" x="1030" y="500"/>
+        </g>
+        <g fill="#7A1E24" opacity=".85">
+          <use href="#bouteille" x="490" y="500"/><use href="#bouteille" x="1220" y="330"/><use href="#bouteille" x="450" y="500"/>
+        </g>
+      </g>
+      <rect x="240" y="170" width="1120" height="520" fill="#FFB45A" opacity=".06"/>
+
+      <!-- Enseignes Phoxia -->
+      <use href="#phoxia-logo" x="272" y="555" width="260" height="75" filter="url(#halo-phoxia)"/>
+      <use href="#phoxia-symbole" x="1078" y="575" width="76" height="56" filter="url(#halo-phoxia)"/>
+
+      <!-- Suspensions -->
+      <g>
+        <circle cx="330" cy="200" r="170" fill="url(#c-halo)"/>
+        <circle cx="1270" cy="200" r="170" fill="url(#c-halo)"/>
+        <line x1="330" y1="0" x2="330" y2="120" stroke="#8C6A2E" stroke-width="3"/>
+        <line x1="1270" y1="0" x2="1270" y2="120" stroke="#8C6A2E" stroke-width="3"/>
+        <path d="M280 160 C280 120 380 120 380 160 Z" fill="#C9A45C"/>
+        <path d="M1220 160 C1220 120 1320 120 1320 160 Z" fill="#C9A45C"/>
+        <ellipse cx="330" cy="162" rx="36" ry="6" fill="#FFF1C8"/>
+        <ellipse cx="1270" cy="162" rx="36" ry="6" fill="#FFF1C8"/>
+      </g>
+
+      <!-- Mathieu -->
+      <image href="assets/img/bond/mathieu-bond.webp" x="539" y="100" width="522" height="780" filter="url(#c-lumiere)"/>
+
+      <!-- Comptoir -->
+      <rect x="0" y="740" width="1600" height="160" fill="url(#c-comptoir)"/>
+      <rect x="0" y="732" width="1600" height="14" fill="#B08A45"/>
+      <rect x="0" y="746" width="1600" height="3" fill="#000" opacity=".5"/>
+
+      <!-- Martini -->
+      <g transform="translate(1210 0)">
+        <path d="M-50 600 L50 600 L0 660 Z" fill="#DDE7EE" fill-opacity=".35" stroke="#F2F5F7" stroke-width="3"/>
+        <path d="M-40 612 L40 612 L0 658 Z" fill="#EDEBD0" fill-opacity=".4"/>
+        <line x1="0" y1="660" x2="0" y2="726" stroke="#F2F5F7" stroke-width="3"/>
+        <ellipse cx="0" cy="730" rx="30" ry="5" fill="none" stroke="#F2F5F7" stroke-width="3"/>
+        <line x1="-22" y1="586" x2="12" y2="634" stroke="#B08A45" stroke-width="2.5"/>
+        <circle cx="4" cy="624" r="8" fill="#6B8E23"/>
+        <circle cx="1" cy="621" r="2.5" fill="#B3261E"/>
+      </g>
+      <!-- Shaker -->
+      <g transform="translate(1350 0)">
+        <path d="M-22 732 L-18 640 L18 640 L22 732 Z" fill="url(#c-chrome)"/>
+        <rect x="-16" y="620" width="32" height="22" rx="6" fill="url(#c-chrome)"/>
+        <rect x="-6" y="604" width="12" height="18" rx="4" fill="url(#c-chrome)"/>
+      </g>
+
+      <!-- Cartes et jetons -->
+      <g transform="translate(330 705)">
+        <g transform="rotate(-14)">
+          <rect x="-40" y="-60" width="80" height="112" rx="7" fill="#F7F4EC" stroke="#999" stroke-width="1.5"/>
+          <text x="-30" y="-34" font-family="EB Garamond, Georgia, serif" font-size="26" fill="#111">A</text>
+          <text x="0" y="16" text-anchor="middle" font-size="40" fill="#111">&#9824;</text>
+        </g>
+        <g transform="translate(46 4) rotate(8)">
+          <rect x="-40" y="-60" width="80" height="112" rx="7" fill="#F7F4EC" stroke="#999" stroke-width="1.5"/>
+          <text x="-30" y="-34" font-family="EB Garamond, Georgia, serif" font-size="26" fill="#B3261E">K</text>
+          <text x="0" y="16" text-anchor="middle" font-size="40" fill="#B3261E">&#9829;</text>
+        </g>
+      </g>
+      <g>
+        <g fill="#7A1E24" stroke="#F2ECE0" stroke-width="2" stroke-dasharray="6 5">
+          <ellipse cx="160" cy="728" rx="30" ry="8"/><ellipse cx="160" cy="720" rx="30" ry="8"/>
+          <ellipse cx="160" cy="712" rx="30" ry="8"/><ellipse cx="160" cy="704" rx="30" ry="8"/>
+        </g>
+        <g fill="#14213D" stroke="#C9A45C" stroke-width="2" stroke-dasharray="6 5">
+          <ellipse cx="220" cy="730" rx="30" ry="8"/><ellipse cx="220" cy="722" rx="30" ry="8"/>
+          <ellipse cx="220" cy="714" rx="30" ry="8"/>
+        </g>
+      </g>
+
+      <rect width="1600" height="900" fill="url(#c-vignette)"/>
+      <use href="#phoxia-symbole" x="1500" y="26" width="62" height="46"/>
+    </svg>
+    <figcaption><strong>Le bar du casino.</strong> Martini au comptoir, un as et un roi, les jetons sur la table. <a href="assets/img/bond/mathieu-bar-casino.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+</main>
+
+<footer class="pied enveloppe">
+  <p>Visuel d'hommage, sans lien avec les ayants droit de la saga. <a href="index.html">Retour à Phoxia</a></p>
+  <svg viewBox="0 0 139.03 102.15" width="48" height="35" style="margin:18px auto 0;width:48px" aria-hidden="true"><use href="#phoxia-symbole"/></svg>
+</footer>
+</body>
+</html>
