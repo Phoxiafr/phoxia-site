@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts.css">
+<style>
+  html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}
+  #stage{position:relative;width:1920px;height:1080px}
+  canvas{display:block}
+  .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#EDEAE1;opacity:0;pointer-events:none;text-align:center}
+  .kick{font-family:"Barlow Condensed";font-weight:600;font-size:26px;letter-spacing:.5em;color:#5BA3DD;margin-bottom:26px;padding-left:.5em}
+  #title-name{font-family:"Instrument Sans";font-weight:600;font-size:64px;letter-spacing:.32em;padding-left:.32em}
+  .sub{font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:40px;letter-spacing:.2em;color:#5BA3DD;margin-top:22px}
+  .sym{height:64px;margin-bottom:34px}
+  #final{justify-content:flex-end;padding-bottom:190px}
+  #final .n{font-family:"Instrument Sans";font-weight:600;font-size:44px;letter-spacing:.34em;padding-left:.34em;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+  #end{background:#05080f}
+  #end .n{font-family:"EB Garamond";font-weight:500;font-size:84px;line-height:1}
+  #end .f{font-family:"Barlow Condensed";font-weight:800;font-style:italic;font-size:56px;color:#5BA3DD;letter-spacing:.08em;margin-top:10px}
+  #end .grid{display:grid;grid-template-columns:repeat(4,300px);gap:26px 40px;margin-top:64px;text-align:left}
+  #end .p{border-top:1px solid rgba(237,234,225,.22);padding-top:14px}
+  #end .p b{display:block;font-family:"Instrument Sans";font-weight:600;font-size:30px}
+  #end .p i{font-style:normal;font-family:"Instrument Sans";font-size:17px;color:#5BA3DD}
+  #end .legal{position:absolute;bottom:160px;font-family:"Instrument Sans";font-size:15px;color:rgba(237,234,225,.45)}
+  #fadeout{position:absolute;inset:0;background:#000;opacity:0}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body><div id="stage">
+<svg style="display:none"><symbol id="px" viewBox="0 0 139.03 102.15"><path fill="#5BA3DD" d="M0 102.15h34.05L53.91 68.1H19.86z"/><path fill="#1C6BA8" d="M42.56 68.1h34.05l19.86-34.05H62.42z"/><path fill="#EDEAE1" d="M85.12 34.05h34.05L139.03 0h-34.05z"/></symbol></svg>
+<div class="ov" id="title"><svg class="sym" viewBox="0 0 139.03 102.15"><use href="#px"/></svg><div class="kick">SAISON 2027</div><div id="title-name">PHOXIA ASTON MARTIN</div><div class="sub">PX27</div></div>
+<div class="ov" id="final"><div class="n">PHOXIA ASTON MARTIN F1 TEAM</div><div class="sub">PX27</div></div>
+<div class="ov" id="end"><svg class="sym" viewBox="0 0 139.03 102.15" style="height:56px"><use href="#px"/></svg>
+  <div class="n">Phoxia Aston Martin</div><div class="f">F1 TEAM · PX27</div>
+  <div class="grid">
+    <div class="p"><b>Monster Energy</b><i>Partenaire titre</i></div><div class="p"><b>Claude</b><i>Intelligence artificielle</i></div>
+    <div class="p"><b>Apple</b><i>Technologie</i></div><div class="p"><b>Yamaha</b><i>Moteur et performance</i></div>
+    <div class="p"><b>Ducati</b><i>Ingénierie</i></div><div class="p"><b>Uniqlo</b><i>Équipementier officiel</i></div>
+    <div class="p"><b>Decathlon</b><i>Sport et préparation</i></div><div class="p"><b>Aston Martin</b><i>Constructeur</i></div>
+  </div>
+  <div class="legal">Création conceptuelle Phoxia. Marques citées à titre illustratif, sans partenariat officiel.</div></div>
+<div id="fadeout"></div>
+</div>
+<script type="module" src="main.js"></script>
+</body></html>
