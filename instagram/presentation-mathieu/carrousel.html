@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Carrousel Instagram Mathieu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --encre: #14213D; --azur: #1C6BA8; --azur-clair: #5BA3DD;
+    --sable: #EDEAE1; --blanc: #FCFBF9; --encre-doux: #4A566E;
+    --serif: "EB Garamond", Georgia, serif;
+    --sans: "Instrument Sans", -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0b1222; font-family: var(--sans); display: grid; gap: 40px; justify-content: center; padding: 40px 0; }
+
+  .slide {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: var(--encre); color: var(--sable);
+    padding: 96px 90px; display: flex; flex-direction: column;
+  }
+  .slide--sable { background: var(--sable); color: var(--encre); }
+  .slide--blanc { background: var(--blanc); color: var(--encre); }
+
+  .haut { display: flex; justify-content: space-between; align-items: center;
+    font-size: 26px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; opacity: .75; }
+  .num { font-family: var(--serif); font-size: 34px; letter-spacing: 0; text-transform: none; font-style: italic; }
+  .bas { margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-size: 24px; letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+
+  .kicker { font-size: 28px; letter-spacing: .16em; text-transform: uppercase; color: var(--azur-clair); font-weight: 600; margin-top: 70px; }
+  .slide--sable .kicker, .slide--blanc .kicker { color: var(--azur); }
+  h1, h2 { font-family: var(--serif); font-weight: 400; line-height: 1.02; letter-spacing: -.01em; }
+  h1 { font-size: 132px; }
+  h2 { font-size: 104px; margin-top: 22px; }
+  h2 em, h1 em { font-style: italic; color: var(--azur-clair); }
+  .slide--sable h2 em, .slide--blanc h2 em { color: var(--azur); }
+  .intro { font-size: 36px; line-height: 1.45; margin-top: 36px; max-width: 860px; opacity: .88; }
+
+  .liste { margin-top: 56px; display: grid; gap: 30px; }
+  .ligne { display: grid; grid-template-columns: 170px 1fr; gap: 28px; padding-top: 28px; border-top: 1.5px solid rgba(237,234,225,.22); }
+  .slide--sable .ligne, .slide--blanc .ligne { border-top-color: rgba(20,33,61,.18); }
+  .ligne b { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.1; font-style: italic; color: var(--azur-clair); }
+  .slide--sable .ligne b, .slide--blanc .ligne b { color: var(--azur); }
+  .ligne strong { display: block; font-size: 36px; font-weight: 600; line-height: 1.25; }
+  .ligne span { display: block; font-size: 29px; line-height: 1.4; opacity: .78; margin-top: 6px; }
+
+  /* 1. Couverture */
+  .couv { padding: 0; }
+  .couv img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .couv::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,33,61,.55) 0%, rgba(20,33,61,0) 28%, rgba(20,33,61,.1) 48%, rgba(20,33,61,.94) 78%, var(--encre) 100%); }
+  .couv .contenu { position: relative; z-index: 1; height: 100%; padding: 96px 90px; display: flex; flex-direction: column; }
+  .couv h1 { margin-top: auto; }
+  .couv .intro { margin-top: 26px; }
+  .couv .bas { margin-top: 56px; opacity: .8; }
+
+  /* Projets */
+  .projets { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  #s5 h2 { font-size: 92px; }
+  #s4 .liste { margin-top: 44px; gap: 22px; }
+  #s4 .ligne { padding-top: 22px; }
+  #s9 .liste { margin-top: 40px; gap: 24px; }
+  .projet { background: rgba(237,234,225,.07); border: 1.5px solid rgba(237,234,225,.18); border-radius: 26px; padding: 30px 32px; }
+  .projet img { width: 92px; height: 92px; border-radius: 20px; object-fit: cover; }
+  .projet h3 { font-family: var(--serif); font-weight: 500; font-size: 54px; margin-top: 18px; line-height: 1; }
+  .projet .tag { font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: var(--azur-clair); font-weight: 600; margin-top: 12px; }
+  .projet p { font-size: 27px; line-height: 1.4; margin-top: 14px; opacity: .82; }
+  .projet .picto { width: 92px; height: 92px; border-radius: 20px; background: var(--azur); display: grid; place-items: center; }
+
+  /* Voyages */
+  .grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 50px; }
+  .grille figure { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 3 / 3.1; }
+  .grille img { width: 100%; height: 100%; object-fit: cover; }
+  .grille figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 14px;
+    background: linear-gradient(transparent, rgba(20,33,61,.85)); color: var(--sable); font-size: 25px; font-weight: 600; }
+  .pays { font-size: 27px; line-height: 1.55; margin-top: 30px; opacity: .8; }
+
+  /* Passions */
+  .passions { display: grid; grid-template-columns: 1fr 1fr; gap: 0 50px; margin-top: 70px; }
+  .passion { padding: 44px 0 52px; border-top: 1.5px solid rgba(20,33,61,.18); }
+  .passion b { font-family: var(--serif); font-size: 72px; font-weight: 400; line-height: 1; display: block; }
+  .passion span { font-size: 31px; line-height: 1.4; display: block; margin-top: 12px; color: var(--encre-doux); }
+
+  /* Citation */
+  blockquote { font-family: var(--serif); font-style: italic; font-size: 56px; line-height: 1.15; margin-top: 44px; padding-left: 40px; border-left: 4px solid var(--azur-clair); }
+  .signature { font-size: 28px; margin-top: 26px; padding-left: 44px; opacity: .7; letter-spacing: .06em; }
+
+  /* CTA */
+  .cta h2 { font-size: 118px; }
+  .boutons { display: grid; gap: 22px; margin-top: 64px; }
+  .bouton { display: flex; justify-content: space-between; align-items: center; padding: 34px 40px; border-radius: 999px;
+    border: 2px solid rgba(237,234,225,.35); font-size: 36px; font-weight: 500; }
+  .bouton--plein { background: var(--sable); color: var(--encre); border-color: var(--sable); }
+  .bouton small { font-size: 26px; opacity: .7; font-weight: 400; }
+  .rond { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--azur-clair); }
+</style>
+</head>
+<body>
+
+<!-- 1. Couverture -->
+<section class="slide couv" id="s1">
+  <img src="../../assets/img/equipe/mathieu.jpg" alt="Mathieu Barthélémy">
+  <div class="contenu">
+    <div class="haut"><span>@phoxia.fr</span><span class="num">1 / 10</span></div>
+    <h1>Qui se cache derrière <em>Phoxia&nbsp;?</em></h1>
+    <p class="intro">Mathieu Barthélémy, fondateur. Parcours, projets, voyages et les raisons d'une aventure entrepreneuriale.</p>
+    <div class="bas"><span>Marseille</span><span>Glissez →</span></div>
+  </div>
+</section>
+
+<!-- 2. Parcours -->
+<section class="slide" id="s2">
+  <div class="haut"><span>Parcours</span><span class="num">2 / 10</span></div>
+  <p class="kicker">Trois campus, trois continents</p>
+  <h2>Un parcours <em>tourné vers le large</em></h2>
+  <div class="liste">
+    <div class="ligne"><b>Aix</b><div><strong>ESSCA School of Management</strong><span>Master in Management, spécialisation management international. Trois ans au BDE.</span></div></div>
+    <div class="ligne"><b>Québec</b><div><strong>Université Laval, Canada</strong><span>Double diplôme : MBA Gestion internationale.</span></div></div>
+    <div class="ligne"><b>Shanghai</b><div><strong>SISU, Chine</strong><span>Quatre mois à la Shanghai International Studies University.</span></div></div>
+    <div class="ligne"><b>Marseille</b><div><strong>Fondateur de Phoxia</strong><span>Agence IA, mobile en France et en Europe.</span></div></div>
+  </div>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 3. Terrain -->
+<section class="slide slide--sable" id="s3">
+  <div class="haut"><span>Parcours</span><span class="num">3 / 10</span></div>
+  <p class="kicker">Avant l'IA, le terrain</p>
+  <h2>Indépendant <em>depuis 2017</em></h2>
+  <p class="intro">50 000 € de chiffre d'affaires générés en indépendant. Une pratique construite mission après mission.</p>
+  <div class="liste">
+    <div class="ligne"><b>Maroc</b><div><strong>Vente de logiciels</strong><span>Pour des grands groupes.</span></div></div>
+    <div class="ligne"><b>Mexique</b><div><strong>Analyse de marché</strong><span>Industrie de l'acier et plan d'action complet, sur place.</span></div></div>
+    <div class="ligne"><b>Paris</b><div><strong>Start-up &amp; assurance</strong><span>Gestion commerciale d'une start-up singapourienne, mission chez AXA.</span></div></div>
+  </div>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 4. Intérêts -->
+<section class="slide" id="s4">
+  <div class="haut"><span>Intérêts dans la vie</span><span class="num">4 / 10</span></div>
+  <p class="kicker">Ce qui me fait avancer</p>
+  <h2>Comprendre, <em>relier,</em> transmettre</h2>
+  <div class="liste">
+    <div class="ligne"><b>01</b><div><strong>L'IA appliquée</strong><span>Pas l'IA gadget : celle qui fait gagner du temps et de l'argent, pour de vrai.</span></div></div>
+    <div class="ligne"><b>02</b><div><strong>Les gens et le réseau</strong><span>Rencontrer, connecter, faire grandir les autres. C'est le réseau qui m'a amené ici.</span></div></div>
+    <div class="ligne"><b>03</b><div><strong>La transmission</strong><span>Interventions à l'ESSCA, coaching des étudiants de première année.</span></div></div>
+    <div class="ligne"><b>04</b><div><strong>Les cultures</strong><span>Trois langues de travail : français, anglais, espagnol.</span></div></div>
+  </div>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 5. Projets -->
+<section class="slide" id="s5">
+  <div class="haut"><span>Les projets</span><span class="num">5 / 10</span></div>
+  <p class="kicker">Au-delà de Phoxia</p>
+  <h2>Quatre univers, <em>un même cap</em></h2>
+  <div class="projets">
+    <div class="projet"><img src="../../assets/img/univers/logos/phoxia.png" alt=""><h3>Phoxia</h3><p class="tag">Conseil</p><p>Agence IA : automatisation, agents IA, outils sur mesure.</p></div>
+    <div class="projet"><img src="../../assets/img/univers/logos/phoxy.png" alt=""><h3>Phoxy</h3><p class="tag">Musique</p><p>Le label : house, techno, afro house, rap et latino.</p></div>
+    <div class="projet"><img src="../../assets/img/univers/logos/phothes.png" alt=""><h3>Phothes</h3><p class="tag">Mode</p><p>Marque de vêtements, pensée et dessinée de A à Z.</p></div>
+    <div class="projet"><div class="picto"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#EDEAE1" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 6-6 2 2-6 6-2Z"/></svg></div><h3>Phavels</h3><p class="tag">Voyages</p><p>Le carnet de mes voyages, pays après pays.</p></div>
+  </div>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 6. Voyages -->
+<section class="slide slide--blanc" id="s6">
+  <div class="haut"><span>Les voyages</span><span class="num">6 / 10</span></div>
+  <p class="kicker">Phavels</p>
+  <h2><em>16 pays,</em> 4 continents</h2>
+  <div class="grille">
+    <figure><img src="../../assets/img/univers/pays/canada.jpg" alt=""><figcaption>Canada</figcaption></figure>
+    <figure><img src="../../assets/img/univers/pays/chine.jpg" alt=""><figcaption>Chine</figcaption></figure>
+    <figure><img src="../../assets/img/univers/pays/maroc.jpg" alt=""><figcaption>Maroc</figcaption></figure>
+    <figure><img src="../../assets/img/univers/pays/thailande.jpg" alt=""><figcaption>Thaïlande</figcaption></figure>
+    <figure><img src="../../assets/img/univers/pays/grece.jpg" alt=""><figcaption>Grèce</figcaption></figure>
+    <figure><img src="../../assets/img/univers/pays/republique-dominicaine.jpg" alt=""><figcaption>Rép. dominicaine</figcaption></figure>
+  </div>
+  <p class="pays">France · Espagne · Italie · Grèce · Portugal · Royaume&#8209;Uni · Croatie · Maroc · Canada · États-Unis · Émirats arabes unis · République dominicaine · Saint&#8209;Martin · Chine · Thaïlande · Sri Lanka</p>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 7. Passions -->
+<section class="slide slide--sable" id="s7">
+  <div class="haut"><span>Les passions</span><span class="num">7 / 10</span></div>
+  <p class="kicker">Quand je ne travaille pas</p>
+  <h2>Ce qui me <em>fait vibrer</em></h2>
+  <div class="passions">
+    <div class="passion"><b>Musique</b><span>House, techno, afro house, rap, latino. Assez pour en faire un label.</span></div>
+    <div class="passion"><b>Football</b><span>Les Battles inter-campus à Aix, puis l'équipe de l'ESSCA Shanghai.</span></div>
+    <div class="passion"><b>Mode</b><span>Dessiner ses propres pièces, de l'idée au vêtement.</span></div>
+    <div class="passion"><b>Voyage</b><span>Découvrir un pays par ses gens, pas seulement par ses monuments.</span></div>
+  </div>
+  <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 8. Pourquoi Phoxia -->
+<section class="slide" id="s8">
+  <div class="haut"><span>Pourquoi Phoxia</span><span class="num">8 / 10</span></div>
+  <p class="kicker">L'origine du nom</p>
+  <h2>De Phocée <em>à l'IA</em></h2>
+  <p class="intro">Phocée, la cité grecque fondatrice de Marseille, a toujours regardé au-delà de l'horizon pour grandir. Phoxia porte cette idée : un ancrage fort à Marseille, un regard forgé entre la France, le Québec et l'Asie.</p>
+  <div class="liste">
+    <div class="ligne"><b>Le constat</b><div><strong>L'IA reste floue pour beaucoup d'entrepreneurs</strong><span>Trop d'outils, trop de promesses, peu de résultats concrets.</span></div></div>
+    <div class="ligne"><b>La réponse</b><div><strong>Comprendre le métier avant l'outil</strong><span>Et ne jamais déployer une IA que personne ne saura faire vivre après la mission.</span></div></div>
+  </div>
+  <div class="bas"><span>Là où les idées prennent le large</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 9. Pourquoi l'entrepreneuriat -->
+<section class="slide slide--blanc" id="s9">
+  <div class="haut"><span>Pourquoi entreprendre</span><span class="num">9 / 10</span></div>
+  <p class="kicker">Le choix de l'entrepreneuriat</p>
+  <h2>Construire <em>à mon nom</em></h2>
+  <div class="liste">
+    <div class="ligne"><b>Liberté</b><div><strong>Choisir ses projets et ses clients</strong><span>Indépendant depuis 2017, je n'ai jamais voulu revenir en arrière.</span></div></div>
+    <div class="ligne"><b>Impact</b><div><strong>Voir le résultat de son travail</strong><span>Chaque mission se mesure en temps et en argent gagnés.</span></div></div>
+    <div class="ligne"><b>Équipe</b><div><strong>Faire grandir les autres</strong><span>Une équipe internationale et des étudiants ESSCA embarqués.</span></div></div>
+  </div>
+  <blockquote>« Ce qui fait vraiment la différence, c'est le réseau. »</blockquote>
+  <p class="signature">Mathieu Barthélémy</p>
+  <div class="bas" style="padding-top:30px"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
+</section>
+
+<!-- 10. CTA -->
+<section class="slide cta" id="s10">
+  <div class="haut"><span>@phoxia.fr</span><span class="num">10 / 10</span></div>
+  <img class="rond" src="../../assets/img/equipe/mathieu-rond.jpg" alt="" style="margin-top:70px">
+  <h2>On en <em>parle&nbsp;?</em></h2>
+  <p class="intro">Un projet IA, une question sur l'entrepreneuriat, ou juste envie d'échanger : trente minutes suffisent.</p>
+  <div class="boutons">
+    <div class="bouton bouton--plein">phoxia.fr <small>Réserver un créneau</small></div>
+    <div class="bouton">mathieu@phoxia.fr <small>Réponse sous 48 h</small></div>
+    <div class="bouton">Message privé <small>@phoxia.fr</small></div>
+  </div>
+  <div class="bas"><span>Là où les idées prennent le large</span><span>Marseille</span></div>
+</section>
+
+</body>
+</html>
