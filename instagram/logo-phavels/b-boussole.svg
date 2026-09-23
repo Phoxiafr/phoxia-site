@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Logo Phavels">
+  <defs>
+    <linearGradient id="n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD3FF"/><stop offset="1" stop-color="#2F8BD8"/></linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C6BA8"/><stop offset="1" stop-color="#123A66"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="240" height="240" fill="#050608"/>
+  <circle cx="120" cy="120" r="74" fill="none" stroke="#5BA3DD" stroke-width="4" opacity=".9" filter="url(#glow)"/>
+  <g stroke="#5BA3DD" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M120 38v10M120 192v10M38 120h10M192 120h10"/>
+  </g>
+  <g transform="rotate(35 120 120)" filter="url(#glow)">
+    <path d="M120 58 L138 120 L102 120 Z" fill="url(#n)"/>
+    <path d="M102 120 L138 120 L120 182 Z" fill="url(#s)"/>
+  </g>
+  <circle cx="120" cy="120" r="8" fill="#050608" stroke="#8FD3FF" stroke-width="4"/>
+</svg>
