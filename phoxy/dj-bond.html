@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DJ Bond | Phoxy Music</title>
+<meta name="description" content="DJ Bond, 007 aux platines : l'identité visuelle de Mathieu Barthélémy sous le label Phoxy Music. Carrousels, dates et photo de profil.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#060c14">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --nuit: #060c14;
+    --panneau: #0d1e2b;
+    --trait: rgba(96, 226, 255, .16);
+    --encre: #eaf6fb;
+    --encre-douce: #a9c3cf;
+    --neon: #5be8ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--encre);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: var(--neon); }
+  .enveloppe { width: min(1220px, 100% - 32px); margin-inline: auto; }
+  header { padding: 56px 0 24px; text-align: center; }
+  header .marque { width: 64px; margin: 0 auto 8px; }
+  header .mot { width: 200px; margin: 0 auto; }
+  h1 {
+    font-family: "Caveat", cursive;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 1;
+    margin: 12px 0 0;
+    color: #cff9ff;
+    text-shadow: 0 0 8px var(--neon), 0 0 28px #2fb8e0;
+  }
+  .chapeau { color: var(--encre-douce); max-width: 620px; margin: 14px auto 0; }
+  h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    margin: 64px 0 6px;
+  }
+  .note { color: var(--encre-douce); margin: 0 0 20px; }
+  .profil {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) 1fr;
+    gap: 28px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .profil img { border-radius: 50%; border: 2px solid var(--trait); box-shadow: 0 0 40px rgba(91, 232, 255, .25); }
+  @media (max-width: 640px) { .profil { grid-template-columns: 1fr; } }
+  .rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 360px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+  }
+  .rail a { scroll-snap-align: start; }
+  .rail img { border-radius: 12px; border: 1px solid var(--trait); }
+  footer { padding: 64px 0; text-align: center; color: var(--encre-douce); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header class="enveloppe">
+  <img class="marque" src="assets/img/marque/phoxy-mark-neon.png" alt="" width="204" height="292">
+  <img class="mot" src="assets/img/marque/phoxy-text-neon.png" alt="Phoxy" width="702" height="377">
+  <h1>DJ Bond · 007</h1>
+  <p class="chapeau">Mathieu Barthélémy, DJ sous le label Phoxy Music. Une identité visuelle en hommage à James Bond : smoking, lunettes noires, Aston Martin et casque intégral.</p>
+</header>
+
+<main class="enveloppe">
+  <section class="profil" aria-labelledby="titre-profil">
+    <a href="assets/img/dj-bond/photo-profil-dj-bond.jpg" download><img src="assets/img/dj-bond/photo-profil-dj-bond.jpg" alt="DJ Bond en smoking et casque intégral devant deux Aston Martin DB5" width="1080" height="1080"></a>
+    <div>
+      <h2 id="titre-profil" style="margin-top:0">Photo de profil</h2>
+      <p class="note">Smoking, nœud papillon et casque intégral, devant les DB5 immatriculées PHOXY. Format carré 1080 × 1080. <a href="assets/img/dj-bond/photo-profil-dj-bond.jpg" download>Télécharger</a></p>
+    </div>
+  </section>
+
+  <h2>Carrousel 1 · DJ Bond, mes dates</h2>
+  <p class="note">14 pages : qui je suis, pourquoi James Bond, le casque et toutes les dates. Format 1080 × 1350.</p>
+  <div class="rail" data-rail="djbond"></div>
+
+  <h2>Carrousel 2 · Mes films James Bond</h2>
+  <p class="note">20 pages : 19 films, 19 voitures, et pourquoi chacun me ressemble. Format 1080 × 1350.</p>
+  <div class="rail" data-rail="films"></div>
+</main>
+
+<footer class="enveloppe">
+  <p>Visuels d'hommage réalisés avec retouche par IA, sans lien avec les ayants droit de la saga. <a href="index.html">Retour à Phoxy</a></p>
+</footer>
+
+<script>
+  [["djbond", 14], ["films", 20]].forEach(function (c) {
+    var rail = document.querySelector('[data-rail="' + c[0] + '"]');
+    for (var i = 1; i <= c[1]; i++) {
+      var n = String(i).padStart(2, "0");
+      var src = "assets/img/dj-bond/" + c[0] + "/" + n + ".jpg";
+      var a = document.createElement("a");
+      a.href = src;
+      a.setAttribute("download", "");
+      a.innerHTML = '<img src="' + src + '" alt="Page ' + n + '" width="1080" height="1350" loading="lazy">';
+      rail.appendChild(a);
+    }
+  });
+</script>
+</body>
+</html>
