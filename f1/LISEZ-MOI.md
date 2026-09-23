@@ -21,6 +21,16 @@ Les slides 01 à 05 forment un carrousel Instagram prêt à publier.
 avec freinage et flou de bougé, trois plans détail avec les partenaires, départ, carte de fin.
 Bande son entièrement synthétisée (moteur, pulsation, impacts), donc libre de droits.
 
+## Présentation 3D (`video/phoxia-aston-martin-px27.mp4`)
+
+52 secondes, 1920×1080, 24 i/s, format cinéma (bandes noires 2,39:1), son stéréo.
+Monoplace modélisée en 3D (three.js), studio sombre avec plateau réfléchissant et barres LED,
+découpage façon lancement officiel : silhouette, gros plans balayés par la lumière, titre,
+allumage des LED, révélation, orbite, vue du dessus, travelling, trois-quarts avant et arrière,
+carte des partenaires. Bande son synthétisée (moteur, impacts, pulsation), libre de droits.
+Sources dans `presentation-3d/` ; rendu : `npm i` puis `node render.js sortie.mp4 son.wav`
+(variables `NODE_PATH_PW`, `FFMPEG`, `START`/`END` pour découper le rendu en segments).
+
 ## Livrée
 
 Couleurs de la charte Phoxia : encre `#14213D`, azur `#1C6BA8`, azur clair `#5BA3DD`, sable `#EDEAE1`, filet or `#C9B98F`. Symbole Phoxia sur le ponton, numéro 26.
