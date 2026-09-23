@@ -88,6 +88,19 @@
   #s8 h2 em { color: #E8946B; }
   #s8 .ligne b { color: #E8946B; }
 
+  .om { padding: 0; }
+  .om-photo { position: absolute; top: 0; left: 0; width: 1080px; height: 900px; object-fit: cover; object-position: center 60%; }
+  .om::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 900px;
+    background: linear-gradient(180deg, rgba(20,33,61,.55) 0%, rgba(20,33,61,0) 18%, rgba(20,33,61,0) 70%, var(--encre) 100%); }
+  .om-contenu { position: relative; z-index: 1; height: 100%; padding: 96px 90px; display: flex; flex-direction: column; }
+  .om .om-bas { margin-top: auto; }
+  .om h1 { font-size: 124px; margin-top: 14px; }
+  .om h1 em { color: #7FC4F0; }
+  .om .intro { font-size: 33px; margin-top: 22px; }
+  .om .bas { margin-top: 44px; }
+  .sticker { position: absolute; z-index: 2; top: 190px; right: 96px; width: 160px; height: 253px; border-radius: 10px;
+    background: url(img/droit-au-but.jpg) -222px -486px / 660px 880px; transform: rotate(6deg); box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+
   /* Citation */
   blockquote { font-family: var(--serif); font-style: italic; font-size: 56px; line-height: 1.15; margin-top: 44px; padding-left: 40px; border-left: 4px solid var(--azur-clair); }
   .signature { font-size: 28px; margin-top: 26px; padding-left: 44px; opacity: .7; letter-spacing: .06em; }
@@ -108,7 +121,7 @@
 <section class="slide couv" id="s1">
   <img src="../../assets/img/equipe/mathieu.jpg" alt="Mathieu Barthélémy">
   <div class="contenu">
-    <div class="haut"><span>@phoxia.fr</span><span class="num">1 / 11</span></div>
+    <div class="haut"><span>@phoxia.fr</span><span class="num">1 / 12</span></div>
     <h1>Qui se cache derrière <em>Phoxia&nbsp;?</em></h1>
     <p class="intro">Mathieu Barthélémy, fondateur. Parcours, projets, voyages et les raisons d'une aventure entrepreneuriale.</p>
     <div class="bas"><span>Marseille</span><span>Glissez →</span></div>
@@ -117,7 +130,7 @@
 
 <!-- 2. Parcours -->
 <section class="slide" id="s2">
-  <div class="haut"><span>Parcours</span><span class="num">2 / 11</span></div>
+  <div class="haut"><span>Parcours</span><span class="num">2 / 12</span></div>
   <p class="kicker">Trois campus, trois continents</p>
   <h2>Un parcours <em>tourné vers le large</em></h2>
   <div class="liste">
@@ -131,7 +144,7 @@
 
 <!-- 3. Terrain -->
 <section class="slide slide--sable" id="s3">
-  <div class="haut"><span>Parcours</span><span class="num">3 / 11</span></div>
+  <div class="haut"><span>Parcours</span><span class="num">3 / 12</span></div>
   <p class="kicker">Avant l'IA, le terrain</p>
   <h2>Indépendant <em>depuis 2017</em></h2>
   <p class="intro">50 000 € de chiffre d'affaires générés en indépendant. Une pratique construite mission après mission.</p>
@@ -145,7 +158,7 @@
 
 <!-- 4. Intérêts -->
 <section class="slide" id="s4">
-  <div class="haut"><span>Intérêts dans la vie</span><span class="num">4 / 11</span></div>
+  <div class="haut"><span>Intérêts dans la vie</span><span class="num">4 / 12</span></div>
   <p class="kicker">Ce qui me fait avancer</p>
   <h2>Comprendre, <em>relier,</em> transmettre</h2>
   <div class="liste">
@@ -159,7 +172,7 @@
 
 <!-- 5. Projets -->
 <section class="slide" id="s5">
-  <div class="haut"><span>Les projets</span><span class="num">5 / 11</span></div>
+  <div class="haut"><span>Les projets</span><span class="num">5 / 12</span></div>
   <p class="kicker">Au-delà de Phoxia</p>
   <h2>Quatre univers, <em>un même cap</em></h2>
   <div class="projets">
@@ -173,7 +186,7 @@
 
 <!-- 6. Voyages -->
 <section class="slide slide--blanc" id="s6">
-  <div class="haut"><span>Les voyages</span><span class="num">6 / 11</span></div>
+  <div class="haut"><span>Les voyages</span><span class="num">6 / 12</span></div>
   <p class="kicker">Phavels</p>
   <h2><em>16 pays,</em> 4 continents</h2>
   <div class="grille">
@@ -190,7 +203,7 @@
 
 <!-- 7. Passions -->
 <section class="slide slide--sable" id="s7">
-  <div class="haut"><span>Les passions</span><span class="num">7 / 11</span></div>
+  <div class="haut"><span>Les passions</span><span class="num">7 / 12</span></div>
   <p class="kicker">Quand je ne travaille pas</p>
   <h2>Ce qui me <em>fait vibrer</em></h2>
   <div class="passions">
@@ -204,9 +217,24 @@
   <div class="bas"><span>phoxia.fr</span><span>@phoxia.fr</span></div>
 </section>
 
+<!-- OM -->
+<section class="slide om" id="som">
+  <img class="om-photo" src="img/velodrome.jpg" alt="Le stade Vélodrome au coucher du soleil">
+  <div class="om-contenu">
+    <div class="haut"><span>Les passions</span><span class="num">8 / 12</span></div>
+    <div class="om-bas">
+      <p class="kicker" style="margin-top:0">Fan ultime de l'OM</p>
+      <h1>Droit <em>au but.</em></h1>
+      <p class="intro">L'Olympique de Marseille, c'est plus qu'un club. Au Vélodrome, sous le ciel de Marseille, match après match.</p>
+    </div>
+    <div class="bas"><span>Allez l'OM</span><span>@phoxia.fr</span></div>
+  </div>
+  <div class="sticker"></div>
+</section>
+
 <!-- 8. Rêves -->
 <section class="slide slide--rouge" id="s8">
-  <div class="haut"><span>Les rêves</span><span class="num">8 / 11</span></div>
+  <div class="haut"><span>Les rêves</span><span class="num">9 / 12</span></div>
   <p class="kicker">Dream cars, dream bikes, dream life</p>
   <h2>Rêver <em>en grand</em></h2>
   <div class="liste">
@@ -221,7 +249,7 @@
 
 <!-- 8. Pourquoi Phoxia -->
 <section class="slide" id="s9">
-  <div class="haut"><span>Pourquoi Phoxia</span><span class="num">9 / 11</span></div>
+  <div class="haut"><span>Pourquoi Phoxia</span><span class="num">10 / 12</span></div>
   <p class="kicker">L'origine du nom</p>
   <h2>De Phocée <em>à l'IA</em></h2>
   <p class="intro">Phocée, la cité grecque fondatrice de Marseille, a toujours regardé au-delà de l'horizon pour grandir. Phoxia porte cette idée : un ancrage fort à Marseille, un regard forgé entre la France, le Québec et l'Asie.</p>
@@ -234,7 +262,7 @@
 
 <!-- 9. Pourquoi l'entrepreneuriat -->
 <section class="slide slide--blanc" id="s10">
-  <div class="haut"><span>Pourquoi entreprendre</span><span class="num">10 / 11</span></div>
+  <div class="haut"><span>Pourquoi entreprendre</span><span class="num">11 / 12</span></div>
   <p class="kicker">Le choix de l'entrepreneuriat</p>
   <h2>Construire <em>à mon nom</em></h2>
   <div class="liste">
@@ -249,7 +277,7 @@
 
 <!-- 10. CTA -->
 <section class="slide cta" id="s11">
-  <div class="haut"><span>@phoxia.fr</span><span class="num">11 / 11</span></div>
+  <div class="haut"><span>@phoxia.fr</span><span class="num">12 / 12</span></div>
   <img class="rond" src="../../assets/img/equipe/mathieu-rond.jpg" alt="" style="margin-top:70px">
   <h2>On en <em>parle&nbsp;?</em></h2>
   <p class="intro">Un projet IA, une question sur l'entrepreneuriat, ou juste envie d'échanger : trente minutes suffisent.</p>
