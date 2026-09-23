@@ -5,7 +5,7 @@ Qui se cache derrière Phoxia ? 👋
 Moi, c'est Mathieu, fondateur de Phoxia, agence IA basée à Marseille.
 
 📚 Parcours
-ESSCA (Master in Management), double diplôme MBA à l'Université Laval au Québec, quatre mois à Shanghai. Trois campus, trois continents.
+ESSCA à Aix-en-Provence et Angers (Master in Management), double diplôme MBA à l'Université Laval au Québec, quatre mois à Shanghai. Quatre campus, trois continents.
 
 💼 Avant l'IA
 Indépendant depuis 2017 : vente de logiciels au Maroc, analyse de marché au Mexique, mission chez AXA, gestion commerciale d'une start-up singapourienne.
