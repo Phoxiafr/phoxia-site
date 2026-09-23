@@ -25,6 +25,9 @@ Fan ultime de l'OM 💙🤍. Musique house, techno, afro house, rap, latino. Mé
 🇮🇹 L'Italie, mon pays de cœur
 Portofino, ma ville préférée, puis les Cinque Terre, Milan, Turin et bien d'autres. Pizza, focaccia et glaces à l'italienne. Ferrari, Bugatti, Abarth, Ducati, Moto Guzzi, Vespa. Et en F1, Monza et Imola, avec la victoire de Leclerc en Italie comme plus beau souvenir de fan.
 
+🇫🇷 Français avant tout
+Supporter de l'écurie Alpine en F1, fan de Pierre Gasly, d'Isack Hadjar et de Fabio Quartararo. Une course d'endurance de huit heures vue sur place à Shanghai pendant mon échange. Et fier de soutenir les artistes, les pros et les marques made in France.
+
 🏎️ Rêver en grand
 Dream cars : Ferrari 250 GTO et Aston Martin DB5.
 Dream bikes : Ducati Panigale V4 et Yamaha R1.
@@ -43,4 +46,4 @@ Pour choisir mes projets, voir l'impact de mon travail et faire grandir une équ
 
 Là où les idées prennent le large.
 
-#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza #Italie #Portofino #CinqueTerre #Monza #Imola #Leclerc #MotoGuzzi #Vespa #Arai
+#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza #Italie #Portofino #CinqueTerre #Monza #Imola #Leclerc #MotoGuzzi #Vespa #Arai #Alpine #Gasly #Hadjar #Quartararo #MadeInFrance
