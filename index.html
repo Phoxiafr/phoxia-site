@@ -165,6 +165,7 @@
 <main id="contenu">
 
   <section class="hero">
+    <canvas class="hero__reseau" data-reseau aria-hidden="true"></canvas>
     <div class="enveloppe hero__grille">
       <div>
         <p class="etiquette">Agence IA à Marseille</p>
@@ -228,6 +229,103 @@
       </div>
     </div>
   </div>
+
+
+  <section class="section section--encre ia-demo" aria-labelledby="titre-demo">
+    <div class="enveloppe">
+      <div class="entete-section" data-apparait>
+        <div>
+          <p class="etiquette">L'IA en action</p>
+          <h2 class="display display--l" id="titre-demo">Un agent IA,<br><em>concrètement</em></h2>
+        </div>
+        <p class="texte">
+          Un agent IA lit une demande, interroge vos outils, décide de l'action utile et
+          la prépare pour validation. Choisissez un cas d'usage pour voir le déroulé type
+          d'une automatisation conçue par Phoxia.
+        </p>
+      </div>
+
+      <div class="demo" data-demo data-apparait>
+        <div class="demo__onglets" role="tablist" aria-label="Cas d'usage">
+          <button class="demo__onglet" type="button" role="tab" aria-selected="true" data-demo-onglet="prospection">
+            <span class="demo__onglet-num">01</span> Prospection
+          </button>
+          <button class="demo__onglet" type="button" role="tab" aria-selected="false" data-demo-onglet="support">
+            <span class="demo__onglet-num">02</span> Support client
+          </button>
+          <button class="demo__onglet" type="button" role="tab" aria-selected="false" data-demo-onglet="reporting">
+            <span class="demo__onglet-num">03</span> Reporting
+          </button>
+          <button class="demo__onglet" type="button" role="tab" aria-selected="false" data-demo-onglet="documents">
+            <span class="demo__onglet-num">04</span> Documents
+          </button>
+        </div>
+
+        <div class="console" role="tabpanel">
+          <div class="console__barre">
+            <span class="console__points" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="console__titre">phoxia-agent</span>
+            <span class="console__etat"><span class="console__pulse" aria-hidden="true"></span> en ligne</span>
+          </div>
+          <ol class="console__journal" data-demo-journal aria-live="polite"></ol>
+        </div>
+      </div>
+
+      <p class="demo__note" data-apparait>Exemple illustratif. Chaque agent est paramétré sur vos outils, vos règles et vos validations.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-stack">
+    <div class="enveloppe">
+      <div class="entete-section" data-apparait>
+        <div>
+          <p class="etiquette">Technologies</p>
+          <h2 class="display display--l" id="titre-stack">La pile<br>technologique</h2>
+        </div>
+        <p class="texte">
+          Phoxia n'est lié à aucun éditeur. Pour chaque projet, on retient le modèle et
+          l'outil adaptés au besoin, au budget et à vos contraintes de données, puis on les
+          connecte à ce que votre équipe utilise déjà.
+        </p>
+      </div>
+
+      <div class="stack">
+        <article class="stack__bloc" data-apparait>
+          <svg class="stack__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="1.6"/><circle cx="20" cy="5" r="1.6"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="19" r="1.6"/><path d="M5.3 6.1 9.6 10M18.7 6.1 14.4 10M5.3 17.9 9.6 14M18.7 17.9 14.4 14"/></svg>
+          <h3 class="stack__titre">Modèles de langage</h3>
+          <p class="stack__texte">Les grands modèles du marché et leurs alternatives open source, choisis selon la tâche.</p>
+          <ul class="stack__puces"><li>Claude</li><li>GPT</li><li>Mistral</li><li>Gemini</li><li>Llama</li></ul>
+        </article>
+
+        <article class="stack__bloc" data-apparait>
+          <svg class="stack__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="6" height="5" rx="1"/><rect x="15" y="4" width="6" height="5" rx="1"/><rect x="9" y="15" width="6" height="5" rx="1"/><path d="M6 9v3h12V9M12 12v3"/></svg>
+          <h3 class="stack__titre">Automatisation</h3>
+          <p class="stack__texte">Des scénarios qui relient vos applications et déclenchent l'IA au bon moment.</p>
+          <ul class="stack__puces"><li>n8n</li><li>Make</li><li>Zapier</li><li>Webhooks</li></ul>
+        </article>
+
+        <article class="stack__bloc" data-apparait>
+          <svg class="stack__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg>
+          <h3 class="stack__titre">Données &amp; connaissances</h3>
+          <p class="stack__texte">Vos documents rendus interrogeables par l'IA, sans quitter votre périmètre.</p>
+          <ul class="stack__puces"><li>RAG</li><li>Bases vectorielles</li><li>Notion</li><li>Google Workspace</li></ul>
+        </article>
+
+        <article class="stack__bloc" data-apparait>
+          <svg class="stack__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>
+          <h3 class="stack__titre">Développement</h3>
+          <p class="stack__texte">Du code sur mesure quand les outils standards atteignent leurs limites.</p>
+          <ul class="stack__puces"><li>Python</li><li>JavaScript</li><li>API REST</li><li>Chatbots</li></ul>
+        </article>
+      </div>
+
+      <div class="principes" data-apparait>
+        <p class="principe"><span class="principe__cle">Données</span> Hébergement européen privilégié et conformité RGPD dès la conception.</p>
+        <p class="principe"><span class="principe__cle">Contrôle</span> Un humain valide chaque action sensible avant son exécution.</p>
+        <p class="principe"><span class="principe__cle">Autonomie</span> Documentation et formation pour que vos équipes gardent la main.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="enveloppe">

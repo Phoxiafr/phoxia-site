@@ -204,6 +204,232 @@
   }
 
   /* ----------------------------------------------------------
+     Réseau de neurones animé derrière le hero
+     ---------------------------------------------------------- */
+  var toile = document.querySelector('[data-reseau]');
+
+  if (toile && toile.getContext) {
+    var ctx = toile.getContext('2d');
+    var mouvementReduitReseau = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var noeuds = [];
+    var largeurToile = 0;
+    var hauteurToile = 0;
+    var impulsions = [];
+    var visibleReseau = true;
+    var DISTANCE = 150;
+
+    var dimensionner = function () {
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      largeurToile = toile.offsetWidth;
+      hauteurToile = toile.offsetHeight;
+      toile.width = largeurToile * ratio;
+      toile.height = hauteurToile * ratio;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      var total = Math.round(Math.min(70, Math.max(24, largeurToile * hauteurToile / 16000)));
+      noeuds = [];
+      for (var i = 0; i < total; i++) {
+        noeuds.push({
+          x: Math.random() * largeurToile,
+          y: Math.random() * hauteurToile,
+          vx: (Math.random() - .5) * .25,
+          vy: (Math.random() - .5) * .25,
+          r: Math.random() * 1.6 + 1
+        });
+      }
+      impulsions = [];
+    };
+
+    var dessiner = function () {
+      ctx.clearRect(0, 0, largeurToile, hauteurToile);
+      var i, j, a, b, dx, dy, d;
+
+      for (i = 0; i < noeuds.length; i++) {
+        a = noeuds[i];
+        for (j = i + 1; j < noeuds.length; j++) {
+          b = noeuds[j];
+          dx = a.x - b.x; dy = a.y - b.y;
+          d = Math.sqrt(dx * dx + dy * dy);
+          if (d < DISTANCE) {
+            ctx.strokeStyle = 'rgba(28, 107, 168, ' + (0.4 * (1 - d / DISTANCE)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+
+      // Impulsions qui parcourent les connexions, comme un signal
+      impulsions.forEach(function (p) {
+        var x = p.a.x + (p.b.x - p.a.x) * p.t;
+        var y = p.a.y + (p.b.y - p.a.y) * p.t;
+        ctx.fillStyle = 'rgba(91, 163, 221, .95)';
+        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
+      });
+
+      for (i = 0; i < noeuds.length; i++) {
+        a = noeuds[i];
+        ctx.fillStyle = 'rgba(20, 33, 61, .6)';
+        ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+      }
+    };
+
+    var lancerImpulsion = function () {
+      var a = noeuds[Math.floor(Math.random() * noeuds.length)];
+      var voisins = noeuds.filter(function (n) {
+        var dx = n.x - a.x, dy = n.y - a.y;
+        return n !== a && dx * dx + dy * dy < DISTANCE * DISTANCE;
+      });
+      if (voisins.length) {
+        impulsions.push({ a: a, b: voisins[Math.floor(Math.random() * voisins.length)], t: 0 });
+      }
+    };
+
+    var animer = function () {
+      if (!visibleReseau) return;
+      noeuds.forEach(function (n) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > largeurToile) n.vx *= -1;
+        if (n.y < 0 || n.y > hauteurToile) n.vy *= -1;
+      });
+      if (impulsions.length < 6 && Math.random() < .05) lancerImpulsion();
+      impulsions = impulsions.filter(function (p) { p.t += .018; return p.t < 1; });
+      dessiner();
+      window.requestAnimationFrame(animer);
+    };
+
+    dimensionner();
+    dessiner();
+
+    var minuteurRedim;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(minuteurRedim);
+      minuteurRedim = window.setTimeout(function () { dimensionner(); dessiner(); }, 200);
+    });
+
+    if (!mouvementReduitReseau) {
+      // L'animation s'arrête quand le hero sort de l'écran, pour ménager la batterie.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entrees) {
+          var etaitVisible = visibleReseau;
+          visibleReseau = entrees[0].isIntersecting;
+          if (visibleReseau && !etaitVisible) window.requestAnimationFrame(animer);
+        }).observe(toile);
+      }
+      window.requestAnimationFrame(animer);
+    }
+  }
+
+  /* ----------------------------------------------------------
+     Démonstration d'agent IA
+     ---------------------------------------------------------- */
+  var demo = document.querySelector('[data-demo]');
+
+  if (demo) {
+    var journal = demo.querySelector('[data-demo-journal]');
+    var onglets = Array.prototype.slice.call(demo.querySelectorAll('[data-demo-onglet]'));
+    var mouvementReduitDemo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var minuteursDemo = [];
+    var demoLancee = false;
+
+    var scenarios = {
+      prospection: [
+        ['entree', 'Nouveau formulaire : <strong>Clara M.</strong>, directrice d’une agence immobilière, 12 salariés'],
+        ['pensee', 'Secteur et taille compatibles. Je vérifie l’historique avant de répondre.'],
+        ['outil', 'crm.rechercher("agence immobilière Clara M.") → aucun contact existant'],
+        ['outil', 'web.analyser(site de l’agence) → 12 biens en ligne, pas de réponse automatique'],
+        ['pensee', 'Besoin probable : qualification des demandes de visite. Score : 82 / 100.'],
+        ['action', 'Fiche créée dans le CRM, e-mail personnalisé rédigé et placé en attente de validation.'],
+        ['action', 'Relance planifiée à J+3 si pas de réponse.']
+      ],
+      support: [
+        ['entree', 'Message client : « Ma commande #4821 n’est toujours pas arrivée. »'],
+        ['outil', 'commandes.statut(4821) → expédiée le 18/09, colis bloqué au dépôt'],
+        ['outil', 'base_connaissances.chercher("colis bloqué") → procédure transporteur trouvée'],
+        ['pensee', 'Cas connu, pas d’escalade nécessaire. Ton : rassurant et précis.'],
+        ['action', 'Réponse rédigée avec le lien de suivi et un délai estimé de 48 h.'],
+        ['action', 'Ticket étiqueté « livraison », signalement envoyé au transporteur.']
+      ],
+      reporting: [
+        ['entree', 'Lundi 8 h 00 : rapport hebdomadaire demandé par la direction'],
+        ['outil', 'ventes.exporter(semaine 38) → 146 lignes'],
+        ['outil', 'marketing.campagnes() → 3 campagnes actives, coût total 1 240 €'],
+        ['pensee', 'Chiffre d’affaires +9 % sur la semaine, porté par la campagne de rentrée.'],
+        ['pensee', 'Point d’attention : taux de conversion mobile en baisse de 2 points.'],
+        ['action', 'Synthèse d’une page générée avec 3 graphiques et 2 recommandations.'],
+        ['action', 'Rapport envoyé à la direction et archivé dans le drive partagé.']
+      ],
+      documents: [
+        ['entree', '37 factures fournisseurs reçues par e-mail (PDF, scans, photos)'],
+        ['outil', 'vision.extraire(37 fichiers) → fournisseur, montant, TVA, échéance'],
+        ['pensee', '35 factures conformes. 2 anomalies : un doublon et un montant incohérent.'],
+        ['outil', 'comptabilite.rapprocher(35) → 35 écritures proposées'],
+        ['action', 'Écritures préparées pour validation par le comptable.'],
+        ['action', '2 anomalies signalées avec le détail de l’écart. Temps gagné estimé : 3 h.']
+      ]
+    };
+
+    var libelles = { entree: 'Entrée', pensee: 'Analyse', outil: 'Outil', action: 'Action' };
+
+    var viderMinuteurs = function () {
+      minuteursDemo.forEach(window.clearTimeout);
+      minuteursDemo = [];
+    };
+
+    var ajouterLigne = function (etape) {
+      var curseur = journal.querySelector('.console__curseur');
+      if (curseur) curseur.parentNode.removeChild(curseur);
+      var li = document.createElement('li');
+      li.className = 'ligne-ia ligne-ia--' + etape[0];
+      li.innerHTML = '<span class="ligne-ia__type">' + libelles[etape[0]] + '</span>' +
+        '<span class="ligne-ia__texte">' + etape[1] + '</span>';
+      journal.appendChild(li);
+    };
+
+    var ajouterCurseur = function () {
+      var li = document.createElement('li');
+      li.className = 'ligne-ia';
+      li.innerHTML = '<span></span><span><span class="console__curseur"></span></span>';
+      journal.appendChild(li);
+    };
+
+    var jouer = function (cle) {
+      viderMinuteurs();
+      journal.innerHTML = '';
+      var etapes = scenarios[cle];
+      if (mouvementReduitDemo) {
+        etapes.forEach(ajouterLigne);
+        return;
+      }
+      ajouterCurseur();
+      etapes.forEach(function (etape, i) {
+        minuteursDemo.push(window.setTimeout(function () {
+          ajouterLigne(etape);
+          if (i < etapes.length - 1) ajouterCurseur();
+        }, 500 + i * 1100));
+      });
+    };
+
+    var activer = function (onglet) {
+      onglets.forEach(function (o) { o.setAttribute('aria-selected', o === onglet ? 'true' : 'false'); });
+      jouer(onglet.getAttribute('data-demo-onglet'));
+    };
+
+    onglets.forEach(function (onglet) {
+      onglet.addEventListener('click', function () { demoLancee = true; activer(onglet); });
+    });
+
+    // Le premier scénario démarre quand la console arrive à l'écran.
+    if ('IntersectionObserver' in window && !mouvementReduitDemo) {
+      new IntersectionObserver(function (entrees, obs) {
+        if (!entrees[0].isIntersecting) return;
+        obs.disconnect();
+        if (!demoLancee) activer(onglets[0]);
+      }, { threshold: .3 }).observe(demo);
+    } else {
+      activer(onglets[0]);
+    }
+  }
+
+  /* ----------------------------------------------------------
      Année courante dans le pied de page
      ---------------------------------------------------------- */
   Array.prototype.forEach.call(
