@@ -73,7 +73,8 @@
     overflow: hidden;
     box-shadow: 0 40px 120px rgba(0,0,0,.6);
   }
-  .scene svg { width: 100%; }
+  .scene svg, .scene img { width: 100%; }
+  .scene.portrait { max-width: 520px; }
 
   .scene + .scene { margin-top: 48px; }
   .scene figcaption {
@@ -121,6 +122,16 @@
 </header>
 
 <main class="enveloppe">
+  <figure class="scene">
+    <img src="assets/img/bond/mathieu-db5-photo.jpg" alt="Mathieu Barthélémy en smoking noir, nœud papillon et lunettes de soleil, debout devant deux coupés argent des années 60 immatriculés PHOXIA" width="2048" height="1152">
+    <figcaption><strong>La photo.</strong> Smoking noir, nœud papillon, lunettes teintées et les coupés argent immatriculés Phoxia. <a href="assets/img/bond/mathieu-db5-photo.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
+  <figure class="scene portrait">
+    <img src="assets/img/bond/mathieu-bond-portrait.jpg" alt="Portrait de Mathieu Barthélémy en smoking noir et lunettes de soleil" width="800" height="1000">
+    <figcaption><strong>Le portrait.</strong> <a href="assets/img/bond/mathieu-bond-portrait.jpg" download>Télécharger l'image</a></figcaption>
+  </figure>
+
   <figure class="scene">
     <svg viewBox="0 0 1600 900" role="img" aria-labelledby="scene0-titre">
       <title id="scene0-titre">Mathieu Barthélémy, fondateur de Phoxia, en smoking et lunettes noires, debout devant un coupé grand tourisme argent des années 60 dans un studio éclairé, logo Phoxia.</title>
@@ -191,7 +202,7 @@
       <text x="62" y="124" fill="#C9A45C" font-family="Instrument Sans, sans-serif" font-size="15" letter-spacing="5">FONDATEUR DE PHOXIA</text>
       <use href="#phoxia-symbole" x="1466" y="806" width="80" height="59"/>
     </svg>
-    <figcaption><strong>Le portrait.</strong> Devant le coupé argent, sous l'enseigne Phoxia. <a href="assets/img/bond/mathieu-db5-studio.jpg" download>Télécharger l'image</a></figcaption>
+    <figcaption><strong>L'illustration.</strong> Devant le coupé argent, sous l'enseigne Phoxia. <a href="assets/img/bond/mathieu-db5-studio.jpg" download>Télécharger l'image</a></figcaption>
   </figure>
 
   <figure class="scene">
