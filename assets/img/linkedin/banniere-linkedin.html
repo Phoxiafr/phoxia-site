@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bannière LinkedIn Phoxia Phoxy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --encre:#14213D; --azur:#1C6BA8; --azur-clair:#5BA3DD; --sable:#EDEAE1;
+    --nuit:#060c14; --neon:#5be8ff; --neon-clair:#a4f4ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1584px;height:396px;overflow:hidden;background:var(--encre)}
+  .b{position:relative;width:1584px;height:396px;overflow:hidden;
+     background:linear-gradient(100deg,#14213D 0%,#14213D 38%,#0f1c31 55%,#0a1522 72%,#060c14 100%);}
+  /* photo Phoxy en fond, côté droit, fondue */
+  .photo{position:absolute;right:0;top:0;width:620px;height:396px;
+     background:url(../../../phoxy/assets/img/hero-phoxy.png) center 0%/cover no-repeat;
+     opacity:.55;
+     -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.6) 35%,#000 70%);
+             mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.6) 35%,#000 70%);}
+  .halo{position:absolute;right:170px;top:40px;width:520px;height:320px;border-radius:50%;
+     background:radial-gradient(closest-side,rgba(91,232,255,.20),transparent);filter:blur(10px)}
+  /* diagonales du symbole Phoxia qui traversent */
+  .diag{position:absolute;top:-40px;height:480px;width:2px;transform:skewX(-30deg);transform-origin:bottom}
+  /* ondes : les barres du symbole deviennent une onde sonore */
+  .onde{position:absolute;left:820px;right:0;top:0;bottom:0;display:flex;align-items:center;gap:9px;padding-left:10px}
+  .onde i{display:block;width:5px;border-radius:4px;background:linear-gradient(180deg,var(--neon-clair),var(--neon));
+     box-shadow:0 0 8px rgba(91,232,255,.8),0 0 18px rgba(91,232,255,.35)}
+  .filet-bas{position:absolute;left:0;right:0;bottom:0;height:8px;
+     background:linear-gradient(90deg,var(--azur) 0%,var(--azur) 40%,var(--azur-clair) 60%,var(--neon) 100%);
+     box-shadow:0 0 14px rgba(91,232,255,.5)}
+
+  /* bloc Phoxia */
+  .phoxia{position:absolute;left:520px;top:62px;color:#fff}
+  .logo{display:flex;align-items:flex-end;gap:18px}
+  .mot{font-family:"EB Garamond",serif;font-style:italic;font-size:92px;line-height:.9;letter-spacing:-.5px}
+  .mot em{color:var(--azur-clair);font-style:italic}
+  .sym{width:92px;margin-bottom:10px}
+  .baseline{margin-top:26px;font-family:"EB Garamond",serif;font-style:italic;font-size:31px;color:var(--sable)}
+  .trait{margin:20px 0 16px;width:110px;height:1.5px;background:linear-gradient(90deg,var(--azur-clair),var(--neon))}
+  .metiers{font-family:"Instrument Sans",sans-serif;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:#b7c3d9}
+  .metiers b{font-weight:500;color:#fff}
+  .metiers .n{color:var(--neon);font-weight:600;text-shadow:0 0 10px rgba(91,232,255,.6)}
+  .villes{margin-top:10px;font-family:"Instrument Sans",sans-serif;font-size:13px;letter-spacing:4px;color:#7d8fae}
+
+  /* bloc Phoxy */
+  .x{position:absolute;left:1098px;top:108px;font-family:"Space Grotesk",sans-serif;font-size:44px;font-weight:500;
+     color:rgba(234,246,251,.55)}
+  .phoxy{position:absolute;left:1150px;top:66px;width:330px;text-align:center}
+  .phoxy .txt{width:300px;filter:drop-shadow(0 0 12px rgba(91,232,255,.55))}
+  .phoxy .mark{width:40px;margin-top:4px;filter:drop-shadow(0 0 10px rgba(91,232,255,.7))}
+  .phoxy .label{margin-top:10px;font-family:"Space Grotesk",sans-serif;font-size:14px;letter-spacing:4px;
+     text-transform:uppercase;color:var(--neon-clair);text-shadow:0 0 10px rgba(91,232,255,.55)}
+</style>
+</head>
+<body>
+<div class="b">
+  <div class="photo"></div>
+  <div class="halo"></div>
+
+  <div class="diag" style="left:120px;background:rgba(91,163,221,.10)"></div>
+  <div class="diag" style="left:160px;background:rgba(91,163,221,.06)"></div>
+  <div class="diag" style="left:1020px;background:linear-gradient(180deg,transparent,rgba(91,232,255,.25),transparent)"></div>
+
+  
+
+  <div class="phoxia">
+    <div class="logo">
+      <div class="mot">Pho<em>x</em>ia</div>
+      <svg class="sym" viewBox="0 0 139.03 102.15" aria-hidden="true">
+        <path fill="#5BA3DD" d="M0 102.15h34.05L53.91 68.1H19.86z"/>
+        <path fill="#FCFBF9" d="M42.56 68.1h34.05l19.86-34.05H62.42z"/>
+        <path fill="#5be8ff" style="filter:drop-shadow(0 0 6px rgba(91,232,255,.9))" d="M85.12 34.05h34.05L139.03 0h-34.05z"/>
+      </svg>
+    </div>
+    <p class="baseline">Là où les idées prennent le large.</p>
+    <div class="trait"></div>
+    <p class="metiers"><b>Conseil en développement commercial</b> &nbsp;·&nbsp; <span class="n">Label musical</span></p>
+    <p class="villes">MARSEILLE · LYON · PARIS · MONTRÉAL</p>
+  </div>
+
+  <div class="x">×</div>
+  <div class="phoxy">
+    <img class="txt" src="../../../phoxy/assets/img/marque/phoxy-text-neon.png" alt="Phoxy">
+    <div><img class="mark" src="../../../phoxy/assets/img/marque/phoxy-mark-neon.png" alt=""></div>
+    <p class="label">Phoxy Music</p>
+  </div>
+
+  <div class="filet-bas"></div>
+</div>
+</body>
+</html>
