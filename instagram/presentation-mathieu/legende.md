@@ -14,7 +14,7 @@ Indépendant depuis 2017 : vente de logiciels au Maroc, analyse de marché au Me
 L'IA appliquée (celle qui fait vraiment gagner du temps), les gens, le réseau, et la transmission auprès des étudiants de l'ESSCA. Et l'assurance : fils d'assureur, j'adore ça. Pour moi, c'est ultra important : bien être assuré, c'est vivre sans souci.
 
 🚀 Mes projets
-Phoxia (conseil IA), Phoxy (label musical), Phothes (mode), Phavels (carnet de voyages).
+Phoxia (conseil IA), Phoxy (label musical), Phothes (mode), Phavels (agence de voyage, @phavels.fr).
 
 🌍 Voyages
 16 pays, 4 continents. Du Canada au Sri Lanka, en passant par le Maroc et la Thaïlande.
