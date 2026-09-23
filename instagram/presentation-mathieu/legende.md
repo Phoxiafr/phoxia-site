@@ -20,7 +20,15 @@ Phoxia (conseil IA), Phoxy (label musical), Phothes (mode), Phavels (carnet de v
 16 pays, 4 continents. Du Canada au Sri Lanka, en passant par le Maroc et la Thaïlande.
 
 🎧 Passions
-Musique house, techno, afro house, rap, latino. Football. Mode. Voyage.
+Fan ultime de l'OM 💙🤍. Musique house, techno, afro house, rap, latino. Mécanique. Football. Mode. Voyage.
+
+🏎️ Rêver en grand
+Dream cars : Ferrari 250 GTO et Aston Martin DB5.
+Dream bikes : Ducati Panigale V4 et Yamaha R1.
+Le rêve ultime : piloter une F1.
+Et un jour, mixer comme DJ international à Ibiza.
+
+🕊️ Objectif de vie : la liberté.
 
 ⚓ Pourquoi Phoxia ?
 Phocée, la cité grecque fondatrice de Marseille, a toujours regardé au-delà de l'horizon. Phoxia porte cette idée : un ancrage marseillais, un regard international, et une IA qui sert le métier avant l'outil.
@@ -32,4 +40,4 @@ Pour choisir mes projets, voir l'impact de mon travail et faire grandir une équ
 
 Là où les idées prennent le large.
 
-#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille
+#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza
