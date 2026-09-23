@@ -29,7 +29,7 @@ function wheel(cx, cy, r, id) {
   }
   const arcR = r * 0.83;
   return `
-  <g>
+  <g class="roue" data-cx="${cx}" data-cy="${cy}" data-r="${r}">
     <circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#tyre)"/>
     <circle cx="${cx}" cy="${cy}" r="${r - 3}" fill="none" stroke="#2a2c31" stroke-width="3"/>
     <path id="${id}-arc" d="M ${cx - arcR} ${cy} A ${arcR} ${arcR} 0 0 1 ${cx + arcR} ${cy}" fill="none"/>
@@ -221,7 +221,7 @@ const defs = `
     <stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
   </linearGradient>
   <filter id="grain" x="0" y="0" width="100%" height="100%">
-    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/>
+    <feTurbulence id="grainNoise" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/>
     <feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .07 0"/>
     <feComposite in2="SourceGraphic" operator="in"/>
   </filter>
@@ -301,11 +301,11 @@ function scene() {
   <rect x="0" y="${HORIZON}" width="${W}" height="${H - HORIZON}" fill="url(#floor)"/>
   ${floorTiles()}
   <!-- ombre + reflet -->
-  <ellipse cx="${CAR_X + 690 * CAR_S}" cy="${GROUND + 6}" rx="${760 * CAR_S}" ry="46" fill="url(#shadow)" filter="url(#blur6)"/>
+  <g id="carRig"><ellipse cx="${CAR_X + 690 * CAR_S}" cy="${GROUND + 6}" rx="${760 * CAR_S}" ry="46" fill="url(#shadow)" filter="url(#blur6)"/>
   <g transform="translate(${CAR_X} ${GROUND + 470 * CAR_S}) scale(${CAR_S} ${-CAR_S * 0.9}) translate(0 -470)" opacity=".13" filter="url(#blur6)"><use href="#car"/></g>
-  <g transform="translate(${CAR_X} ${CAR_Y}) scale(${CAR_S})">${car()}</g>
+  <g id="carBody" transform="translate(${CAR_X} ${CAR_Y}) scale(${CAR_S})">${car()}</g></g>
   <rect width="${W}" height="${H}" fill="url(#vignette)"/>
-  <rect width="${W}" height="${H}" filter="url(#grain)"/>`;
+  <rect id="grainLayer" width="${W}" height="${H}" filter="url(#grain)"/>`;
 }
 
 function sceneSVG(vb, w, h) {
@@ -354,7 +354,8 @@ const slides = [
   ['06-bandeau-16x9', '0 1020 1600 900', 1920, 1080],
 ];
 
-(async () => {
+module.exports = { C, defs, scene, symbole, sceneSVG, CAR_X, CAR_S, CAR_Y, GROUND };
+if (require.main === module) (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch();
   const page = await browser.newPage({ deviceScaleFactor: 2 });
