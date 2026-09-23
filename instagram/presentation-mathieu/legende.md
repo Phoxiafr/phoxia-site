@@ -11,7 +11,7 @@ ESSCA à Aix-en-Provence et Angers (Master in Management), double diplôme MBA �
 Indépendant depuis 2017 : vente de logiciels au Maroc, analyse de marché au Mexique, mission chez AXA, gestion commerciale d'une start-up singapourienne.
 
 🎯 Ce qui me fait avancer
-L'IA appliquée (celle qui fait vraiment gagner du temps), les gens, le réseau, et la transmission auprès des étudiants de l'ESSCA.
+L'IA appliquée (celle qui fait vraiment gagner du temps), les gens, le réseau, et la transmission auprès des étudiants de l'ESSCA. Et l'assurance : fils d'assureur, j'adore ça. Pour moi, c'est ultra important : bien être assuré, c'est vivre sans souci.
 
 🚀 Mes projets
 Phoxia (conseil IA), Phoxy (label musical), Phothes (mode), Phavels (carnet de voyages).
@@ -49,4 +49,4 @@ Pour choisir mes projets, voir l'impact de mon travail et faire grandir une équ
 
 Là où les idées prennent le large.
 
-#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza #Italie #Portofino #CinqueTerre #Monza #Imola #Leclerc #MotoGuzzi #Vespa #Arai #Alpine #Gasly #Hadjar #Quartararo #MadeInFrance #Tennis #Wimbledon #RolandGarros #ShanghaiMasters
+#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza #Italie #Portofino #CinqueTerre #Monza #Imola #Leclerc #MotoGuzzi #Vespa #Arai #Alpine #Gasly #Hadjar #Quartararo #MadeInFrance #Assurance #Tennis #Wimbledon #RolandGarros #ShanghaiMasters
