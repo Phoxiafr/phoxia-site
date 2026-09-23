@@ -20,7 +20,10 @@ Phoxia (conseil IA), Phoxy (label musical), Phothes (mode), Phavels (carnet de v
 16 pays, 4 continents. Du Canada au Sri Lanka, en passant par le Maroc et la Thaïlande.
 
 🎧 Passions
-Fan ultime de l'OM 💙🤍. Musique house, techno, afro house, rap, latino. Mécanique. Football. Mode. Voyage.
+Fan ultime de l'OM 💙🤍. Musique house, techno, afro house, rap, latino. Mécanique : fan de Yamaha, Ducati, Moto Guzzi, Vespa et des casques Arai. Football. Mode. Voyage.
+
+🇮🇹 L'Italie, mon pays de cœur
+Portofino, ma ville préférée, puis les Cinque Terre, Milan, Turin et bien d'autres. Pizza, focaccia et glaces à l'italienne. Ferrari, Bugatti, Abarth, Ducati, Moto Guzzi, Vespa. Et en F1, Monza et Imola, avec la victoire de Leclerc en Italie comme plus beau souvenir de fan.
 
 🏎️ Rêver en grand
 Dream cars : Ferrari 250 GTO et Aston Martin DB5.
@@ -40,4 +43,4 @@ Pour choisir mes projets, voir l'impact de mon travail et faire grandir une équ
 
 Là où les idées prennent le large.
 
-#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza
+#Phoxia #AgenceIA #IntelligenceArtificielle #Entrepreneuriat #Entrepreneur #Marseille #StartupFrance #ESSCA #UniversiteLaval #Fondateur #IA #Automatisation #Voyage #Freelance #MadeInMarseille #OM #TeamOM #Ferrari #AstonMartin #Ducati #YamahaR1 #F1 #Ibiza #Italie #Portofino #CinqueTerre #Monza #Imola #Leclerc #MotoGuzzi #Vespa #Arai

@@ -101,6 +101,23 @@
   .sticker { position: absolute; z-index: 2; top: 190px; right: 96px; width: 160px; height: 253px; border-radius: 10px;
     background: url(img/droit-au-but.jpg) -222px -486px / 660px 880px; transform: rotate(6deg); box-shadow: 0 18px 40px rgba(0,0,0,.5); }
 
+  .ita { padding: 0; background: var(--blanc); color: var(--encre); }
+  .ita-photo { position: absolute; top: 0; left: 0; width: 1080px; height: 520px; object-fit: cover; object-position: center 45%; }
+  .ita::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 520px;
+    background: linear-gradient(180deg, rgba(20,33,61,.7) 0%, rgba(20,33,61,0) 32%, rgba(252,251,249,0) 70%, var(--blanc) 100%); }
+  .ita-contenu { position: relative; z-index: 1; height: 100%; padding: 96px 90px; display: flex; flex-direction: column; }
+  .ita .haut { color: var(--blanc); opacity: .95; }
+  .ita-bas { margin-top: auto; }
+  .drapeau { display: flex; width: 120px; height: 10px; border-radius: 5px; overflow: hidden; }
+  .drapeau i { flex: 1; } .drapeau i:nth-child(1) { background: #009246; } .drapeau i:nth-child(2) { background: #F1F2F1; } .drapeau i:nth-child(3) { background: #CE2B37; }
+  .ita h2 { font-size: 88px; margin-top: 24px; }
+  .ita h2 em { color: #CE2B37; }
+  .ita-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; margin-top: 30px; }
+  .ita-grille div { padding: 22px 0 24px; border-top: 1.5px solid rgba(20,33,61,.18); }
+  .ita-grille b { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 46px; color: #009246; display: block; line-height: 1.05; }
+  .ita-grille span { font-size: 26px; line-height: 1.4; display: block; margin-top: 8px; color: var(--encre-doux); }
+  .ita .bas { margin-top: 26px; }
+
   /* Citation */
   blockquote { font-family: var(--serif); font-style: italic; font-size: 56px; line-height: 1.15; margin-top: 44px; padding-left: 40px; border-left: 4px solid var(--azur-clair); }
   .signature { font-size: 28px; margin-top: 26px; padding-left: 44px; opacity: .7; letter-spacing: .06em; }
@@ -121,7 +138,7 @@
 <section class="slide couv" id="s1">
   <img src="../../assets/img/equipe/mathieu.jpg" alt="Mathieu Barthélémy">
   <div class="contenu">
-    <div class="haut"><span>@phoxia.fr</span><span class="num">1 / 12</span></div>
+    <div class="haut"><span>@phoxia.fr</span><span class="num">1 / 13</span></div>
     <h1>Qui se cache derrière <em>Phoxia&nbsp;?</em></h1>
     <p class="intro">Mathieu Barthélémy, fondateur. Parcours, projets, voyages et les raisons d'une aventure entrepreneuriale.</p>
     <div class="bas"><span>Marseille</span><span>Glissez →</span></div>
@@ -130,7 +147,7 @@
 
 <!-- 2. Parcours -->
 <section class="slide" id="s2">
-  <div class="haut"><span>Parcours</span><span class="num">2 / 12</span></div>
+  <div class="haut"><span>Parcours</span><span class="num">2 / 13</span></div>
   <p class="kicker">Trois campus, trois continents</p>
   <h2>Un parcours <em>tourné vers le large</em></h2>
   <div class="liste">
@@ -144,7 +161,7 @@
 
 <!-- 3. Terrain -->
 <section class="slide slide--sable" id="s3">
-  <div class="haut"><span>Parcours</span><span class="num">3 / 12</span></div>
+  <div class="haut"><span>Parcours</span><span class="num">3 / 13</span></div>
   <p class="kicker">Avant l'IA, le terrain</p>
   <h2>Indépendant <em>depuis 2017</em></h2>
   <p class="intro">50 000 € de chiffre d'affaires générés en indépendant. Une pratique construite mission après mission.</p>
@@ -158,7 +175,7 @@
 
 <!-- 4. Intérêts -->
 <section class="slide" id="s4">
-  <div class="haut"><span>Intérêts dans la vie</span><span class="num">4 / 12</span></div>
+  <div class="haut"><span>Intérêts dans la vie</span><span class="num">4 / 13</span></div>
   <p class="kicker">Ce qui me fait avancer</p>
   <h2>Comprendre, <em>relier,</em> transmettre</h2>
   <div class="liste">
@@ -172,7 +189,7 @@
 
 <!-- 5. Projets -->
 <section class="slide" id="s5">
-  <div class="haut"><span>Les projets</span><span class="num">5 / 12</span></div>
+  <div class="haut"><span>Les projets</span><span class="num">5 / 13</span></div>
   <p class="kicker">Au-delà de Phoxia</p>
   <h2>Quatre univers, <em>un même cap</em></h2>
   <div class="projets">
@@ -186,7 +203,7 @@
 
 <!-- 6. Voyages -->
 <section class="slide slide--blanc" id="s6">
-  <div class="haut"><span>Les voyages</span><span class="num">6 / 12</span></div>
+  <div class="haut"><span>Les voyages</span><span class="num">6 / 13</span></div>
   <p class="kicker">Phavels</p>
   <h2><em>16 pays,</em> 4 continents</h2>
   <div class="grille">
@@ -203,13 +220,13 @@
 
 <!-- 7. Passions -->
 <section class="slide slide--sable" id="s7">
-  <div class="haut"><span>Les passions</span><span class="num">7 / 12</span></div>
+  <div class="haut"><span>Les passions</span><span class="num">7 / 13</span></div>
   <p class="kicker">Quand je ne travaille pas</p>
   <h2>Ce qui me <em>fait vibrer</em></h2>
   <div class="passions">
     <div class="passion"><b>L'OM</b><span>Fan ultime de l'Olympique de Marseille. Le Vélodrome, c'est sacré.</span></div>
     <div class="passion"><b>Musique</b><span>House, techno, afro house, rap, latino. Assez pour en faire un label.</span></div>
-    <div class="passion"><b>Mécanique</b><span>Voitures de légende et sportives italiennes et japonaises.</span></div>
+    <div class="passion"><b>Mécanique</b><span>Fan de Yamaha, Ducati, Moto Guzzi, Vespa et des casques Arai.</span></div>
     <div class="passion"><b>Football</b><span>Les Battles inter-campus à Aix, puis l'équipe de l'ESSCA Shanghai.</span></div>
     <div class="passion"><b>Mode</b><span>Dessiner ses propres pièces, de l'idée au vêtement.</span></div>
     <div class="passion"><b>Voyage</b><span>Découvrir un pays par ses gens, pas seulement par ses monuments.</span></div>
@@ -221,7 +238,7 @@
 <section class="slide om" id="som">
   <img class="om-photo" src="img/velodrome.jpg" alt="Le stade Vélodrome au coucher du soleil">
   <div class="om-contenu">
-    <div class="haut"><span>Les passions</span><span class="num">8 / 12</span></div>
+    <div class="haut"><span>Les passions</span><span class="num">8 / 13</span></div>
     <div class="om-bas">
       <p class="kicker" style="margin-top:0">Fan ultime de l'OM</p>
       <h1>Droit <em>au but.</em></h1>
@@ -232,9 +249,28 @@
   <div class="sticker"></div>
 </section>
 
+<!-- Italie -->
+<section class="slide ita" id="sita">
+  <img class="ita-photo" src="../../assets/img/univers/pays/italie.jpg" alt="Le Colisée à Rome">
+  <div class="ita-contenu">
+    <div class="haut"><span>Les passions</span><span class="num">9 / 13</span></div>
+    <div class="ita-bas">
+      <div class="drapeau"><i></i><i></i><i></i></div>
+      <h2>L'Italie, <em>mon pays de cœur</em></h2>
+      <div class="ita-grille">
+        <div><b>Portofino</b><span>Ma ville préférée. Des vacances incroyables il y a quatre ans, puis les Cinque Terre, Milan, Turin et bien d'autres. J'ai hâte d'y retourner.</span></div>
+        <div><b>À table</b><span>Pizza, focaccia et glaces à l'italienne. Rien à ajouter.</span></div>
+        <div><b>Moteurs</b><span>Ferrari, Bugatti, Abarth, Ducati, Moto Guzzi, Vespa. Tout ce qui est italien.</span></div>
+        <div><b>Formule 1</b><span>Monza et Imola. La victoire de Leclerc en Italie : le plus beau jour de fan.</span></div>
+      </div>
+    </div>
+    <div class="bas"><span>Forza Italia</span><span>@phoxia.fr</span></div>
+  </div>
+</section>
+
 <!-- 8. Rêves -->
 <section class="slide slide--rouge" id="s8">
-  <div class="haut"><span>Les rêves</span><span class="num">9 / 12</span></div>
+  <div class="haut"><span>Les rêves</span><span class="num">10 / 13</span></div>
   <p class="kicker">Dream cars, dream bikes, dream life</p>
   <h2>Rêver <em>en grand</em></h2>
   <div class="liste">
@@ -249,7 +285,7 @@
 
 <!-- 8. Pourquoi Phoxia -->
 <section class="slide" id="s9">
-  <div class="haut"><span>Pourquoi Phoxia</span><span class="num">10 / 12</span></div>
+  <div class="haut"><span>Pourquoi Phoxia</span><span class="num">11 / 13</span></div>
   <p class="kicker">L'origine du nom</p>
   <h2>De Phocée <em>à l'IA</em></h2>
   <p class="intro">Phocée, la cité grecque fondatrice de Marseille, a toujours regardé au-delà de l'horizon pour grandir. Phoxia porte cette idée : un ancrage fort à Marseille, un regard forgé entre la France, le Québec et l'Asie.</p>
@@ -262,7 +298,7 @@
 
 <!-- 9. Pourquoi l'entrepreneuriat -->
 <section class="slide slide--blanc" id="s10">
-  <div class="haut"><span>Pourquoi entreprendre</span><span class="num">11 / 12</span></div>
+  <div class="haut"><span>Pourquoi entreprendre</span><span class="num">12 / 13</span></div>
   <p class="kicker">Le choix de l'entrepreneuriat</p>
   <h2>Construire <em>à mon nom</em></h2>
   <div class="liste">
@@ -277,7 +313,7 @@
 
 <!-- 10. CTA -->
 <section class="slide cta" id="s11">
-  <div class="haut"><span>@phoxia.fr</span><span class="num">12 / 12</span></div>
+  <div class="haut"><span>@phoxia.fr</span><span class="num">13 / 13</span></div>
   <img class="rond" src="../../assets/img/equipe/mathieu-rond.jpg" alt="" style="margin-top:70px">
   <h2>On en <em>parle&nbsp;?</em></h2>
   <p class="intro">Un projet IA, une question sur l'entrepreneuriat, ou juste envie d'échanger : trente minutes suffisent.</p>
