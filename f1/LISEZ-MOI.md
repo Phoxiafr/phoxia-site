@@ -15,6 +15,12 @@ Création conceptuelle, non liée depuis le site et sans partenariat officiel av
 
 Les slides 01 à 05 forment un carrousel Instagram prêt à publier.
 
+## Vidéo (`video/phoxia-aston-martin-f1.mp4`)
+
+24 secondes, 1920×1080, 30 i/s, H.264 + AAC stéréo. Intro titre, arrivée de la monoplace
+avec freinage et flou de bougé, trois plans détail avec les partenaires, départ, carte de fin.
+Bande son entièrement synthétisée (moteur, pulsation, impacts), donc libre de droits.
+
 ## Livrée
 
 Couleurs de la charte Phoxia : encre `#14213D`, azur `#1C6BA8`, azur clair `#5BA3DD`, sable `#EDEAE1`, filet or `#C9B98F`. Symbole Phoxia sur le ponton, numéro 26.
@@ -23,4 +29,7 @@ Couleurs de la charte Phoxia : encre `#14213D`, azur `#1C6BA8`, azur clair `#5BA
 
 ```
 NODE_PATH_PW=$(npm root -g)/playwright node source/generer-livree.js visuels
+python3 source/bande-son.py bande-son.wav            # nécessite numpy
+FFMPEG=<chemin ffmpeg> NODE_PATH_PW=$(npm root -g)/playwright \
+  node source/generer-video.js video/phoxia-aston-martin-f1.mp4 bande-son.wav
 ```
