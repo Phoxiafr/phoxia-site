@@ -1,4 +1,4 @@
-// Génère les 6 visuels 1080 x 1350 à partir de source.html.
+// Génère les 10 visuels 1080 x 1350 à partir de source.html.
 // Usage : node instagram-carrousel-derby-deloitte/rendu.js
 const path = require("path");
 const { chromium } = require("playwright");
