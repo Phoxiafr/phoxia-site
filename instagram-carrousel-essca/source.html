@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Carrousel Phoxia × ESSCA × Université Laval</title>
-<!-- Source des 10 visuels 1080 x 1350. Rendu : node rendu.js -->
+<!-- Source des 20 visuels 1080 x 1350. Rendu : node rendu.js -->
 <style>
   @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; src: url("polices/eb-garamond.woff2") format("woff2"); }
   @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; src: url("polices/eb-garamond-italique.woff2") format("woff2"); }
@@ -107,7 +107,7 @@
 
   /* Mosaïque BIC */
   .sous-titre { font-size: 40px; font-style: italic; color: var(--azur-clair); margin-left: 12px; }
-  .mosaique-bic { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 330px 330px; gap: 14px; }
+  .mosaique-bic { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 310px 310px; gap: 14px; }
   .mosaique-bic figure { position: relative; margin: 0; border-radius: 20px; overflow: hidden; }
   .mosaique-bic .large { grid-column: 1 / -1; }
   .mosaique-bic img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -153,7 +153,7 @@
   .mosaique-stage figure { position: relative; }
   .mosaique-stage figcaption { position: absolute; left: 14px; bottom: 14px; background: var(--encre); color: var(--sable); font-size: 20px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
 
-  .mosaique-deloitte { grid-template-columns: 1fr 1.25fr; height: 630px; margin-top: 30px; }
+  .mosaique-deloitte { grid-template-columns: 1fr 1.25fr; height: 590px; margin-top: 30px; }
   .mosaique-deloitte .large { grid-column: 2; }
 
   /* Trois piliers */
@@ -237,10 +237,10 @@
   <p class="etiquette" style="margin-top:80px">Le parcours</p>
   <h2 style="margin-top:24px;font-size:92px">D'Aix-en-Provence<br>à <em>Phoxia</em></h2>
   <div class="frise">
-    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence · 1<sup>re</sup> à 3<sup>e</sup> année</p><p class="quoi">ESSCA Aix-en-Provence, les années BDE</p></div></div>
+    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence · 2021 à 2024</p><p class="quoi">ESSCA Aix-en-Provence, les années BDE</p></div></div>
     <div class="etape essca"><span class="point"></span><div><p class="lieu">Shanghai, Chine</p><p class="quoi">ESSCA Shanghai</p></div></div>
-    <div class="etape essca"><span class="point"></span><div><p class="lieu">Angers · 4<sup>e</sup> année</p><p class="quoi">ESSCA Angers, Master in Management</p></div></div>
-    <div class="etape"><span class="point"></span><div><p class="lieu">Québec, Canada · Double diplôme</p><p class="quoi">MBA Gestion internationale, Université Laval</p></div></div>
+    <div class="etape essca"><span class="point"></span><div><p class="lieu">Angers · 4<sup>e</sup> année · 2024-2025</p><p class="quoi">ESSCA Angers, Master in Management</p></div></div>
+    <div class="etape"><span class="point"></span><div><p class="lieu">Québec · Double diplôme · 2025-2026</p><p class="quoi">MBA Gestion internationale, Université Laval</p></div></div>
     <div class="etape"><span class="point"></span><div><p class="lieu">Marseille</p><p class="quoi">Fondation de Phoxia</p></div></div>
   </div>
   <div class="bas"><span>phoxia.fr/parcours</span><span>ESSCA × Laval</span></div>
@@ -252,7 +252,7 @@
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">04 / 20</span></div>
   <p class="etiquette" style="margin-top:64px">Bureau des étudiants</p>
   <h2 style="margin-top:20px">Trois ans<br>au <em>BDE</em></h2>
-  <p class="corps" style="margin-top:32px;max-width:36ch">ESSCA Aix-en-Provence. Membre en première et deuxième année, responsable de pôle en troisième année.</p>
+  <p class="corps" style="margin-top:28px;max-width:40ch;font-size:34px">ESSCA Aix-en-Provence : pôle évènementiel en 2021-2022, <b style="font-weight:600;color:var(--sable)">secrétaire du BDE</b> en 2022-2023, puis responsable des pôles en 2023-2024.</p>
   <div class="chiffres" style="margin-top:36px">
     <div class="chiffre"><b>3</b><span>années d'engagement au BDE</span></div>
     <div class="chiffre"><b>JPO</b><span>intervenant à plusieurs journées portes ouvertes</span></div>
@@ -343,7 +343,7 @@
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">10 / 20</span></div>
   <p class="etiquette" style="margin-top:70px">Vie sportive · BIC</p>
   <h2 style="margin-top:20px;font-size:100px">Les <em>BIC</em> <span class="sous-titre">Battles Inter-Campus</span></h2>
-  <p class="corps" style="margin-top:24px;max-width:44ch;font-size:32px">3 BIC disputées avec l'ESSCA Aix-en-Provence : le grand rendez-vous sportif qui réunit les campus de l'ESSCA.</p>
+  <p class="corps" style="margin-top:24px;max-width:44ch;font-size:32px">Membre et joueur de l'association sportive de football de l'ESSCA de 2021 à 2024, avec 3 BIC disputées : le grand rendez-vous qui réunit les campus.</p>
   <div class="mosaique-bic">
     <figure class="large"><img src="../assets/img/essca/bic-foot-equipe.jpg" alt="L'équipe de football de l'ESSCA aux Battles Inter-Campus" style="object-position:center 32%"><figcaption>Football</figcaption></figure>
     <figure><img src="../assets/img/essca/bic-volley.jpg" alt="Match de volley aux Battles Inter-Campus" style="object-position:30% 62%"><figcaption>Volley</figcaption></figure>
@@ -446,9 +446,9 @@
 <!-- 17 Deloitte -->
 <section class="slide encre" id="s17">
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">17 / 20</span></div>
-  <div style="margin-top:64px;display:flex;align-items:center;gap:22px"><div class="pastille" style="height:84px"><img src="../assets/img/logos/deloitte.png" alt="Deloitte" style="height:40px"></div><p class="etiquette">Deloitte · 2025</p></div>
+  <div style="margin-top:64px;display:flex;align-items:center;gap:22px"><div class="pastille" style="height:84px"><img src="../assets/img/logos/deloitte.png" alt="Deloitte" style="height:40px"></div><p class="etiquette">Ambassadeur Deloitte · 2025</p></div>
   <h2 style="margin-top:26px;font-size:96px">Deux fois chez <em>Deloitte</em></h2>
-  <p class="corps" style="margin-top:20px;max-width:46ch;font-size:31px">Encore une fois grâce à l'ESSCA : les Deloitte Talent Games et le Derby Deloitte 2025, en équipe et en maillot rose.</p>
+  <p class="corps" style="margin-top:20px;max-width:46ch;font-size:31px">Ambassadeur Deloitte de mars à septembre 2025, encore une fois grâce à l'ESSCA : les Talent Games et le Derby Deloitte 2025, en maillot rose.</p>
   <div class="mosaique-match mosaique-deloitte">
     <figure class="haute"><img src="../assets/img/essca/deloitte-trail.jpg" alt="En course pendant l'épreuve Deloitte" style="object-position:40% 72%"></figure>
     <figure class="large"><img src="../assets/img/essca/deloitte-gare.jpg" alt="L'équipe Deloitte au départ, sur le quai de la gare" style="object-position:50% 55%"></figure>
