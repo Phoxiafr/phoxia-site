@@ -153,6 +153,9 @@
   .mosaique-stage figure { position: relative; }
   .mosaique-stage figcaption { position: absolute; left: 14px; bottom: 14px; background: var(--encre); color: var(--sable); font-size: 20px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
 
+  .mosaique-deloitte { grid-template-columns: 1fr 1.25fr; height: 630px; margin-top: 30px; }
+  .mosaique-deloitte .large { grid-column: 2; }
+
   /* Trois piliers */
   .piliers { margin-top: 48px; display: flex; flex-direction: column; gap: 28px; }
   .pilier { display: grid; grid-template-columns: 110px 1fr; column-gap: 20px; border-top: 3px solid rgba(237,234,225,.22); padding-top: 28px; }
@@ -442,15 +445,14 @@
 
 <!-- 17 Deloitte -->
 <section class="slide encre" id="s17">
-  <svg class="filigrane" viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">17 / 20</span></div>
-  <div class="pastille" style="margin-top:110px;align-self:flex-start"><img src="../assets/img/logos/deloitte.png" alt="Deloitte" style="height:60px"></div>
-  <p class="etiquette" style="margin-top:44px">Deloitte · 2025</p>
-  <h2 style="margin-top:20px">Deux fois<br>chez <em>Deloitte</em></h2>
-  <p class="corps" style="margin-top:32px;max-width:36ch">Encore une fois grâce à l'ESSCA : deux événements pour se confronter au monde du conseil.</p>
-  <div class="chiffres" style="margin-top:44px">
-    <div class="chiffre"><b style="font-size:72px">Talent Games</b><span>participant aux Deloitte Talent Games</span></div>
-    <div class="chiffre"><b style="font-size:72px">Derby</b><span>participant au Derby Deloitte, édition 2025</span></div>
+  <div style="margin-top:64px;display:flex;align-items:center;gap:22px"><div class="pastille" style="height:84px"><img src="../assets/img/logos/deloitte.png" alt="Deloitte" style="height:40px"></div><p class="etiquette">Deloitte · 2025</p></div>
+  <h2 style="margin-top:26px;font-size:96px">Deux fois chez <em>Deloitte</em></h2>
+  <p class="corps" style="margin-top:20px;max-width:46ch;font-size:31px">Encore une fois grâce à l'ESSCA : les Deloitte Talent Games et le Derby Deloitte 2025, en équipe et en maillot rose.</p>
+  <div class="mosaique-match mosaique-deloitte">
+    <figure class="haute"><img src="../assets/img/essca/deloitte-trail.jpg" alt="En course pendant l'épreuve Deloitte" style="object-position:40% 72%"></figure>
+    <figure class="large"><img src="../assets/img/essca/deloitte-gare.jpg" alt="L'équipe Deloitte au départ, sur le quai de la gare" style="object-position:50% 55%"></figure>
+    <figure><img src="../assets/img/essca/deloitte-orientation.jpg" alt="L'équipe à une balise d'orientation" style="object-position:50% 60%"></figure>
   </div>
   <div class="bas"><span>phoxia.fr/essca</span><img src="../assets/img/logos/essca.png" alt=""></div>
 </section>
