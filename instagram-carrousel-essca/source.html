@@ -66,6 +66,14 @@
   .pastille svg { height: 70px; width: auto; }
   .pastille .mot { font-family: var(--serif); font-size: 56px; color: var(--encre); margin-right: 14px; }
 
+  /* Double diplôme */
+  .diplomes { margin-top: 48px; display: flex; flex-direction: column; gap: 24px; }
+  .diplome { background: var(--blanc); border-radius: 26px; padding: 34px 44px; display: flex; flex-direction: column; gap: 18px; }
+  .diplome img { height: 84px; width: auto; align-self: flex-start; }
+  .diplome .lieu { font-size: 24px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--encre-doux); }
+  .diplome .quoi { font-family: var(--serif); font-size: 60px; line-height: 1.05; margin-top: 10px; }
+  .diplome .detail { font-size: 30px; margin-top: 10px; color: var(--encre-doux); }
+
   /* Frise */
   .frise { margin-top: 64px; display: flex; flex-direction: column; gap: 0; }
   .etape { display: grid; grid-template-columns: 70px 1fr; column-gap: 34px; position: relative; padding-bottom: 46px; }
@@ -135,30 +143,35 @@
   <div class="voile"></div>
   <div class="contenu">
     <div class="logos">
-      <div class="pastille"><span class="mot">Phoxia</span><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg></div>
-      <span class="fois">×</span>
       <div class="pastille"><img src="../assets/img/logos/essca.png" alt="ESSCA"></div>
+      <span class="fois">×</span>
+      <div class="pastille"><img src="../assets/img/logos/universite-laval.png" alt="Université Laval" style="height:78px"></div>
     </div>
     <div style="margin-top:auto">
-      <p class="etiquette">ESSCA School<br>of Management</p>
-      <h1 style="margin-top:26px;font-size:120px">L'ESSCA,<br>avant et<br><em>après</em> le<br>diplôme</h1>
-      <p class="corps" style="margin-top:34px;max-width:24ch">L'histoire de Mathieu Barthélémy, fondateur de Phoxia, avec son école.</p>
+      <p class="etiquette">ESSCA × Université Laval</p>
+      <h1 style="margin-top:26px;font-size:120px">Deux écoles,<br>un <em>double</em><br>diplôme</h1>
+      <p class="corps" style="margin-top:34px;max-width:24ch">MIM à l'ESSCA, MBA Gestion internationale à l'Université Laval. L'histoire de Mathieu Barthélémy, fondateur de Phoxia.</p>
     </div>
-    <div class="bas" style="margin-top:56px;opacity:.85"><span>Glissez pour découvrir</span><span>→</span></div>
+    <div class="bas" style="margin-top:56px;opacity:.9"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia</span><span>Glissez pour découvrir →</span></div>
   </div>
 </section>
 
-<!-- 02 Le diplôme -->
+<!-- 02 Le double diplôme -->
 <section class="slide sable" id="s02">
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">02 / 10</span></div>
-  <div style="margin-top:auto">
-    <p class="etiquette">D'où ça part</p>
-    <h2 style="margin-top:28px">Un diplôme,<br>un lien qui <em>continue</em></h2>
-    <hr class="filet" style="margin-top:48px">
-    <p class="corps" style="margin-top:44px">Master in Management de l'ESSCA School of Management, spécialisation management international.</p>
-    <p class="corps" style="margin-top:28px">La première pratique du développement commercial et international, bien avant de fonder Phoxia.</p>
+  <p class="etiquette" style="margin-top:80px">Le double diplôme</p>
+  <h2 style="margin-top:24px">Deux diplômes,<br>deux <em>continents</em></h2>
+  <div class="diplomes">
+    <div class="diplome">
+      <img src="../assets/img/logos/essca.png" alt="ESSCA">
+      <div><p class="lieu">France · ESSCA School of Management</p><p class="quoi">Master in Management (MIM)</p><p class="detail">Spécialisation management international</p></div>
+    </div>
+    <div class="diplome">
+      <img src="../assets/img/logos/universite-laval.png" alt="Université Laval" style="height:64px">
+      <div><p class="lieu">Québec, Canada · Université Laval</p><p class="quoi">MBA Gestion internationale</p><p class="detail">Double diplôme avec l'ESSCA</p></div>
+    </div>
   </div>
-  <div class="bas" style="margin-top:80px"><span>phoxia.fr/essca</span><img src="../assets/img/logos/essca.png" alt=""></div>
+  <div class="bas"><span>phoxia.fr/essca</span><span>ESSCA × Laval</span></div>
 </section>
 
 <!-- 03 Le parcours -->
@@ -167,12 +180,12 @@
   <p class="etiquette" style="margin-top:80px">Le parcours</p>
   <h2 style="margin-top:24px;font-size:92px">D'Aix-en-Provence<br>à <em>Phoxia</em></h2>
   <div class="frise">
-    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence</p><p class="quoi">ESSCA, les années BDE</p></div></div>
+    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence</p><p class="quoi">Master in Management, ESSCA</p></div></div>
     <div class="etape essca"><span class="point"></span><div><p class="lieu">Shanghai, Chine</p><p class="quoi">ESSCA Shanghai</p></div></div>
-    <div class="etape"><span class="point"></span><div><p class="lieu">Québec, Canada</p><p class="quoi">Double diplôme, MBA Université Laval</p></div></div>
+    <div class="etape"><span class="point"></span><div><p class="lieu">Québec, Canada · Double diplôme</p><p class="quoi">MBA Gestion internationale, Université Laval</p></div></div>
     <div class="etape"><span class="point"></span><div><p class="lieu">Marseille</p><p class="quoi">Fondation de Phoxia</p></div></div>
   </div>
-  <div class="bas"><span>phoxia.fr/parcours</span><img src="../assets/img/logos/essca.png" alt=""></div>
+  <div class="bas"><span>phoxia.fr/parcours</span><span>ESSCA × Laval</span></div>
 </section>
 
 <!-- 04 BDE -->
