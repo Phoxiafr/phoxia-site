@@ -98,6 +98,9 @@
   .nom { font-family: var(--serif); font-size: 64px; line-height: 1.05; display: flex; align-items: baseline; gap: 24px; }
   .nom::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--rouge-essca); flex: none; transform: translateY(-12px); }
 
+  /* Photo équipe */
+  .photo-equipe { margin-top: 36px; width: 100%; height: 640px; object-fit: cover; object-position: center 70%; border-radius: 24px; }
+
   /* Maillot */
   .maillot { margin: 36px auto 0; width: 340px; position: relative; }
   .maillot svg { width: 100%; height: auto; display: block; }
@@ -225,19 +228,10 @@
 <!-- 06 PF Team -->
 <section class="slide blanc" id="s06">
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">06 / 10</span></div>
-  <p class="etiquette" style="margin-top:80px">PF Team</p>
-  <h2 style="margin-top:24px">Un maillot<br>floqué <em>30</em></h2>
-  <div class="maillot">
-    <svg viewBox="0 0 400 420" aria-hidden="true">
-      <path d="M140 18 L70 44 L8 120 L64 168 L100 132 L100 400 Q200 414 300 400 L300 132 L336 168 L392 120 L330 44 L260 18 Q200 58 140 18 Z" fill="#14213D"/>
-      <path d="M140 18 Q200 58 260 18" fill="none" stroke="#E30613" stroke-width="12" stroke-linecap="round"/>
-      <path d="M8 120 L64 168" stroke="#E30613" stroke-width="12" stroke-linecap="round"/>
-      <path d="M392 120 L336 168" stroke="#E30613" stroke-width="12" stroke-linecap="round"/>
-      <text x="200" y="140" text-anchor="middle" font-family="Instrument Sans, Arial" font-weight="600" font-size="32" letter-spacing="6" fill="#EDEAE1">PF TEAM</text>
-      <text x="200" y="330" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="190" fill="#5BA3DD">30</text>
-    </svg>
-  </div>
-  <p class="corps" style="margin-top:36px;max-width:40ch;font-size:34px">Le Cabinet Protection Financière, dirigé par son père, a financé les maillots de l'équipe ESSCA Aix-en-Provence floqués « PF Team ». Le numéro 30 est encore exposé au cabinet, à Marseille.</p>
+  <p class="etiquette" style="margin-top:70px">PF Team · ESSCA Aix-en-Provence</p>
+  <h2 style="margin-top:20px;font-size:92px">Les maillots <em>PF Team</em></h2>
+  <img class="photo-equipe" src="../assets/img/essca/equipe-foot-pf-team.jpg" alt="L'équipe de football de l'ESSCA Aix-en-Provence en maillots PF Team">
+  <p class="corps" style="margin-top:30px;max-width:44ch;font-size:31px">Le Cabinet Protection Financière, dirigé par son père, a financé les maillots de l'équipe ESSCA Aix-en-Provence. Le numéro 30 est encore exposé au cabinet, à Marseille.</p>
   <div class="bas"><span>phoxia.fr/essca</span><img src="../assets/img/logos/essca.png" alt=""></div>
 </section>
 
