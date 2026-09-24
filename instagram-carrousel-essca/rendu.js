@@ -1,4 +1,4 @@
-// Génère les 12 visuels 1080 x 1350 à partir de source.html.
+// Génère les 13 visuels 1080 x 1350 à partir de source.html.
 // Usage : node instagram-carrousel-essca/rendu.js
 const path = require("path");
 const { chromium } = require("playwright");
