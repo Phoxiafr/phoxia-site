@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Carrousel Phoxia × ESSCA</title>
+<title>Carrousel Phoxia × ESSCA × Université Laval</title>
 <!-- Source des 10 visuels 1080 x 1350. Rendu : node rendu.js -->
 <style>
   @font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; src: url("polices/eb-garamond.woff2") format("woff2"); }
@@ -59,12 +59,12 @@
   .couverture .photo { position: absolute; top: 0; bottom: 0; right: -40px; width: 900px; background: url("../assets/img/essca/mathieu-diplome.jpg") center top / cover; }
   .couverture .voile { position: absolute; inset: 0; background: linear-gradient(90deg, #14213D 0%, #14213D 24%, rgba(20,33,61,.6) 40%, rgba(20,33,61,0) 62%), linear-gradient(180deg, rgba(20,33,61,0) 55%, rgba(20,33,61,.7) 80%, #14213D 100%); }
   .couverture .contenu { position: relative; height: 100%; padding: 96px 90px; display: flex; flex-direction: column; }
-  .logos { display: flex; align-items: center; gap: 28px; }
-  .logos .fois { font-family: var(--serif); font-size: 64px; color: var(--sable); }
-  .pastille { background: #fff; border-radius: 22px; padding: 18px 22px; display: flex; align-items: center; }
-  .pastille img { height: 92px; width: auto; }
-  .pastille svg { height: 70px; width: auto; }
-  .pastille .mot { font-family: var(--serif); font-size: 56px; color: var(--encre); margin-right: 14px; }
+  .logos { display: flex; align-items: center; gap: 18px; }
+  .logos .fois { font-family: var(--serif); font-size: 52px; color: var(--sable); }
+  .pastille { background: #fff; border-radius: 20px; padding: 0 20px; height: 112px; display: flex; align-items: center; }
+  .pastille img { height: 84px; width: auto; }
+  .pastille svg { height: 52px; width: auto; }
+  .pastille .mot { font-family: var(--serif); font-size: 46px; color: var(--encre); margin-right: 10px; }
 
   /* Double diplôme */
   .diplomes { margin-top: 48px; display: flex; flex-direction: column; gap: 24px; }
@@ -143,22 +143,24 @@
   <div class="voile"></div>
   <div class="contenu">
     <div class="logos">
+      <div class="pastille"><span class="mot">Phoxia</span><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg></div>
+      <span class="fois">×</span>
       <div class="pastille"><img src="../assets/img/logos/essca.png" alt="ESSCA"></div>
       <span class="fois">×</span>
-      <div class="pastille"><img src="../assets/img/logos/universite-laval.png" alt="Université Laval" style="height:78px"></div>
+      <div class="pastille"><img src="../assets/img/logos/universite-laval.png" alt="Université Laval" style="height:64px"></div>
     </div>
     <div style="margin-top:auto">
-      <p class="etiquette">ESSCA × Université Laval</p>
+      <p class="etiquette">Le double diplôme</p>
       <h1 style="margin-top:26px;font-size:120px">Deux écoles,<br>un <em>double</em><br>diplôme</h1>
       <p class="corps" style="margin-top:34px;max-width:24ch">MIM à l'ESSCA, MBA Gestion internationale à l'Université Laval. L'histoire de Mathieu Barthélémy, fondateur de Phoxia.</p>
     </div>
-    <div class="bas" style="margin-top:56px;opacity:.9"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia</span><span>Glissez pour découvrir →</span></div>
+    <div class="bas" style="margin-top:56px;opacity:.9"><span>Phoxia · ESSCA · Université Laval</span><span>Glissez →</span></div>
   </div>
 </section>
 
 <!-- 02 Le double diplôme -->
 <section class="slide sable" id="s02">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">02 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">02 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Le double diplôme</p>
   <h2 style="margin-top:24px">Deux diplômes,<br>deux <em>continents</em></h2>
   <div class="diplomes">
@@ -176,7 +178,7 @@
 
 <!-- 03 Le parcours -->
 <section class="slide blanc" id="s03">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">03 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">03 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Le parcours</p>
   <h2 style="margin-top:24px;font-size:92px">D'Aix-en-Provence<br>à <em>Phoxia</em></h2>
   <div class="frise">
@@ -191,7 +193,7 @@
 <!-- 04 BDE -->
 <section class="slide encre" id="s04">
   <svg class="filigrane" viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA</span><span class="num">04 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">04 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Bureau des étudiants</p>
   <h2 style="margin-top:24px">Trois ans<br>au <em>BDE</em></h2>
   <p class="corps" style="margin-top:32px;max-width:36ch">ESSCA Aix-en-Provence. Membre en première et deuxième année, responsable de pôle en troisième année.</p>
@@ -205,7 +207,7 @@
 
 <!-- 05 Professeurs -->
 <section class="slide sable" id="s05">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">05 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">05 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Des professeurs qui le connaissent</p>
   <h2 style="margin-top:24px">Une dizaine de<br><em>recommandations</em></h2>
   <p class="corps" style="margin-top:30px;max-width:40ch;font-size:34px">Pour sa candidature au double diplôme à l'Université Laval, une dizaine de professeurs de l'ESSCA ont rédigé une lettre de recommandation. Parmi eux :</p>
@@ -220,7 +222,7 @@
 
 <!-- 06 PF Team -->
 <section class="slide blanc" id="s06">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">06 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">06 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">PF Team</p>
   <h2 style="margin-top:24px">Un maillot<br>floqué <em>30</em></h2>
   <div class="maillot">
@@ -240,7 +242,7 @@
 <!-- 07 Vie sportive -->
 <section class="slide encre" id="s07">
   <svg class="filigrane" viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA</span><span class="num">07 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">07 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Vie sportive</p>
   <h2 style="margin-top:24px">Sur le terrain,<br><em>aussi</em></h2>
   <div class="chiffres" style="grid-template-columns:1fr">
@@ -253,7 +255,7 @@
 
 <!-- 08 Aujourd'hui -->
 <section class="slide encre" id="s08" style="background:#0f1a31">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA</span><span class="num">08 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">08 / 10</span></div>
   <p class="etiquette" style="margin-top:80px">Le lien aujourd'hui</p>
   <h2 style="margin-top:24px">Trois façons<br>de <em>rendre</em></h2>
   <div class="piliers">
@@ -267,7 +269,7 @@
 <!-- 09 Citation -->
 <section class="slide encre" id="s09">
   <svg class="filigrane" viewBox="0 0 139.03 102.15" style="bottom:60px"><use href="#phoxia-clair"/></svg>
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA</span><span class="num">09 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">09 / 10</span></div>
   <div style="margin-top:auto;margin-bottom:auto">
     <p class="guillemet">“</p>
     <p class="citation">La formation compte. Mais ce qui fait vraiment la différence, c'est le <em>réseau</em> : c'est lui qui m'a permis d'arriver là où je suis.</p>
@@ -278,7 +280,7 @@
 
 <!-- 10 Appel -->
 <section class="slide sable" id="s10">
-  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA</span><span class="num">10 / 10</span></div>
+  <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">10 / 10</span></div>
   <div style="margin-top:auto">
     <p class="etiquette">Étudiant, alumni ou membre de l'ESSCA ?</p>
     <h2 style="margin-top:24px;font-size:92px">Un événement,<br>une question,<br>une <em>candidature</em>.</h2>
