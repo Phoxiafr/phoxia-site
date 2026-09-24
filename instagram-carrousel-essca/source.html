@@ -75,14 +75,15 @@
   .diplome .detail { font-size: 30px; margin-top: 10px; color: var(--encre-doux); }
 
   /* Frise */
-  .frise { margin-top: 64px; display: flex; flex-direction: column; gap: 0; }
-  .etape { display: grid; grid-template-columns: 70px 1fr; column-gap: 34px; position: relative; padding-bottom: 46px; }
+  .frise { margin-top: 50px; display: flex; flex-direction: column; gap: 0; }
+  .etape { display: grid; grid-template-columns: 70px 1fr; column-gap: 34px; position: relative; padding-bottom: 34px; }
   .etape::before { content: ""; position: absolute; left: 20px; top: 44px; bottom: 0; width: 3px; background: rgba(20,33,61,.18); }
   .etape:last-child::before { display: none; }
   .point { width: 43px; height: 43px; border-radius: 50%; background: var(--azur); margin-top: 4px; }
   .etape.essca .point { background: var(--rouge-essca); }
+  .etape .lieu sup, .diplome sup { font-size: .6em; }
   .etape .lieu { font-size: 26px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--encre-doux); }
-  .etape .quoi { font-family: var(--serif); font-size: 52px; line-height: 1.1; margin-top: 6px; }
+  .etape .quoi { font-family: var(--serif); font-size: 46px; line-height: 1.1; margin-top: 6px; }
 
   /* Grands chiffres */
   .chiffres { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 60px; }
@@ -182,8 +183,9 @@
   <p class="etiquette" style="margin-top:80px">Le parcours</p>
   <h2 style="margin-top:24px;font-size:92px">D'Aix-en-Provence<br>à <em>Phoxia</em></h2>
   <div class="frise">
-    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence</p><p class="quoi">Master in Management, ESSCA</p></div></div>
+    <div class="etape essca"><span class="point"></span><div><p class="lieu">Aix-en-Provence · 1<sup>re</sup> à 3<sup>e</sup> année</p><p class="quoi">ESSCA Aix-en-Provence, les années BDE</p></div></div>
     <div class="etape essca"><span class="point"></span><div><p class="lieu">Shanghai, Chine</p><p class="quoi">ESSCA Shanghai</p></div></div>
+    <div class="etape essca"><span class="point"></span><div><p class="lieu">Angers · 4<sup>e</sup> année</p><p class="quoi">ESSCA Angers, Master in Management</p></div></div>
     <div class="etape"><span class="point"></span><div><p class="lieu">Québec, Canada · Double diplôme</p><p class="quoi">MBA Gestion internationale, Université Laval</p></div></div>
     <div class="etape"><span class="point"></span><div><p class="lieu">Marseille</p><p class="quoi">Fondation de Phoxia</p></div></div>
   </div>
