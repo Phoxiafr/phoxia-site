@@ -105,6 +105,14 @@
   .mosaique img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .mosaique figcaption { position: absolute; left: 18px; bottom: 18px; background: var(--encre); color: var(--sable); font-size: 24px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; }
 
+  /* Mosaïque BIC */
+  .sous-titre { font-size: 40px; font-style: italic; color: var(--azur-clair); margin-left: 12px; }
+  .mosaique-bic { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 330px 330px; gap: 14px; }
+  .mosaique-bic figure { position: relative; margin: 0; border-radius: 20px; overflow: hidden; }
+  .mosaique-bic .large { grid-column: 1 / -1; }
+  .mosaique-bic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mosaique-bic figcaption { position: absolute; left: 14px; bottom: 14px; background: var(--sable); color: var(--encre); font-size: 22px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; }
+
   /* Trois piliers */
   .piliers { margin-top: 48px; display: flex; flex-direction: column; gap: 28px; }
   .pilier { display: grid; grid-template-columns: 110px 1fr; column-gap: 20px; border-top: 3px solid rgba(237,234,225,.22); padding-top: 28px; }
@@ -243,13 +251,15 @@
 <section class="slide encre" id="s07">
   <svg class="filigrane" viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>
   <div class="haut"><span class="marque"><svg viewBox="0 0 139.03 102.15"><use href="#phoxia-clair"/></svg>Phoxia × ESSCA × Université Laval</span><span class="num">07 / 10</span></div>
-  <p class="etiquette" style="margin-top:80px">Vie sportive · BIC</p>
-  <h2 style="margin-top:24px">Les <em>BIC</em></h2>
-  <p class="corps" style="margin-top:20px;font-size:40px;color:var(--azur-clair);font-family:var(--serif);font-style:italic">Battles Inter-Campus</p>
-  <p class="corps" style="margin-top:28px;max-width:40ch">Le grand rendez-vous sportif qui réunit les campus de l'ESSCA, pour défendre les couleurs de son école.</p>
-  <div class="chiffres" style="grid-template-columns:1fr;margin-top:44px">
-    <div class="chiffre"><b style="font-size:150px">3</b><span>BIC disputées avec l'ESSCA Aix-en-Provence</span></div>
-    <div class="chiffre"><b style="font-size:92px">Aujourd'hui</b><span>soutien actif aux étudiants de première année, prêt à les coacher</span></div>
+  <p class="etiquette" style="margin-top:70px">Vie sportive · BIC</p>
+  <h2 style="margin-top:20px;font-size:100px">Les <em>BIC</em> <span class="sous-titre">Battles Inter-Campus</span></h2>
+  <p class="corps" style="margin-top:24px;max-width:44ch;font-size:32px">3 BIC disputées avec l'ESSCA Aix-en-Provence : le grand rendez-vous sportif qui réunit les campus de l'ESSCA.</p>
+  <div class="mosaique-bic">
+    <figure class="large"><img src="../assets/img/essca/bic-foot-equipe.jpg" alt="L'équipe de football de l'ESSCA aux Battles Inter-Campus" style="object-position:center 8%"><figcaption>Football</figcaption></figure>
+    <figure><img src="../assets/img/essca/bic-volley.jpg" alt="Match de volley aux Battles Inter-Campus" style="object-position:30% 62%"><figcaption>Volley</figcaption></figure>
+    <figure><img src="../assets/img/essca/bic-foot-20.jpg" alt="Joueur de l'ESSCA aux Battles Inter-Campus" style="object-position:48% 40%"></figure>
+    <figure><img src="../assets/img/essca/bic-foot-13.jpg" alt="Joueur de l'ESSCA qui célèbre aux Battles Inter-Campus" style="object-position:32% 50%"></figure>
+    <figure><img src="../assets/img/essca/bic-foot-causerie.jpg" alt="Causerie de l'équipe de l'ESSCA aux Battles Inter-Campus" style="object-position:58% 45%"></figure>
   </div>
   <div class="bas"><span>phoxia.fr/essca</span><span>ESSCA Aix</span></div>
 </section>
