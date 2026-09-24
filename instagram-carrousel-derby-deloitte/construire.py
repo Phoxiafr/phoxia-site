@@ -3,7 +3,7 @@ p = 'instagram-carrousel-derby-deloitte/source.html'
 s = open(p).read()
 head = s[:s.index('<body>')]
 syms = s[s.index('<!-- Symbole Phoxia réutilisé -->'):s.index('<!-- 01 Couverture -->')]
-N = '13'
+N = '14'
 I = '../assets/img/essca/'
 
 
@@ -139,10 +139,15 @@ body += slide('10', 'sable', '21 juin · 17h', 'Dernier <em>trail</em>',
               G2(fig('derby-trail21-equipe.jpg', "L'équipe avant le dernier trail", '50% 55%'),
                  fig('derby-trail21-arche.jpg', "Retour sous l'arche du Derby", '50% 55%')), 'Jour 2')
 
-body += slide('11', 'encre', '21 juin · Le soir', 'Sous le <em>chapiteau</em>',
-              "Après l'effort, la soirée du Derby et la remise des prix sur scène, avec les équipes de toute la France.",
-              G2(fig('derby-soiree-selfie.jpg', 'Selfie devant le plan du 32e Derby Deloitte', '40% 50%'),
-                 fig('derby-scene.jpg', 'Remise des prix sur la scène du Derby 2025', '45% 62%')), 'Jour 2', bg='#1a0f2e')
+body += slide('11', 'encre', '21 juin · Le soir', 'Soirée et <em>remise des prix</em>',
+              "Coucher de soleil sur le village du Derby, remise des prix sur scène puis la fête sous le chapiteau.",
+              grid('grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;height:660px',
+                   [fig('derby-soiree-coucher.jpg', 'Coucher de soleil sur le village du Derby', '50% 45%'),
+                    fig('derby-scene.jpg', 'Remise des prix sur la scène du Derby 2025', '45% 62%'),
+                    fig('derby-soiree-selfie.jpg', 'Selfie devant le plan du 32e Derby Deloitte', '40% 50%'),
+                    fig('derby-soiree-arche.jpg', "Sous l'arche du Derby au crépuscule", '50% 50%'),
+                    fig('derby-soiree-lettres.jpg', 'Devant les lettres DERBY illuminées', '50% 50%'),
+                    fig('derby-soiree-danse.jpg', 'La fête sous le chapiteau', '50% 50%')]), 'Jour 2', bg='#1a0f2e')
 
 body += slide('12', 'sable', '22 juin · 10h', 'Fin du <em>Derby</em>',
               'Départ à 10h : trois jours dans les jambes, quelques siestes bien méritées et beaucoup de souvenirs dans le train du retour.',
@@ -157,16 +162,17 @@ body += '''<section class="slide encre" id="s13">
     <div class="chiffre"><b>32<sup style="font-size:.45em">e</sup></b><span>édition du Derby Deloitte</span></div>
     <div class="chiffre"><b>3</b><span>jours, du 20 au 22 juin 2025</span></div>
     <div class="chiffre"><b>8</b><span>épreuves : 3 trails, 2 kayaks, VTT, nocturne et accrobranche</span></div>
-    <div class="chiffre"><b style="font-size:84px">La Relève</b><span>« On a rien 100 rien »</span></div>
+    <div class="chiffre" style="display:flex;gap:22px;align-items:center"><img src="../assets/img/essca/derby-la-releve.jpg" alt="Logo de l'équipe La Relève" style="width:150px;height:150px;border-radius:14px"><span style="margin:0">Équipe La Relève<br><span style=\"white-space:nowrap\">« On a rien 100 rien »</span></span></div>
   </div>
   <p class="citation" style="font-size:58px;margin-top:60px">Encore une fois, c'est le <em>réseau</em> de l'ESSCA qui m'a ouvert la porte.</p>
   <p class="signature" style="margin-top:30px">Mathieu Barthélémy, fondateur de Phoxia</p>
   <div class="bas"><span>Merci l'ESSCA et Deloitte</span><span>@phoxia.fr</span></div>
 </section>
 
-</body>
-</html>
 ''' % H('13')
+
+body += '<section class="slide sable" id="s14">\n  ' + Hs('14') + '\n  <div style="margin-top:auto">\n    <p class="etiquette">Mes contacts</p>\n    <h2 style="margin-top:22px">On en <em>parle</em> ?</h2>\n    <div class="pastille" style="margin-top:44px;height:auto;padding:22px 28px;align-self:flex-start;display:inline-flex"><img src="../assets/img/essca/mb-consulting-logo.jpg" alt="MB Consulting" style="height:150px"></div>\n    <p class="contact" style="margin-top:40px"><b>+33 7 82 59 09 91</b><br>mathieu@mbconsulting.partners<br>Marseille · Paris · Québec (bientôt)<br>mbconsultingdotpartners.wordpress.com</p>\n  </div>\n  <div class="bas" style="margin-top:60px"><span>Derby Deloitte 2025</span><span>@phoxia.fr</span></div>\n</section>\n\n'
+body += '</body>\n</html>\n'
 
 head = head.replace('/* Trois piliers */', '''.mosaique-derby { margin-top: 32px; }
 
