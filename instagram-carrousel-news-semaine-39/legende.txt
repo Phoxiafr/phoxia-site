@@ -1,15 +1,15 @@
-Les news business de la semaine, décryptées par Phoxia 📊
+Les news de la semaine, décryptées par Phoxia 📊
 Semaine 39 · du 21 au 25 septembre 2026
 
-Au programme : le secteur privé repasse en croissance (PMI 51,2), le moral des patrons recule (Insee 96), la BCE et la Fed relèvent leurs taux, le gazole bat son record, la prime carburant monte à 1 000 €, le budget 2027 se précise, le pacte Papin arrive, la facture électronique fait ses premiers pas, les douanes américaines visent la pharmacie et Mistral AI lève 3 milliards.
+Au programme : les canicules coûtent 113 milliards d'euros à l'Europe (20 pour la France), le secteur privé repasse en croissance, la BCE et la Fed relèvent leurs taux, le gazole bat son record, le budget 2027 se précise, la présidentielle se dessine, les douanes américaines visent la pharmacie, Mistral AI lève 3 milliards. Côté sport business : Man City reconnu coupable de 114 charges sur 115, Harry Kane rêve de NFL et Chicago vit un doublé historique en baseball.
 
-Et pour chaque actu : ce que ça change concrètement pour votre PME.
+Et pour chaque actu : ce que ça change concrètement pour votre entreprise.
 
 Un sujet vous concerne ? Parlons-en : phoxia.fr · mathieu@phoxia.fr
 
-Enregistrez ce post pour le relire et partagez-le à un dirigeant qui doit le voir 👇
+Enregistrez ce post et partagez-le à un dirigeant qui doit le voir 👇
 
-#Phoxia #PME #Entrepreneurs #Economie #Actualite #Business #BCE #Fed #Budget2027 #FactureElectronique #Export #FrenchTech #MistralAI #Marseille #ConseilPME
+#Phoxia #PME #Entrepreneurs #Economie #Actualite #Business #Canicule #BCE #Budget2027 #Presidentielle2027 #FactureElectronique #Export #FrenchTech #SportBusiness #ManCity #Marseille
 
 Sources (chiffres arrêtés au 25/09/2026) :
 1. Reuters via Boursorama, PMI France (23/09/2026) : https://www.boursorama.com/actualite-economique/actualites/france-pmi-le-secteur-prive-renoue-avec-la-croissance-be75daa8d622f3aea448468f2b346d2d
@@ -32,3 +32,12 @@ Sources (chiffres arrêtés au 25/09/2026) :
 18. franceinfo, Mistral AI lève 3 Md€ (08/09/2026) : https://www.franceinfo.fr/internet/intelligence-artificielle/la-start-up-francaise-mistral-annonce-une-nouvelle-levee-de-fonds-de-trois-milliards-d-euros-portant-sa-valorisation-a-plus-de-21-milliards-d-euros_8182583.html
 19. FrenchWeb, levées French Tech du 14 au 18 septembre : https://www.frenchweb.fr/les-levees-de-fonds-de-la-french-tech-du-14-au-18-septembre-2026-422-millions-deuros-lia-capte-82-des-capitaux/463537
 20. Maddyness, levées de la semaine (18/09/2026) : https://www.maddyness.com/2026/09/18/les-startups-francaises-ont-leve-pres-de-42-millions-deuros-cette-semaine/
+21. BFM Business, vagues de chaleur : 113 milliards d'euros de perte en Europe (24/09/2026) : https://l.bfmtv.com/fLGv
+22. Allianz via Belga / La Libre (24/09/2026) : https://www.lalibre.be/dernieres-depeches/2026/09/24/chaleur-leconomie-europeenne-amputee-de-113-milliards-a-cause-de-la-chaleur-estime-allianz-2CMAXFUVONHNXFKCCBQZQ2KRQQ/
+23. L'Express, « 2027 : qui peut encore gagner ? », newsletter du 22/09/2026 : https://www.lexpress.fr
+24. The Athletic FC, Phil Hay, « Man City charges: Key questions answered » (25/09/2026) : https://www.nytimes.com/athletic/
+25. The Athletic, « Could Harry Kane really be an NFL kicker? The experts are not so sure » (25/09/2026) : https://www.nytimes.com/athletic/
+26. Al Jazeera, Harry Kane eyes career as NFL kicker (24/09/2026) : https://www.aljazeera.com/sports/2026/9/24/harry-kane-eyes-career-as-nfl-kicker-after-football-retirement
+27. The Athletic, The Windup, Levi Weaver, « Only the fourth time ever » (25/09/2026) : https://www.nytimes.com/athletic/
+28. WTTW, Cubs et White Sox qualifiés (24/09/2026) : https://news.wttw.com/2026/09/24/big-chicago-baseball-afternoon-both-white-sox-and-cubs-clinch-playoff-spots
+29. Chicago Sun-Times (24/09/2026) : https://chicago.suntimes.com/sports/2026/09/24/what-do-i-need-to-know-chicago-cubs-white-sox-both-mlb-playoffs-postseason
