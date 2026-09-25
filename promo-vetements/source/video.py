@@ -15,14 +15,18 @@ W, H, FPS = 1080, 1920, 30
 FONDU = 0.5  # secondes de fondu enchaîné entre deux plans
 
 # (photo, calque, durée en s, zoom début, zoom fin, décalage horizontal début, fin)
+# Sans photo, le calque est une carte pleine qui sert elle-même de fond.
 PLANS = [
-    ("assets/img/bond/mathieu-bond-portrait.jpg", 1, 3.2, 1.00, 1.12, 0.0, 0.0),
-    ("assets/img/bond/mathieu-bar-casino.jpg", 2, 3.0, 1.05, 1.15, -0.04, 0.04),
-    ("assets/img/bond/mathieu-salon-db5.jpg", 3, 3.0, 1.15, 1.05, 0.03, -0.03),
-    ("assets/img/bond/mathieu-db5-photo.jpg", 4, 3.2, 1.00, 1.12, 0.05, -0.02),
-    (None, 5, 4.6, 1.0, 1.0, 0, 0),
+    ("assets/img/bond/mathieu-bond-portrait.jpg", 1, 3.0, 1.00, 1.10, 0.0, 0.0),
+    ("assets/img/bond/mathieu-bar-casino.jpg", 2, 2.6, 1.05, 1.15, -0.04, 0.04),
+    ("assets/img/bond/mathieu-db5-photo.jpg", 3, 2.6, 1.00, 1.10, 0.05, -0.02),
+    ("assets/img/univers/pays/royaume-uni.jpg", 4, 2.6, 1.00, 1.10, 0.0, 0.0),
+    ("assets/img/univers/pays/emirats-arabes-unis.jpg", 5, 3.0, 1.10, 1.00, -0.03, 0.03),
+    (None, 6, 3.4, 1.00, 1.04, 0, 0),
+    (None, 7, 3.6, 1.00, 1.04, 0, 0),
+    (None, 8, 3.4, 1.00, 1.04, 0, 0),
+    (None, 9, 4.2, 1.00, 1.00, 0, 0),
 ]
-ENCRE = (20, 33, 61)
 
 
 def ease(t):
@@ -47,14 +51,14 @@ def cadre(photo, zoom, dx):
 def images_du_plan(plan):
     src, calque, duree, z0, z1, x0, x1 = plan
     over = Image.open(ICI / "calques" / f"{calque}.png").convert("RGBA")
-    photo = Image.open(RACINE / src).convert("RGB") if src else None
+    photo = Image.open(RACINE / src).convert("RGB") if src else over.convert("RGB")
     n = round(duree * FPS)
     for i in range(n):
         t = ease(i / (n - 1))
-        if photo:
-            fond = cadre(photo, z0 + (z1 - z0) * t, x0 + (x1 - x0) * t).convert("RGBA")
-        else:
-            fond = Image.new("RGBA", (W, H), ENCRE + (255,))
+        fond = cadre(photo, z0 + (z1 - z0) * t, x0 + (x1 - x0) * t).convert("RGBA")
+        if not src:
+            yield fond.convert("RGB")
+            continue
         # Le texte apparaît en fondu une fois le fondu enchaîné terminé.
         a = min(1.0, max(0.0, (i - FONDU * FPS) / (0.4 * FPS)))
         calque_i = over.copy()
