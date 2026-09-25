@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Phoxia, film de marque</title>
+<!--
+  Film de marque Phoxia. Chaque image est calculée à partir du temps t :
+  window.seek(t) place tous les éléments, ce qui rend le rendu image par image
+  parfaitement déterministe (voir rendre.mjs).
+  Format : film.html?w=1920&h=1080 (paysage) ou ?w=1080&h=1920 (vertical).
+  Sans paramètre ?rendu, la page se lit en temps réel dans le navigateur.
+-->
+<style>
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; src: url(fonts/eb-garamond-latin-wght-normal.woff2) format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; src: url(fonts/eb-garamond-latin-wght-italic.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 400 700; src: url(fonts/instrument-sans-latin-wght-normal.woff2) format("woff2"); }
+
+:root {
+  --encre: #14213D; --encre-nuit: #0D1629; --azur: #1C6BA8; --azur-clair: #5BA3DD;
+  --sable: #EDEAE1; --blanc: #FCFBF9; --sable-pale: #F5F3EE; --encre-doux: #4A566E;
+  --serif: "EB Garamond", Georgia, serif; --sans: "Instrument Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #000; overflow: hidden; }
+#scene {
+  position: relative; overflow: hidden; background: var(--encre);
+  width: calc(var(--W) * 1px); height: calc(var(--H) * 1px);
+  font-family: var(--sans); color: var(--sable);
+  -webkit-font-smoothing: antialiased; font-synthesis: none;
+}
+.plan { position: absolute; inset: 0; display: none; }
+.plan.on { display: block; }
+.fond-encre { background: radial-gradient(120% 90% at 50% 62%, #1A2B4F 0%, var(--encre) 45%, var(--encre-nuit) 100%); }
+.fond-sable { background: var(--sable); color: var(--encre); }
+.fond-blanc { background: var(--blanc); color: var(--encre); }
+canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
+.a { will-change: transform, opacity, filter; }
+
+.serif, .devise { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; line-height: 1.04; text-wrap: balance; }
+.serif em, em.az { font-style: italic; color: var(--azur-clair); }
+.fond-sable .serif em, .fond-blanc .serif em { color: var(--azur); }
+.etq { font-size: calc(var(--u) * 1.55); font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--azur-clair); }
+.fond-sable .etq, .fond-blanc .etq { color: var(--azur); }
+.centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 calc(var(--u) * 8); }
+.w { display: inline-block; white-space: pre; }
+
+/* Plan 1 : Phocée */
+#p1 .l1 { font-size: calc(var(--u) * 6.2); color: var(--sable); }
+#p1 .l2 { font-size: calc(var(--u) * 6.2); margin-top: calc(var(--u) * 1.4); }
+#p1 .etq { margin-bottom: calc(var(--u) * 4); }
+#p1 .centre { justify-content: flex-start; padding-top: calc(var(--H) * .25px); }
+
+/* Plan 2 : le constat */
+#p2 h2 { font-size: calc(var(--u) * 6.6); max-width: 16em; }
+#p2 .taches { display: flex; gap: calc(var(--u) * 2.2); margin-top: calc(var(--u) * 5.5); flex-wrap: wrap; justify-content: center; }
+.pastille {
+  position: relative; display: inline-flex; align-items: center; gap: calc(var(--u) * 1.4);
+  font-size: calc(var(--u) * 2.9); font-weight: 500; padding: calc(var(--u) * 1.5) calc(var(--u) * 3.2);
+  border: calc(var(--u) * .22) solid var(--encre); border-radius: 999px; overflow: hidden; color: var(--encre);
+}
+.pastille .rempli { position: absolute; inset: 0; background: var(--azur); transform-origin: left; }
+.pastille span, .pastille i { position: relative; }
+.pastille i { font-style: normal; display: inline-block; width: 0; overflow: hidden; }
+#p2 .question { font-size: calc(var(--u) * 6.6); margin-top: calc(var(--u) * 6); }
+
+/* Plan 3 et 8 : logo */
+.marque { display: flex; align-items: center; gap: calc(var(--u) * 3.2); }
+.mot { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--blanc); line-height: 1; letter-spacing: -.01em; display: flex; }
+.mot .x { color: var(--azur-clair); }
+.mot .lettre { display: inline-block; }
+.symbole { position: relative; }
+.symbole svg { width: 100%; height: 100%; overflow: visible; display: block; }
+#p3 .mot { font-size: calc(var(--u) * 17); }
+#p3 .symbole { width: calc(var(--u) * 17); height: calc(var(--u) * 12.5); }
+#p3 .sous { margin-top: calc(var(--u) * 4.5); font-size: calc(var(--u) * 2); letter-spacing: .32em; text-transform: uppercase; color: var(--sable); opacity: .85; }
+.flash { position: absolute; inset: 0; background: var(--blanc); pointer-events: none; }
+
+/* Plan 4 : les offres */
+#p4 .tete { position: absolute; left: calc(var(--u) * 7); top: calc(var(--u) * 6.5); right: calc(var(--u) * 7); display: flex; justify-content: space-between; align-items: baseline; }
+#p4 .tete .compteur { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 3); color: var(--encre-doux); }
+.offre { position: absolute; inset: 0; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: calc(var(--u) * 6); padding: 0 calc(var(--u) * 9); }
+.offre .num { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 34); line-height: .8; color: var(--azur); letter-spacing: -.04em; }
+.offre h3 { font-size: calc(var(--u) * 7.4); margin-bottom: calc(var(--u) * 2.4); }
+.offre p { font-size: calc(var(--u) * 2.9); color: var(--encre-doux); max-width: 26em; line-height: 1.4; }
+.offre .tags { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 1.2); margin-top: calc(var(--u) * 3.6); }
+.offre .tags span { font-size: calc(var(--u) * 1.9); font-weight: 500; padding: calc(var(--u) * .9) calc(var(--u) * 2); border-radius: 999px; background: var(--encre); color: var(--sable); }
+#p4 .barre { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 6.5); display: flex; gap: calc(var(--u) * 1.2); }
+#p4 .barre div { flex: 1; height: calc(var(--u) * .35); background: rgba(20,33,61,.14); position: relative; overflow: hidden; }
+#p4 .barre b { position: absolute; inset: 0; background: var(--azur); transform-origin: left; }
+
+/* Plan 5 : la méthode */
+#p5 .titre { position: absolute; left: 0; right: 0; top: calc(var(--u) * 10); text-align: center; }
+#p5 .titre h2 { font-size: calc(var(--u) * 6.4); margin-top: calc(var(--u) * 1.6); }
+#p5 .ligne { position: absolute; left: 10%; right: 10%; top: 56%; height: calc(var(--u) * .3); background: rgba(237,234,225,.16); }
+#p5 .ligne b { position: absolute; inset: 0; background: var(--azur-clair); transform-origin: left; }
+.etape { position: absolute; top: 56%; width: 22%; transform: translateX(-50%); text-align: center; }
+.etape .point { width: calc(var(--u) * 2.6); height: calc(var(--u) * 2.6); border-radius: 50%; margin: calc(var(--u) * -1.15) auto 0; background: var(--encre); border: calc(var(--u) * .3) solid var(--azur-clair); }
+.etape .n { font-family: var(--serif); font-style: italic; color: var(--azur-clair); font-size: calc(var(--u) * 2.6); margin-top: calc(var(--u) * 2.8); }
+.etape h4 { font-family: var(--serif); font-weight: 400; font-size: calc(var(--u) * 4.6); line-height: 1.05; margin-top: calc(var(--u) * .6); color: var(--blanc); }
+.etape p { font-size: calc(var(--u) * 1.95); line-height: 1.4; color: rgba(237,234,225,.72); margin-top: calc(var(--u) * 1.2); }
+#p5 .voile { position: absolute; top: 56%; width: calc(var(--u) * 6); height: calc(var(--u) * 4.4); transform: translate(-50%, -125%); }
+
+/* Plan 6 : les engagements */
+#p6 .grille { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: 50%; transform: translateY(-46%); display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u) * 5); }
+#p6 .titre { position: absolute; left: calc(var(--u) * 7); top: calc(var(--u) * 8); }
+#p6 .titre h2 { font-size: calc(var(--u) * 6.2); margin-top: calc(var(--u) * 1.4); }
+.chiffre { border-top: calc(var(--u) * .25) solid var(--encre); padding-top: calc(var(--u) * 2.4); }
+.chiffre .gros { font-family: var(--serif); font-size: calc(var(--u) * 15); line-height: .95; color: var(--encre); letter-spacing: -.03em; white-space: nowrap; }
+.chiffre .gros small { font-size: .42em; font-style: italic; color: var(--azur); margin-left: .12em; letter-spacing: 0; }
+.chiffre p { font-size: calc(var(--u) * 2.4); line-height: 1.4; color: var(--encre-doux); margin-top: calc(var(--u) * 1.6); max-width: 18em; }
+#p6 .chute { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 7.5); font-size: calc(var(--u) * 4.2); }
+
+/* Plan 7 : le fondateur */
+#p7 .portrait { position: absolute; top: 0; bottom: 0; left: 4%; width: 52%; }
+#p7 .portrait .cadre { position: absolute; inset: 0; overflow: hidden; }
+#p7 .portrait img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+#p7 .texte { position: absolute; right: calc(var(--u) * 8); top: 50%; transform: translateY(-50%); width: 40%; }
+#p7 h2 { font-size: calc(var(--u) * 8.6); color: var(--blanc); margin: calc(var(--u) * 2) 0 calc(var(--u) * 3); }
+#p7 blockquote { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 3.6); line-height: 1.22; color: var(--sable); border-left: calc(var(--u) * .3) solid var(--azur-clair); padding-left: calc(var(--u) * 2.4); }
+#p7 .villes { margin-top: calc(var(--u) * 3.6); font-size: calc(var(--u) * 1.8); letter-spacing: .22em; text-transform: uppercase; color: rgba(237,234,225,.7); line-height: 1.8; }
+
+/* Plan 8 : signature */
+#p8 .mot { font-size: calc(var(--u) * 14); }
+#p8 .symbole { width: calc(var(--u) * 14); height: calc(var(--u) * 10.3); }
+#p8 .devise { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 5.4); color: var(--sable); margin-top: calc(var(--u) * 5); }
+#p8 .filet { width: calc(var(--u) * 14); height: calc(var(--u) * .2); background: var(--azur-clair); margin: calc(var(--u) * 4.5) auto; transform-origin: center; }
+#p8 .cta { display: inline-block; font-size: calc(var(--u) * 2.5); font-weight: 600; background: var(--sable); color: var(--encre); padding: calc(var(--u) * 1.8) calc(var(--u) * 4); border-radius: 999px; }
+#p8 .site { margin-top: calc(var(--u) * 3); font-size: calc(var(--u) * 2.2); letter-spacing: .3em; text-transform: uppercase; color: var(--sable); }
+#p8 .site b { color: var(--azur-clair); font-weight: 600; }
+#p8 .centre { padding-bottom: calc(var(--u) * 6); }
+
+/* Transitions : les trois parallélogrammes du symbole balaient l'écran */
+#balai { position: absolute; inset: 0; pointer-events: none; z-index: 20; }
+#balai div { position: absolute; top: -20%; height: 140%; width: 75%; transform-origin: center; }
+#noir { position: absolute; inset: 0; background: #000; z-index: 30; pointer-events: none; opacity: 0; }
+#grain { position: absolute; inset: 0; z-index: 25; pointer-events: none; mix-blend-mode: overlay; opacity: .09; }
+
+/* ---------- Format vertical ---------- */
+.vertical #p1 .l1, .vertical #p1 .l2 { font-size: calc(var(--u) * 8.4); }
+.vertical #p1 .centre { padding-top: calc(var(--H) * .2px); }
+.vertical #p2 h2, .vertical #p2 .question { font-size: calc(var(--u) * 9); }
+.vertical #p2 .taches { flex-direction: column; align-items: center; }
+.vertical .pastille { font-size: calc(var(--u) * 4.4); }
+.vertical .marque { flex-direction: column; gap: calc(var(--u) * 6); }
+.vertical #p3 .mot { font-size: calc(var(--u) * 24); }
+.vertical #p3 .symbole { width: calc(var(--u) * 22); height: calc(var(--u) * 16.2); order: -1; }
+.vertical #p3 .sous { font-size: calc(var(--u) * 3); }
+.vertical #p4 .tete { top: calc(var(--u) * 14); }
+.vertical .etq { font-size: calc(var(--u) * 2.5); }
+.vertical #p4 .tete .compteur { font-size: calc(var(--u) * 4.4); }
+.vertical .offre { grid-template-columns: 1fr; align-content: center; gap: calc(var(--u) * 5); }
+.vertical .offre .num { font-size: calc(var(--u) * 46); }
+.vertical .offre h3 { font-size: calc(var(--u) * 10.5); }
+.vertical .offre p { font-size: calc(var(--u) * 4.4); }
+.vertical .offre .tags span { font-size: calc(var(--u) * 3.2); padding: calc(var(--u) * 1.4) calc(var(--u) * 3); }
+.vertical #p4 .barre { bottom: calc(var(--u) * 16); }
+.vertical #p5 .titre { top: calc(var(--u) * 16); }
+.vertical #p5 .titre h2 { font-size: calc(var(--u) * 9); }
+.vertical #p5 .ligne { left: calc(var(--u) * 16); right: auto; top: 30%; bottom: 10%; width: calc(var(--u) * .45); height: auto; }
+.vertical #p5 .ligne b { transform-origin: top; }
+.vertical .etape { left: calc(var(--u) * 16) !important; width: 70%; text-align: left; transform: translateY(-50%); display: grid; grid-template-columns: auto 1fr; column-gap: calc(var(--u) * 6); align-items: start; }
+.vertical .etape .point { width: calc(var(--u) * 4.2); height: calc(var(--u) * 4.2); margin: 0 0 0 calc(var(--u) * -1.9); grid-row: span 3; }
+.vertical .etape .n { font-size: calc(var(--u) * 3.8); margin-top: 0; }
+.vertical .etape h4 { font-size: calc(var(--u) * 7.4); }
+.vertical .etape p { font-size: calc(var(--u) * 3.3); }
+.vertical #p5 .voile { width: calc(var(--u) * 9); height: calc(var(--u) * 6.6); transform: translate(-150%, -50%); }
+.vertical #p6 .titre { top: calc(var(--u) * 16); }
+.vertical #p6 .titre h2 { font-size: calc(var(--u) * 9); }
+.vertical #p6 .grille { grid-template-columns: 1fr; gap: calc(var(--u) * 5.5); top: 52%; }
+.vertical .chiffre { display: grid; grid-template-columns: 1.15fr 1fr; align-items: end; gap: calc(var(--u) * 3); }
+.vertical .chiffre .gros { font-size: calc(var(--u) * 20); }
+.vertical .chiffre p { font-size: calc(var(--u) * 3.6); margin: 0 0 calc(var(--u) * 1.6); }
+.vertical #p6 .chute { font-size: calc(var(--u) * 6.4); bottom: calc(var(--u) * 16); }
+.vertical #p7 .portrait { left: 0; right: 0; width: auto; top: 0; bottom: 44%; }
+.vertical #p7 .texte { left: calc(var(--u) * 8); right: calc(var(--u) * 8); width: auto; top: auto; bottom: calc(var(--u) * 14); transform: none; }
+.vertical #p7 h2 { font-size: calc(var(--u) * 12); }
+.vertical #p7 blockquote { font-size: calc(var(--u) * 5.4); }
+.vertical #p7 .villes { font-size: calc(var(--u) * 2.9); }
+.vertical #p8 .mot { font-size: calc(var(--u) * 22); }
+.vertical #p8 .symbole { width: calc(var(--u) * 20); height: calc(var(--u) * 14.7); order: -1; }
+.vertical #p8 .devise { font-size: calc(var(--u) * 7); line-height: 1.15; }
+.vertical #p8 .cta { font-size: calc(var(--u) * 3.2); white-space: nowrap; padding: calc(var(--u) * 2.4) calc(var(--u) * 4.4); }
+.vertical #p8 .site { font-size: calc(var(--u) * 3.4); }
+.vertical #p8 .filet { width: calc(var(--u) * 20); }
+</style>
+</head>
+<body>
+<div id="scene">
+
+  <!-- 1. Phocée : l'origine du nom -->
+  <section class="plan fond-encre" id="p1">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <p class="etq a" id="p1e">Marseille, 600 av. J.-C.</p>
+      <p class="serif l1 decoupe">Les marins de Phocée fondent Marseille</p>
+      <p class="serif l2 decoupe">en regardant <em>au-delà de l’horizon.</em></p>
+    </div>
+  </section>
+
+  <!-- 2. Le constat -->
+  <section class="plan fond-sable" id="p2">
+    <div class="centre">
+      <h2 class="serif decoupe">Vos équipes perdent des heures sur</h2>
+      <div class="taches">
+        <div class="pastille a"><div class="rempli"></div><span>Prospection</span><i>✓</i></div>
+        <div class="pastille a"><div class="rempli"></div><span>Support client</span><i>✓</i></div>
+        <div class="pastille a"><div class="rempli"></div><span>Reporting</span><i>✓</i></div>
+      </div>
+      <p class="serif question decoupe">Et si <em>l’IA</em> s’en chargeait ?</p>
+    </div>
+  </section>
+
+  <!-- 3. Apparition de la marque -->
+  <section class="plan fond-encre" id="p3">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <div class="marque">
+        <div class="mot"><span class="lettre">P</span><span class="lettre">h</span><span class="lettre">o</span><span class="lettre x">x</span><span class="lettre">i</span><span class="lettre">a</span></div>
+        <div class="symbole"></div>
+      </div>
+      <p class="sous a">Agence IA · Marseille</p>
+    </div>
+    <div class="flash"></div>
+  </section>
+
+  <!-- 4. Les trois offres -->
+  <section class="plan fond-blanc" id="p4">
+    <div class="tete a"><span class="etq">Trois offres, un seul objectif</span><span class="compteur">01 / 03</span></div>
+    <div class="offre">
+      <div class="num">01</div>
+      <div><h3 class="serif decoupe">Automatisation <em>&amp;</em> agents IA</h3><p class="a">Automatiser les tâches répétitives pour récupérer du temps sur ce qui compte.</p>
+        <div class="tags"><span>Prospection</span><span>Support client</span><span>Reporting</span><span>Vos outils connectés</span></div></div>
+    </div>
+    <div class="offre">
+      <div class="num">02</div>
+      <div><h3 class="serif decoupe">Conseil <em>&amp;</em> stratégie IA</h3><p class="a">Les cas d’usage à fort impact, et une feuille de route réaliste pour les déployer.</p>
+        <div class="tags"><span>Diagnostic</span><span>Feuille de route</span><span>Formation des équipes</span></div></div>
+    </div>
+    <div class="offre">
+      <div class="num">03</div>
+      <div><h3 class="serif decoupe">Développement <em>sur mesure</em></h3><p class="a">Quand aucune solution du marché ne correspond à votre besoin réel.</p>
+        <div class="tags"><span>Chatbots</span><span>Intégrations</span><span>Automatisations métier</span><span>Prototypage rapide</span></div></div>
+    </div>
+    <div class="barre"><div><b></b></div><div><b></b></div><div><b></b></div></div>
+  </section>
+
+  <!-- 5. Le déroulé d'une mission -->
+  <section class="plan fond-encre" id="p5">
+    <canvas class="mer"></canvas>
+    <div class="titre"><p class="etq a">Déroulé d’une mission</p><h2 class="serif decoupe">De l’écoute <em>à la mesure.</em></h2></div>
+    <div class="ligne"><b></b></div>
+    <div class="etape" style="left:13%"><div class="point"></div><div class="n">01</div><h4>Comprendre</h4><p>Immersion dans votre activité et vos outils</p></div>
+    <div class="etape" style="left:37.7%"><div class="point"></div><div class="n">02</div><h4>Diagnostiquer</h4><p>Les cas d’usage IA à fort impact</p></div>
+    <div class="etape" style="left:62.3%"><div class="point"></div><div class="n">03</div><h4>Construire</h4><p>Testé sur un périmètre limité, puis généralisé</p></div>
+    <div class="etape" style="left:87%"><div class="point"></div><div class="n">04</div><h4>Mettre en œuvre</h4><p>Formation des équipes et mesure des effets</p></div>
+    <div class="voile symbole"></div>
+  </section>
+
+  <!-- 6. Les engagements -->
+  <section class="plan fond-sable" id="p6">
+    <div class="titre"><p class="etq a">Les engagements</p><h2 class="serif decoupe">Clairs <em>dès le départ.</em></h2></div>
+    <div class="grille">
+      <div class="chiffre a"><div class="gros" data-v="30">0<small>min</small></div><p>Premier échange offert, sans engagement</p></div>
+      <div class="chiffre a"><div class="gros" data-v="48">0<small>h</small></div><p>Pour recevoir une première réponse</p></div>
+      <div class="chiffre a"><div class="gros" data-v="3">0<small>langues</small></div><p>Français, anglais, espagnol</p></div>
+    </div>
+    <p class="serif chute decoupe">Et vos équipes <em>gardent la main.</em></p>
+  </section>
+
+  <!-- 7. Le fondateur -->
+  <section class="plan fond-encre" id="p7">
+    <div class="portrait"><div class="cadre"><img src="../../assets/img/equipe/mathieu.jpg" alt=""></div></div>
+    <div class="texte">
+      <p class="etq a">Fondateur de Phoxia</p>
+      <h2 class="serif decoupe">Mathieu Barthélémy</h2>
+      <blockquote class="a">Comprendre le métier avant de choisir l’outil.</blockquote>
+      <p class="villes a">Marseille · Lyon · Paris · Montréal</p>
+    </div>
+  </section>
+
+  <!-- 8. Signature -->
+  <section class="plan fond-encre" id="p8">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <div class="marque">
+        <div class="mot"><span class="lettre">P</span><span class="lettre">h</span><span class="lettre">o</span><span class="lettre x">x</span><span class="lettre">i</span><span class="lettre">a</span></div>
+        <div class="symbole"></div>
+      </div>
+      <p class="devise decoupe">Là où les idées prennent le large.</p>
+      <div class="filet"></div>
+      <p class="cta a">Réservez votre premier échange de 30 minutes</p>
+      <p class="site a"><b>phoxia.fr</b></p>
+    </div>
+  </section>
+
+  <div id="balai"><div></div><div></div><div></div></div>
+  <canvas id="grain"></canvas>
+  <div id="noir"></div>
+</div>
+
+<script>
+const Q = new URLSearchParams(location.search);
+const W = +(Q.get('w') || 1920), H = +(Q.get('h') || 1080);
+const U = Math.min(W, H) / 100;
+const S = document.getElementById('scene');
+S.style.setProperty('--W', W); S.style.setProperty('--H', H); S.style.setProperty('--u', U + 'px');
+const VERT = H > W;
+if (VERT) S.classList.add('vertical');
+const DUREE = 48;
+
+/* ---------- Outils d'animation ---------- */
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const E = {
+  out: x => 1 - Math.pow(1 - x, 3),
+  out5: x => 1 - Math.pow(1 - x, 5),
+  io: x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
+  expo: x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x),
+  inn: x => x * x * x,
+  back: x => { const c = 1.5; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); },
+};
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+function pose(el, { o = 1, x = 0, y = 0, s = 1, r = 0, sx = null, sy = null, flou = 0 } = {}) {
+  el.style.opacity = o;
+  const sc = sx !== null || sy !== null ? `scale(${sx ?? 1},${sy ?? 1})` : `scale(${s})`;
+  el.style.transform = `translate(${x}px,${y}px) ${sc} rotate(${r}deg)`;
+  el.style.filter = flou > .05 ? `blur(${flou}px)` : 'none';
+}
+/* Entrée par le bas avec léger flou, sortie vers le haut. */
+function monte(el, t, t0, t1 = 1e9, { d = .8, dy = 4, dOut = .45 } = {}) {
+  const a = E.out5(prog(t, t0, t0 + d)), b = E.inn(prog(t, t1, t1 + dOut));
+  pose(el, { o: a * (1 - b), y: (1 - a) * dy * U - b * dy * .6 * U, flou: (1 - a) * U * .8 + b * U * .6 });
+}
+/* Découpe un texte en mots, en conservant les balises <em>. */
+function decoupe(el) {
+  const out = [];
+  const walk = (node, parent) => {
+    for (const n of [...node.childNodes]) {
+      if (n.nodeType === 3) {
+        const parts = n.textContent.split(/(\s+)/);
+        const frag = document.createDocumentFragment();
+        for (const p of parts) {
+          if (!p) continue;
+          if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(' ')); continue; }
+          const s = document.createElement('span'); s.className = 'w a'; s.textContent = p; frag.appendChild(s); out.push(s);
+        }
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1) walk(n);
+    }
+  };
+  walk(el);
+  el._mots = out;
+  return out;
+}
+$$('.decoupe').forEach(decoupe);
+function mots(el, t, t0, t1 = 1e9, { pas = .07, d = .75, dy = 5 } = {}) {
+  el._mots.forEach((m, i) => monte(m, t, t0 + i * pas, t1 + i * pas * .35, { d, dy, dOut: .4 }));
+}
+
+/* ---------- Symbole Phoxia (trois parallélogrammes) ---------- */
+const SYM = [
+  { d: 'M0 102.15h34.05L53.91 68.1H19.86z' },
+  { d: 'M42.56 68.1h34.05l19.86-34.05H62.42z' },
+  { d: 'M85.12 34.05h34.05L139.03 0h-34.05z' },
+];
+$$('.symbole').forEach(el => {
+  el.innerHTML = `<svg viewBox="0 0 139.03 102.15">${SYM.map(p => `<path d="${p.d}"/>`).join('')}</svg>`;
+  const [a, b, c] = $$('path', el);
+  a.setAttribute('fill', '#5BA3DD'); b.setAttribute('fill', '#FCFBF9'); c.setAttribute('fill', '#FCFBF9');
+});
+/* Les parallélogrammes montent un à un, comme des voiles. */
+function symbole(el, t, t0, { pas = .14, d = .7 } = {}) {
+  $$('path', el).forEach((p, i) => {
+    const k = E.back(prog(t, t0 + i * pas, t0 + i * pas + d));
+    const o = prog(t, t0 + i * pas, t0 + i * pas + d * .4);
+    p.style.transform = `translate(${(1 - k) * -40}px, ${(1 - k) * 60}px)`;
+    p.style.opacity = o;
+  });
+}
+
+/* ---------- La mer : lignes d'horizon calculées ---------- */
+const mers = $$('canvas.mer').map(c => { c.width = W; c.height = H; return c.getContext('2d'); });
+function mer(ctx, t, { horizon = .66, force = 1, lueur = 1 } = {}) {
+  const h = H * horizon;
+  ctx.clearRect(0, 0, W, H);
+  // lueur sur l’horizon
+  const g = ctx.createRadialGradient(W / 2, h, 0, W / 2, h, Math.max(W, H) * .55);
+  g.addColorStop(0, `rgba(91,163,221,${.28 * lueur})`); g.addColorStop(.35, `rgba(28,107,168,${.10 * lueur})`); g.addColorStop(1, 'rgba(20,33,61,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // ligne d'horizon
+  ctx.strokeStyle = `rgba(237,234,225,${.55 * force})`; ctx.lineWidth = Math.max(1, U * .12);
+  ctx.beginPath(); ctx.moveTo(0, h); ctx.lineTo(W, h); ctx.stroke();
+  const N = 22;
+  for (let i = 1; i <= N; i++) {
+    const z = i / N, zz = z * z;
+    const y0 = h + (H - h) * zz * 1.05;
+    const amp = U * (.15 + zz * 1.6);
+    ctx.strokeStyle = `rgba(91,163,221,${(.08 + .32 * (1 - z)) * force})`;
+    ctx.lineWidth = Math.max(1, U * (.06 + zz * .16));
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 8) {
+      const y = y0 + Math.sin(x / W * (7 + i * .6) + t * (.9 + z * .6) + i * 1.7) * amp
+                  + Math.sin(x / W * 17.3 - t * 1.3 + i) * amp * .35;
+      x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+}
+
+/* ---------- Grain de pellicule (textures précalculées) ---------- */
+const grain = $('#grain'); grain.width = Math.ceil(W / 2); grain.height = Math.ceil(H / 2);
+const gctx = grain.getContext('2d');
+const grains = [];
+{ let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let k = 0; k < 6; k++) { const im = gctx.createImageData(grain.width, grain.height);
+    for (let i = 0; i < im.data.length; i += 4) { const v = rnd() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+    grains.push(im); } }
+
+/* ---------- Balayage de transition ---------- */
+const CUTS = [4.8, 9.6, 12.0, 21.6, 28.8, 34.8, 39.6];
+const COULEURS_BALAI = ['#5BA3DD', '#1C6BA8', '#14213D'];
+const balais = $$('#balai div');
+balais.forEach((b, i) => b.style.background = COULEURS_BALAI[i]);
+function balai(t) {
+  let actif = false;
+  for (const c of CUTS) {
+    if (c === 9.6) continue;               // la marque apparaît sur un flash, pas un balayage
+    if (t > c - .6 && t < c + .6) {
+      actif = true;
+      const k = prog(t, c - .6, c + .6);
+      balais.forEach((b, i) => {
+        const kk = E.io(clamp(k * 1.25 - i * .1));
+        const x = lerp(-1.6, 1.6, kk) * W - (i - 1) * U * 4;
+        b.style.left = '12.5%';
+        b.style.transform = `translateX(${x}px) skewX(-30deg)`;
+        b.style.display = 'block';
+      });
+    }
+  }
+  if (!actif) balais.forEach(b => b.style.display = 'none');
+}
+
+/* ---------- Plans ---------- */
+const plans = $$('.plan');
+const BORNES = [0, ...CUTS, DUREE];
+
+function p1(t) {
+  const P = $('#p1');
+  mer(mers[0], t, { horizon: .7, force: prog(t, 0, 1.6), lueur: E.out(prog(t, .2, 3)) });
+  monte($('#p1e'), t, .2);
+  mots($('#p1 .l1'), t, .45, 99, { pas: .09 });
+  mots($('#p1 .l2'), t, 2.15, 99, { pas: .1 });
+  // lent zoom de caméra
+  $('#p1 .centre').style.transform = `scale(${1 + t * .008})`;
+}
+function p2(t) {
+  const T = t - 4.8;
+  mots($('#p2 h2'), T, .15, 99, { pas: .05 });
+  $$('#p2 .pastille').forEach((el, i) => {
+    const t0 = .9 + i * .16;
+    const a = E.back(prog(T, t0, t0 + .6));
+    pose(el, { o: prog(T, t0, t0 + .25), y: (1 - a) * U * 4, s: .85 + a * .15 });
+    const f = E.io(prog(T, 2.2 + i * .22, 2.2 + i * .22 + .45));
+    $('.rempli', el).style.transform = `scaleX(${f})`;
+    el.style.color = f > .45 ? '#FCFBF9' : '#14213D';
+    el.style.borderColor = f > .05 ? '#1C6BA8' : '#14213D';
+    $('i', el).style.width = (E.out(prog(T, 2.45 + i * .22, 2.8 + i * .22)) * 1.1) + 'em';
+  });
+  mots($('#p2 .question'), T, 3.1, 99, { pas: .08 });
+}
+const lettres3 = $$('#p3 .lettre'), lettres8 = $$('#p8 .lettre');
+function lettres(ls, t, t0) {
+  ls.forEach((l, i) => {
+    const k = E.out5(prog(t, t0 + i * .055, t0 + i * .055 + .9));
+    pose(l, { o: prog(t, t0 + i * .055, t0 + i * .055 + .3), y: (1 - k) * U * 5, flou: (1 - k) * U * 1.2 });
+  });
+}
+function p3(t) {
+  const T = t - 9.6;
+  mer(mers[1], t, { horizon: .8, force: .55, lueur: 1.2 });
+  const fl = $('#p3 .flash');
+  fl.style.opacity = 1 - E.out(prog(T, 0, .5));
+  symbole($('#p3 .symbole'), T, .05, { pas: .12, d: .75 });
+  lettres(lettres3, T, .2);
+  monte($('#p3 .sous'), T, .75);
+  $('#p3 .marque').style.transform = `scale(${1.04 - E.out(prog(T, 0, 2.4)) * .04})`;
+}
+function p4(t) {
+  const T = t - 12;
+  monte($('#p4 .tete'), T, .5);
+  const offres = $$('#p4 .offre');
+  const D = 3.2;
+  offres.forEach((o, i) => {
+    const t0 = i * D, t1 = t0 + D;
+    const vis = T > t0 - .1 && (T < t1 + .2 || i === 2);
+    o.style.display = vis ? 'grid' : 'none';
+    if (!vis) return;
+    const entree = E.out5(prog(T, t0 + .35, t0 + 1.2));
+    const sortie = i < 2 ? E.inn(prog(T, t1 - .25, t1 + .15)) : 0;
+    const num = $('.num', o);
+    pose(num, { o: prog(T, t0 + .3, t0 + .7) * (1 - sortie), x: (1 - entree) * U * 12 - sortie * U * 10, s: .92 + entree * .08 });
+    mots($('h3', o), T, t0 + .5, i < 2 ? t1 - .35 : 99, { pas: .06 });
+    monte($('p', o), T, t0 + .85, i < 2 ? t1 - .3 : 99);
+    $$('.tags span', o).forEach((s, j) => {
+      const k = E.back(prog(T, t0 + 1.1 + j * .09, t0 + 1.6 + j * .09));
+      pose(s, { o: prog(T, t0 + 1.1 + j * .09, t0 + 1.3 + j * .09) * (1 - sortie), y: (1 - k) * U * 2.5 - sortie * U * 2, s: .8 + k * .2 });
+    });
+  });
+  $('#p4 .compteur').textContent = `0${Math.min(3, Math.floor(clamp(T, 0, 9.59) / D) + 1)} / 03`;
+  $$('#p4 .barre b').forEach((b, i) => b.style.transform = `scaleX(${prog(T, i * D + .3, (i + 1) * D - .1)})`);
+}
+function p5(t) {
+  const T = t - 21.6;
+  mer(mers[2], t, { horizon: .93, force: .3, lueur: .5 });
+  monte($('#p5 .etq'), T, .25);
+  mots($('#p5 h2'), T, .4, 99, { pas: .07 });
+  const DEB = 1.1, PAS = 1.45;
+  const av = E.io(prog(T, DEB - .3, DEB + 3 * PAS + .4));
+  $('#p5 .ligne b').style.transform = VERT ? `scaleY(${av})` : `scaleX(${av})`;
+  const etapes = $$('#p5 .etape');
+  etapes.forEach((e, i) => {
+    const t0 = DEB + i * PAS;
+    if (VERT) e.style.top = (34 + i * 17.5) + '%';
+    const pt = $('.point', e);
+    const k = E.back(prog(T, t0, t0 + .5));
+    pt.style.transform = `scale(${k})`;
+    pt.style.background = T > t0 + .25 ? '#5BA3DD' : '#14213D';
+    [$('.n', e), $('h4', e), $('p', e)].forEach((el, j) => monte(el, T, t0 + .1 + j * .08, 99, { dy: 3 }));
+  });
+  // le symbole avance comme une voile le long de la ligne
+  const v = $('#p5 .voile');
+  symbole(v, T, .8, { pas: .08, d: .5 });
+  const ligne = $('#p5 .ligne').getBoundingClientRect(), sc = S.getBoundingClientRect();
+  if (VERT) {
+    v.style.left = (ligne.left - sc.left + ligne.width / 2) + 'px';
+    v.style.top = (ligne.top - sc.top + ligne.height * av) + 'px';
+  } else {
+    v.style.left = (ligne.left - sc.left + ligne.width * av) + 'px';
+    v.style.top = (ligne.top - sc.top) + 'px';
+  }
+  v.style.transform = (VERT ? 'translate(-150%,-50%)' : 'translate(-50%,-125%)') + ` rotate(${Math.sin(t * 2.2) * 2}deg)`;
+}
+function p6(t) {
+  const T = t - 28.8;
+  monte($('#p6 .etq'), T, .3);
+  mots($('#p6 .titre h2'), T, .45, 99, { pas: .07 });
+  $$('#p6 .chiffre').forEach((c, i) => {
+    const t0 = 1.0 + i * .3;
+    monte(c, T, t0, 99, { dy: 5, d: .9 });
+    const g = $('.gros', c), v = +g.dataset.v;
+    const n = Math.round(v * E.out(prog(T, t0, t0 + 1.3)));
+    g.firstChild.textContent = n;
+    c.style.borderTopColor = T > t0 + .3 ? '#1C6BA8' : '#14213D';
+  });
+  mots($('#p6 .chute'), T, 3.4, 99, { pas: .08 });
+}
+function p7(t) {
+  const T = t - 34.8;
+  const cadre = $('#p7 .cadre');
+  const k = E.io(prog(T, .15, 1.3));
+  // masque en parallélogramme, incliné comme le symbole
+  const inc = VERT ? 0.1 : 0.22;
+  if (VERT) {
+    const b = lerp(0, 100, k);
+    cadre.style.clipPath = `polygon(0 0, ${b + 30}% 0, ${b}% 100%, 0 100%)`;
+  } else {
+    const hW = 100 * k;
+    cadre.style.clipPath = `polygon(${inc * 100}% ${100 - hW}%, 100% ${100 - hW}%, ${(1 - inc) * 100}% 100%, 0% 100%)`;
+  }
+  $('#p7 img').style.transform = `scale(${1.12 - T * .018})`;
+  monte($('#p7 .etq'), T, .6);
+  mots($('#p7 h2'), T, .75, 99, { pas: .1 });
+  monte($('#p7 blockquote'), T, 1.4, 99, { d: 1 });
+  monte($('#p7 .villes'), T, 1.9);
+}
+function p8(t) {
+  const T = t - 39.6;
+  mer(mers[3], t, { horizon: .82, force: .5 + E.out(prog(T, 0, 2)) * .3, lueur: 1.2 });
+  symbole($('#p8 .symbole'), T, .35, { pas: .13, d: .8 });
+  lettres(lettres8, T, .3);
+  mots($('#p8 .devise'), T, 1.3, 99, { pas: .08 });
+  const f = E.io(prog(T, 2.0, 2.8));
+  $('#p8 .filet').style.transform = `scaleX(${f})`;
+  monte($('#p8 .cta'), T, 2.5, 99, { d: .9 });
+  monte($('#p8 .site'), T, 2.8);
+  $('#p8 .centre').style.transform = `scale(${1 + E.out(prog(T, 0, 8.4)) * .03})`;
+}
+const FNS = [p1, p2, p3, p4, p5, p6, p7, p8];
+
+window.seek = function (t) {
+  t = clamp(t, 0, DUREE);
+  let idx = BORNES.findIndex((b, i) => t >= b && t < BORNES[i + 1]);
+  if (idx < 0) idx = FNS.length - 1;
+  plans.forEach((p, i) => p.classList.toggle('on', i === idx));
+  FNS[idx](t);
+  balai(t);
+  gctx.putImageData(grains[Math.floor(t * 24) % grains.length], 0, 0);
+  // ouverture et fermeture au noir
+  $('#noir').style.opacity = Math.max(1 - E.out(prog(t, 0, .8)), E.io(prog(t, DUREE - 1.3, DUREE)));
+};
+window.DUREE = DUREE;
+window.pret = document.fonts.ready.then(() => Promise.all($$('img').map(i => i.decode().catch(() => {}))));
+
+if (!Q.has('rendu')) {
+  window.pret.then(() => {
+    const a = new Audio('bande-son.wav'); let t0 = performance.now();
+    document.addEventListener('click', () => { t0 = performance.now(); a.currentTime = 0; a.play(); });
+    const boucle = () => { seek(((performance.now() - t0) / 1000) % DUREE); requestAnimationFrame(boucle); };
+    boucle();
+  });
+}
+</script>
+</body>
+</html>
