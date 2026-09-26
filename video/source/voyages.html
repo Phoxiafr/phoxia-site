@@ -79,7 +79,7 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 /* 5. Mosaïque */
 #p5 { background: var(--nuit); }
-#p5 .grille { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(2, 1fr); gap: calc(var(--u) * .5); }
+#p5 .grille { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(3, 1fr); gap: calc(var(--u) * .5); }
 #p5 .grille div { overflow: hidden; }
 #p5 .grille img { width: 100%; height: 100%; object-fit: cover; display: block; }
 #p5 .bandeau { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); background: var(--encre); padding: calc(var(--u) * 4) calc(var(--u) * 6); text-align: center; }
@@ -135,7 +135,7 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
 .vertical #p4 .pays { font-size: calc(var(--u) * 15); bottom: calc(var(--u) * 22); }
 .vertical #p4 .barre { bottom: calc(var(--u) * 17); height: calc(var(--u) * .45); }
 .vertical #p5 .bandeau h2 { font-size: calc(var(--u) * 10); }
-.vertical #p5 .grille { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(5, 1fr); }
+.vertical #p5 .grille { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(6, 1fr); }
 #p5 .bandeau .etq { margin-bottom: calc(var(--u) * 1.4); }
 .vertical #p5 .bandeau .etq { font-size: calc(var(--u) * 2.6); }
 .vertical .promesse { grid-template-columns: 1fr; grid-template-rows: 48% 52%; }
@@ -186,7 +186,7 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
     <div class="photo"><img alt=""></div>
     <div class="photo" id="suivante"><img alt=""></div>
     <div class="ombre"></div>
-    <div class="tete"><p class="etq">Mes voyages</p><div class="droite"><span class="visite">Visité</span><span class="compteur">01 / 14</span></div></div>
+    <div class="tete"><p class="etq">Mes voyages</p><div class="droite"><span class="visite">Visité</span><span class="compteur">01 / 19</span></div></div>
     <p class="pays">France</p>
     <div class="barre"><b></b></div>
   </section>
@@ -244,8 +244,8 @@ const VERT = H > W;
 if (VERT) S.classList.add('vertical');
 
 /* Découpage, calé sur une mesure de 2,4 s (100 BPM). */
-const CUTS = [4.8, 7.2, 9.6, 26.4, 28.8, 36.0];
-const DUREE = 43.2;
+const CUTS = [4.8, 7.2, 9.6, 32.4, 34.8, 42.0];
+const DUREE = 49.2;
 const PHOTO = 1.2;   // deux temps par image
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -353,7 +353,7 @@ const balais = $$('#balai div');
 balais.forEach((b, i) => b.style.background = ['#E8946B', '#C8552E', '#14213D'][i]);
 function balai(t) {
   let actif = false;
-  for (const c of [7.2, 26.4, 28.8]) {
+  for (const c of [7.2, 32.4, 34.8]) {
     if (t > c - .6 && t < c + .6) {
       actif = true;
       const k = prog(t, c - .6, c + .6);
@@ -374,9 +374,13 @@ const PAYS = [
   { src: 'photos/ponton.jpg', n: 'Saint-Martin', pos: '50% 55%' },
   { src: 'photos/nikki-beach.jpg', n: 'Saint-Martin', pos: '50% 38%' },
   { src: 'photos/cockpit.jpg', n: 'Caraïbes', pos: '30% 22%' },
+  { src: 'photos/france-velodrome.jpg', n: 'France', pos: '50% 45%' },
   { src: 'photos/provence.jpg', n: 'France' },
+  { src: 'photos/france-plage.jpg', n: 'France', pos: '50% 45%' },
   { src: 'photos/france-bmw.jpg', n: 'France', pos: '50% 68%' },
   { src: 'photos/france-stade.jpg', n: 'France', pos: '50% 60%' },
+  { src: 'photos/royaume-uni-tower-bridge.jpg', n: 'Royaume-Uni', pos: '55% 72%' },
+  { src: 'photos/royaume-uni-porsche.jpg', n: 'Royaume-Uni', pos: '50% 55%' },
   { src: 'photos/italie-ferrari.jpg', n: 'Italie', pos: '50% 28%' },
   { src: 'photos/italie-f40.jpg', n: 'Italie', pos: '50% 62%' },
   { src: 'photos/thailande-temple.jpg', n: 'Thaïlande', pos: '50% 55%' },
@@ -384,9 +388,10 @@ const PAYS = [
   { src: 'photos/maroc-chameaux.jpg', n: 'Maroc', pos: '50% 45%' },
   { src: 'photos/maroc-drapeaux.jpg', n: 'Maroc', pos: '50% 50%' },
   { src: CLIP_MAROC[0], n: 'Marrakech', clip: CLIP_MAROC, pos: '50% 35%' },
+  { src: 'photos/entre-amis.jpg', n: 'Entre amis', pos: '50% 40%' },
 ];
 const NB = PAYS.length;
-$('#p5 .grille').innerHTML = Array.from({ length: VERT ? 15 : 14 }, (_, i) => PAYS[i % NB]).map(p => `<div><img src="${p.src}" alt="" style="object-position:${p.pos || '50% 50%'}"></div>`).join('');
+$('#p5 .grille').innerHTML = Array.from({ length: 24 }, (_, i) => PAYS[(i * 5) % NB]).map(p => `<div><img src="${p.src}" alt="" style="object-position:${p.pos || '50% 50%'}"></div>`).join('');
 
 /* ---------- Plans ---------- */
 function p1(t) {
@@ -445,9 +450,9 @@ function p4(t) {
   $('#p4 .barre b').style.transform = `scaleX(${clamp(T / (PHOTO * NB))})`;
 }
 function p5(t) {
-  const T = t - 26.4;
+  const T = t - 32.4;
   $$('#p5 .grille div').forEach((d, i) => {
-    const t0 = .05 + ((i * 7) % 15) * .035;
+    const t0 = .05 + ((i * 7) % 24) * .025;
     const k = E.out5(prog(T, t0, t0 + .45));
     pose(d, { o: prog(T, t0, t0 + .15), s: 1.25 - .25 * k });
     $('img', d).style.transform = `scale(${1.1 + T * .03})`;
@@ -458,7 +463,7 @@ function p5(t) {
   mots($('#p5 h2'), T, 1.0, 99, { pas: .08 });
 }
 function p6(t) {
-  const T = t - 28.8;
+  const T = t - 34.8;
   $$('#p6 .promesse').forEach((p, i) => {
     const t0 = i * 2.4, t1 = t0 + 2.4;
     const vis = T >= t0 && (T < t1 || i === 2);
@@ -477,7 +482,7 @@ function p6(t) {
   });
 }
 function p7(t) {
-  const T = t - 36.0;
+  const T = t - 42.0;
   mer(mers[2], t, { horizon: .82, force: .55 + E.out(prog(T, 0, 2)) * .3, lueur: 1.2 });
   $('#p7 .flash').style.opacity = 1 - E.out(prog(T, 0, .6));
   symbole($('#p7 .symbole'), T, .35);

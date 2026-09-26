@@ -2,16 +2,16 @@
 
 100 BPM, une mesure = 2,4 s : chaque changement de plan tombe sur un temps.
 Progression Fa, Do, Ré mineur, Si bémol, plus lumineuse. Impact sur la marque (4,8 s), pulsation à 7,2 s, un déclic par destination
-de 9,6 à 26,4 s, impact final sur la signature (36 s).
+de 9,6 à 32,4 s, impact final sur la signature (42 s).
 
-    python3 bande_son_voyages.py   ->  bande-son-voyages.wav (43,2 s, stéréo, 44,1 kHz)
+    python3 bande_son_voyages.py   ->  bande-son-voyages.wav (49,2 s, stéréo, 44,1 kHz)
 """
 import wave
 import numpy as np
 
 SR = 44100
-DUREE = 43.2
-FIN = 36.0  # arrivée de la signature
+DUREE = 49.2
+FIN = 42.0  # arrivée de la signature
 BPM = 100
 TEMPS = 60 / BPM
 MESURE = 4 * TEMPS
@@ -95,7 +95,7 @@ vol_nappe *= np.clip(t_all / 2.5, 0, 1)
 G += nappe * vol_nappe * 0.5
 
 # ---------- Basse ----------
-for m in range(3, 15):
+for m in range(3, 18):
     for b in range(4):
         d = m * MESURE + b * TEMPS
         if d >= FIN:
@@ -133,7 +133,7 @@ def charleston(ouvert=False):
 
 
 GC, CL = grosse_caisse(), claquement()
-for m in range(3, 15):
+for m in range(3, 18):
     for b in range(4):
         d = m * MESURE + b * TEMPS
         if d >= FIN - 0.01:
@@ -149,7 +149,7 @@ for m in range(3, 15):
 
 # ---------- Arpège en pizzicato (entre à 4,8 s) ----------
 MOTIF = [0, 2, 1, 3, 2, 1, 3, 2]
-for m in range(1, 15):
+for m in range(1, 18):
     acc = ACCORDS[m % 4]
     for k in range(16):
         d = m * MESURE + k * TEMPS / 4
@@ -187,7 +187,7 @@ def declic():
     return (b - passe_bas(b, 3000)) * np.exp(-tt * 120)
 
 
-for i in range(14):
+for i in range(19):
     ajoute(declic(), 9.6 + i * 1.2 + (0 if i == 0 else -0.3), 0.18, pan=0.3 * (1 if i % 2 else -1))
 
 # ---------- Souffles sur les balayages ----------
@@ -200,7 +200,7 @@ def souffle(long=1.2):
     return passe_bas(bruit, fc) * forme
 
 
-for c in (7.2, 26.4, 28.8):
+for c in (7.2, 32.4, 34.8):
     ajoute(souffle(), c - 0.6, 0.13, pan=-0.5)
     ajoute(souffle(), c - 0.55, 0.13, pan=0.5)
 

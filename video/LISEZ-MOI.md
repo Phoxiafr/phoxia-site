@@ -44,7 +44,7 @@ node rendre.mjs 1920x1080 apercu      # une image par plan dans apercus/
 | `phoxavels-film-16x9.mp4` | 1920 × 1080 |
 | `phoxavels-film-9x16.mp4` | 1080 × 1920 |
 
-43 secondes (plus 2,4 s d’invitation à tourner le téléphone en paysage) : accroche au coucher du soleil, apparition de la marque, compteur des 16 pays, puis uniquement des photos et une vidéo prises par Mathieu (Saint-Martin, France, Italie, Thaïlande, Maroc), mosaïque « Sur place, pour de vrai. », trois promesses, signature.
+49 secondes (plus 2,4 s d’invitation à tourner le téléphone en paysage) : accroche au coucher du soleil, apparition de la marque, compteur des 16 pays, puis uniquement des photos et une vidéo prises par Mathieu (Saint-Martin, France, Royaume-Uni, Italie, Thaïlande, Maroc, entre amis ; plaque d’immatriculation de la Porsche floutée), mosaïque « Sur place, pour de vrai. », trois promesses, signature.
 
 ```
 cd source
