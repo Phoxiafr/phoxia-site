@@ -44,8 +44,8 @@ node rendre.mjs 1920x1080 apercu      # une image par plan dans apercus/
 | `phoxavels-film-16x9.mp4` | 1920 × 1080 |
 | `phoxavels-film-9x16.mp4` | 1080 × 1920 |
 
-45 secondes : accroche au coucher du soleil, apparition de la marque, compteur des
-16 pays, une destination toutes les 1,2 s, mosaïque « Seize pays. Tous visités. »,
+48 secondes : accroche au coucher du soleil, apparition de la marque, compteur des
+16 pays, une destination toutes les 1,2 s, mosaïque « Seize pays. Tous visités. », trois photos personnelles « Sur place, pour de vrai. »,
 trois promesses, puis signature « Partez là où j’ai déjà ouvert la route. ».
 
 ```
