@@ -1530,6 +1530,9 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 }
 .carrousel__fleche:hover { background: var(--encre); color: var(--sable); border-color: var(--encre); }
 
+/* Carrousel ESSCA : visuels Instagram 4:5 plus grands pour rester lisibles. */
+.carrousel--essca .diapo { width: clamp(16rem, 70vw, 24rem); }
+
 .carrousel__compteur {
   font-size: .8rem;
   letter-spacing: .06em;
