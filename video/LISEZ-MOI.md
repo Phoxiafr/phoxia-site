@@ -1,6 +1,6 @@
 # Film de marque Phoxia
 
-Deux formats, 48 secondes, avec bande son originale :
+Deux formats, 56 secondes, avec bande son originale :
 
 | Fichier | Format | Usage |
 |---|---|---|
@@ -18,7 +18,8 @@ Deux formats, 48 secondes, avec bande son originale :
 | 21,6 à 28,8 s | Le déroulé d’une mission en quatre étapes |
 | 28,8 à 34,8 s | Les engagements : 30 min, 48 h, 3 langues |
 | 34,8 à 39,6 s | Le fondateur |
-| 39,6 à 48 s | Signature, devise et appel à l’action |
+| 39,6 à 48 s | Là où je suis déjà allé : seize pays, une photo par temps |
+| 48 à 56,4 s | Signature, devise et appel à l’action |
 
 ## Modifier le film
 

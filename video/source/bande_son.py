@@ -2,7 +2,7 @@
 
 100 BPM, une mesure = 2,4 s : chaque changement de plan tombe sur un temps.
 Progression Ré mineur, Si bémol, Fa, Do. Nappe seule en ouverture, puis la pulsation
-arrive sur l'apparition du logo (9,6 s), impact final sur la signature (39,6 s).
+arrive sur l'apparition du logo (9,6 s), montage des voyages à 39,6 s, impact final sur la signature (48 s).
 
     python3 bande_son.py   ->  bande-son.wav (48 s, stéréo, 44,1 kHz)
 """
@@ -10,7 +10,8 @@ import wave
 import numpy as np
 
 SR = 44100
-DUREE = 48.0
+DUREE = 56.4
+FIN = 48.0  # arrivée de la signature
 BPM = 100
 TEMPS = 60 / BPM
 MESURE = 4 * TEMPS
@@ -86,18 +87,18 @@ for m in range(NB_MESURES):
     j = min(N, i + n)
     nappe[i:j] += s[: j - i]
 # ouverture du filtre au fil du film
-fc = 500 + 1900 * np.clip((t_all - 2) / 30, 0, 1) ** 1.3
-fc = np.where(t_all > 39.6, 2600 - 1800 * np.clip((t_all - 39.6) / 8, 0, 1), fc)
+fc = 500 + 1900 * np.clip((t_all - 2) / 38, 0, 1) ** 1.3
+fc = np.where(t_all > FIN, 2600 - 1800 * np.clip((t_all - FIN) / 8, 0, 1), fc)
 nappe = passe_bas(passe_bas(nappe, fc), fc)
 vol_nappe = 0.55 + 0.25 * np.clip((t_all - 9.6) / 2, 0, 1)
 vol_nappe *= np.clip(t_all / 2.5, 0, 1)
 G += nappe * vol_nappe * 0.5
 
 # ---------- Basse ----------
-for m in range(4, 17):
+for m in range(4, 20):
     for b in range(4):
         d = m * MESURE + b * TEMPS
-        if d >= 39.6:
+        if d >= FIN:
             break
         n = int(TEMPS * SR * 0.95)
         tt = np.arange(n) / SR
@@ -132,13 +133,13 @@ def charleston(ouvert=False):
 
 
 GC, CL = grosse_caisse(), claquement()
-for m in range(4, 17):
+for m in range(4, 20):
     for b in range(4):
         d = m * MESURE + b * TEMPS
-        if d >= 39.6 - 0.01:
+        if d >= FIN - 0.01:
             continue
         # respiration : pas de grosse caisse sur la dernière mesure avant la signature
-        if not (m == 16):
+        if d < FIN - 1.2:
             ajoute(GC, d, 0.9)
         if b in (1, 3) and m >= 5:
             ajoute(CL, d, 0.22, pan=0.1)
@@ -148,11 +149,11 @@ for m in range(4, 17):
 
 # ---------- Arpège en pizzicato (entre à 4,8 s) ----------
 MOTIF = [0, 2, 1, 3, 2, 1, 3, 2]
-for m in range(2, 17):
+for m in range(2, 20):
     acc = ACCORDS[m % 4]
     for k in range(16):
         d = m * MESURE + k * TEMPS / 4
-        if d >= 39.6:
+        if d >= FIN:
             break
         note = acc[MOTIF[k % 8] % 4] + 12 + (12 if k % 8 == 7 else 0)
         n = int(0.35 * SR)
@@ -176,7 +177,20 @@ def montee(long):
 
 
 ajoute(montee(2.4), 9.6 - 2.4, 0.3, pan=-0.2)
-ajoute(montee(2.4), 39.6 - 2.4, 0.3, pan=0.2)
+ajoute(montee(2.4), FIN - 2.4, 0.3, pan=0.2)
+
+# Déclic d'obturateur sur chaque photo du montage des voyages
+def declic():
+    n = int(0.05 * SR)
+    tt = np.arange(n) / SR
+    b = rng.standard_normal(n)
+    return (b - passe_bas(b, 3000)) * np.exp(-tt * 120)
+
+
+d = 39.6
+for i in range(16):
+    ajoute(declic(), d, 0.18, pan=0.3 * (1 if i % 2 else -1))
+    d += 1.2 if i == 0 else 0.6 if i < 8 else 0.3
 
 # ---------- Souffles sur les balayages ----------
 def souffle(long=1.2):
@@ -188,7 +202,7 @@ def souffle(long=1.2):
     return passe_bas(bruit, fc) * forme
 
 
-for c in (4.8, 12.0, 21.6, 28.8, 34.8):
+for c in (4.8, 12.0, 21.6, 28.8, 34.8, 39.6):
     ajoute(souffle(), c - 0.6, 0.13, pan=-0.5)
     ajoute(souffle(), c - 0.55, 0.13, pan=0.5)
 
@@ -203,7 +217,7 @@ def impact(long=4.0):
 
 
 ajoute(impact(), 9.6, 0.75)
-ajoute(impact(6.0), 39.6, 0.85)
+ajoute(impact(6.0), FIN, 0.85)
 
 # Accord final tenu, cloche aiguë sur la devise
 for note in (50, 57, 62, 65, 69):
@@ -211,12 +225,12 @@ for note in (50, 57, 62, 65, 69):
     tt = np.arange(n) / SR
     s = np.sin(2 * np.pi * hz(note) * tt) + 0.2 * np.sin(2 * np.pi * hz(note + 12) * tt)
     s *= np.exp(-tt * 0.35) * enveloppe(n, 0.02, 1.0)
-    ajoute(s, 39.6, 0.06, pan=(note - 60) / 20)
+    ajoute(s, FIN, 0.06, pan=(note - 60) / 20)
 for i, note in enumerate((74, 77, 81)):
     n = int(3 * SR)
     tt = np.arange(n) / SR
     s = (np.sin(2 * np.pi * hz(note) * tt) + 0.25 * np.sin(2 * np.pi * hz(note) * 2.76 * tt)) * np.exp(-tt * 1.8)
-    ajoute(s, 40.9 + i * 0.3, 0.07, pan=0.3 * (i - 1))
+    ajoute(s, FIN + 1.3 + i * 0.3, 0.07, pan=0.3 * (i - 1))
 
 # ---------- Réverbération (convolution par un bruit à décroissance exponentielle) ----------
 def reverb(x, duree=2.6, humide=0.28):
