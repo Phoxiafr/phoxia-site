@@ -26,7 +26,7 @@ qu'une fois le site en ligne.
 | Politique de confidentialité | Complète, conforme RGPD |
 | Réseaux sociaux | LinkedIn entreprise, Instagram, TikTok, email |
 | Logos | 15 fichiers détourés, dont Deloitte |
-| Portraits | Mathieu, Pragun, Valentin, Jules, Côme |
+| Portraits | Mathieu, Pragun, Valentin, Jules, Pierre Alexandre, Alix |
 
 **Un test à faire dès la mise en ligne :** envoyez-vous un message via le formulaire.
 Formspree exige une validation de l'adresse de réception au premier envoi ; sans
