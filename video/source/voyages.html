@@ -118,6 +118,18 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
 #balai div { position: absolute; top: -20%; height: 140%; width: 75%; left: 12.5%; display: none; }
 #grain { position: absolute; inset: 0; z-index: 25; pointer-events: none; mix-blend-mode: overlay; opacity: .08; }
 #noir { position: absolute; inset: 0; background: #000; z-index: 30; pointer-events: none; opacity: 0; }
+/* Carton d'ouverture (version paysage) : invite à tourner le téléphone */
+#tourne { position: absolute; inset: 0; z-index: 40; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  background: radial-gradient(90% 90% at 50% 55%, #2B2A48 0%, var(--encre) 55%, var(--nuit) 100%); }
+#tourne .tel { position: relative; width: calc(var(--u) * 17); height: calc(var(--u) * 30); border: calc(var(--u) * 1.1) solid var(--blanc); border-radius: calc(var(--u) * 3); }
+#tourne .tel::before { content: ""; position: absolute; left: 50%; top: calc(var(--u) * 1.2); width: 28%; height: calc(var(--u) * .9); transform: translateX(-50%); border-radius: 999px; background: var(--blanc); }
+#tourne .tel .ecran { position: absolute; inset: calc(var(--u) * 1.2); border-radius: calc(var(--u) * 1.2); background: linear-gradient(135deg, var(--soleil), var(--terre)); display: flex; align-items: center; justify-content: center; }
+#tourne .tel .ecran svg { width: 38%; }
+#tourne .fleche { position: absolute; width: calc(var(--u) * 42); height: calc(var(--u) * 42); left: 50%; top: 50%; transform: translate(-50%, -50%); overflow: visible; }
+#tourne .scene-tel { position: relative; width: calc(var(--u) * 40); height: calc(var(--u) * 40); display: flex; align-items: center; justify-content: center; }
+#tourne h2 { font-family: var(--serif); font-weight: 400; font-size: calc(var(--u) * 11.5); color: var(--blanc); letter-spacing: -.015em; line-height: 1.05; margin-top: calc(var(--u) * 2); }
+#tourne h2 em { font-style: italic; color: var(--soleil); }
+#tourne p { font-size: calc(var(--u) * 4.6); color: var(--sable); margin-top: calc(var(--u) * 2.2); letter-spacing: .02em; }
 
 /* ---------- Vertical ---------- */
 .vertical #p1 .l1, .vertical #p1 .l2 { font-size: calc(var(--u) * 10); }
@@ -229,6 +241,14 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
   <div id="balai"><div></div><div></div><div></div></div>
   <canvas id="grain"></canvas>
   <div id="noir"></div>
+  <div id="tourne">
+    <div class="scene-tel">
+      <svg class="fleche" viewBox="-50 -50 100 100"><path d="M -30 -30 A 42 42 0 0 1 30 -30" fill="none" stroke="#E8946B" stroke-width="2.4" stroke-linecap="round"/><path d="M 24 -36 L 31 -29.5 L 22 -26" fill="none" stroke="#E8946B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="tel"><div class="ecran"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#FCFBF9"/></svg></div></div>
+    </div>
+    <h2>Tournez <em>votre téléphone</em></h2>
+    <p>pour voir la vidéo en plein écran</p>
+  </div>
 </div>
 
 <script>
@@ -488,7 +508,7 @@ const FNS = [p1, p2, p3, p4, p5, p5b, p6, p7];
 const plans = $$('.plan');
 const BORNES = [0, ...CUTS, DUREE];
 
-window.seek = function (t) {
+function seekFilm(t) {
   t = clamp(t, 0, DUREE);
   let idx = BORNES.findIndex((b, i) => t >= b && t < BORNES[i + 1]);
   if (idx < 0) idx = FNS.length - 1;
@@ -498,7 +518,31 @@ window.seek = function (t) {
   gctx.putImageData(grains[Math.floor(t * 24) % grains.length], 0, 0);
   $('#noir').style.opacity = Math.max(1 - E.out(prog(t, 0, .8)), E.io(prog(t, DUREE - 1.3, DUREE)));
 };
-window.DUREE = DUREE;
+/* Version paysage : 2,4 s d'ouverture qui invite à tourner le téléphone, puis le film. */
+const INTRO = VERT ? 0 : 2.4;
+function tourne(t) {
+  const el = $('#tourne');
+  el.style.display = 'flex';
+  const tel = $('#tourne .tel'), fl = $('#tourne .fleche');
+  // le téléphone passe de vertical à horizontal, marque une pause, recommence une fois
+  const cycle = t < 1.2 ? t : t - 1.2;
+  const r = E.io(prog(cycle, .15, .7)) * 90;
+  tel.style.transform = `rotate(${r}deg) scale(${1 + .05 * Math.sin(prog(cycle, .15, .7) * Math.PI)})`;
+  $('#tourne .ecran svg').style.transform = `rotate(${-r}deg)`;  // l'image reste droite, comme sur un vrai téléphone
+  fl.style.opacity = prog(t, 0, .3) * (1 - prog(t, 2.1, 2.4));
+  fl.style.transform = `translate(-50%, -50%) rotate(${r * .5 - 20}deg)`;
+  const k = E.out5(prog(t, .1, .7));
+  pose($('#tourne h2'), { o: k, y: (1 - k) * U * 3 });
+  pose($('#tourne p'), { o: E.out5(prog(t, .3, .9)), y: (1 - E.out5(prog(t, .3, .9))) * U * 2 });
+  el.style.opacity = 1 - E.io(prog(t, 2.0, 2.4));
+}
+window.seek = function (t) {
+  if (t < INTRO) { seekFilm(0); tourne(t); return; }
+  $('#tourne').style.display = 'none';
+  seekFilm(t - INTRO);
+};
+window.DUREE = DUREE + INTRO;
+window.INTRO = INTRO;
 window.pret = document.fonts.ready.then(() => Promise.all(
   [...$$('img').filter(i => i.src), ...PAYS.map(p => { const im = new Image(); im.src = p.src; return im; })]
     .map(i => i.decode().catch(() => {}))));
@@ -507,7 +551,7 @@ if (!Q.has('rendu')) {
   window.pret.then(() => {
     const a = new Audio('bande-son-voyages.wav'); let t0 = performance.now();
     document.addEventListener('click', () => { t0 = performance.now(); a.currentTime = 0; a.play(); });
-    const boucle = () => { seek(((performance.now() - t0) / 1000) % DUREE); requestAnimationFrame(boucle); };
+    const boucle = () => { seek(((performance.now() - t0) / 1000) % window.DUREE); requestAnimationFrame(boucle); };
     boucle();
   });
 }

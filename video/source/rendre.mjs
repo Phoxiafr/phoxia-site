@@ -28,6 +28,7 @@ const page = await navigateur.newPage({ viewport: { width: w, height: h }, devic
 await page.goto(`file://${ici}/${film}.html?rendu&w=${w}&h=${h}`);
 await page.evaluate(() => window.pret);
 const duree = await page.evaluate(() => window.DUREE);
+const intro = await page.evaluate(() => window.INTRO || 0);
 const scene = page.locator('#scene');
 
 if (mode === 'apercu') {
@@ -47,6 +48,7 @@ const sortie = path.join(ici, '..', `${prefixe}-${nom}.mp4`);
 const enc = spawn(ffmpeg, [
   '-y', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
   '-i', path.join(ici, son),
+  ...(intro ? ['-af', `adelay=${Math.round(intro * 1000)}:all=1`] : []),
   '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p', '-tune', 'animation',
   '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', sortie,
 ], { stdio: ['pipe', 'inherit', 'inherit'] });
