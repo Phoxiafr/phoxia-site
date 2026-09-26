@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Phoxavels, film de promotion</title>
+<!--
+  Film de promotion de l'agence de voyage Phoxavels : les seize pays visités.
+  Même moteur que film.html : window.seek(t) place chaque élément au temps t.
+  Format : voyages.html?w=1920&h=1080 (paysage) ou ?w=1080&h=1920 (vertical).
+-->
+<style>
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; src: url(fonts/eb-garamond-latin-wght-normal.woff2) format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; src: url(fonts/eb-garamond-latin-wght-italic.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 400 700; src: url(fonts/instrument-sans-latin-wght-normal.woff2) format("woff2"); }
+
+:root {
+  --encre: #14213D; --nuit: #0D1629; --soleil: #E8946B; --terre: #C8552E;
+  --sable: #EDEAE1; --blanc: #FCFBF9; --encre-doux: #4A566E;
+  --serif: "EB Garamond", Georgia, serif; --sans: "Instrument Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #000; overflow: hidden; }
+#scene {
+  position: relative; overflow: hidden; background: var(--encre);
+  width: calc(var(--W) * 1px); height: calc(var(--H) * 1px);
+  font-family: var(--sans); color: var(--sable);
+  -webkit-font-smoothing: antialiased; font-synthesis: none;
+}
+.plan { position: absolute; inset: 0; display: none; }
+.plan.on { display: block; }
+.fond-nuit { background: linear-gradient(180deg, var(--nuit) 0%, var(--encre) 45%, #2B2A48 72%, #3B2C44 100%); }
+.fond-sable { background: var(--sable); color: var(--encre); }
+canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
+.a { will-change: transform, opacity, filter; }
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; line-height: 1.04; text-wrap: balance; }
+.serif em { font-style: italic; color: var(--soleil); }
+.fond-sable .serif em { color: var(--terre); }
+.etq { font-size: calc(var(--u) * 1.55); font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--soleil); }
+.fond-sable .etq { color: var(--terre); }
+.centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 calc(var(--u) * 8); }
+.w { display: inline-block; white-space: pre; }
+.flash { position: absolute; inset: 0; background: var(--blanc); pointer-events: none; opacity: 0; }
+
+/* Marque */
+.marque { display: flex; align-items: center; gap: calc(var(--u) * 3); }
+.mot { font-family: var(--serif); font-style: italic; color: var(--blanc); line-height: 1; letter-spacing: -.01em; display: flex; }
+.mot .x { color: var(--soleil); }
+.mot .lettre { display: inline-block; }
+.symbole svg { width: 100%; height: 100%; overflow: visible; display: block; }
+
+/* 1. Accroche */
+#p1 .centre { justify-content: flex-start; padding-top: calc(var(--H) * .24px); }
+#p1 .etq { margin-bottom: calc(var(--u) * 4); }
+#p1 .l1, #p1 .l2 { font-size: calc(var(--u) * 7); }
+#p1 .l2 { margin-top: calc(var(--u) * 1.2); }
+
+/* 2. Marque */
+#p2 .mot { font-size: calc(var(--u) * 15); }
+#p2 .symbole { width: calc(var(--u) * 14); height: calc(var(--u) * 10.3); }
+#p2 .sous { margin-top: calc(var(--u) * 4.5); font-size: calc(var(--u) * 2); letter-spacing: .32em; text-transform: uppercase; }
+
+/* 3. Seize pays */
+#p3 .gros { font-family: var(--serif); font-size: calc(var(--u) * 34); line-height: .85; color: var(--terre); letter-spacing: -.04em; }
+#p3 h2 { font-size: calc(var(--u) * 6); margin-top: calc(var(--u) * 2); }
+
+/* 4. Le montage des destinations */
+#p4 { background: #000; }
+#p4 .photo { position: absolute; inset: 0; overflow: hidden; }
+#p4 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#p4 .ombre { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,22,41,.7) 0%, rgba(13,22,41,0) 30%, rgba(13,22,41,0) 55%, rgba(13,22,41,.85) 100%); }
+#p4 .tete { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 6.5); display: flex; justify-content: space-between; align-items: center; }
+#p4 .droite { display: flex; align-items: center; gap: calc(var(--u) * 1.6); }
+#p4 .compteur { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 3.4); color: var(--blanc); }
+#p4 .visite { font-size: calc(var(--u) * 1.5); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; background: var(--soleil); color: var(--encre); padding: calc(var(--u) * .7) calc(var(--u) * 1.6); border-radius: 999px; }
+#p4 .pays { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 9); font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 12); line-height: 1; color: var(--blanc); letter-spacing: -.02em; }
+#p4 .tete, #p4 .pays { text-shadow: 0 0 calc(var(--u) * 2.4) rgba(13,22,41,.55); }
+#p4 .barre { position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 6); height: calc(var(--u) * .3); background: rgba(252,251,249,.25); }
+#p4 .barre b { position: absolute; inset: 0; background: var(--soleil); transform-origin: left; }
+
+/* 5. Mosaïque */
+#p5 { background: var(--nuit); }
+#p5 .grille { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: calc(var(--u) * .5); }
+#p5 .grille div { overflow: hidden; }
+#p5 .grille img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#p5 .bandeau { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); background: var(--encre); padding: calc(var(--u) * 4) calc(var(--u) * 6); text-align: center; }
+#p5 .bandeau h2 { font-size: calc(var(--u) * 7); color: var(--blanc); }
+
+/* 6. Les promesses */
+.promesse { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
+.promesse .img { position: relative; overflow: hidden; }
+.promesse .img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.promesse .txt { display: flex; flex-direction: column; justify-content: center; padding: 0 calc(var(--u) * 8) 0 calc(var(--u) * 6); }
+.promesse .n { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 5); color: var(--terre); }
+.promesse h3 { font-size: calc(var(--u) * 7.6); margin: calc(var(--u) * 1.2) 0 calc(var(--u) * 2.4); }
+.promesse p { font-size: calc(var(--u) * 2.9); line-height: 1.4; color: var(--encre-doux); max-width: 20em; }
+
+/* 7. Signature */
+#p7 .mot { font-size: calc(var(--u) * 13); }
+#p7 .symbole { width: calc(var(--u) * 12); height: calc(var(--u) * 8.8); }
+#p7 .devise { font-family: var(--serif); font-style: italic; font-size: calc(var(--u) * 5.2); color: var(--sable); margin-top: calc(var(--u) * 5); text-wrap: balance; }
+#p7 .filet { width: calc(var(--u) * 14); height: calc(var(--u) * .2); background: var(--soleil); margin: calc(var(--u) * 4.5) auto; }
+#p7 .cta { display: inline-block; font-size: calc(var(--u) * 2.6); font-weight: 600; background: var(--soleil); color: var(--encre); padding: calc(var(--u) * 1.8) calc(var(--u) * 4); border-radius: 999px; }
+#p7 .contact { margin-top: calc(var(--u) * 3); font-size: calc(var(--u) * 2.2); letter-spacing: .18em; color: var(--sable); }
+#p7 .centre { padding-bottom: calc(var(--u) * 8); }
+
+#balai { position: absolute; inset: 0; pointer-events: none; z-index: 20; }
+#balai div { position: absolute; top: -20%; height: 140%; width: 75%; left: 12.5%; display: none; }
+#grain { position: absolute; inset: 0; z-index: 25; pointer-events: none; mix-blend-mode: overlay; opacity: .08; }
+#noir { position: absolute; inset: 0; background: #000; z-index: 30; pointer-events: none; opacity: 0; }
+
+/* ---------- Vertical ---------- */
+.vertical #p1 .l1, .vertical #p1 .l2 { font-size: calc(var(--u) * 10); }
+.vertical #p1 .etq, .vertical .etq { font-size: calc(var(--u) * 2.6); }
+.vertical .marque { flex-direction: column; gap: calc(var(--u) * 6); }
+.vertical #p2 .mot { font-size: calc(var(--u) * 19); }
+.vertical #p2 .symbole { width: calc(var(--u) * 20); height: calc(var(--u) * 14.7); order: -1; }
+.vertical #p2 .sous { font-size: calc(var(--u) * 3); }
+.vertical #p3 .gros { font-size: calc(var(--u) * 52); }
+.vertical #p3 h2 { font-size: calc(var(--u) * 9); }
+.vertical #p4 .tete { top: calc(var(--u) * 14); }
+.vertical #p4 .compteur { font-size: calc(var(--u) * 5); }
+.vertical #p4 .visite { font-size: calc(var(--u) * 2.4); padding: calc(var(--u) * 1.1) calc(var(--u) * 2.4); }
+.vertical #p4 .pays { font-size: calc(var(--u) * 15); bottom: calc(var(--u) * 22); }
+.vertical #p4 .barre { bottom: calc(var(--u) * 17); height: calc(var(--u) * .45); }
+.vertical #p5 .bandeau h2 { font-size: calc(var(--u) * 10); }
+.vertical .promesse { grid-template-columns: 1fr; grid-template-rows: 48% 52%; }
+.vertical .promesse .txt { justify-content: flex-start; padding: calc(var(--u) * 9) calc(var(--u) * 8) 0; }
+.vertical .promesse .n { font-size: calc(var(--u) * 7); }
+.vertical .promesse h3 { font-size: calc(var(--u) * 11.5); }
+.vertical .promesse p { font-size: calc(var(--u) * 4.6); }
+.vertical #p7 .mot { font-size: calc(var(--u) * 17); }
+.vertical #p7 .symbole { width: calc(var(--u) * 18); height: calc(var(--u) * 13.2); order: -1; }
+.vertical #p7 .devise { font-size: calc(var(--u) * 7.4); line-height: 1.15; }
+.vertical #p7 .cta { font-size: calc(var(--u) * 3.8); padding: calc(var(--u) * 2.6) calc(var(--u) * 5); }
+.vertical #p7 .contact { font-size: calc(var(--u) * 3.4); }
+.vertical #p7 .filet { width: calc(var(--u) * 20); }
+</style>
+</head>
+<body>
+<div id="scene">
+
+  <section class="plan fond-nuit" id="p1">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <p class="etq a">Le carnet d’un voyageur</p>
+      <p class="serif l1 decoupe">Seize pays parcourus.</p>
+      <p class="serif l2 decoupe">Et maintenant, <em>le vôtre.</em></p>
+    </div>
+  </section>
+
+  <section class="plan fond-nuit" id="p2">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <div class="marque">
+        <div class="mot"></div>
+        <div class="symbole"></div>
+      </div>
+      <p class="sous a">Agence de voyage</p>
+    </div>
+    <div class="flash"></div>
+  </section>
+
+  <section class="plan fond-sable" id="p3">
+    <div class="centre">
+      <div class="gros">0</div>
+      <h2 class="serif decoupe">pays visités, <em>un à un.</em></h2>
+    </div>
+  </section>
+
+  <section class="plan" id="p4">
+    <div class="photo"><img alt=""></div>
+    <div class="photo" id="suivante"><img alt=""></div>
+    <div class="ombre"></div>
+    <div class="tete"><p class="etq">Nos destinations</p><div class="droite"><span class="visite">Visité</span><span class="compteur">01 / 16</span></div></div>
+    <p class="pays">France</p>
+    <div class="barre"><b></b></div>
+  </section>
+
+  <section class="plan" id="p5">
+    <div class="grille"></div>
+    <div class="bandeau"><h2 class="serif decoupe">Seize pays. <em>Tous visités.</em></h2></div>
+  </section>
+
+  <section class="plan fond-sable" id="p6">
+    <div class="promesse"><div class="img"><img src="../../assets/img/univers/pays/grece.jpg" alt=""></div>
+      <div class="txt"><p class="n">01</p><h3 class="serif decoupe">Des itinéraires <em>testés</em></h3><p class="a">Chaque destination proposée, je l’ai parcourue moi-même.</p></div></div>
+    <div class="promesse"><div class="img"><img src="../../assets/img/univers/pays/thailande.jpg" alt=""></div>
+      <div class="txt"><p class="n">02</p><h3 class="serif decoupe">Des conseils <em>vécus</em></h3><p class="a">Les bonnes adresses, les pièges à éviter, le meilleur moment pour partir.</p></div></div>
+    <div class="promesse"><div class="img"><img src="../../assets/img/univers/pays/canada.jpg" alt=""></div>
+      <div class="txt"><p class="n">03</p><h3 class="serif decoupe">Un voyage <em>à votre mesure</em></h3><p class="a">Votre rythme, votre budget, vos envies.</p></div></div>
+  </section>
+
+  <section class="plan fond-nuit" id="p7">
+    <canvas class="mer"></canvas>
+    <div class="centre">
+      <div class="marque">
+        <div class="mot"></div>
+        <div class="symbole"></div>
+      </div>
+      <p class="devise decoupe">Partez là où j’ai déjà ouvert la route.</p>
+      <div class="filet"></div>
+      <p class="cta a">Préparons votre prochain voyage</p>
+      <p class="contact a">mathieu@phoxia.fr</p>
+    </div>
+    <div class="flash"></div>
+  </section>
+
+  <div id="balai"><div></div><div></div><div></div></div>
+  <canvas id="grain"></canvas>
+  <div id="noir"></div>
+</div>
+
+<script>
+const Q = new URLSearchParams(location.search);
+const W = +(Q.get('w') || 1920), H = +(Q.get('h') || 1080);
+const U = Math.min(W, H) / 100;
+const S = document.getElementById('scene');
+S.style.setProperty('--W', W); S.style.setProperty('--H', H); S.style.setProperty('--u', U + 'px');
+const VERT = H > W;
+if (VERT) S.classList.add('vertical');
+
+/* Découpage, calé sur une mesure de 2,4 s (100 BPM). */
+const CUTS = [4.8, 7.2, 9.6, 28.8, 31.2, 38.4];
+const DUREE = 45.6;
+const PHOTO = 1.2;   // deux temps par destination
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const E = {
+  out: x => 1 - Math.pow(1 - x, 3),
+  out5: x => 1 - Math.pow(1 - x, 5),
+  io: x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
+  inn: x => x * x * x,
+  back: x => { const c = 1.5; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); },
+};
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+function pose(el, { o = 1, x = 0, y = 0, s = 1, flou = 0 } = {}) {
+  el.style.opacity = o;
+  el.style.transform = `translate(${x}px,${y}px) scale(${s})`;
+  el.style.filter = flou > .05 ? `blur(${flou}px)` : 'none';
+}
+function monte(el, t, t0, t1 = 1e9, { d = .8, dy = 4, dOut = .45 } = {}) {
+  const a = E.out5(prog(t, t0, t0 + d)), b = E.inn(prog(t, t1, t1 + dOut));
+  pose(el, { o: a * (1 - b), y: (1 - a) * dy * U - b * dy * .6 * U, flou: (1 - a) * U * .8 + b * U * .6 });
+}
+function decoupe(el) {
+  const out = [];
+  const walk = node => {
+    for (const n of [...node.childNodes]) {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        for (const p of n.textContent.split(/(\s+)/)) {
+          if (!p) continue;
+          if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(' ')); continue; }
+          const s = document.createElement('span'); s.className = 'w a'; s.textContent = p; frag.appendChild(s); out.push(s);
+        }
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1) walk(n);
+    }
+  };
+  walk(el); el._mots = out;
+}
+$$('.decoupe').forEach(decoupe);
+function mots(el, t, t0, t1 = 1e9, { pas = .07, d = .75, dy = 5 } = {}) {
+  el._mots.forEach((m, i) => monte(m, t, t0 + i * pas, t1 + i * pas * .35, { d, dy, dOut: .4 }));
+}
+
+/* Marque : mot-symbole et trois parallélogrammes aux couleurs du couchant. */
+$$('.mot').forEach(m => m.innerHTML = [...'Phoxavels'].map((c, i) => `<span class="lettre${i === 3 ? ' x' : ''}">${c}</span>`).join(''));
+const SYM = ['M0 102.15h34.05L53.91 68.1H19.86z', 'M42.56 68.1h34.05l19.86-34.05H62.42z', 'M85.12 34.05h34.05L139.03 0h-34.05z'];
+$$('.symbole').forEach(el => {
+  el.innerHTML = `<svg viewBox="0 0 139.03 102.15">${SYM.map((d, i) => `<path d="${d}" fill="${['#E8946B', '#FCFBF9', '#FCFBF9'][i]}"/>`).join('')}</svg>`;
+});
+function symbole(el, t, t0, { pas = .13, d = .75 } = {}) {
+  $$('path', el).forEach((p, i) => {
+    const k = E.back(prog(t, t0 + i * pas, t0 + i * pas + d));
+    p.style.transform = `translate(${(1 - k) * -40}px, ${(1 - k) * 60}px)`;
+    p.style.opacity = prog(t, t0 + i * pas, t0 + i * pas + d * .4);
+  });
+}
+function lettres(ls, t, t0) {
+  ls.forEach((l, i) => {
+    const k = E.out5(prog(t, t0 + i * .05, t0 + i * .05 + .9));
+    pose(l, { o: prog(t, t0 + i * .05, t0 + i * .05 + .3), y: (1 - k) * U * 5, flou: (1 - k) * U * 1.2 });
+  });
+}
+
+/* Mer au couchant. */
+const mers = $$('canvas.mer').map(c => { c.width = W; c.height = H; return c.getContext('2d'); });
+function mer(ctx, t, { horizon = .66, force = 1, lueur = 1 } = {}) {
+  const h = H * horizon;
+  ctx.clearRect(0, 0, W, H);
+  const g = ctx.createRadialGradient(W / 2, h, 0, W / 2, h, Math.max(W, H) * .6);
+  g.addColorStop(0, `rgba(232,148,107,${.45 * lueur})`); g.addColorStop(.3, `rgba(200,85,46,${.14 * lueur})`); g.addColorStop(1, 'rgba(20,33,61,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // soleil posé sur l'horizon
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, h); ctx.clip();
+  ctx.fillStyle = `rgba(252,214,180,${.9 * lueur})`;
+  ctx.beginPath(); ctx.arc(W / 2, h + U * 2 - lueur * U * 3, U * 7, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  ctx.strokeStyle = `rgba(237,234,225,${.5 * force})`; ctx.lineWidth = Math.max(1, U * .12);
+  ctx.beginPath(); ctx.moveTo(0, h); ctx.lineTo(W, h); ctx.stroke();
+  for (let i = 1; i <= 22; i++) {
+    const z = i / 22, zz = z * z, y0 = h + (H - h) * zz * 1.05, amp = U * (.15 + zz * 1.6);
+    const reflet = Math.exp(-zz * 3);
+    ctx.strokeStyle = `rgba(232,148,107,${(.1 + .35 * reflet) * force})`;
+    ctx.lineWidth = Math.max(1, U * (.06 + zz * .16));
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 8) {
+      const y = y0 + Math.sin(x / W * (7 + i * .6) + t * (.9 + z * .6) + i * 1.7) * amp + Math.sin(x / W * 17.3 - t * 1.3 + i) * amp * .35;
+      x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+}
+
+/* Grain. */
+const grain = $('#grain'); grain.width = Math.ceil(W / 2); grain.height = Math.ceil(H / 2);
+const gctx = grain.getContext('2d'); const grains = [];
+{ let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let k = 0; k < 6; k++) { const im = gctx.createImageData(grain.width, grain.height);
+    for (let i = 0; i < im.data.length; i += 4) { const v = rnd() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+    grains.push(im); } }
+
+/* Balayage en parallélogrammes. */
+const balais = $$('#balai div');
+balais.forEach((b, i) => b.style.background = ['#E8946B', '#C8552E', '#14213D'][i]);
+function balai(t) {
+  let actif = false;
+  for (const c of [7.2, 28.8, 31.2]) {
+    if (t > c - .6 && t < c + .6) {
+      actif = true;
+      const k = prog(t, c - .6, c + .6);
+      balais.forEach((b, i) => {
+        const kk = E.io(clamp(k * 1.25 - i * .1));
+        b.style.transform = `translateX(${lerp(-1.6, 1.6, kk) * W - (i - 1) * U * 4}px) skewX(-30deg)`;
+        b.style.display = 'block';
+      });
+    }
+  }
+  if (!actif) balais.forEach(b => b.style.display = 'none');
+}
+
+/* Les seize pays, dans l'ordre du site. */
+const PAYS = [
+  ['france', 'France'], ['espagne', 'Espagne'], ['italie', 'Italie'], ['grece', 'Grèce'],
+  ['portugal', 'Portugal'], ['royaume-uni', 'Royaume-Uni'], ['maroc', 'Maroc'], ['canada', 'Canada'],
+  ['etats-unis', 'États-Unis'], ['emirats-arabes-unis', 'Émirats arabes unis'], ['republique-dominicaine', 'République dominicaine'],
+  ['chine', 'Chine'], ['thailande', 'Thaïlande'], ['sri-lanka', 'Sri Lanka'], ['croatie', 'Croatie'], ['saint-martin', 'Saint-Martin'],
+].map(([f, n]) => ({ src: `../../assets/img/univers/pays/${f}.jpg`, n }));
+$('#p5 .grille').innerHTML = PAYS.map(p => `<div><img src="${p.src}" alt=""></div>`).join('');
+
+/* ---------- Plans ---------- */
+function p1(t) {
+  mer(mers[0], t, { horizon: .72, force: prog(t, 0, 1.6), lueur: E.out(prog(t, .2, 4)) });
+  monte($('#p1 .etq'), t, .2);
+  mots($('#p1 .l1'), t, .45, 99, { pas: .1 });
+  mots($('#p1 .l2'), t, 2.1, 99, { pas: .12 });
+  $('#p1 .centre').style.transform = `scale(${1 + t * .008})`;
+}
+function p2(t) {
+  const T = t - 4.8;
+  mer(mers[1], t, { horizon: .8, force: .6, lueur: 1.1 });
+  $('#p2 .flash').style.opacity = 1 - E.out(prog(T, 0, .5));
+  symbole($('#p2 .symbole'), T, .05);
+  lettres($$('#p2 .lettre'), T, .15);
+  monte($('#p2 .sous'), T, .8);
+}
+function p3(t) {
+  const T = t - 7.2;
+  const k = E.out(prog(T, .3, 1.7));
+  const g = $('#p3 .gros');
+  g.textContent = Math.round(16 * k);
+  pose(g, { o: prog(T, .3, .6), s: .9 + .1 * E.back(prog(T, .3, 1)) });
+  mots($('#p3 h2'), T, .8, 99, { pas: .08 });
+}
+function p4(t) {
+  const T = t - 9.6;
+  const i = Math.min(15, Math.floor(T / PHOTO));
+  const local = T - i * PHOTO;
+  const [cour, suiv] = $$('#p4 .photo');
+  const im = $('img', cour), imS = $('img', suiv);
+  // image courante sous, image suivante révélée par un parallélogramme en fin de créneau
+  const src = PAYS[i].src, srcS = PAYS[Math.min(15, i + 1)].src;
+  if (im.dataset.s !== src) { im.src = src; im.dataset.s = src; }
+  if (imS.dataset.s !== srcS) { imS.src = srcS; imS.dataset.s = srcS; }
+  im.style.transform = `scale(${1.05 + local * .05}) translateX(${(i % 2 ? -1 : 1) * local * U * .8}px)`;
+  const r = i < 15 ? E.io(prog(local, PHOTO - .3, PHOTO)) : 0;
+  suiv.style.display = r > 0 ? 'block' : 'none';
+  const x = 100 - r * 130;
+  suiv.style.clipPath = `polygon(${x}% 0, 100% 0, 100% 100%, ${x + 30}% 100%)`;
+  imS.style.transform = 'scale(1.05)';
+  $('#p4 .compteur').textContent = `${String(i + 1).padStart(2, '0')} / 16`;
+  const pays = $('#p4 .pays');
+  if (pays.textContent !== PAYS[i].n) pays.textContent = PAYS[i].n;
+  const k = E.out5(prog(local, 0, .35));
+  pose(pays, { o: prog(local, 0, .15) * (1 - prog(local, PHOTO - .2, PHOTO - .05) * (i < 15)), y: (1 - k) * U * 3 });
+  const v = $('#p4 .visite');
+  pose(v, { o: prog(local, .15, .3), s: .7 + .3 * E.back(prog(local, .15, .45)) });
+  monte($('#p4 .tete .etq'), T, .1);
+  $('#p4 .barre b').style.transform = `scaleX(${clamp(T / (PHOTO * 16))})`;
+}
+function p5(t) {
+  const T = t - 28.8;
+  $$('#p5 .grille div').forEach((d, i) => {
+    const t0 = .05 + ((i * 7) % 16) * .035;
+    const k = E.out5(prog(T, t0, t0 + .45));
+    pose(d, { o: prog(T, t0, t0 + .15), s: 1.25 - .25 * k });
+    $('img', d).style.transform = `scale(${1.1 + T * .03})`;
+  });
+  const bd = $('#p5 .bandeau');
+  bd.style.clipPath = `inset(0 ${(1 - E.io(prog(T, .7, 1.1))) * 50}% 0 ${(1 - E.io(prog(T, .7, 1.1))) * 50}%)`;
+  mots($('#p5 h2'), T, .95, 99, { pas: .08 });
+}
+function p6(t) {
+  const T = t - 31.2;
+  $$('#p6 .promesse').forEach((p, i) => {
+    const t0 = i * 2.4, t1 = t0 + 2.4;
+    const vis = T >= t0 && (T < t1 || i === 2);
+    p.style.display = vis ? 'grid' : 'none';
+    if (!vis) return;
+    const L = T - t0;
+    const k = E.io(prog(L, 0, .55));
+    const img = $('.img', p);
+    img.style.clipPath = VERT
+      ? `polygon(0 0, ${k * 130}% 0, ${k * 130 - 30}% 100%, 0 100%)`
+      : `polygon(0 0, ${k * 125}% 0, ${k * 125 - 25}% 100%, 0 100%)`;
+    $('img', img).style.transform = `scale(${1.15 - L * .03})`;
+    monte($('.n', p), L, .25);
+    mots($('h3', p), L, .35, 99, { pas: .07 });
+    monte($('p.a', p), L, .8);
+  });
+}
+function p7(t) {
+  const T = t - 38.4;
+  mer(mers[2], t, { horizon: .82, force: .55 + E.out(prog(T, 0, 2)) * .3, lueur: 1.2 });
+  $('#p7 .flash').style.opacity = 1 - E.out(prog(T, 0, .6));
+  symbole($('#p7 .symbole'), T, .35);
+  lettres($$('#p7 .lettre'), T, .3);
+  mots($('#p7 .devise'), T, 1.3, 99, { pas: .08 });
+  $('#p7 .filet').style.transform = `scaleX(${E.io(prog(T, 2.0, 2.8))})`;
+  monte($('#p7 .cta'), T, 2.5, 99, { d: .9 });
+  monte($('#p7 .contact'), T, 2.8);
+  $('#p7 .centre').style.transform = `scale(${1 + E.out(prog(T, 0, 7.2)) * .03})`;
+}
+const FNS = [p1, p2, p3, p4, p5, p6, p7];
+const plans = $$('.plan');
+const BORNES = [0, ...CUTS, DUREE];
+
+window.seek = function (t) {
+  t = clamp(t, 0, DUREE);
+  let idx = BORNES.findIndex((b, i) => t >= b && t < BORNES[i + 1]);
+  if (idx < 0) idx = FNS.length - 1;
+  plans.forEach((p, i) => p.classList.toggle('on', i === idx));
+  FNS[idx](t);
+  balai(t);
+  gctx.putImageData(grains[Math.floor(t * 24) % grains.length], 0, 0);
+  $('#noir').style.opacity = Math.max(1 - E.out(prog(t, 0, .8)), E.io(prog(t, DUREE - 1.3, DUREE)));
+};
+window.DUREE = DUREE;
+window.pret = document.fonts.ready.then(() => Promise.all(
+  [...$$('img').filter(i => i.src), ...PAYS.map(p => { const im = new Image(); im.src = p.src; return im; })]
+    .map(i => i.decode().catch(() => {}))));
+
+if (!Q.has('rendu')) {
+  window.pret.then(() => {
+    const a = new Audio('bande-son-voyages.wav'); let t0 = performance.now();
+    document.addEventListener('click', () => { t0 = performance.now(); a.currentTime = 0; a.play(); });
+    const boucle = () => { seek(((performance.now() - t0) / 1000) % DUREE); requestAnimationFrame(boucle); };
+    boucle();
+  });
+}
+</script>
+</body>
+</html>

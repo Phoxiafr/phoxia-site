@@ -34,3 +34,25 @@ node rendre.mjs 1920x1080 30          # rend ../phoxia-film-16x9.mp4 (Playwright
 node rendre.mjs 1080x1920 30          # rend ../phoxia-film-9x16.mp4
 node rendre.mjs 1920x1080 apercu      # une image par plan dans apercus/
 ```
+
+---
+
+# Film Phoxavels, agence de voyage
+
+| Fichier | Format |
+|---|---|
+| `phoxavels-film-16x9.mp4` | 1920 × 1080 |
+| `phoxavels-film-9x16.mp4` | 1080 × 1920 |
+
+45 secondes : accroche au coucher du soleil, apparition de la marque, compteur des
+16 pays, une destination toutes les 1,2 s, mosaïque « Seize pays. Tous visités. »,
+trois promesses, puis signature « Partez là où j’ai déjà ouvert la route. ».
+
+```
+cd source
+python3 bande_son_voyages.py                     # régénère bande-son-voyages.wav
+FILM=voyages node rendre.mjs 1920x1080 30        # rend ../phoxavels-film-16x9.mp4
+FILM=voyages node rendre.mjs 1080x1920 30        # rend ../phoxavels-film-9x16.mp4
+```
+
+Le contact affiché à la fin (`mathieu@phoxia.fr`) se change dans `voyages.html`.
