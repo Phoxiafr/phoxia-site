@@ -44,7 +44,7 @@ node rendre.mjs 1920x1080 apercu      # une image par plan dans apercus/
 | `phoxavels-film-16x9.mp4` | 1920 × 1080 |
 | `phoxavels-film-9x16.mp4` | 1080 × 1920 |
 
-52 secondes (plus 2,4 s d’invitation à tourner le téléphone en paysage) : accroche au coucher du soleil, apparition de la marque, compteur des 16 pays, puis uniquement des photos et une vidéo prises par Mathieu (32 images dont 2 vidéos : Saint-Martin, France, Royaume-Uni, Italie, Sicile, Thaïlande, Andalousie, Maroc, entre amis, Marseille ; première image de chaque pays sur deux temps, les suivantes sur un temps ; plaques d’immatriculation floutées), mosaïque « Sur place, pour de vrai. », trois promesses, signature.
+66 secondes (plus 2,4 s d’invitation à tourner le téléphone en paysage) : accroche au coucher du soleil, apparition de la marque, compteur des 16 pays, puis uniquement des photos et une vidéo prises par Mathieu (50 images dont 2 vidéos : Saint-Martin, France, Var, Nice, Mougins, Isola 2000, montagne, Royaume-Uni, Italie, Sicile, Andalousie, Maroc, Thaïlande, New York, entre amis, Marseille ; première image de chaque pays sur deux temps, les suivantes sur un temps ; plaques d’immatriculation floutées), mosaïque « Sur place, pour de vrai. », trois promesses, signature.
 
 ```
 cd source

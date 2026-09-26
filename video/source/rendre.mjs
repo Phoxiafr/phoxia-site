@@ -49,7 +49,7 @@ const enc = spawn(ffmpeg, [
   '-y', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
   '-i', path.join(ici, son),
   ...(intro ? ['-af', `adelay=${Math.round(intro * 1000)}:all=1`] : []),
-  '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-tune', 'animation',
+  '-c:v', 'libx264', '-preset', 'slow', '-crf', process.env.CRF || '20', '-pix_fmt', 'yuv420p', '-tune', 'animation',
   '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', sortie,
 ], { stdio: ['pipe', 'inherit', 'inherit'] });
 
