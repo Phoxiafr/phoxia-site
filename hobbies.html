@@ -67,7 +67,9 @@
   .om__maillot span { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
   .om__galerie { margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
   .om__galerie figure { margin: 0; }
-  .om__galerie img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; }
+  .om__galerie img, .om__galerie video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; background: #0B1A2E; }
+  .om__galerie .om__large { grid-column: 1 / -1; }
+  .om__galerie .om__large img { aspect-ratio: 4 / 3; max-height: 640px; }
   .om__galerie figcaption { font-size: .85rem; margin-top: .45rem; opacity: .8; }
   @media (max-width: 760px) { .hobby { grid-template-columns: 1fr; } .hobby__photo { max-width: 320px; } }
 </style>
@@ -127,7 +129,62 @@
     <div class="enveloppe">
       <p class="etiquette">Hobbies</p>
       <h1 class="display display--l">DJ Bond, 007 aux platines</h1>
-      <p class="chapeau" style="margin-top:1.5rem;max-width:60ch">En dehors de Phoxia, je mixe sous le label Phoxy Music. Je suis fan de James Bond, au point d'en avoir fait mon identité visuelle. Et je supporte l'Olympique de Marseille depuis toujours.</p>
+      <p class="chapeau" style="margin-top:1.5rem;max-width:60ch">En dehors de Phoxia, je supporte l'Olympique de Marseille depuis toujours. Je mixe sous le label Phoxy Music. Et je suis fan de James Bond, au point d'en avoir fait mon identité visuelle.</p>
+    </div>
+  </section>
+
+  <section class="section om" id="om">
+    <div class="enveloppe">
+      <div class="om__bande" aria-hidden="true"></div>
+      <p class="etiquette" data-apparait>Le football</p>
+      <h2 class="display display--m" data-apparait>Supporter de l'OM depuis que je suis né</h2>
+      <p class="chapeau" style="max-width:62ch" data-apparait>Né en 2003, marseillais de cœur, j'ai grandi avec l'Olympique de Marseille. Le ciel et blanc, le Vélodrome, les soirs de match : c'est une passion de famille qui ne m'a jamais quitté. Droit au but.</p>
+
+      <div class="om__frise" data-apparait>
+        <div class="om__jalon">
+          <p class="om__annee">2003</p>
+          <h3>Supporter dès le berceau</h3>
+          <p>Je nais supporter. L'OM fait partie de ma vie avant même que je sache marcher.</p>
+        </div>
+        <div class="om__jalon">
+          <p class="om__annee">2006</p>
+          <h3>Mon premier maillot</h3>
+          <p>À trois ans, je reçois mon tout premier maillot de l'OM : le noir, rouge, vert et jaune.<span class="om__maillot" aria-hidden="true"><span style="background:#111"></span><span style="background:#D52B1E"></span><span style="background:#1E9E4A"></span><span style="background:#F4C300"></span></span></p>
+        </div>
+        <div class="om__jalon">
+          <p class="om__annee">2026</p>
+          <h3>20 ans de maillots</h3>
+          <p>Vingt ans plus tard, la flamme est intacte. Au stade, devant l'écran ou aux platines, je reste un enfant de l'OM.</p>
+        </div>
+      </div>
+
+      <div class="om__galerie" data-apparait>
+        <figure class="om__large">
+          <img src="assets/img/om/velodrome-coucher-soleil.jpg" alt="Le stade Vélodrome plein, sous un ciel rose au coucher du soleil, juste avant le coup d'envoi" width="1600" height="1200" loading="lazy">
+          <figcaption>Le Vélodrome sous un ciel rose, juste avant le coup d'envoi.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/om/maillot-ericsson-avion.jpg" alt="Mathieu Barthélémy embrasse un maillot vintage de l'OM jaune et noir, sponsor Ericsson, à bord d'un avion" width="1080" height="1440" loading="lazy">
+          <figcaption>Le maillot vintage jaune et noir Ericsson, embrassé en plein vol.</figcaption>
+        </figure>
+        <figure>
+          <video src="assets/video/om/velodrome-01.mp4" poster="assets/video/om/velodrome-01.jpg" width="720" height="1280" autoplay muted loop playsinline controls preload="metadata" aria-label="Vidéo filmée en tribune au Vélodrome, soir de match"></video>
+          <figcaption>En tribune au Vélodrome, août 2026.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/om/boutique-om-selfie.jpg" alt="Mathieu Barthélémy en doudoune sans manches de l'OM, selfie dans le miroir de la boutique officielle" width="1080" height="1440" loading="lazy">
+          <figcaption>Essayage à la boutique officielle de l'OM.</figcaption>
+        </figure>
+        <figure>
+          <video src="assets/video/om/velodrome-02.mp4" poster="assets/video/om/velodrome-02.jpg" width="720" height="1280" autoplay muted loop playsinline controls preload="metadata" aria-label="Vidéo d'une action de jeu devant le but, filmée depuis les tribunes du Vélodrome"></video>
+          <figcaption>Le même soir, une action chaude devant le but.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/om/sac-boutique-om-casque.jpg" alt="Sac de la boutique officielle de l'OM posé sur une table en terrasse, à côté d'un casque de moto et de gants" width="1080" height="1440" loading="lazy">
+          <figcaption>Retour de la boutique officielle, casque de moto à côté.</figcaption>
+        </figure>
+        <!-- Ajouter une <figure> par photo (fichiers dans assets/img/om/). -->
+      </div>
     </div>
   </section>
 
@@ -211,40 +268,6 @@
     </div>
   </section>
 
-  <section class="section om" id="om">
-    <div class="enveloppe">
-      <div class="om__bande" aria-hidden="true"></div>
-      <p class="etiquette" data-apparait>Le football</p>
-      <h2 class="display display--m" data-apparait>Supporter de l'OM depuis que je suis né</h2>
-      <p class="chapeau" style="max-width:62ch" data-apparait>Né en 2003, marseillais de cœur, j'ai grandi avec l'Olympique de Marseille. Le ciel et blanc, le Vélodrome, les soirs de match : c'est une passion de famille qui ne m'a jamais quitté. Droit au but.</p>
-
-      <div class="om__frise" data-apparait>
-        <div class="om__jalon">
-          <p class="om__annee">2003</p>
-          <h3>Supporter dès le berceau</h3>
-          <p>Je nais supporter. L'OM fait partie de ma vie avant même que je sache marcher.</p>
-        </div>
-        <div class="om__jalon">
-          <p class="om__annee">2006</p>
-          <h3>Mon premier maillot</h3>
-          <p>À trois ans, je reçois mon tout premier maillot de l'OM : le noir, rouge, vert et jaune.<span class="om__maillot" aria-hidden="true"><span style="background:#111"></span><span style="background:#D52B1E"></span><span style="background:#1E9E4A"></span><span style="background:#F4C300"></span></span></p>
-        </div>
-        <div class="om__jalon">
-          <p class="om__annee">2026</p>
-          <h3>20 ans de maillots</h3>
-          <p>Vingt ans plus tard, la flamme est intacte. Au stade, devant l'écran ou aux platines, je reste un enfant de l'OM.</p>
-        </div>
-      </div>
-
-      <div class="om__galerie" data-apparait>
-        <figure>
-          <img src="assets/img/om/maillot-ericsson-avion.jpg" alt="Mathieu Barthélémy embrasse un maillot vintage de l'OM jaune et noir, sponsor Ericsson, à bord d'un avion" width="1080" height="1440" loading="lazy">
-          <figcaption>Le maillot vintage jaune et noir Ericsson, embrassé en plein vol.</figcaption>
-        </figure>
-        <!-- Ajouter une <figure> par photo (fichiers dans assets/img/om/). -->
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="pied">
