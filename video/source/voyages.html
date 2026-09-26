@@ -203,7 +203,7 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
   </section>
 
   <section class="plan fond-sable" id="p6">
-    <div class="promesse"><div class="img"><img src="../../assets/img/univers/pays/grece.jpg" alt=""></div>
+    <div class="promesse"><div class="img"><img src="photos/thailande-bouddha.jpg" alt=""></div>
       <div class="txt"><p class="n">01</p><h3 class="serif decoupe">Des itinéraires <em>testés</em></h3><p class="a">Chaque destination proposée, je l’ai parcourue moi-même.</p></div></div>
     <div class="promesse"><div class="img"><img src="photos/provence.jpg" alt=""></div>
       <div class="txt"><p class="n">02</p><h3 class="serif decoupe">Des conseils <em>vécus</em></h3><p class="a">Les bonnes adresses, les pièges à éviter, le meilleur moment pour partir.</p></div></div>
@@ -364,13 +364,19 @@ function balai(t) {
   if (!actif) balais.forEach(b => b.style.display = 'none');
 }
 
+/* Photos personnelles, prioritaires sur celles du site. */
+const MES_PHOTOS = {
+  'saint-martin': 'photos/saint-martin-panorama.jpg',
+  'italie': 'photos/italie-ferrari.jpg',
+  'thailande': 'photos/thailande-temple.jpg',
+};
 /* Les seize pays, dans l'ordre du site. */
 const PAYS = [
   ['france', 'France'], ['espagne', 'Espagne'], ['italie', 'Italie'], ['grece', 'Grèce'],
   ['portugal', 'Portugal'], ['royaume-uni', 'Royaume-Uni'], ['maroc', 'Maroc'], ['canada', 'Canada'],
   ['etats-unis', 'États-Unis'], ['emirats-arabes-unis', 'Émirats arabes unis'], ['republique-dominicaine', 'République dominicaine'],
   ['chine', 'Chine'], ['thailande', 'Thaïlande'], ['sri-lanka', 'Sri Lanka'], ['croatie', 'Croatie'], ['saint-martin', 'Saint-Martin'],
-].map(([f, n]) => ({ src: f === 'saint-martin' ? 'photos/saint-martin-panorama.jpg' : `../../assets/img/univers/pays/${f}.jpg`, n, pano: f === 'saint-martin' }));
+].map(([f, n]) => ({ src: MES_PHOTOS[f] || `../../assets/img/univers/pays/${f}.jpg`, n, pano: f === 'saint-martin', pos: f === 'italie' ? '50% 28%' : null }));
 $('#p5 .grille').innerHTML = PAYS.map(p => `<div><img src="${p.src}" alt=""></div>`).join('');
 
 /* ---------- Plans ---------- */
@@ -407,7 +413,7 @@ function p4(t) {
   const src = PAYS[i].src, srcS = PAYS[Math.min(15, i + 1)].src;
   if (im.dataset.s !== src) { im.src = src; im.dataset.s = src; }
   if (imS.dataset.s !== srcS) { imS.src = srcS; imS.dataset.s = srcS; }
-  im.style.objectPosition = PAYS[i].pano ? `${VERT ? 15 + 70 * E.io(prog(local, 0, PHOTO)) : 50}% 50%` : '50% 50%';
+  im.style.objectPosition = PAYS[i].pano ? `${VERT ? 15 + 70 * E.io(prog(local, 0, PHOTO)) : 50}% 50%` : (PAYS[i].pos || '50% 50%');
   im.style.transform = `scale(${1.05 + local * .05}) translateX(${PAYS[i].pano && VERT ? 0 : (i % 2 ? -1 : 1) * local * U * .8}px)`;
   const r = i < 15 ? E.io(prog(local, PHOTO - .3, PHOTO)) : 0;
   suiv.style.display = r > 0 ? 'block' : 'none';
