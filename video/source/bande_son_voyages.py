@@ -2,16 +2,16 @@
 
 100 BPM, une mesure = 2,4 s : chaque changement de plan tombe sur un temps.
 Progression Fa, Do, Ré mineur, Si bémol, plus lumineuse. Impact sur la marque (4,8 s), pulsation à 7,2 s, un déclic par destination
-de 9,6 à 27,6 s, impact final sur la signature (37,2 s).
+de 9,6 à 27 s, impact final sur la signature (36,6 s).
 
-    python3 bande_son_voyages.py   ->  bande-son-voyages.wav (44,4 s, stéréo, 44,1 kHz)
+    python3 bande_son_voyages.py   ->  bande-son-voyages.wav (43,8 s, stéréo, 44,1 kHz)
 """
 import wave
 import numpy as np
 
 SR = 44100
-DUREE = 44.4
-FIN = 37.2  # arrivée de la signature
+DUREE = 43.8
+FIN = 36.6  # arrivée de la signature
 BPM = 100
 TEMPS = 60 / BPM
 MESURE = 4 * TEMPS
@@ -188,7 +188,7 @@ def declic():
 
 
 # une image par déclic : la première de chaque pays dure deux temps, les suivantes un temps
-PAYS_MONTAGE = ['SM'] * 4 + ['FR'] * 6 + ['UK'] * 2 + ['IT'] * 4 + ['TH'] * 2 + ['MA'] * 3 + ['AMIS'] * 2
+PAYS_MONTAGE = ['SM'] * 4 + ['FR'] * 6 + ['UK'] * 2 + ['IT'] * 3 + ['TH'] * 2 + ['MA'] * 3 + ['AMIS'] * 2
 d = 9.6
 for i, p in enumerate(PAYS_MONTAGE):
     ajoute(declic(), d - (0.3 if i else 0), 0.18, pan=0.3 * (1 if i % 2 else -1))
@@ -204,7 +204,7 @@ def souffle(long=1.2):
     return passe_bas(bruit, fc) * forme
 
 
-for c in (7.2, 27.6, 30.0):
+for c in (7.2, 27.0, 29.4):
     ajoute(souffle(), c - 0.6, 0.13, pan=-0.5)
     ajoute(souffle(), c - 0.55, 0.13, pan=0.5)
 
