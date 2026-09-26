@@ -45,8 +45,6 @@ node rendre.mjs 1920x1080 apercu      # une image par plan dans apercus/
 | `phoxavels-film-9x16.mp4` | 1080 × 1920 |
 
 43 secondes (plus 2,4 s d’invitation à tourner le téléphone en paysage) : accroche au coucher du soleil, apparition de la marque, compteur des 16 pays, puis uniquement des photos et une vidéo prises par Mathieu (Saint-Martin, France, Italie, Thaïlande, Maroc), mosaïque « Sur place, pour de vrai. », trois promesses, signature.
-16 pays, une destination toutes les 1,2 s, mosaïque « Seize pays. Tous visités. », trois photos personnelles « Sur place, pour de vrai. »,
-trois promesses, puis signature « Partez là où j’ai déjà ouvert la route. ».
 
 ```
 cd source
