@@ -186,7 +186,7 @@ canvas.mer { position: absolute; inset: 0; width: 100%; height: 100%; }
     <div class="photo"><img alt=""></div>
     <div class="photo" id="suivante"><img alt=""></div>
     <div class="ombre"></div>
-    <div class="tete"><p class="etq">Mes voyages</p><div class="droite"><span class="visite">Visité</span><span class="compteur">01 / 29</span></div></div>
+    <div class="tete"><p class="etq">Mes voyages</p><div class="droite"><span class="visite">Visité</span><span class="compteur">01 / 32</span></div></div>
     <p class="pays">France</p>
     <div class="barre"><b></b></div>
   </section>
@@ -244,8 +244,8 @@ const VERT = H > W;
 if (VERT) S.classList.add('vertical');
 
 /* Découpage, calé sur une mesure de 2,4 s (100 BPM). */
-const CUTS = [4.8, 7.2, 9.6, 33.0, 35.4, 42.6];
-const DUREE = 49.8;
+const CUTS = [4.8, 7.2, 9.6, 35.4, 37.8, 45.0];
+const DUREE = 52.2;
 const PHOTO = 1.2;   // deux temps par image
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -353,7 +353,7 @@ const balais = $$('#balai div');
 balais.forEach((b, i) => b.style.background = ['#E8946B', '#C8552E', '#14213D'][i]);
 function balai(t) {
   let actif = false;
-  for (const c of [7.2, 33.0, 35.4]) {
+  for (const c of [7.2, 35.4, 37.8]) {
     if (t > c - .6 && t < c + .6) {
       actif = true;
       const k = prog(t, c - .6, c + .6);
@@ -386,6 +386,9 @@ const PAYS = [
   { src: 'photos/italie-genes.jpg', n: 'Italie', pos: '50% 55%' },
   { src: 'photos/italie-ferrari.jpg', n: 'Italie', pos: '50% 28%' },
   { src: 'photos/italie-f40.jpg', n: 'Italie', pos: '50% 62%' },
+  { src: 'photos/sicile-etna.jpg', n: 'Sicile', pos: '62% 55%' },
+  { src: 'photos/sicile-syracuse.jpg', n: 'Sicile', pos: '50% 40%' },
+  { src: 'photos/sicile-coccinelle.jpg', n: 'Sicile', pos: '50% 50%' },
   { src: 'photos/thailande-temple.jpg', n: 'Thaïlande', pos: '50% 55%' },
   { src: 'photos/thailande-bouddha.jpg', n: 'Thaïlande', pos: '50% 42%' },
   { src: 'photos/andalousie-vue.jpg', n: 'Andalousie', pos: '66% 50%' },
@@ -465,7 +468,7 @@ function p4(t) {
   $('#p4 .barre b').style.transform = `scaleX(${clamp(T / MONTAGE)})`;
 }
 function p5(t) {
-  const T = t - 33.0;
+  const T = t - 35.4;
   $$('#p5 .grille div').forEach((d, i) => {
     const t0 = .05 + ((i * 7) % 24) * .025;
     const k = E.out5(prog(T, t0, t0 + .45));
@@ -478,7 +481,7 @@ function p5(t) {
   mots($('#p5 h2'), T, 1.0, 99, { pas: .08 });
 }
 function p6(t) {
-  const T = t - 35.4;
+  const T = t - 37.8;
   $$('#p6 .promesse').forEach((p, i) => {
     const t0 = i * 2.4, t1 = t0 + 2.4;
     const vis = T >= t0 && (T < t1 || i === 2);
@@ -497,7 +500,7 @@ function p6(t) {
   });
 }
 function p7(t) {
-  const T = t - 42.6;
+  const T = t - 45.0;
   mer(mers[2], t, { horizon: .82, force: .55 + E.out(prog(T, 0, 2)) * .3, lueur: 1.2 });
   $('#p7 .flash').style.opacity = 1 - E.out(prog(T, 0, .6));
   symbole($('#p7 .symbole'), T, .35);
