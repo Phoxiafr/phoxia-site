@@ -65,6 +65,10 @@
   .om__jalon p { margin: 0; font-size: .95rem; }
   .om__maillot { display: inline-flex; gap: 4px; vertical-align: middle; margin-left: .35rem; }
   .om__maillot span { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .om__premier { margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+  .om__premier figure { margin: 0; background: #FFFFFF; border-radius: 12px; padding: 1rem; }
+  .om__premier img { width: 100%; height: auto; display: block; }
+  .om__premier figcaption { font-size: .85rem; margin-top: .6rem; opacity: .8; }
   .om__galerie { margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
   .om__galerie figure { margin: 0; }
   .om__galerie img, .om__galerie video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; background: #0B1A2E; }
@@ -149,13 +153,25 @@
         <div class="om__jalon">
           <p class="om__annee">2006</p>
           <h3>Mon premier maillot, fan à 3 ans</h3>
-          <p>À trois ans, je reçois mon tout premier maillot de l'OM : le noir, rouge, vert et jaune.<span class="om__maillot" aria-hidden="true"><span style="background:#111"></span><span style="background:#D52B1E"></span><span style="background:#1E9E4A"></span><span style="background:#F4C300"></span></span></p>
+          <p>À trois ans, je reçois mon tout premier maillot de l'OM : le noir BetClic, avec sa bande rouge, jaune et verte.<span class="om__maillot" aria-hidden="true"><span style="background:#111"></span><span style="background:#D52B1E"></span><span style="background:#1E9E4A"></span><span style="background:#F4C300"></span></span></p>
         </div>
         <div class="om__jalon">
           <p class="om__annee">2026</p>
           <h3>20 ans de fidélité</h3>
           <p>Une date à retenir : je fête mes 20 ans de fidélité à l'OM lors du prochain match de l'Olympique de Marseille.</p>
         </div>
+      </div>
+
+      <p class="etiquette" style="margin-top:2.5rem" data-apparait>Mon premier maillot</p>
+      <div class="om__premier" data-apparait>
+        <figure>
+          <img src="assets/img/om/premier-maillot-betclic.jpg" alt="Maillot noir de l'OM adidas, sponsor BetClic, avec une bande verticale rouge, jaune et verte" width="600" height="600" loading="lazy">
+          <figcaption>Le modèle exact de mon tout premier maillot, reçu à trois ans.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/om/premier-maillot-dos-mathieu-4.jpg" alt="Illustration du dos du même maillot noir de l'OM, floqué MATHIEU et numéro 4 en jaune" width="900" height="900" loading="lazy">
+          <figcaption>Le dos, floqué MATHIEU 4 (illustration).</figcaption>
+        </figure>
       </div>
 
       <div class="om__galerie" data-apparait>
