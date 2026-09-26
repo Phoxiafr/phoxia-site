@@ -1,0 +1,21 @@
+{
+  "name": "Minubu, coffee shop & brunch face mer",
+  "short_name": "Minubu",
+  "description": "Commandez votre brunch et votre café chez Minubu, 333 Corniche Kennedy, Marseille.",
+  "lang": "fr-FR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF6F1",
+  "theme_color": "#F7AE93",
+  "icons": [
+    { "src": "assets/img/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/img/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Commander", "url": "./carte.html" },
+    { "name": "Ma carte fidélité", "url": "./fidelite.html" },
+    { "name": "Atelier latte", "url": "./atelier.html" }
+  ]
+}

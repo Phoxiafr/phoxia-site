@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cartes cadeaux | Minubu</title>
+<meta name="description" content="Offrez un brunch face mer : carte cadeau Minubu personnalisée, montant libre, envoyée par e-mail à la date de votre choix.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F1">
+<link rel="icon" href="assets/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Gochi+Hand&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/minubu.css">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<div data-bandeau-demo></div>
+<header data-entete></header>
+
+<main id="contenu">
+  <section class="section" style="padding-top:40px">
+    <div class="enveloppe">
+      <span class="surtitre" data-i18n="sur">à offrir</span>
+      <h1 style="font-size:clamp(2.4rem,6vw,4rem)" data-i18n="titre">Cartes cadeaux</h1>
+      <p class="chapeau" data-i18n="chapeau">Un brunch face mer, un latte pistache, une pause au soleil : offrez un moment Minubu. La carte est envoyée par e-mail, à la date de votre choix, et valable un an.</p>
+
+      <div class="atelier espace-haut">
+        <div class="atelier__scene" style="background:transparent;padding:0;min-height:0;display:block">
+          <div class="apercu-cadeau" data-apercu data-motif="peche">
+            <div class="apercu-cadeau__deco" data-art="gift"></div>
+            <div class="apercu-cadeau__haut"><span class="apercu-cadeau__marque">minubu</span><span class="main" style="color:inherit" data-i18n="carteCadeau">carte cadeau</span></div>
+            <div>
+              <div class="apercu-cadeau__pour" data-apercu-pour></div>
+              <p class="apercu-cadeau__message" data-apercu-message></p>
+            </div>
+            <div class="apercu-cadeau__montant" data-apercu-montant></div>
+          </div>
+          <p class="petit doux espace-haut" data-i18n="valable">Valable 12 mois sur place, en click &amp; collect et en commande à table. Utilisable en plusieurs fois.</p>
+        </div>
+
+        <form data-form-cadeau novalidate>
+          <div class="etape">
+            <div class="etape__titre"><span class="etape__numero">1</span><h2 data-i18n="e1">Le montant</h2></div>
+            <div class="montants" data-montants></div>
+            <div class="champ espace-haut"><label for="montant-libre" data-i18n="libre">Ou un montant libre (€)</label><input id="montant-libre" type="number" inputmode="decimal" min="10" max="300" step="1" placeholder="35"></div>
+            <p class="petit doux" data-idee></p>
+          </div>
+          <div class="etape">
+            <div class="etape__titre"><span class="etape__numero">2</span><h2 data-i18n="e2">Le style</h2></div>
+            <div class="motifs" role="group" aria-label="Motif">
+              <button type="button" class="motif" data-motif="peche" style="background:var(--peche)" aria-pressed="true" aria-label="Pêche"></button>
+              <button type="button" class="motif" data-motif="bordeaux" style="background:var(--bordeaux)" aria-pressed="false" aria-label="Bordeaux"></button>
+              <button type="button" class="motif" data-motif="mer" style="background:var(--mer)" aria-pressed="false" aria-label="Mer"></button>
+              <button type="button" class="motif" data-motif="creme" style="background:var(--papier)" aria-pressed="false" aria-label="Crème"></button>
+            </div>
+          </div>
+          <div class="etape">
+            <div class="etape__titre"><span class="etape__numero">3</span><h2 data-i18n="e3">Pour qui ?</h2></div>
+            <div class="champs-2">
+              <div class="champ"><label for="pour" data-i18n="pour">Prénom du destinataire</label><input id="pour" name="pour" maxlength="30" required><span class="erreur" data-erreur="pour"></span></div>
+              <div class="champ"><label for="email-pour" data-i18n="emailPour">Son e-mail</label><input id="email-pour" name="emailPour" type="email" required><span class="erreur" data-erreur="emailPour"></span></div>
+            </div>
+            <div class="champs-2">
+              <div class="champ"><label for="de" data-i18n="de">De la part de</label><input id="de" name="de" maxlength="30" required><span class="erreur" data-erreur="de"></span></div>
+              <div class="champ"><label for="date-envoi" data-i18n="date">Date d’envoi</label><input id="date-envoi" name="date" type="date" required></div>
+            </div>
+            <div class="champ"><label for="message" data-i18n="message">Votre message</label><textarea id="message" name="message" maxlength="140" placeholder="Joyeux anniversaire ! On se retrouve face mer ?" data-i18n-attr="placeholder:messagePh"></textarea><span class="aide" data-compteur>0 / 140</span></div>
+            <button class="bouton bouton--plein bouton--large" type="submit" data-ajouter-cadeau></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-pied></footer>
+
+<script>
+window.MINUBU_EN = {
+  __titre: 'Gift cards | Minubu', sur: 'to give', titre: 'Gift cards',
+  chapeau: 'A seafront brunch, a pistachio latte, a pause in the sun: give a Minubu moment. The card is emailed on the date of your choice and is valid for one year.',
+  carteCadeau: 'gift card', valable: 'Valid for 12 months in store, for click &amp; collect and table ordering. Can be used over several visits.',
+  e1: 'The amount', libre: 'Or a custom amount (€)', e2: 'The style', e3: 'Who is it for?', pour: 'Recipient’s first name', emailPour: 'Their email',
+  de: 'From', date: 'Send date', message: 'Your message', messagePh: 'Happy birthday! Brunch by the sea?'
+};
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/art.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/cadeaux.js"></script>
+</body>
+</html>

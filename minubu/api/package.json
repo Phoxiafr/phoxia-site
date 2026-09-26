@@ -1,0 +1,8 @@
+{
+  "name": "minubu-paiement",
+  "private": true,
+  "description": "Fonction serverless de paiement Stripe pour le site Minubu",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}

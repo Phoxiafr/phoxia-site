@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privatiser Minubu & contact | Minubu</title>
+<meta name="description" content="Anniversaire, baby shower, réunion d’équipe, shooting : privatisez Minubu face à la mer sur la Corniche Kennedy. Demande de devis en ligne.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F1">
+<link rel="icon" href="assets/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Gochi+Hand&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/minubu.css">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<div data-bandeau-demo></div>
+<header data-entete></header>
+
+<main id="contenu">
+  <section class="hero" style="padding-bottom:0">
+    <div class="enveloppe hero__grille" style="padding-bottom:48px">
+      <div>
+        <span class="surtitre" style="color:var(--bordeaux)" data-i18n="sur">rien que pour vous</span>
+        <h1 style="font-size:clamp(2.4rem,6vw,4.4rem)" data-i18n="titre">Privatisez Minubu</h1>
+        <p class="hero__accroche" data-i18n="chapeau">Un brunch d’anniversaire, une baby shower, un petit-déjeuner d’équipe ou un shooting face à la mer : on imagine avec vous un moment sur mesure.</p>
+        <a class="bouton bouton--plein" href="#demande"><span data-i18n="cta">Demander un devis</span></a>
+      </div>
+      <div class="hero__visuel" data-art="duo" style="max-width:420px;justify-self:center"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="enveloppe">
+      <div class="grille grille--4">
+        <div class="carte revele"><div class="carte__icone" data-art="pancake"></div><h3 data-i18n="t1">Anniversaires</h3><p data-i18n="p1">Brunch à partager, douceurs maison et lattes colorés pour souffler les bougies face mer.</p></div>
+        <div class="carte revele"><div class="carte__icone" data-art="latte" data-couleur="#F7AE93"></div><h3 data-i18n="t2">Baby shower &amp; EVJF</h3><p data-i18n="p2">Un cadre doux et lumineux, une palette pastel, des boissons à la carte.</p></div>
+        <div class="carte revele"><div class="carte__icone" data-art="cup"></div><h3 data-i18n="t3">Équipes &amp; séminaires</h3><p data-i18n="p3">Petit-déjeuner d’équipe, atelier, lancement : Wi-Fi, prises et café de spécialité à volonté.</p></div>
+        <div class="carte revele"><div class="carte__icone" data-art="glass"></div><h3 data-i18n="t4">Shootings</h3><p data-i18n="p4">Un décor minimaliste et ensoleillé pour vos photos et vidéos, avant ou après le service.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--peche" id="demande">
+    <div class="enveloppe mise-en-page-commande">
+      <form class="etape" data-form-evenement novalidate style="margin:0">
+        <div class="etape__titre"><h2 data-i18n="formTitre">Votre demande</h2></div>
+        <div class="segment" role="group" style="margin-bottom:20px">
+          <button type="button" data-type-demande="privatisation" aria-pressed="true"><span data-i18n="ongletPriva">Privatisation</span></button>
+          <button type="button" data-type-demande="contact" aria-pressed="false"><span data-i18n="ongletContact">Question</span></button>
+        </div>
+        <div data-bloc-priva>
+          <div class="champs-2">
+            <div class="champ"><label for="ev-type" data-i18n="type">Occasion</label>
+              <select id="ev-type" name="occasion">
+                <option data-i18n="o1">Anniversaire</option><option data-i18n="o2">Baby shower</option><option data-i18n="o3">EVJF</option>
+                <option data-i18n="o4">Réunion ou séminaire</option><option data-i18n="o5">Shooting photo ou vidéo</option><option data-i18n="o6">Autre</option>
+              </select></div>
+            <div class="champ"><label for="ev-date" data-i18n="date">Date souhaitée</label><input id="ev-date" name="date" type="date"></div>
+          </div>
+          <div class="champs-2">
+            <div class="champ"><label for="ev-moment" data-i18n="moment">Moment</label>
+              <select id="ev-moment" name="moment"><option data-i18n="m1">Matinée</option><option data-i18n="m2">Brunch (midi)</option><option data-i18n="m3">Après-midi</option><option data-i18n="m4">Après la fermeture</option></select></div>
+            <div class="champ"><label for="ev-nb"><span data-i18n="nb">Nombre de personnes</span> : <strong data-nb-valeur>20</strong></label><input id="ev-nb" name="personnes" type="range" min="6" max="60" value="20" style="accent-color:var(--bordeaux);min-height:auto;padding:0;border:0;background:none"></div>
+          </div>
+          <fieldset class="groupe-options" style="margin:0 0 16px"><legend data-i18n="envies">Vos envies</legend>
+            <div class="choix-grille">
+              <div class="choix"><input type="checkbox" id="en1" name="envies" value="Brunch"><label for="en1" data-i18n="en1">Brunch</label></div>
+              <div class="choix"><input type="checkbox" id="en2" name="envies" value="Latte bar"><label for="en2" data-i18n="en2">Latte bar</label></div>
+              <div class="choix"><input type="checkbox" id="en3" name="envies" value="Douceurs"><label for="en3" data-i18n="en3">Douceurs maison</label></div>
+              <div class="choix"><input type="checkbox" id="en4" name="envies" value="Jus frais"><label for="en4" data-i18n="en4">Jus frais</label></div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="champs-2">
+          <div class="champ"><label for="ev-nom" data-i18n="nom">Nom</label><input id="ev-nom" name="nom" autocomplete="name" required><span class="erreur" data-erreur="nom"></span></div>
+          <div class="champ"><label for="ev-tel" data-i18n="tel">Téléphone</label><input id="ev-tel" name="tel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="champ"><label for="ev-email" data-i18n="email">E-mail</label><input id="ev-email" name="email" type="email" autocomplete="email" required><span class="erreur" data-erreur="email"></span></div>
+        <div class="champ"><label for="ev-message" data-i18n="message">Message</label><textarea id="ev-message" name="message" maxlength="1500"></textarea></div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <button class="bouton bouton--plein bouton--large" type="submit"><span data-i18n="envoyer">Envoyer ma demande</span></button>
+        <div data-retour style="margin-top:16px"></div>
+      </form>
+      <aside class="colonne-collante">
+        <div class="carte">
+          <h3 data-i18n="bonTitre">Bon à savoir</h3>
+          <ul class="liste-coche">
+            <li data-icone="coche"><span data-i18n="b1">Réponse sous 48 h ouvrées avec une proposition sur mesure.</span></li>
+            <li data-icone="coche"><span data-i18n="b2">Pour les tables du quotidien, pas de réservation : venez comme vous êtes.</span></li>
+            <li data-icone="coche"><span data-i18n="b3">Options sans gluten et laits végétaux disponibles.</span></li>
+          </ul>
+          <p class="espace-haut petit"><strong>Minubu</strong><br>333 Corniche Kennedy, 13007 Marseille<br><a href="https://www.instagram.com/minubu.coffee/" target="_blank" rel="noopener">@minubu.coffee</a></p>
+          <table class="horaires" data-horaires></table>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer data-pied></footer>
+
+<script>
+window.MINUBU_EN = {
+  __titre: 'Private events & contact | Minubu', sur: 'just for you', titre: 'Book Minubu privately',
+  chapeau: 'A birthday brunch, a baby shower, a team breakfast or a shoot facing the sea: let’s design a tailor-made moment together.', cta: 'Request a quote',
+  t1: 'Birthdays', p1: 'Sharing brunch, homemade treats and colourful lattes to blow out the candles by the sea.',
+  t2: 'Baby showers &amp; hen parties', p2: 'A soft, bright setting, a pastel palette, drinks to order.',
+  t3: 'Teams &amp; offsites', p3: 'Team breakfast, workshop, launch: Wi-Fi, sockets and specialty coffee on tap.',
+  t4: 'Shoots', p4: 'A minimalist, sunny setting for your photos and videos, before or after service.',
+  formTitre: 'Your request', ongletPriva: 'Private event', ongletContact: 'Question', type: 'Occasion',
+  o1: 'Birthday', o2: 'Baby shower', o3: 'Hen party', o4: 'Meeting or offsite', o5: 'Photo or video shoot', o6: 'Other',
+  date: 'Preferred date', moment: 'Time of day', m1: 'Morning', m2: 'Brunch (midday)', m3: 'Afternoon', m4: 'After closing',
+  nb: 'Number of guests', envies: 'What you’d like', en1: 'Brunch', en2: 'Latte bar', en3: 'Homemade treats', en4: 'Fresh juices',
+  nom: 'Name', tel: 'Phone', email: 'Email', message: 'Message', envoyer: 'Send my request',
+  bonTitre: 'Good to know', b1: 'Reply within 2 working days with a tailored proposal.', b2: 'For everyday tables, no reservation: just come by.', b3: 'Gluten-free options and plant milks available.'
+};
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/art.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/evenements.js"></script>
+</body>
+</html>

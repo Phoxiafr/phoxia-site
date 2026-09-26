@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La carte | Minubu, brunch & coffee à Marseille</title>
+<meta name="description" content="La carte de Minubu : œufs Bénédicte, Turkish eggs, tartines, pancakes pistache, latte bar et cafés de spécialité. Commandez en ligne en click & collect ou à table.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F1">
+<link rel="icon" href="assets/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Gochi+Hand&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/minubu.css">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<div data-bandeau-demo></div>
+<header data-entete></header>
+
+<main id="contenu">
+  <section class="section" style="padding-bottom:24px">
+    <div class="enveloppe">
+      <span class="surtitre" data-i18n="sur">lovingly prepared with the freshest ingredients</span>
+      <h1 style="font-size:clamp(2.6rem,7vw,4.6rem)" data-i18n="titre">La carte</h1>
+      <div class="ligne-actions" style="margin-bottom:8px">
+        <div class="statut" data-statut></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="barre-carte">
+    <div class="enveloppe">
+      <nav class="onglets" aria-label="Catégories" data-onglets></nav>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:32px">
+    <div class="enveloppe">
+      <div class="mode-commande" data-mode></div>
+      <div class="message message--alerte" data-pause hidden></div>
+
+      <div class="filtres">
+        <label class="recherche">
+          <span class="visuellement-cache" data-i18n="rechercher">Rechercher</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input type="search" data-recherche placeholder="Avocat, matcha, sans gluten…" data-i18n-attr="placeholder:placeholder" autocomplete="off">
+        </label>
+        <button class="puce" type="button" aria-pressed="false" data-filtre="veg"><span data-i18n="fVeg">🌿 Végétarien</span></button>
+        <button class="puce" type="button" aria-pressed="false" data-filtre="sg"><span data-i18n="fSg">Sans gluten possible</span></button>
+        <button class="puce" type="button" aria-pressed="false" data-filtre="vegetal"><span data-i18n="fVegetal">Lait végétal</span></button>
+        <button class="puce" type="button" aria-pressed="false" data-filtre="new"><span data-i18n="fNew">Nouveautés</span></button>
+        <button class="puce" type="button" aria-pressed="false" data-filtre="sans-arachides"><span data-i18n="fArachides">Sans arachides</span></button>
+      </div>
+
+      <div data-carte aria-live="polite"></div>
+
+      <p class="petit doux espace-haut" data-i18n="noteAllergenes">Allergènes indiqués à titre informatif sur chaque fiche produit. En cas d’allergie ou d’intolérance, parlez-en à l’équipe avant de commander. Prix TTC, service compris.</p>
+    </div>
+  </section>
+</main>
+
+<footer data-pied></footer>
+
+<script>
+window.MINUBU_EN = {
+  __titre: 'Menu | Minubu, brunch & coffee in Marseille',
+  sur: 'lovingly prepared with the freshest ingredients', titre: 'The menu', rechercher: 'Search',
+  placeholder: 'Avocado, matcha, gluten-free…',
+  fVeg: '🌿 Vegetarian', fSg: 'Gluten-free option', fVegetal: 'Plant milk', fNew: 'New', fArachides: 'Peanut-free',
+  noteAllergenes: 'Allergens are shown for guidance on each product sheet. If you have an allergy or intolerance, please tell the team before ordering. Prices include VAT and service.'
+};
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/art.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/carte.js"></script>
+</body>
+</html>

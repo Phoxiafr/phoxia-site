@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier latte | Minubu</title>
+<meta name="description" content="Composez votre latte Minubu : pistache, ube, matcha, tahiné, curcuma… Chaud ou glacé, lait d’avoine ou de coco, votre prénom sur le gobelet.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FEEEE6">
+<link rel="icon" href="assets/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Gochi+Hand&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/minubu.css">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<div data-bandeau-demo></div>
+<header data-entete></header>
+
+<main id="contenu">
+  <section class="section" style="padding-top:40px">
+    <div class="enveloppe">
+      <span class="surtitre" data-i18n="sur">à votre façon</span>
+      <h1 style="font-size:clamp(2.4rem,6vw,4rem)" data-i18n="titre">L’atelier latte</h1>
+      <p class="chapeau" data-i18n="chapeau">Choisissez votre base, votre lait, chaud ou glacé, et signez votre gobelet. Enregistrez vos créations pour les recommander en un geste.</p>
+
+      <div class="atelier espace-haut">
+        <div class="atelier__scene" data-scene></div>
+        <div>
+          <div class="etape">
+            <div class="etape__titre"><span class="etape__numero">1</span><h2 data-i18n="e1">La base</h2></div>
+            <div class="base-grille" data-bases></div>
+          </div>
+          <div class="etape" data-options></div>
+          <div class="etape">
+            <div class="etape__titre"><span class="etape__numero" data-num-perso>3</span><h2 data-i18n="e3">Votre touche</h2></div>
+            <div class="champ"><label for="prenom-gobelet" data-i18n="prenom">Prénom sur le gobelet</label><input id="prenom-gobelet" maxlength="14" autocomplete="given-name"></div>
+            <div class="champ"><label for="nom-creation" data-i18n="nomCreation">Nom de votre création (pour vos favoris)</label><input id="nom-creation" maxlength="30" placeholder="Mon latte du dimanche" data-i18n-attr="placeholder:nomPh"></div>
+            <div class="ligne-actions">
+              <button class="bouton bouton--plein" type="button" data-ajouter></button>
+              <button class="bouton bouton--contour" type="button" data-favori><span data-i18n="favori">♡ Enregistrer</span></button>
+            </div>
+          </div>
+          <div class="etape" data-zone-favoris hidden>
+            <div class="etape__titre"><h2 data-i18n="favoris">Mes créations</h2></div>
+            <div class="favoris" data-favoris></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-pied></footer>
+
+<script>
+window.MINUBU_EN = {
+  __titre: 'Latte studio | Minubu', sur: 'your way', titre: 'The latte studio',
+  chapeau: 'Choose your base, your milk, hot or iced, and sign your cup. Save your creations to reorder in one tap.',
+  e1: 'The base', e3: 'Your touch', prenom: 'Name on the cup', nomCreation: 'Name your creation (for your favourites)', nomPh: 'My Sunday latte',
+  favori: '♡ Save', favoris: 'My creations'
+};
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/art.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/atelier.js"></script>
+</body>
+</html>

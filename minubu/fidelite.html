@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fidélité | Minubu</title>
+<meta name="description" content="La carte de fidélité digitale Minubu : un tampon par boisson, la 10e est offerte.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF6F1">
+<link rel="icon" href="assets/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Gochi+Hand&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/minubu.css">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<div data-bandeau-demo></div>
+<header data-entete></header>
+
+<main id="contenu">
+  <section class="section" style="padding-top:40px">
+    <div class="enveloppe">
+      <span class="surtitre" data-i18n="sur">fidélité</span>
+      <h1 style="font-size:clamp(2.4rem,6vw,4rem)" data-i18n="titre">La 10e boisson est pour nous</h1>
+      <p class="chapeau" data-i18n="chapeau">Une carte 100 % digitale, toujours dans votre poche. Chaque boisson commandée en ligne ajoute un tampon. Au 9e, la suivante est offerte.</p>
+      <div class="atelier espace-haut" data-fidelite></div>
+    </div>
+  </section>
+
+  <section class="section section--peche">
+    <div class="enveloppe">
+      <div class="centre" style="margin-bottom:32px"><span class="surtitre" data-i18n="cSur">comment ça marche</span><h2 data-i18n="cTitre">Simple comme un espresso</h2></div>
+      <div class="grille grille--3">
+        <div class="carte"><div class="carte__icone" data-art="cup"></div><h3 data-i18n="c1t">1. Commandez</h3><p data-i18n="c1p">En click &amp; collect ou à table, chaque boisson achetée ajoute automatiquement un tampon.</p></div>
+        <div class="carte"><div class="carte__icone" data-art="latte" data-couleur="#A9B86A"></div><h3 data-i18n="c2t">2. Collectionnez</h3><p data-i18n="c2p">Café, latte bar, jus frais, thé : toutes les boissons comptent, même les plus simples.</p></div>
+        <div class="carte"><div class="carte__icone" data-art="gift"></div><h3 data-i18n="c3t">3. Savourez</h3><p data-i18n="c3p">Au 9e tampon, un code vous offre la boisson de votre choix, à utiliser lors de votre prochaine commande.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-pied></footer>
+
+<script>
+window.MINUBU_EN = {
+  __titre: 'Rewards | Minubu', sur: 'rewards', titre: 'Your 10th drink is on us',
+  chapeau: 'A 100% digital card, always in your pocket. Every drink ordered online adds a stamp. After the 9th, the next one is free.',
+  cSur: 'how it works', cTitre: 'As simple as an espresso',
+  c1t: '1. Order', c1p: 'Click &amp; collect or at your table, every drink you buy adds a stamp automatically.',
+  c2t: '2. Collect', c2p: 'Coffee, latte bar, fresh juice, tea: every drink counts, even the simplest.',
+  c3t: '3. Enjoy', c3p: 'On your 9th stamp, a code gives you the drink of your choice, to use on your next order.'
+};
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/menu-data.js"></script>
+<script src="assets/js/art.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/fidelite.js"></script>
+</body>
+</html>
