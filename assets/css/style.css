@@ -442,6 +442,32 @@ body[data-menu-ouvert="true"] { overflow: hidden; }
 .hero__chapeau { margin-top: 1.75rem; }
 .hero__actions { margin-top: 2.25rem; }
 
+.badge-ia {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 1.5rem;
+  padding: .5rem .95rem;
+  border: 1px solid var(--filet-fort);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--encre-doux);
+  text-decoration: none;
+  transition: border-color .15s ease, color .15s ease;
+}
+
+.badge-ia:hover { border-color: var(--azur); color: var(--azur); }
+
+.badge-ia__point {
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--azur-clair);
+  flex: none;
+}
+
 .hero__stat { margin-top: clamp(2rem, 4vw, 2.75rem); }
 
 .hero__stat-valeur {
