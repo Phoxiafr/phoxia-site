@@ -1,13 +1,13 @@
 {
-  "name": "Phoxia — Conseil en développement commercial",
+  "name": "Phoxia, agence IA",
   "short_name": "Phoxia",
-  "description": "Stratégie commerciale, pilotage financier et développement à l'international.",
+  "description": "Formations IA, automatisation et agents IA pour les PME.",
   "lang": "fr-FR",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#FCFBF9",
-  "theme_color": "#14213D",
+  "background_color": "#05070B",
+  "theme_color": "#05070B",
   "icons": [
     { "src": "/assets/img/phoxia-favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "/assets/img/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
