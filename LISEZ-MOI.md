@@ -1,153 +1,174 @@
-# Phoxia — nouveau site
+# Phoxia : le site phoxia.fr
 
-Refonte complète du site `phoxia.fr` répondant aux retours d'Alix, Maxime et Jade.
-Site statique, sans dépendance ni build. Compatible GitHub Pages tel quel.
+Site statique en HTML, CSS et JavaScript, sans dépendance ni étape de construction.
+Hébergé sur GitHub Pages depuis ce dépôt (`Phoxiafr/phoxia-site`, branche `main`).
+Le fichier `CNAME` relie le dépôt au domaine `phoxia.fr` : ne jamais le supprimer.
 
----
-
-## 0. Prévisualiser
-
-Double-cliquez sur `index.html`. Les chemins sont relatifs, tout s'affiche sans
-serveur local. Seule exception : `404.html` utilise des chemins absolus, parce que
-GitHub Pages peut la servir depuis n'importe quelle URL — elle n'est correcte
-qu'une fois le site en ligne.
+Mis à jour le 5 novembre 2026. Univers technologique : fondu noir, lueurs bleues du logo, panneaux translucides,
+logo en EB Garamond italique, titres et texte en Instrument Sans,
+repères en IBM Plex Mono. Aucune ville n'est citée hors mentions légales.
 
 ---
 
-## 1. État de préparation
+## 1. Publier une modification
 
-**Le site est complet.** Aucun placeholder, aucun champ à remplir.
+1. Travaillez sur une branche, puis ouvrez une pull request vers `main`.
+2. Une fois la PR fusionnée, GitHub Pages republie le site en une à deux minutes.
+3. Si vous avez changé le contenu d'une page, mettez à jour sa date `<lastmod>`
+   dans `sitemap.xml` (ou `phoxy/sitemap.xml` pour le sous-site Phoxy).
 
-| Élément | État |
-|---|---|
-| Formulaire de contact | Branché sur Formspree, endpoint `xpqggbqg` |
-| Prise de rendez-vous | Calendly, créneaux de 30 minutes |
-| Mentions légales | SIREN, SIRET, forme juridique, siège, TVA, dates |
-| Politique de confidentialité | Complète, conforme RGPD |
-| Réseaux sociaux | LinkedIn entreprise, Instagram, TikTok, email |
-| Logos | 15 fichiers détourés, dont Deloitte |
-| Portraits | Mathieu, Pragun, Valentin, Jules, Pierre Alexandre, Alix |
-
-**Un test à faire dès la mise en ligne :** envoyez-vous un message via le formulaire.
-Formspree exige une validation de l'adresse de réception au premier envoi ; sans
-elle, les demandes suivantes n'arrivent pas. Vérifiez aussi vos indésirables.
-
-**Deux points à traiter à votre rythme :**
-
-1. La domiciliation marseillaise, pour remplacer l'adresse du siège dans
-   `mentions-legales.html`. Les données structurées annoncent déjà Marseille et la
-   ligne « Lieu d'exercice » documente l'écart en attendant.
-2. La page entreprise `linkedin.com/company/phoxia`. Si elle n'est pas publiée,
-   l'icône LinkedIn du pied de page mène à une erreur 404.
+Pour prévisualiser en local : double-cliquez sur `index.html`. Les chemins sont
+relatifs, tout s'affiche sans serveur. Seule `404.html` utilise des chemins absolus
+et ne s'affiche correctement qu'en ligne.
 
 ---
 
-## 2. Mise en ligne sur GitHub Pages
+## 2. Modifier le menu ou le pied de page
 
-1. Ouvrez `github.com/phoxiafr/phoxiafr.github.io`
-2. Supprimez les anciens fichiers du repo (gardez `.git`)
-3. Glissez-déposez **tout le contenu** du dossier `SITE/` (pas le dossier lui-même)
-4. Vérifiez que `CNAME` et `.nojekyll` sont bien présents à la racine
-5. Commit. Le déploiement prend une à deux minutes.
+Chaque page contient sa propre copie de la tête, de l'en-tête et du pied de page,
+entre des marqueurs `<!-- debut:... -->` et `<!-- fin:... -->`. **Ne modifiez pas ces
+blocs à la main.** Utilisez le gabarit :
 
-> `.nojekyll` empêche GitHub de faire tourner Jekyll, qui ignorerait les dossiers
-> commençant par un underscore et ralentit inutilement le déploiement.
->
-> `CNAME` contient `phoxia.fr` : ne le supprimez jamais, sinon le domaine se détache.
+1. Ouvrez `outils/gabarit.py` et modifiez `MENU`, `PIED_NAVIGATION`,
+   `PIED_INFORMATIONS` ou `APERCUS_MENU` (les mini pages qui s'affichent au survol
+   des liens du menu).
+2. Lancez depuis la racine du dépôt : `python3 outils/gabarit.py`
 
----
-
-## 3. Référencement — les 4 actions à faire après la mise en ligne
-
-1. **Google Search Console** — `search.google.com/search-console`
-   Ajoutez la propriété `phoxia.fr`, validez par enregistrement DNS chez OVH
-   (méthode « Domaine », TXT à la racine).
-2. **Soumettez le sitemap** — dans Search Console, menu *Sitemaps*, saisissez
-   `sitemap.xml`. Puis *Inspection d'URL* sur `https://phoxia.fr/` → « Demander une indexation ».
-3. **Google Business Profile** — `business.google.com`. C'est le levier n°1 sur des
-   requêtes du type « consultant développement commercial Marseille ». Adresse,
-   horaires, zone d'intervention, photos, et surtout des avis clients.
-4. **Bing Webmaster Tools** — import direct depuis Search Console, deux clics.
-
-Mettez à jour les dates `<lastmod>` dans `sitemap.xml` à chaque modification de contenu.
+Pour créer une nouvelle page, copiez `contact.html` ou `formations.html`, changez
+le titre, la description et le contenu de `<main>`, puis relancez le gabarit.
 
 ---
 
-## 3 bis. Le blog `actualites/`
-
-Trois premiers articles sont en ligne, pensés pour capter du trafic sur des recherches
-que fait votre clientèle avant de vous contacter (stratégie commerciale PME, pilotage
-financier, développement international). Pour en ajouter un :
-
-1. Dupliquez un des fichiers de `actualites/` et modifiez son contenu.
-2. Ajoutez une entrée dans `actualites/index.html` (bloc `.sommaire`) et dans son
-   script `application/ld+json` (`blogPost`).
-3. Ajoutez l'URL dans `sitemap.xml`.
-
-Un article par mois environ est un bon rythme pour construire une audience organique
-sans que ce soit une charge. Le sujet compte plus que la fréquence : mieux vaut un
-article par trimestre qui répond à une vraie question de client, que dix articles
-génériques qui ne se distinguent pas de la concurrence.
-
----
-
-## 4. Ce que le site contient déjà côté SEO
-
-- Titres uniques et descriptions rédigées sur chaque page
-- URL canoniques
-- Open Graph et Twitter Card avec image dédiée 1200 × 630
-- Données structurées JSON-LD : `ProfessionalService`, `WebSite`, `ContactPage`,
-  `BreadcrumbList`, catalogue d'offres, `Person` fondateur avec `alumniOf`
-- `sitemap.xml` et `robots.txt`
-- Un seul `<h1>` par page, hiérarchie Hn continue
-- `lang="fr"`, attributs `alt`, liens `rel="noopener"`
-- Page 404 personnalisée
-- `theme-color` et manifeste web
-
----
-
-## 5. Structure des fichiers
+## 3. Structure
 
 ```
-index.html                          Accueil : hero, repères, sommaire des 5 pages
-domaines.html                       Les trois domaines d'expertise
-approche.html                       Origine du nom, ancrage, engagements
-methode.html                        Déroulé d'une mission en 4 étapes
-experiences.html                    Rangées d'expériences + bandeau défilant
-parcours.html                       Formation, distinctions, équipe
-contact.html                        Formulaire détaillé + prise de rendez-vous
-mentions-legales.html               Obligations LCEN
+index.html                          Accueil : radar, services, protocole (méthode),
+                                    missions, formations, équipe
+formations.html                     Catalogue des 10 formations IA
+contact.html                        Formulaire (Formspree) et prise de rendez-vous
+mentions-legales.html               Obligations légales (LCEN)
 politique-de-confidentialite.html   RGPD
 404.html                            Page d'erreur
-actualites/                         Blog : page d'index + un fichier .html par article
+actualites/                         Blog : index + un fichier par article
+
+Anciennes adresses, redirigées vers la nouvelle page correspondante :
+domaines.html approche.html methode.html experiences.html parcours.html
+agenda.html essca.html
+
+Pages personnelles, hors menu, en attente du site Phoxy dédié :
+hobbies.html  phoxy.html  agents.html  statut-phoxy-music.html  phoxy/
+(elles gardent l'ancienne feuille de style assets/css/style.css)
+
+assets/css/site.css                 Feuille de style du site (thème sombre)
+assets/js/vitrine.js                Accueil : chargement, logo 3D (Three.js), texte géant,
+                                    mur de projets animés
+assets/js/site.js                   Interactions : défilement fluide, curseur,
+                                    aperçus au survol, animations, carrousel,
+                                    fenêtres de détail, formulaire
+assets/img/                         Logos, portraits, visuels
+outils/gabarit.py                   Gabarit commun (voir section 2)
 sitemap.xml  robots.txt  CNAME  .nojekyll  site.webmanifest
-assets/
-  css/style.css                     Feuille unique, commentée
-  js/main.js                        Menu, défilement, formulaire. Sans dépendance
-  img/logos/                        14 logos détourés
-  img/equipe/                       5 portraits
-_generer-pages.py                   Gabarit commun (en-tête, pied, métas)
-_contenus.py                        Contenu de chaque page
-_construire.py                      Assemble les 7 pages : python3 _construire.py
 ```
 
-> **Les trois fichiers `_*.py` ne servent qu'à la fabrication.** L'en-tête, le menu
-> et le pied de page sont générés depuis une source unique : si vous modifiez la
-> navigation à la main dans les 7 fichiers HTML, vous créerez des divergences.
-> Modifiez plutôt `_generer-pages.py` puis relancez `python3 _construire.py`.
-> Ces trois fichiers peuvent rester dans le repo, ils ne sont pas servis.
+### Les interactions
+
+- **Fiches au survol** : tout élément portant `data-apercu="cle"` fait sortir, au survol,
+  une fiche qui suit le curseur, avec le contenu du `<template id="apercu-cle">`.
+- **Panneau de détail** : `data-ouvrir="detail-cle"` ouvre le panneau latéral avec le
+  contenu du `<template id="detail-cle">`.
+- **Curseur viseur** : ses coins encadrent automatiquement les liens et boutons.
+  `data-curseur="Voir"` affiche une étiquette « Voir » à côté du curseur.
+- **Boutons aimantés** : `data-aimant`.
+- **Apparition au défilement** : `data-reveler` (avec `style="--delai:.2s"` en option),
+  titres animés mot par mot : `data-titre-anime`.
+- **Réseau de points lumineux** qui réagit au curseur : `<canvas class="carte-marine" data-carte>`.
+- **Radar** de l'accueil : son faisceau suit le curseur (`data-boussole`).
+- **Transitions** : un rideau aux trois couleurs du logo passe entre deux pages.
+- **Logo 3D de l'accueil** : les trois barres du symbole, reconstruites en 3D avec
+  Three.js (cdnjs), suivent la souris et s'écartent quand on s'en approche. Sans
+  WebGL, une image du logo s'affiche à la place.
+- **Mur de projets** : deux rangées de cartes animées qui défilent en sens inverse,
+  ralentissent au survol et accélèrent avec le défilement. Chaque carte ouvre un
+  panneau `detail-pXX`. Pour ajouter un projet, dupliquez une carte `.projet` et son
+  `<template>`.
+- **Écran de chargement** : affiché une seule fois par visite.
+- Sur mobile et pour les visiteurs qui ont réduit les animations dans leur système,
+  le curseur, les fiches, le défilement horizontal du protocole et les effets de mouvement sont
+  désactivés automatiquement.
+
+### Modifier une formation
+
+Chaque formation apparaît à trois endroits de `formations.html` : la ligne du
+catalogue (`data-ouvrir="detail-f01"`), sa fiche (`<template id="apercu-form-f01">`)
+et son programme complet (`<template id="detail-f01">`). Les quatre formations mises en
+avant sur l'accueil ont aussi leur ligne et leur aperçu dans `index.html`.
+Un lien direct vers une formation ouvre son programme : `formations.html#f04`.
 
 ---
 
-## 6. Notes techniques
+## 4. Ajouter des photos
 
-- **Aucun cookie déposé.** Pas de bandeau de consentement nécessaire tant que vous
-  n'ajoutez pas d'outil de statistiques. Si vous en voulez un, préférez Plausible ou
-  Matomo Cloud (sans cookie, exemptés de consentement) à Google Analytics.
-- **Polices** chargées depuis Google Fonts. Pour supprimer cette dépendance externe,
-  téléchargez EB Garamond et Instrument Sans en `.woff2`, placez-les dans
-  `assets/fonts/` et remplacez le `<link>` par des règles `@font-face`.
-- **Formulaire** : protection anti-robot par champ piège (`_gotcha`), envoi en AJAX
-  sans rechargement, repli automatique sur `mailto:` si l'endpoint n'est pas configuré.
-- **Accessibilité** : lien d'évitement, `aria-expanded` sur le menu, `aria-current`
-  sur la navigation, focus visible, respect de `prefers-reduced-motion`.
+Les photos doivent rester légères pour que le site soit rapide sur mobile :
+
+- **Taille** : 1200 px maximum sur le plus grand côté pour une vignette de galerie,
+  1600 px pour une photo affichée en pleine largeur.
+- **Format** : JPG qualité 78 à 80 pour les photos, PNG seulement si l'image a
+  besoin de transparence (logos).
+- **Poids visé** : moins de 250 Ko par photo.
+- Retirez les métadonnées de localisation (GPS) avant publication.
+
+---
+
+## 5. Ajouter un article au blog
+
+1. Dupliquez un article de `actualites/` et remplacez son titre, sa description,
+   son URL canonique et le contenu de la `<div class="prose">`.
+2. Ajoutez sa carte dans `actualites/index.html` (bloc `.articles`).
+3. Ajoutez l'URL dans `sitemap.xml`, puis lancez `python3 outils/gabarit.py`.
+
+Les trois articles actuels portent sur le conseil aux PME (avant le virage IA).
+Un premier article sur un usage concret de l'IA renforcerait le nouveau positionnement.
+
+---
+
+## 6. Services branchés
+
+| Service | Où | Détail |
+|---|---|---|
+| Formulaire de contact | `contact.html` | Formspree, endpoint `xpqggbqg` |
+| Prise de rendez-vous | liens sur toutes les pages | Calendly, `mathieu-phoxia/30min` |
+| Défilement fluide | toutes les pages | Lenis 1.1.13, chargé depuis jsDelivr (le site fonctionne sans) |
+| Polices | toutes les pages | Google Fonts (EB Garamond pour le logo, Instrument Sans, IBM Plex Mono) |
+| Réseaux | pied de page | LinkedIn `company/phoxia`, Instagram et TikTok `phoxia.fr` |
+
+Aucun cookie n'est déposé : pas de bandeau de consentement nécessaire. Pour des
+statistiques, préférez Plausible ou Matomo (sans cookie) à Google Analytics.
+
+---
+
+## 7. Référencement
+
+Déjà en place : titres et descriptions uniques, URL canoniques, Open Graph,
+données structurées JSON-LD, `sitemap.xml`, `robots.txt`, un seul `<h1>` par page.
+
+À faire ou à vérifier, hors du dépôt :
+
+1. **Google Search Console** : propriété `phoxia.fr` validée par DNS chez OVH,
+   sitemaps `sitemap.xml` et `phoxy/sitemap.xml` soumis.
+2. **Google Business Profile** : premier levier pour les recherches locales
+   (« consultant développement commercial Marseille »). Les avis clients comptent.
+3. **Bing Webmaster Tools** : import direct depuis Search Console.
+4. **Domaine www** : vérifier que `www.phoxia.fr` redirige vers `phoxia.fr`
+   (réglages Pages du dépôt et enregistrement CNAME `www` chez OVH).
+
+---
+
+## 8. Points en attente
+
+- **Adresse du siège** dans `mentions-legales.html` : obligatoire (LCEN), c'est la
+  seule ville qui reste sur le site.
+- **Statut de Phoxy Music** : voir `phoxy/LISEZ-MOI.md` (activité déclarée,
+  formulaire de contact du sous-site).
+- **Site Phoxy dédié** : les pages personnelles (Hobbies, Phoxy, DJ Bond) sont
+  sorties du menu et attendent leur propre site.
+- **Tarifs des formations** : affichés « sur devis » pour l'instant.

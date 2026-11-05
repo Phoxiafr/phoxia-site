@@ -3,7 +3,7 @@
 Site statique, sans dépendance ni build, sur le même modèle que le site Phoxia
 (consulting) situé à la racine de ce dépôt. Ce dossier `/phoxy/` est
 indépendant : il ne modifie aucun fichier du site Phoxia existant, mais une
-page de présentation (`/phoxy-music.html`, à la racine) y renvoie et fait
+page de présentation (`/phoxy.html`, à la racine) y renvoie et fait
 partie du même dépôt.
 
 **Direction artistique** : nuit encre (`#060c14`) + néon cyan (`#5be8ff`),
@@ -74,7 +74,7 @@ sitemap.xml  robots.txt  site.webmanifest
 assets/
   css/style.css                     Feuille unique
   js/main.js                        Menu, apparitions au scroll, formulaire
-  img/hero-phoxy.png                Photo de couverture fournie
+  img/hero-phoxy.jpg                Photo de couverture fournie
   img/favicon-32.png, favicon-180.png, favicon-512.png   Favicon (recadré depuis le vrai mark)
   img/marque/                       Logo réel (texte + mark, versions néon et noir) et badges de lieux
 ```
