@@ -1016,3 +1016,16 @@ body::after { display: none; }
 .rideau__chargeur .logo-anime { width: 64px; }
 .rideau[data-etat="entree"] .rideau__chargeur { animation: apparaitre-loader .2s .05s forwards; }
 .rideau[data-etat="sortie"] .rideau__chargeur { animation: none; opacity: 1; }
+
+/* ---------- Sélecteur de langue ---------- */
+.langues { display: inline-flex; align-items: center; gap: 2px; padding: 3px; box-shadow: inset 0 0 0 1px var(--ligne-forte); font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; }
+.langues a { padding: .32rem .5rem; color: var(--sable-doux); transition: background .3s, color .3s; }
+.langues a:hover { color: var(--sable); background: rgba(255,255,255,.06); }
+.langues a[aria-current="true"] { background: var(--bleu); color: #04121f; }
+.nav .langues { margin-left: .4rem; }
+.entete__mobile { display: none; align-items: center; gap: .6rem; justify-self: end; }
+@media (max-width: 980px) { .entete__mobile { display: flex; } }
+.langues--grand { font-size: .74rem; vertical-align: middle; margin-left: .4rem; }
+.scene__infos .langues--grand a { padding: .25rem .45rem; }
+.pied__bas .langues { font-size: .68rem; }
+.titre-l, .titre-geant { hyphens: manual; -webkit-hyphens: manual; }

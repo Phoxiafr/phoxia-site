@@ -39,6 +39,23 @@ le titre, la description et le contenu de `<main>`, puis relancez le gabarit.
 
 ---
 
+## 2 bis. Les trois langues
+
+Le site existe en français (racine), en anglais (`/en/`) et en espagnol (`/es/`)
+pour l'accueil, les formations et le contact. Le blog et les pages légales restent
+en français ; les versions étrangères y renvoient avec la mention « (FR) ».
+
+**Ne modifiez jamais les fichiers de `en/` et `es/` à la main** : ils sont générés.
+Après toute modification d'un texte français sur ces trois pages :
+
+1. ajoutez ou corrigez la traduction dans `outils/traductions/textes.py`
+   (une ligne par texte : français, anglais, espagnol) ;
+2. lancez `python3 outils/traduire.py`.
+
+Le script régénère les pages traduites, applique le gabarit, et liste les textes
+qui n'ont pas encore de traduction. Le sélecteur FR · EN · ES (en-tête, accueil,
+pied de page) est produit par `outils/gabarit.py`.
+
 ## 3. Structure
 
 ```

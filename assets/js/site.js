@@ -9,6 +9,12 @@
   var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fin = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var lerp = function (a, b, t) { return a + (b - a) * t; };
+  var LANGUE = (doc.getAttribute('lang') || 'fr').slice(0, 2);
+  var TXT = {
+    fr: { menu: 'Menu', fermer: 'Fermer', envoi: 'Envoi en cours…', ok: 'Message bien reçu. Réponse sous 48 heures ouvrées.', ko: "L'envoi n'a pas abouti. Écrivez directement à mathieu@phoxia.fr." },
+    en: { menu: 'Menu', fermer: 'Close', envoi: 'Sending…', ok: 'Message received. We will reply within 48 business hours.', ko: 'Sending failed. Please write directly to mathieu@phoxia.fr.' },
+    es: { menu: 'Menú', fermer: 'Cerrar', envoi: 'Enviando…', ok: 'Mensaje recibido. Respuesta en 48 horas laborables.', ko: 'El envío no se ha completado. Escriba directamente a mathieu@phoxia.fr.' }
+  }[LANGUE] || {};
   var LOGO_ANIME = '<svg class="logo-anime" viewBox="0 0 139.03 102.15" aria-hidden="true"><path class="logo-anime__b1" d="M0 102.15h34.05L53.91 68.1H19.86z"/><path class="logo-anime__b2" d="M42.56 68.1h34.05l19.86-34.05H62.42z"/><path class="logo-anime__b3" d="M85.12 34.05h34.05L139.03 0h-34.05z"/></svg>';
   var borne = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
@@ -74,13 +80,13 @@
   var menu = document.querySelector('[data-menu-mobile]');
   function fermerMenu() {
     if (!menu || menu.getAttribute('data-ouvert') !== 'true') return;
-    menu.setAttribute('data-ouvert', 'false'); bascule.setAttribute('aria-expanded', 'false'); bascule.textContent = 'Menu';
+    menu.setAttribute('data-ouvert', 'false'); bascule.setAttribute('aria-expanded', 'false'); bascule.textContent = TXT.menu;
     document.body.classList.remove('menu-ouvert'); if (lenis) lenis.start();
   }
   if (bascule && menu) {
     bascule.addEventListener('click', function () {
       if (menu.getAttribute('data-ouvert') === 'true') return fermerMenu();
-      menu.setAttribute('data-ouvert', 'true'); bascule.setAttribute('aria-expanded', 'true'); bascule.textContent = 'Fermer';
+      menu.setAttribute('data-ouvert', 'true'); bascule.setAttribute('aria-expanded', 'true'); bascule.textContent = TXT.fermer;
       document.body.classList.add('menu-ouvert'); if (lenis) lenis.stop();
     });
   }
@@ -387,10 +393,10 @@
         location.href = 'mailto:mathieu@phoxia.fr?subject=' + encodeURIComponent('Demande depuis phoxia.fr') + '&body=' + encodeURIComponent(lignes.join('\n'));
         return;
       }
-      envoi.disabled = true; envoi.classList.add('en-chargement'); dire('Envoi en cours…', 'info');
+      envoi.disabled = true; envoi.classList.add('en-chargement'); dire(TXT.envoi, 'info');
       fetch(action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw new Error(); form.reset(); dire('Message bien reçu. Réponse sous 48 heures ouvrées.', 'succes'); })
-        .catch(function () { dire("L'envoi n'a pas abouti. Écrivez directement à mathieu@phoxia.fr.", 'erreur'); })
+        .then(function (r) { if (!r.ok) throw new Error(); form.reset(); dire(TXT.ok, 'succes'); })
+        .catch(function () { dire(TXT.ko, 'erreur'); })
         .then(function () { envoi.disabled = false; envoi.classList.remove('en-chargement'); });
     });
   }
