@@ -11,7 +11,7 @@ logotype manuscrit (police Caveat), photo de couverture fournie par vous.
 
 **Identité réelle** : Mathieu Barthélémy, également fondateur de Phoxia, sous
 la même entreprise individuelle (SIREN 937 810 067 / SIRET 937 810 067 00010).
-Réseaux confirmés : Instagram et TikTok `@phoxy.music`.
+Réseaux confirmés : Instagram et TikTok `@labelphoxy`.
 
 ---
 
@@ -31,7 +31,7 @@ et la page équipe ne montre que vous — pas de collaborateurs inventés.
 | Prise de rendez-vous | `index.html`, `contact.html` | Réutilise le Calendly réel de Phoxia (`calendly.com/mathieu-phoxia/30min`) — créez un Calendly dédié si vous voulez séparer les agendas |
 | Catalogue | `catalogue.html` | Vide, honnêtement affiché « à venir ». À remplir dès la première sortie réelle |
 | Studios partenaires | `equipe.html` | Retiré (aucun partenaire réel à annoncer pour l'instant) |
-| Spotify / YouTube | — | Retirés partout : seuls Instagram et TikTok `@phoxy.music` sont confirmés. Ajoutez les autres liens dès que les comptes existent |
+| Spotify / YouTube | — | Retirés partout : seuls Instagram et TikTok `@labelphoxy` sont confirmés. Ajoutez les autres liens dès que les comptes existent |
 
 ---
 
