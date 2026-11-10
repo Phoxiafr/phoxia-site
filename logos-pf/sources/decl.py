@@ -12,6 +12,7 @@ from shapely.ops import unary_union
 RED = '#FF1721'
 PALETTES = [  # nom, fond, encre
     ('blanc',        '#FFFFFF', '#0B1F4B'),
+    ('blanc-noir',   '#FFFFFF', '#0B0B0C'),
     ('ivoire',       '#F5F0E6', '#0B1F4B'),
     ('sable',        '#E6DDCF', '#0B1F4B'),
     ('gris-perle',   '#CFCFCD', '#FFFFFF'),
