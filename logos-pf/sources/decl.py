@@ -91,12 +91,12 @@ def cercle(bg, ink):
     body = monogram(206, c, c + 103, ink)
     font, big, small = 'CormorantGaramond-600', 46, 36
     top_items = small_caps('CABINET PROTECTION FINANCIÈRE', font, big, small)
-    bot_items = small_caps('ASSURANCE ET PATRIMOINE', font, big, small)
+    bot_items = small_caps('ASSURANCE & PATRIMOINE', font, 36, 28, lower=('&',))
     r_top, span_top = 284, 148
     # même interlettrage en bas qu'en haut ; cercle de base bas décalé de la hauteur
     # des capitales pour que les deux lignes s'inscrivent dans le même anneau
     track = (math.radians(span_top) * r_top - advance(top_items)) / (len(top_items) - 1)
-    r_bot = r_top + 30
+    r_bot = r_top + 24
     span_bot = math.degrees((advance(bot_items) + track * (len(bot_items) - 1)) / r_bot)
     top = arc(top_items, c, c, r_top, span_top, True, ink)
     bot = arc(bot_items, c, c, r_bot, span_bot, False, ink)
