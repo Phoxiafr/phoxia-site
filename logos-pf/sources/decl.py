@@ -22,6 +22,8 @@ PALETTES = [  # nom, fond, encre
     ('marine',       '#0B1F4B', '#FFFFFF'),
     ('bleu-roi',     '#1B3F86', '#FFFFFF'),
     ('vert-anglais', '#123B2F', '#FFFFFF'),
+    ('vert-sur-blanc', '#FFFFFF', '#123B2F'),
+    ('vert-sur-noir',  '#0B0B0C', '#3E8C68'),
 ]
 
 M_INK, M_BAR, _, _ = ident.fut_rouge('Medium')
