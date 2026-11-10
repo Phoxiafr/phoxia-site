@@ -34,9 +34,13 @@ def monogram(cap_px, cx, base, ink):
 def embleme(bg, ink):
     W, Hh = 600, 400
     body = monogram(112, W / 2, 196, ink)
-    t, _ = ident.text_line('Regular', 'PROTECTION FINANCIÈRE', 15, W / 2, 252, ink, track_em=0.34)
-    sub = lib.text('CormorantGaramond-500i', 19, 'Assurances & Patrimoine', W / 2, 284, fill=ink, opacity=.85)[0]
-    return (W, Hh), f'<g transform="translate(0 14)">{body}{t}{sub}</g>'
+    t, tw = ident.text_line('Regular', 'PROTECTION FINANCIÈRE', 15, W / 2, 252, ink, track_em=0.34)
+    sub, sw = lib.text('CormorantGaramond-500i', 19, 'Assurances & Patrimoine', W / 2, 284, fill=ink, opacity=.85)
+    # deux filets de part et d'autre de la signature, calés sur la largeur du nom
+    y, gap, x0, x1 = 279.2, 14, W / 2 - tw / 2, W / 2 + tw / 2
+    rules = ''.join(f'<line x1="{a:.2f}" y1="{y}" x2="{b:.2f}" y2="{y}" stroke="{ink}" stroke-width="1" opacity=".85"/>'
+                    for a, b in ((x0, W / 2 - sw / 2 - gap), (W / 2 + sw / 2 + gap, x1)))
+    return (W, Hh), f'<g transform="translate(0 14)">{body}{t}{rules}{sub}</g>'
 
 
 def arc(items, cx, cy, r, span_deg, top, ink):
