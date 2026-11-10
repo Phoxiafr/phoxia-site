@@ -1,11 +1,10 @@
 """Outils de construction des logos : glyphes vectorisés, profils, barre AXA alignée."""
-import math
+import math, os
 from fontTools.ttLib import TTFont
 from fontTools.pens.basePen import BasePen
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 
-import os
 FD = os.environ.get('FONTS_DIR', 'fonts/')
 NAVY = '#0B1F4B'
 RED = '#FF1721'
