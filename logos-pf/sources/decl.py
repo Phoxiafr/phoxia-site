@@ -67,22 +67,38 @@ def arc(items, cx, cy, r, span_deg, top, ink):
     return ''.join(out)
 
 
-def small_caps(txt, fname, big, small):
-    """Petites capitales façon Azoulay : initiale de chaque mot plus grande."""
-    items = []; first = True
-    for ch in txt:
-        if ch == ' ': items.append((fname, small, ' ')); first = True; continue
-        items.append((fname, big if first else small, ch)); first = False
+def small_caps(txt, fname, big, small, lower=('ET',)):
+    """Petites capitales façon Azoulay : initiale de chaque mot plus grande
+    (sauf les mots de liaison, entièrement en petites capitales)."""
+    items = []
+    for i, w in enumerate(txt.split(' ')):
+        if i: items.append((fname, small, ' '))
+        for j, ch in enumerate(w):
+            items.append((fname, big if (j == 0 and w not in lower) else small, ch))
     return items
+
+
+def advance(items):
+    tot = 0
+    for fname, px, ch in items:
+        f, gs, cmap, upm = lib.font(fname); tot += gs[cmap[ord(ch)]].width * px / upm
+    return tot
 
 
 def cercle(bg, ink):
     S = 800; c = S / 2
     body = monogram(206, c, c + 103, ink)
-    top = arc(small_caps('CABINET PROTECTION FINANCIÈRE', 'CormorantGaramond-600', 46, 36),
-              c, c, 284, 148, True, ink)
-    bot = arc([('Jost-400', 31, ch) for ch in 'AXA ASSURANCE ET PATRIMOINE'],
-              c, c, 306, 124, False, ink)
+    font, big, small = 'CormorantGaramond-600', 46, 36
+    top_items = small_caps('CABINET PROTECTION FINANCIÈRE', font, big, small)
+    bot_items = small_caps('ASSURANCE ET PATRIMOINE', font, big, small)
+    r_top, span_top = 284, 148
+    # même interlettrage en bas qu'en haut ; cercle de base bas décalé de la hauteur
+    # des capitales pour que les deux lignes s'inscrivent dans le même anneau
+    track = (math.radians(span_top) * r_top - advance(top_items)) / (len(top_items) - 1)
+    r_bot = r_top + 30
+    span_bot = math.degrees((advance(bot_items) + track * (len(bot_items) - 1)) / r_bot)
+    top = arc(top_items, c, c, r_top, span_top, True, ink)
+    bot = arc(bot_items, c, c, r_bot, span_bot, False, ink)
     return (S, S), body + top + bot
 
 
