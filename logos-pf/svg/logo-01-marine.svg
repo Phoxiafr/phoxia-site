@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg"><style>@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&amp;family=Cinzel:wght@500;600&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=Josefin+Sans:wght@200;300&amp;family=Marcellus&amp;family=Montserrat:wght@400;500;600&amp;display=swap');</style><rect width="480" height="300" fill="#0B1F4B"></rect>
+  <g transform="translate(20 0)"><text x="232" y="168" text-anchor="end" font-family="Cormorant Garamond" font-weight="600" font-size="138" letter-spacing="-2" fill="#FFFFFF">PF</text>
+  <polygon points="226,168 244,168 296,66 278,66" fill="#FF1721"></polygon></g>
+  <line x1="150" y1="196" x2="330" y2="196" stroke-width="1" stroke="#FFFFFF" fill="none"></line>
+  <text x="240" y="222" text-anchor="middle" font-family="Montserrat" font-weight="500" font-size="13" letter-spacing="6" fill="#FFFFFF">PROTECTION FINANCIÈRE</text>
+  <text x="240" y="246" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="17" opacity=".8" fill="#FFFFFF">Prévoyance &amp; Patrimoine</text>
+</svg>

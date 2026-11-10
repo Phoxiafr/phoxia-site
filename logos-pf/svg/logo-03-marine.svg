@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg"><style>@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&amp;family=Cinzel:wght@500;600&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=Josefin+Sans:wght@200;300&amp;family=Marcellus&amp;family=Montserrat:wght@400;500;600&amp;display=swap');</style><rect width="480" height="300" fill="#0B1F4B"></rect>
+  <path stroke-width="2" d="M240 30 L318 52 V128 C318 178 284 206 240 224 C196 206 162 178 162 128 V52 Z" stroke="#FFFFFF" fill="none"></path>
+  <path stroke-width="1" d="M240 40 L309 59 V128 C309 172 279 197 240 213 C201 197 171 172 171 128 V59 Z" stroke="#FFFFFF" fill="none"></path>
+  <text x="246" y="152" text-anchor="end" font-family="Marcellus" font-size="66" fill="#FFFFFF">PF</text>
+  <polygon points="241,152 251,152 279,92 269,92" fill="#FF1721"></polygon>
+  <text x="240" y="260" text-anchor="middle" font-family="Marcellus" font-size="18" letter-spacing="5" fill="#FFFFFF">PROTECTION FINANCIÈRE</text>
+  <text x="240" y="281" text-anchor="middle" font-family="Montserrat" font-size="9.5" letter-spacing="4" opacity=".75" fill="#FFFFFF">PRÉVOYANCE · PATRIMOINE</text>
+</svg>
