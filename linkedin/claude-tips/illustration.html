@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Illustration Claude Phoxia</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--encre:#05070b;--sable:#e9eef5;--sable-doux:#9ba7b8;--gris:#7d8899;--ligne:rgba(233,238,245,.08);--ligne-forte:rgba(233,238,245,.16);--bleu:#5ba3dd;--bleu-vif:#8cc8f2;--bleu-fonce:#1c6ba8;
+--titre:"Instrument Sans",Arial,sans-serif;--logo:"EB Garamond",Georgia,serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;font-family:var(--titre);color:var(--sable);-webkit-font-smoothing:antialiased}
+.v{width:1200px;height:1500px;position:relative;overflow:hidden;background:var(--encre);padding:90px 96px}
+.v::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(900px 700px at 50% 62%,rgba(28,107,168,.42),transparent 70%),
+ radial-gradient(700px 500px at 100% 0%,rgba(28,107,168,.35),transparent 70%),
+ radial-gradient(600px 600px at 0% 100%,rgba(91,163,221,.16),transparent 70%)}
+.v::after{content:"";position:absolute;inset:0;opacity:.8;background-image:linear-gradient(var(--ligne) 1px,transparent 1px),linear-gradient(90deg,var(--ligne) 1px,transparent 1px);background-size:100px 100px;-webkit-mask-image:radial-gradient(ellipse 75% 60% at 50% 55%,#000 15%,transparent 75%)}
+.v>*{position:relative;z-index:1}
+.haut{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--sable-doux)}
+.marque{display:flex;align-items:center;gap:16px;font-family:var(--logo);font-style:italic;font-size:42px;text-transform:none;letter-spacing:0;color:var(--sable)}
+.marque img{width:54px}
+h1{font-size:96px;white-space:nowrap;font-weight:600;letter-spacing:-.035em;line-height:1.02;margin-top:70px}
+em{font-family:var(--logo);font-style:italic;font-weight:400;color:var(--bleu-vif);letter-spacing:-.01em}
+/* Scène */
+.scene{position:absolute;left:0;right:0;top:530px;height:800px}
+.fenetre{position:absolute;left:170px;top:70px;width:860px;border:1px solid var(--ligne-forte);border-radius:28px;background:rgba(10,14,21,.82);box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(91,163,221,.08),0 0 140px rgba(28,107,168,.35);overflow:hidden}
+.barre{display:flex;align-items:center;gap:10px;padding:22px 28px;border-bottom:1px solid var(--ligne)}
+.barre i{width:13px;height:13px;border-radius:50%;background:var(--ligne-forte)}
+.barre span{margin-left:16px;font-family:var(--mono);font-size:18px;letter-spacing:.12em;color:var(--gris);text-transform:uppercase}
+.corps{padding:34px 36px 30px;display:flex;flex-direction:column;gap:22px}
+.moi{align-self:flex-end;max-width:560px;background:var(--sable);color:var(--encre);border-radius:22px 22px 6px 22px;padding:20px 26px;font-size:25px;line-height:1.4;font-weight:500}
+.ia{display:flex;gap:18px;align-items:flex-start}
+.ia .pt{flex:none;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--bleu-fonce),var(--bleu));display:grid;place-items:center;box-shadow:0 0 24px rgba(91,163,221,.5)}
+.ia .pt img{width:28px}
+.ia .txt{font-size:24px;line-height:1.45;color:var(--sable-doux)}
+.ia ol{margin-top:12px;padding-left:0;list-style:none;display:grid;gap:10px}
+.ia li{display:flex;gap:14px;color:var(--sable);font-size:23px}
+.ia li b{font-family:var(--mono);font-weight:500;color:var(--bleu);font-size:19px;padding-top:3px}
+.saisie{margin-top:6px;border:1px solid var(--ligne-forte);border-radius:16px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:19px;color:var(--gris)}
+.saisie .curs{display:inline-block;width:2px;height:22px;background:var(--bleu-vif);vertical-align:middle;margin-left:4px}
+.saisie .env{width:42px;height:42px;border-radius:12px;background:var(--bleu);display:grid;place-items:center;color:var(--encre);font-weight:700;font-size:22px}
+/* Pastilles flottantes */
+.chip{position:absolute;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--bleu-vif);border:1px solid rgba(91,163,221,.55);background:rgba(8,20,36,.88);border-radius:99px;padding:14px 22px;box-shadow:0 0 40px rgba(28,107,168,.35);z-index:2}
+.chip::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--bleu);box-shadow:0 0 12px var(--bleu)}
+.c1{left:70px;top:30px}.c2{right:70px;top:10px}.c3{left:50px;top:440px}.c4{right:40px;top:330px}.c5{right:150px;bottom:60px}.c6{left:130px;bottom:100px}
+.bas{position:absolute;left:96px;right:96px;bottom:70px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);border-top:1px solid var(--ligne-forte);padding-top:28px}
+.bas b{color:var(--bleu-vif);font-weight:500}
+</style>
+</head>
+<body>
+<div class="v">
+  <div class="haut"><span class="marque">Phoxia <img src="symbole.svg" alt=""></span><span>Guide · 2026</span></div>
+  <h1>Claude comme <em>un pro</em>.<br>10 astuces.</h1>
+  <div class="scene">
+    <span class="chip c1">Projets</span>
+    <span class="chip c2">Artifacts</span>
+    <span class="chip c3">Styles</span>
+    <span class="chip c4">Connecteurs</span>
+    <span class="chip c5">Skills</span>
+    <span class="chip c6">Réflexion</span>
+    <div class="fenetre">
+      <div class="barre"><i></i><i></i><i></i><span>Projet · Commercial PME</span></div>
+      <div class="corps">
+        <div class="moi">Avant de rédiger ma proposition, pose-moi les questions qui te manquent.</div>
+        <div class="ia">
+          <span class="pt"><img src="symbole.svg" alt=""></span>
+          <div class="txt">Bonne idée. Commençons par l’essentiel :
+            <ol>
+              <li><b>01</b>Quel est le budget du client ?</li>
+              <li><b>02</b>Quel concurrent a-t-il déjà rencontré ?</li>
+              <li><b>03</b>Quelle décision doit-il prendre, et quand ?</li>
+            </ol>
+          </div>
+        </div>
+        <div class="saisie"><span>Votre réponse<span class="curs"></span></span><span class="env">↑</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="bas"><b>phoxia.fr</b><span>IA pour dirigeants, pros et étudiants</span></div>
+</div>
+</body>
+</html>
