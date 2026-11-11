@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Fiche Claude Phoxia</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--encre:#05070b;--panneau:#080c13;--sable:#e9eef5;--doux:#9ba7b8;--gris:#6b7688;--ligne:rgba(233,238,245,.08);--ligne-forte:rgba(233,238,245,.16);--bleu:#5ba3dd;--vif:#8cc8f2;--fonce:#1c6ba8;
+--logo:"EB Garamond",Georgia,serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;font-family:"Instrument Sans",Arial,sans-serif;color:var(--sable);-webkit-font-smoothing:antialiased}
+.v{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--encre);display:flex;flex-direction:column}
+.v::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 90% 0%,rgba(28,107,168,.45),transparent 70%),radial-gradient(600px 600px at 0% 60%,rgba(91,163,221,.12),transparent 70%),radial-gradient(800px 400px at 50% 110%,rgba(28,107,168,.3),transparent 70%)}
+.v::after{content:"";position:absolute;inset:0;opacity:.7;background-image:linear-gradient(var(--ligne) 1px,transparent 1px),linear-gradient(90deg,var(--ligne) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse 80% 40% at 50% 0%,#000 10%,transparent 75%)}
+.v>*{position:relative;z-index:1}
+.int{padding:44px 52px 0}
+.haut{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--doux)}
+.marque{display:flex;align-items:center;gap:12px;font-family:var(--logo);font-style:italic;font-size:32px;text-transform:none;letter-spacing:0;color:var(--sable)}
+.marque img{width:40px}
+.tete{display:flex;justify-content:space-between;align-items:flex-end;margin-top:26px;gap:30px}
+h1{font-size:62px;white-space:nowrap;font-weight:700;letter-spacing:-.04em;line-height:.98}
+h1 em{font-family:var(--logo);font-style:italic;font-weight:500;color:var(--vif);letter-spacing:-.01em}
+.tete p{font-size:17px;line-height:1.45;color:var(--doux);max-width:280px;padding-bottom:6px}
+.tete p b{color:var(--sable);font-weight:600}
+.grille{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.c{border:1px solid var(--ligne-forte);background:rgba(10,15,23,.82);border-radius:16px;padding:16px 18px 15px;display:flex;flex-direction:column}
+.c .h{display:flex;align-items:baseline;gap:12px}
+.c .n{font-family:var(--mono);font-size:14px;color:var(--bleu);letter-spacing:.06em}
+.c h2{font-size:22px;font-weight:600;letter-spacing:-.015em;line-height:1.1}
+.c h2 em{font-family:var(--logo);font-style:italic;font-weight:500;color:var(--vif);font-size:24px}
+.c .x{font-size:16px;line-height:1.38;color:var(--doux);margin-top:7px}
+.c .p{margin-top:12px;font-family:var(--mono);font-size:13.6px;line-height:1.45;color:var(--sable);background:rgba(28,107,168,.13);border-left:2px solid var(--bleu);border-radius:0 8px 8px 0;padding:8px 11px}
+.legende{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.legende span{display:flex;align-items:center;gap:8px}
+.legende i{width:14px;height:10px;border-left:2px solid var(--bleu);background:rgba(28,107,168,.25)}
+.pied{margin-top:auto;height:74px;display:flex}
+.pied .g{flex:1;background:linear-gradient(90deg,var(--fonce),#123f66);display:flex;align-items:center;gap:14px;padding:0 26px;font-size:20px;font-weight:600}
+.pied .g em{font-family:var(--logo);font-style:italic;font-weight:500;font-size:23px;color:var(--vif)}
+.pied .g img{width:30px}
+.pied .d{width:270px;background:var(--sable);color:var(--encre);display:flex;align-items:center;justify-content:center;gap:12px;font-family:var(--logo);font-style:italic;font-size:34px}
+.pied .d img{width:36px}
+</style>
+</head>
+<body>
+<div class="v">
+ <div class="int">
+  <div class="haut"><span class="marque">Phoxia <img src="symbole.svg" alt=""></span><span>Fiche à enregistrer · 2026</span></div>
+  <div class="tete">
+    <h1>10 astuces pour utiliser<br>Claude <em>comme un pro</em></h1>
+    <p>Pour <b>dirigeants de PME</b>, <b>étudiants</b> et <b>professionnels</b> qui utilisent l’IA tous les jours.</p>
+  </div>
+  <div class="grille" id="g"></div>
+  <div class="legende"><span><i></i>Prompt à copier tel quel</span><span>phoxia.fr</span></div>
+ </div>
+ <div class="pied">
+  <div class="g"><img src="symbole.svg" alt=""><span>On forme vos équipes à <em>l’IA</em>, concrètement</span></div>
+  <div class="d">Phoxia <img src="symbole.svg" alt=""></div>
+ </div>
+</div>
+<script>
+const T=[
+['Un <em>Projet</em> par sujet','Docs de référence et instructions permanentes : Claude garde le contexte d’une discussion à l’autre.','Tu es mon bras droit commercial. Appuie-toi toujours sur la grille tarifaire jointe.'],
+['Faites-vous <em>interviewer</em>','Laissez Claude repérer ce qui manque avant de produire.','Avant de rédiger, pose-moi les 5 questions qui te manquent. Une à la fois.'],
+['Des <em>balises</em> dans le prompt','Contexte, documents et consigne bien séparés : réponses plus précises.','&lt;contexte&gt;PME BTP&lt;/contexte&gt; &lt;document&gt;[devis]&lt;/document&gt; &lt;consigne&gt;3 risques&lt;/consigne&gt;'],
+['Un <em>exemple</em>, pas des adjectifs','Collez un texte que vous aimez au lieu de décrire le ton voulu.','Voici 2 mails qui ont bien marché. Rédige la relance dans le même style.'],
+['<em>Modifiez</em>, n’empilez pas','Réponse à côté ? Éditez votre message d’origine pour repartir propre.','Résume cette conversation en 10 lignes pour que je la reprenne ailleurs.'],
+['Un <em>outil</em>, pas un texte','Les Artifacts créent des mini applis : simulateur, quiz, checklist.','Crée un simulateur de marge : prix d’achat, prix de vente, volume, seuil.'],
+['<em>Votre</em> plume','Un Style personnalisé construit à partir de vos propres textes.','Analyse ces 3 textes et décris mon style en 10 règles concrètes.'],
+['Vos <em>données</em> branchées','Connecteurs Gmail, Agenda, Drive, Notion : fini le copier-coller.','Regarde mon agenda de demain et prépare un brief de 5 lignes par rendez-vous.'],
+['L’<em>avocat du diable</em>','Une IA va dans votre sens. Pour décider, demandez-lui le contraire.','Donne-moi les 5 meilleures raisons de NE PAS lancer ce projet.'],
+['Vos routines en <em>Skills</em>','Une méthode décrite une fois, réappliquée à l’identique ensuite.','Transforme la méthode de ce compte rendu en Skill réutilisable.'],
+];
+document.getElementById('g').innerHTML=T.map((t,i)=>`<div class="c"><div class="h"><span class="n">${String(i+1).padStart(2,'0')}</span><h2>${t[0]}</h2></div><p class="x">${t[1]}</p><div class="p">${t[2]}</div></div>`).join('');
+</script>
+</body>
+</html>
