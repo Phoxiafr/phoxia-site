@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Editeur Claude Phoxia</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--encre:#05070b;--panneau:#080c13;--surface:#0d131d;--sable:#e9eef5;--doux:#9ba7b8;--gris:#6b7688;--ligne:rgba(233,238,245,.08);--ligne-forte:rgba(233,238,245,.16);--bleu:#5ba3dd;--vif:#8cc8f2;--fonce:#1c6ba8;
+--titre:"Instrument Sans",Arial,sans-serif;--logo:"EB Garamond",Georgia,serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;font-family:var(--titre);color:var(--sable);-webkit-font-smoothing:antialiased}
+.v{width:1080px;height:1350px;background:var(--encre);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.bandeau-haut{height:44px;display:flex;justify-content:flex-end;align-items:center;padding:0 28px;font-family:var(--mono);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--doux);border-bottom:1px solid var(--fonce)}
+.bandeau-haut b{color:var(--vif);font-weight:600}
+.chrome{height:46px;display:flex;align-items:center;gap:9px;padding:0 22px;background:var(--panneau);border-bottom:1px solid var(--ligne)}
+.chrome i{width:13px;height:13px;border-radius:50%}
+.chrome i:nth-child(1){background:#2a5b8c}.chrome i:nth-child(2){background:#5ba3dd}.chrome i:nth-child(3){background:#8cc8f2}
+.chrome .rech{margin:0 auto;width:420px;height:28px;border-radius:7px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:12px;font-family:var(--mono);font-size:14px;color:var(--doux)}
+.chrome .rech img{width:18px}
+.onglets{height:38px;display:flex;background:var(--panneau);border-bottom:1px solid var(--ligne);font-family:var(--mono);font-size:14px;color:var(--gris)}
+.onglets span{padding:0 20px;display:flex;align-items:center;gap:8px;border-right:1px solid var(--ligne)}
+.onglets span.on{color:var(--sable);background:var(--encre);border-top:2px solid var(--bleu)}
+.corps{flex:1;display:flex;min-height:0}
+.expl{width:230px;flex:none;background:var(--panneau);border-right:1px solid var(--ligne);padding:16px 0;font-family:var(--mono);font-size:14px;color:var(--doux);display:flex;flex-direction:column}
+.expl h6{font-size:12px;letter-spacing:.14em;color:var(--gris);font-weight:500;padding:0 18px 10px}
+.expl .rac{padding:4px 18px;color:var(--sable)}
+.dos{padding:5px 18px;display:flex;justify-content:space-between;align-items:center;color:var(--sable)}
+.dos span{display:flex;align-items:center;gap:8px}
+.dos span::before{content:"";width:12px;height:10px;border-radius:2px;background:var(--c)}
+.dos em{font-style:normal;color:var(--gris);font-size:12px}
+.fic{padding:3px 18px 3px 44px;color:var(--doux);display:flex;align-items:center;gap:8px}
+.fic::before{content:"";width:8px;height:10px;background:var(--ligne-forte);border-radius:1px}
+.outline{margin-top:auto;border-top:1px solid var(--ligne);padding-top:12px}
+.outline .l{padding:3px 18px;display:flex;justify-content:space-between;color:var(--doux)}
+.outline .l span{display:flex;align-items:center;gap:8px}.outline .l span::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c)}
+.main{flex:1;position:relative;padding:34px 40px 20px 44px;overflow:hidden}
+.main::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px 420px at 82% 6%,rgba(28,107,168,.35),transparent 70%),radial-gradient(500px 400px at 100% 100%,rgba(28,107,168,.18),transparent 70%)}
+.main>*{position:relative}
+.symb-fond{position:absolute;right:-40px;top:20px;width:330px;opacity:.10}
+.tete{display:flex;gap:22px;align-items:center}
+.tete img{width:84px;filter:drop-shadow(0 0 22px rgba(91,163,221,.6))}
+h1{font-size:64px;font-weight:700;letter-spacing:-.035em;line-height:1.02}
+h1 em{font-family:var(--logo);font-style:italic;font-weight:500;color:var(--vif);letter-spacing:-.01em}
+.chapo{margin-top:22px;font-size:20px;line-height:1.45;color:var(--doux);max-width:720px}
+.cat{margin-top:36px}
+.cat-t{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ligne);padding-bottom:7px;margin-bottom:6px}
+.cat-t h2{font-size:26px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.cat-t h2 i{width:12px;height:12px;border-radius:3px;background:var(--c);box-shadow:0 0 12px var(--c)}
+.cat-t h2 span{font-weight:400;color:var(--doux);font-size:18px}
+.cat-t small{font-family:var(--mono);font-size:13px;color:var(--gris)}
+.it{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:18px;color:var(--doux)}
+.it::before{content:"•";color:var(--c)}
+.it code{font-family:var(--mono);font-size:17px;color:var(--c);font-weight:500;white-space:nowrap}
+.it .d{flex:1}
+.it .n{font-family:var(--mono);font-size:12.5px;padding:3px 10px;border-radius:6px;border:1px solid var(--ligne-forte);color:var(--vif);white-space:nowrap}
+.statut{height:34px;background:var(--panneau);border-top:1px solid var(--fonce);display:flex;align-items:center;gap:18px;padding:0 20px;font-family:var(--mono);font-size:13px;color:var(--gris)}
+.statut b{width:9px;height:9px;border-radius:50%;background:var(--bleu);box-shadow:0 0 10px var(--bleu)}
+.pied{height:78px;display:flex;align-items:stretch}
+.pied .g{flex:1;background:linear-gradient(90deg,var(--fonce),#123f66);display:flex;align-items:center;gap:16px;padding:0 26px;font-size:21px;font-weight:600}
+.pied .g em{font-family:var(--logo);font-style:italic;font-weight:500;font-size:24px;color:var(--vif)}
+.pied .g img{width:34px}
+.pied .d{width:290px;background:var(--sable);color:var(--encre);display:flex;align-items:center;justify-content:center;gap:14px;font-family:var(--logo);font-style:italic;font-size:38px}
+.pied .d img{width:40px}
+</style>
+</head>
+<body>
+<div class="v">
+  <div class="bandeau-haut"><span><b>Spécial</b> pour celles et ceux qui utilisent Claude tous les jours</span></div>
+  <div class="chrome"><i></i><i></i><i></i><div class="rech"><img src="symbole.svg" alt="">claude · astuces-pro</div></div>
+  <div class="onglets"><span class="on">README.md</span><span>10-astuces.md</span></div>
+  <div class="corps">
+    <aside class="expl">
+      <h6>EXPLORER</h6>
+      <div class="rac">claude-astuces/</div>
+      <div class="dos" style="--c:#5ba3dd"><span>contexte/</span><em>3</em></div>
+      <div class="fic">projets.md</div><div class="fic">styles.md</div><div class="fic">exemples.md</div>
+      <div class="dos" style="--c:#8cc8f2"><span>prompt/</span><em>2</em></div>
+      <div class="fic">interview.md</div><div class="fic">balises.xml</div>
+      <div class="dos" style="--c:#c9d6e6"><span>conversation/</span><em>2</em></div>
+      <div class="fic">modifier.md</div><div class="fic">contradiction.md</div>
+      <div class="dos" style="--c:#2f86cf"><span>outils/</span><em>3</em></div>
+      <div class="fic">artifacts.md</div><div class="fic">connecteurs.md</div><div class="fic">skills.md</div>
+      <div class="fic" style="padding-left:18px;color:var(--sable)">README.md</div>
+      <div class="outline">
+        <h6>OUTLINE</h6>
+        <div class="l" style="--c:#5ba3dd"><span>Contexte</span>3</div>
+        <div class="l" style="--c:#8cc8f2"><span>Prompt</span>2</div>
+        <div class="l" style="--c:#c9d6e6"><span>Conversation</span>2</div>
+        <div class="l" style="--c:#2f86cf"><span>Outils</span>3</div>
+      </div>
+    </aside>
+    <main class="main">
+      <img class="symb-fond" src="symbole.svg" alt="">
+      <div class="tete"><img src="symbole.svg" alt=""><h1>10 astuces pour utiliser<br>Claude <em>comme un pro</em></h1></div>
+      <p class="chapo">La plupart des gens s’en servent comme d’un moteur de recherche. Voici ce que font les utilisateurs avancés : dirigeants de PME, étudiants et professionnels.</p>
+
+      <section class="cat" style="--c:#5ba3dd">
+        <div class="cat-t"><h2><i></i>Contexte <span>: ce que Claude sait avant vous</span></h2><small>3 astuces</small></div>
+        <div class="it"><code>projets</code><span class="d">Un Projet par client ou par cours, avec docs et instructions.</span><span class="n">Débutant</span></div>
+        <div class="it"><code>styles</code><span class="d">Créez votre style à partir de vos propres textes.</span><span class="n">Débutant</span></div>
+        <div class="it"><code>exemples</code><span class="d">Collez un mail que vous aimez au lieu de le décrire.</span><span class="n">Débutant</span></div>
+      </section>
+      <section class="cat" style="--c:#8cc8f2">
+        <div class="cat-t"><h2><i></i>Prompt <span>: comment vous demandez</span></h2><small>2 astuces</small></div>
+        <div class="it"><code>interview</code><span class="d">« Pose-moi 5 questions avant de rédiger. Une à la fois. »</span><span class="n">Débutant</span></div>
+        <div class="it"><code>balises</code><span class="d">&lt;contexte&gt;, &lt;document&gt;, &lt;consigne&gt; : zéro confusion.</span><span class="n">Intermédiaire</span></div>
+      </section>
+      <section class="cat" style="--c:#c9d6e6">
+        <div class="cat-t"><h2><i></i>Conversation <span>: garder le fil propre</span></h2><small>2 astuces</small></div>
+        <div class="it"><code>modifier</code><span class="d">Éditez votre message au lieu d’empiler les corrections.</span><span class="n">Intermédiaire</span></div>
+        <div class="it"><code>contradiction</code><span class="d">Demandez l’avocat du diable avant chaque vraie décision.</span><span class="n">Intermédiaire</span></div>
+      </section>
+      <section class="cat" style="--c:#2f86cf">
+        <div class="cat-t"><h2><i></i>Outils <span>: passer du texte à l’action</span></h2><small>3 astuces</small></div>
+        <div class="it"><code>artifacts</code><span class="d">Demandez un simulateur, un quiz, un tableau de bord.</span><span class="n">Intermédiaire</span></div>
+        <div class="it"><code>connecteurs</code><span class="d">Gmail, Agenda, Drive, Notion : vos vraies données.</span><span class="n">Avancé</span></div>
+        <div class="it"><code>skills</code><span class="d">Une routine décrite une fois, réappliquée à l’identique.</span><span class="n">Avancé</span></div>
+      </section>
+    </main>
+  </div>
+  <div class="statut"><b></b><span>main</span><span>10 astuces · 4 dossiers</span><span style="margin-left:auto">phoxia.fr</span></div>
+  <div class="pied">
+    <div class="g"><img src="symbole.svg" alt=""><span>On forme vos équipes à <em>l’IA</em>, concrètement</span></div>
+    <div class="d">Phoxia <img src="symbole.svg" alt=""></div>
+  </div>
+</div>
+</body>
+</html>
