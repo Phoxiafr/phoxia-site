@@ -1,11 +1,11 @@
 """Outils de construction des logos : glyphes vectorisés, profils, barre AXA alignée."""
-import math, os
+import math
 from fontTools.ttLib import TTFont
 from fontTools.pens.basePen import BasePen
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 
-FD = os.environ.get('FONTS_DIR', 'fonts/')
+FD = '/tmp/claude-0/-home-user-phoxia-site/e79f868f-a3bb-5b8f-8cd1-98fc71db62bf/scratchpad/fonts/'
 NAVY = '#0B1F4B'
 RED = '#FF1721'
 

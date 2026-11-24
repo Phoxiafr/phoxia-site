@@ -94,9 +94,10 @@ def glyphs(weight):
     cw = 680
     ring = ellipse(cw / 2, H / 2, cw / 2, H / 2 + OV).difference(ellipse(cw / 2, H / 2, cw / 2 - S * 1.04, H / 2 + OV - T))
     R0 = cw / 2; ccx = cw / 2; ccy = H / 2
-    pt = (ccx + 0.50 * R0, ccy + 0.60 * R0); pb = (ccx + 0.50 * R0, ccy - 0.60 * R0)
+    # ouverture symétrique : coupe du haut à l'angle de la barre (/), coupe du bas en miroir (\)
+    pt = (ccx + 0.40 * R0, ccy + 0.50 * R0); pb = (ccx + 0.40 * R0, ccy - 0.50 * R0)
     cut = Polygon([pb, pt, (pt[0] + 500 * K, pt[1] + 500), (cw + 600, pt[1] + 500),
-                   (cw + 600, pb[1] - 500), (pb[0] - 500 * K, pb[1] - 500)])
+                   (cw + 600, pb[1] - 500), (pb[0] + 500 * K, pb[1] - 500)])
     g['C'] = (ring.difference(cut), cw * 0.94 + sb)
     # R : P + jambe inclinée en sens inverse
     rleg = para(pw * 0.38, 0, BY + 10, S / SIN, k=-K)
