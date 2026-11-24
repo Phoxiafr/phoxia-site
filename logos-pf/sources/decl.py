@@ -26,7 +26,11 @@ PALETTES = [  # nom, fond, encre
     ('vert-sur-noir',  '#0B0B0C', '#3E8C68'),
 ]
 
-M_INK, M_BAR, _, _ = ident.fut_rouge('Medium')
+MODE = os.environ.get('PF_MODE', 'fut')
+if MODE == 'fut':
+    M_INK, M_BAR, _, _ = ident.fut_rouge('Medium')
+else:   # lettres droites, barre entre P et F ('between') ou après PF ('after')
+    M_INK, M_BAR, _, _ = ident.monogram('Medium', MODE, 0.5 if MODE == 'between' else 0.42)
 
 
 def monogram(cap_px, cx, base, ink):
