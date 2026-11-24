@@ -135,7 +135,7 @@ def path_d(geo, s, ox, oy):
 
 def profile(geo, y, side):
     from shapely.geometry import LineString
-    inter = geo.intersection(LineString([(-5000, y), (5000, y)]))
+    inter = geo.intersection(LineString([(-100000, y), (100000, y)]))
     if inter.is_empty: return None
     b = inter.bounds
     return b[2] if side == 'r' else b[0]
